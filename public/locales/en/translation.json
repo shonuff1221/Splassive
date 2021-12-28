@@ -1,0 +1,623 @@
+{
+    "SWAP":{
+        "1": "SWAP"
+    },
+    "FAUCET":{
+        "1": "FAUCET"
+    },
+    "RESERVOIR":{
+        "1": "RESERVOIR"
+    },
+    "Whitepaper":{
+        "1": "Whitepaper"
+    },
+    "BuyBR34P":{
+        "1": "Buy BR34P"
+    },
+    "Tutorial":{
+        "1": "Tutorial"
+    },
+    "English":{
+        "1": "English"
+    },
+    "China":{
+        "1": "China"
+    },
+    "Korea":{
+        "1": "Korea"
+    },
+    "Spain":{
+        "1": "Spain"
+    },
+    "Rusia":{
+        "1": "Rusia"
+    },
+    "France":{
+        "1": "France"
+    },
+    "MetaMask":{
+        "1": "MetaMask"
+    },
+    "ConnecttoyourMetaMaskWallet":{
+        "1": "Connect to your MetaMask Wallet"
+    },
+    "WalletConnect":{
+        "1": "WalletConnect"
+    },
+    "ScanwithWalletConnecttoconnect":{
+        "1": "Scan with WalletConnect to connect"
+    },
+
+    
+
+
+
+
+
+    "DRIPNETWORK":{
+        "1": "DRIP NETWORK"
+    },
+    "DRIPNetworkisthelatestprojectdevelopedby":{
+        "1": "DRIP Network is the latest project developed by"
+    },
+    "Forex_Shark":{
+        "1": "Forex_Shark"
+    }
+    ,
+    "BB":{
+        "1": "BB"
+    }
+    ,
+    "andteam.":{
+        "1": "and team."
+    },
+    "TheofficialtokenoftheDRIPNetworkisDRIP(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "The official token of the DRIP Network is DRIP (BEP-20) on the Binance Smart blockchain (BSC) that captures value by being scarce, deflationary, censorship resistant, and by being built on a robust, truly decentralized blockchain."
+    },
+    "TherecommendedexchangefortradingDRIPistheFountaincontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
+        "1": "The recommended exchange for trading DRIP is the Fountain contract which can be found directly on the platforms website under the swap tab, as it allows us to waive the initial 10% tax on buys and provides the lowest prices and highest liquidity, resulting in less slippage for larger trades."
+    },
+    "TRADE":{
+        "1": "TRADE"
+    },
+    "STAKE":{
+        "1": "STAKE"
+    },
+    "LIQUIDITYFARM":{
+        "1": "LIQUIDITY FARM"
+    },
+    "STATS":{
+        "1": "STATS"
+    },
+    "TheDRIPtokencapturestheentirevalueoftheDripNetworkandmakesitavailabletotheentireBNBCommunity":{
+        "1": "The DRIP token captures the entire value of the Drip Network and makes it available to the entire BNB Community"
+    },
+    "Players":{
+        "1": "Players"
+    },
+    "count":{
+        "1": "count"
+    }
+    ,
+    "Maxdailyreturn":{
+        "1": "Max daily return"
+    }
+    ,
+    "Totalsupply":{
+        "1": "Total supply"
+    }
+    ,
+    "DRIP":{
+        "1": "DRIP"
+    }
+    ,
+    "Transactions":{
+        "1": "Transactions"
+    }
+    ,
+    "Activity":{
+        "1": "Activity"
+    }
+    ,
+    "From":{
+        "1": "From"
+    }
+    ,
+    "To":{
+        "1": "To"
+    }
+    ,
+    "Amount":{
+        "1": "Amount"
+    }
+    ,
+
+
+
+
+
+
+
+
+
+
+    "FOUNTAIN":{
+        "1": "FOUNTAIN"
+    }
+    ,
+    "Price":{
+        "1": "Price"
+    }
+    ,
+    "BNB/DRIP":{
+        "1": "BNB/DRIP"
+    }
+    ,
+    "BNBBalance":{
+        "1": "BNB Balance"
+    }
+    ,
+    "USDT":{
+        "1": "USDT"
+    },
+    "BNB":{
+        "1": "BNB"
+    }
+    ,
+    "DRIPBalance":{
+        "1": "DRIP Balance"
+    }
+    
+    ,
+    "BuyDRIP":{
+        "1": "Buy DRIP"
+    }
+    
+    ,
+    "Slippagetolerance":{
+        "1": "Slippage tolerance"
+    }
+    ,
+    "Estimatereceived":{
+        "1": "Estimate received"
+    }
+    ,
+    "Minimumreceived":{
+        "1": "Minimum received"
+    }
+    ,
+    "Buy":{
+        "1": "Buy"
+    }
+    ,
+    "SELLDRIP":{
+        "1": "SELL DRIP"
+    }
+    
+    ,
+    "Max":{
+        "1": "Max"
+    }
+    ,
+    "10%Taxisappliedonsells":{
+        "1": "10% Tax is applied on sells"
+    }
+    ,
+    "Sell":{
+        "1": "Sell"
+    }
+    ,
+    "ApproveDRIP":{
+        "1": "Approve DRIP"
+    }
+    ,
+    "Chart":{
+        "1": "Chart"
+    }
+    ,
+    "Stats":{
+        "1": "Stats"
+    }
+    ,
+    "FountainisthebestwaytoexchangevalueintheDripNetwork!Herearethenumbers":{
+        "1": "Fountain is the best way to exchange value in the Drip Network! Here are the numbers"
+    }
+
+    ,
+    "Supply":{
+        "1": "Supply"
+    }
+    ,
+    "ContractBalance":{
+        "1": "Contract Balance"
+    }
+    ,
+    "DROPS":{
+        "1": "DROPS"
+    }
+    ,
+    "LOCKED":{
+        "1": "LOCKED"
+    },
+    "Tranactions":{
+        "1": "Tranactions"
+    }
+    
+    ,
+    "Txs":{
+        "1": "Txs"
+    }
+
+    ,
+
+
+
+
+
+
+    "Available":{
+        "1": "Available"
+    }
+    ,
+    "Deposit":{
+        "1": "Deposit"
+    }
+    ,
+    "Claimed":{
+        "1": "Claimed"
+    }
+    ,
+    "Rewarded":{
+        "1": "Rewarded"
+    }
+    ,
+    "Direct":{
+        "1": "Direct"
+    }
+    ,
+    "Indirect":{
+        "1": "Indirect"
+    }
+    ,
+    "MaxPayout":{
+        "1": "Max Payout"
+    }
+    ,
+    "Team":{
+        "1": "Team"
+    }
+    ,
+    "Total":{
+        "1": "Total"
+    }
+    ,
+    "TheDRIPNetworksFaucetisalowriskhighrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout1%dailyreturnoninvestmentupto365%.":{
+        "1": "The DRIP Network’s Faucet is a low-risk, high reward contract that operates similarly to a high yield certificate of deposit by paying out 1% daily return on investment up to 365%."
+    }
+    ,
+    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals":{
+        "1": "Players can compound and extend their earnings through deposits, hydrating (compounding) rewards as well as through team based referrals."
+    }
+    ,
+    "CopyReferralLink":{
+        "1": "Copy Referral Link"
+    },
+    "GetDRIP":{
+        "1": "Get DRIP"
+    }
+    ,
+    "Aminimumof1Pearlrequiredfordeposits":{
+        "1": "A minimum of 1 Pearl required for deposits"
+    }
+    ,
+    "A10%taxischargedondeposits":{
+        "1": "A 10% tax is charged on deposits"
+    }
+    ,
+    "HYDRATE":{
+        "1": "HYDRATE"
+    }
+    ,
+    "recompound":{
+        "1": "recompound"
+    }
+    ,
+    "Claim":{
+        "1": "Claim"
+    }
+    ,
+    "GetaBuddy":{
+        "1": "Get a Buddy"
+    }
+    ,
+    "CurrentBuddy":{
+        "1": "Current Buddy"
+    }
+    ,
+    "None":{
+        "1": "None"
+    }
+    ,
+    "Manager":{
+        "1": "Manager"
+    }
+    ,
+    "Beneficiary":{
+        "1": "Beneficiary"
+    }
+    ,
+    "LastCheckin":{
+        "1": "Last Checkin"
+    }
+    ,
+    "InactivityThreshold":{
+        "1": "Inactivity Threshold"
+    }
+    ,
+    "Buddy":{
+        "1": "Buddy"
+    }
+    ,
+    "Update":{
+        "1": "Update"
+    }
+
+    ,
+    "ReferralLink":{
+        "1": "Referral Link"
+    }
+    ,
+    "CheckoutDrippers":{
+        "1": "Checkout Drippers"
+    }
+    ,
+    "PlayerLookup":{
+        "1": "Player Lookup"
+    }
+    ,
+    "GO":{
+        "1": "GO"
+    }
+    ,
+    "PlayerInfo":{
+        "1": "Player Info"
+    }
+    ,
+    "Directs":{
+        "1": "Directs"
+    }
+    ,
+    "NetDeposits":{
+        "1": "Net Deposits"
+    }
+    ,
+    "AirdropSent":{
+        "1": "Airdrop Sent"
+    }
+    ,
+    "Received":{
+        "1": "Received"
+    }
+
+    ,
+    "AirdropLastSent":{
+        "1": "Airdrop Last Sent"
+    }
+    ,
+    "Never":{
+        "1": "Never"
+    }
+    ,
+    "TeamViewer":{
+        "1": "Team Viewer"
+    }
+    ,
+    "TeamAirdrop":{
+        "1": "Team Airdrop"
+    }
+    ,
+    "DirectAirdrop":{
+        "1": "Direct Airdrop"
+    }
+    ,
+    "Player":{
+        "1": "Player"
+    }
+    ,
+    "Usemyaddress":{
+        "1": "Use my address"
+    }
+    ,
+    "Viewall":{
+        "1": "View all"
+    }
+    ,
+    "Show":{
+        "1": "Show"
+    }
+    ,
+    "Campaign":{
+        "1": "Campaign"
+    }
+    ,
+    "Dividebudgetbetweenmatchingplayers":{
+        "1": "Divide budget between matching players"
+    }
+
+    ,
+    "Rewardsbudgettoonematchingplayer":{
+        "1": "Rewards budget to one matching player"
+    }
+    ,
+    "Dividedbudgetacross5matchingplayers":{
+        "1": "Divided budget across 5 matching players"
+    }
+    ,
+    "Dividedbudgetacross20matchingplayers":{
+        "1": "Divided budget across 20 matching players"
+    }
+    ,
+    "Dividedbudgetacross50matchingplayers":{
+        "1": "Divided budget across 50 matching players"
+    }
+    ,
+    "Dividedbudgetacross100matchingplayers":{
+        "1": "Divided budget across 100 matching players"
+    },
+    "Eligiblematchingplayersselectedatrandom":{
+        "1": "Eligible matching players selected at random"
+    },
+    "Minimumdirects":{
+        "1": "Minimum directs"
+    },
+    "Teamdepth":{
+        "1": "Team depth"
+    }
+    ,
+    "Minimumnetdeposits":{
+        "1": "Minimum net deposits"
+    }
+    ,
+    "Budget":{
+        "1": "Budget"
+    }
+    ,
+    "RUN":{
+        "1": "RUN"
+    }
+    ,
+    "Numberofrecipients":{
+        "1": "Number of recipients"
+    }
+    ,
+    "EstimatedDripperperson":{
+        "1": "Estimated Drip per person"
+    }
+    ,
+    "SEND":{
+        "1": "SEND"
+    }
+    ,
+    "CampaignConsole":{
+        "1": "Campaign Console"
+    }
+    ,
+    "CampaignViewer":{
+        "1": "Campaign Viewer"
+    }
+    ,
+    "Address":{
+        "1": "Address"
+    }
+    ,
+    "Deposits":{
+        "1": "Deposits"
+    },
+    "Status":{
+        "1": "Status"
+    },
+    "About":{
+        "1": "About"
+    }
+    ,
+    "PlayerscanparticipatebypurchasingDRIPfromtheplatform'sSWAPpage,joininganotheruser’sDRIPteam(1DRIPminimumrequirement)DepositingDRIPtotheFaucetcontractearnsaconsistent1%dailyreturnoftheirDRIP(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,Faucet'scontractcannotdrainandwillALWAYSbeabletoprovidetheDRIPthathasbeenrewarded.DRIPrewardscomefroma10%taxonallDRIPtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
+        "1": "Players can participate by purchasing DRIP from the platform's SWAP page, joining another user’s DRIP team (1 DRIP minimum requirement) Depositing DRIP to the Faucet contract earns a consistent 1% daily return of their DRIP (365% maximum payout) passively. Players can also compound their earnings through regular deposits, rolling rewards as well as team based referrals. Unlike many other platforms promising a consistent daily % return, Faucet's contract cannot drain and will ALWAYS be able to provide the DRIP that has been rewarded. DRIP rewards come from a 10% tax on all DRIP transactions excluding buys from the platform's SWAP page."
+    }
+    ,
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopayDRIPrewardsnewDRIPwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheDRIPnetwork,theprobabilitythatthesystemwillneedtomintnewDRIPtopayrewardsisextremelylow.SinceDRIPdepositedintoFaucetaresenttoaburnaddressandDRIPisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,DRIPistheonlydeflationarydailyROIplatform.ThebeststrategyforDRIPistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
+        "1": "If there is ever a situation where the tax pool is not enough to pay DRIP rewards new DRIP will be minted to ensure rewards are paid out. Given the game theory behind the DRIP network, the probability that the system will need to mint new DRIP to pay rewards is extremely low. Since DRIP deposited into Faucet are sent to a burn address and DRIP is constantly being locked in the liquidity pool through the reservoir contract, DRIP is the only deflationary daily ROI platform. The best strategy for DRIP is to focus on real world adoption by building out your team through direct referrals, as you will receive bonus rewards from referrals on their deposits and downline bonuses from players they refer based on the amount of bR34P held in your wallet"
+    }
+    ,
+
+
+
+
+    "Rewards":{
+        "1": "Rewards"
+    }
+    ,
+    "TotalDROPS":{
+        "1": "Total DROPS"
+    }
+    ,
+    "DROP":{
+        "1": "DROP"
+    }
+    ,
+    "Stake":{
+        "1": "Stake"
+    }
+
+    ,
+    "Compounds":{
+        "1": "Compounds"
+    }
+    ,
+    "Count":{
+        "1": "Count"
+    }
+    ,
+    "TotalWithdrawn":{
+        "1": "Total Withdrawn"
+    }
+    ,
+    "CompoundedTotal":{
+        "1": "Compounded Total"
+    }
+
+    ,
+    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoDRIP":{
+        "1": "Reservoir is The DRIP Network’s solution for players that want benefit from non-inflationary yield farming through adding liquidity to DRIP"
+    }
+    ,
+    "COMPOUND":{
+        "1": "COMPOUND"
+    }
+    ,
+    "CLAIM":{
+        "1": "CLAIM"
+    }
+    ,
+    "BuyandDeposit":{
+        "1": "Buy and Deposit"
+    }
+
+    ,
+    "Estimated":{
+        "1": "Estimated"
+    },
+    "BUY":{
+        "1": "BUY"
+    }
+
+    ,
+    "Withdraw":{
+        "1": "Withdraw"
+    },
+    "DropBalance":{
+        "1": "Drop Balance"
+    },
+    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoDRIP.Herearethenumbers":{
+        "1": "Reservoir is The DRIP Network’s solution for players that want benefit from non-inflationary yield farming through adding liquidity to DRIP. Here are the numbers"
+    }
+    ,
+    "UserCount":{
+        "1": "User Count"
+    }
+    ,
+    "TotalValueLocked":{
+        "1": "Total Value Locked"
+    }
+    ,
+    "DividendPool":{
+        "1": "Dividend Pool"
+    }
+    ,
+    "JoinusonTelegram":{
+        "1": "Join us on Telegram"
+    },
+    "JoinusTwiter":{
+        "1": "Join us Twiter"
+    }
+
+}

@@ -1,0 +1,623 @@
+{
+    "SWAP":{
+        "1": "交换"
+    },
+    "FAUCET":{
+        "1": "龙头"
+    },
+    "RESERVOIR":{
+        "1": "水库"
+    },
+    "Whitepaper":{
+        "1": "白皮书"
+    },
+    "BuyBR34P":{
+        "1": "购买 BR34P"
+    },
+    "Tutorial":{
+        "1": "教程"
+    },
+    "English":{
+        "1": "英语"
+    },
+    "China":{
+        "1": "中国"
+    },
+    "Korea":{
+        "1": "韩国"
+    },
+    "Spain":{
+        "1": "西班牙"
+    },
+    "Rusia":{
+        "1": "俄罗斯"
+    },
+    "France":{
+        "1": "法国"
+    },
+    "MetaMask":{
+        "1": "元掩码"
+    },
+    "ConnecttoyourMetaMaskWallet":{
+        "1": "连接到您的 MetaMask 钱包"
+    },
+    "WalletConnect":{
+        "1": "钱包连接"
+    },
+    "ScanwithWalletConnecttoconnect":{
+        "1": "使用 WalletConnect 扫描连接"
+    },
+
+    
+
+
+
+
+
+    "DRIPNETWORK":{
+        "1": "滴灌网络"
+    },
+    "DRIPNetworkisthelatestprojectdevelopedby":{
+        "1": "DRIP Network 是 DRIP Network 开发的最新项目"
+    },
+    "Forex_Shark":{
+        "1": "Forex_Shark"
+    }
+    ,
+    "BB":{
+        "1": "BB"
+    }
+    ,
+    "andteam.":{
+        "1": "和团队."
+    },
+    "TheofficialtokenoftheDRIPNetworkisDRIP(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "DRIP 网络的官方代币是币安智能区块链 (BSC) 上的 DRIP (BEP-20)，它通过稀缺、通货紧缩、抗审查以及建立在强大、真正去中心化的区块链上来获取价值"
+    },
+    "TherecommendedexchangefortradingDRIPistheFountaincontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
+        "1": "推荐的 DRIP 交易交易所是 Fountain 合约，可以直接在平台网站的掉期选项卡下找到，因为它允许我们免除最初 10% 的买入税，并提供最低的价格和最高的流动性，从而减少滑点对于较大的交易"
+    },
+    "TRADE":{
+        "1": "贸易"
+    },
+    "STAKE":{
+        "1": "赌注"
+    },
+    "LIQUIDITYFARM":{
+        "1": "流动农场"
+    },
+    "STATS":{
+        "1": "统计数据"
+    },
+    "TheDRIPtokencapturestheentirevalueoftheDripNetworkandmakesitavailabletotheentireBNBCommunity":{
+        "1": "DRIP 代币捕获了 Drip Network 的全部价值，并使其可供整个 BNB 社区使用"
+    },
+    "Players":{
+        "1": "球员"
+    },
+    "count":{
+        "1": "数数"
+    }
+    ,
+    "Maxdailyreturn":{
+        "1": "最大每日回报"
+    }
+    ,
+    "Totalsupply":{
+        "1": "总供应量"
+    }
+    ,
+    "DRIP":{
+        "1": "滴"
+    }
+    ,
+    "Transactions":{
+        "1": "交易"
+    }
+    ,
+    "Activity":{
+        "1": "活动"
+    }
+    ,
+    "From":{
+        "1": "从"
+    }
+    ,
+    "To":{
+        "1": "到"
+    }
+    ,
+    "Amount":{
+        "1": "数量"
+    }
+    ,
+
+
+
+
+
+
+
+
+
+
+    "FOUNTAIN":{
+        "1": "喷泉"
+    }
+    ,
+    "Price":{
+        "1": "价格"
+    }
+    ,
+    "BNB/DRIP":{
+        "1": "币安/滴滴"
+    }
+    ,
+    "BNBBalance":{
+        "1": "BNB 余额"
+    }
+    ,
+    "USDT":{
+        "1": "USDT"
+    },
+    "BNB":{
+        "1": "比特币"
+    }
+    ,
+    "DRIPBalance":{
+        "1": "滴水平衡"
+    }
+    
+    ,
+    "BuyDRIP":{
+        "1": "购买滴滴"
+    }
+    
+    ,
+    "Slippagetolerance":{
+        "1": "滑点公差"
+    }
+    ,
+    "Estimatereceived":{
+        "1": "估计收到"
+    }
+    ,
+    "Minimumreceived":{
+        "1": "最低收到"
+    }
+    ,
+    "Buy":{
+        "1": "买"
+    }
+    ,
+    "SELLDRIP":{
+        "1": "卖滴"
+    }
+    
+    ,
+    "Max":{
+        "1": "最大限度"
+    }
+    ,
+    "10%Taxisappliedonsells":{
+        "1": "对销售征收 10% 的税"
+    }
+    ,
+    "Sell":{
+        "1": "卖"
+    }
+    ,
+    "ApproveDRIP":{
+        "1": "批准滴滴"
+    }
+    ,
+    "Chart":{
+        "1": "图表"
+    }
+    ,
+    "Stats":{
+        "1": "统计数据"
+    }
+    ,
+    "FountainisthebestwaytoexchangevalueintheDripNetwork!Herearethenumbers":{
+        "1": "Fountain是Drip Network中最好的价值交换方式！这是数字"
+    }
+
+    ,
+    "Supply":{
+        "1": "供应"
+    }
+    ,
+    "ContractBalance":{
+        "1": "合约余额"
+    }
+    ,
+    "DROPS":{
+        "1": "滴滴"
+    }
+    ,
+    "LOCKED":{
+        "1": "锁定"
+    },
+    "Tranactions":{
+        "1": "交易"
+    }
+    
+    ,
+    "Txs":{
+        "1": "发送"
+    }
+
+    ,
+
+
+
+
+
+
+    "Available":{
+        "1": "可用的"
+    }
+    ,
+    "Deposit":{
+        "1": "订金"
+    }
+    ,
+    "Claimed":{
+        "1": "声称"
+    }
+    ,
+    "Rewarded":{
+        "1": "有奖"
+    }
+    ,
+    "Direct":{
+        "1": "直接的"
+    }
+    ,
+    "Indirect":{
+        "1": "间接"
+    }
+    ,
+    "MaxPayout":{
+        "1": "最大支出"
+    }
+    ,
+    "Team":{
+        "1": "团队"
+    }
+    ,
+    "Total":{
+        "1": "全部的"
+    }
+    ,
+    "TheDRIPNetworksFaucetisalowriskhighrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout1%dailyreturnoninvestmentupto365%.":{
+        "1": "DRIP 网络的水龙头是一种低风险、高回报的合约，其运作方式类似于高收益存款证，每天支付 1% 的投资回报率，最高可达 365%"
+    }
+    ,
+    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals":{
+        "1": "玩家可以通过存款、补水（复合）奖励以及基于团队的推荐来复合和扩大他们的收入"
+    }
+    ,
+    "CopyReferralLink":{
+        "1": "复制推荐链接"
+    },
+    "GetDRIP":{
+        "1": "获取滴水"
+    }
+    ,
+    "Aminimumof1Pearlrequiredfordeposits":{
+        "1": "存款至少需要 1 颗珍珠"
+    }
+    ,
+    "A10%taxischargedondeposits":{
+        "1": "存款需缴纳 10% 的税"
+    }
+    ,
+    "HYDRATE":{
+        "1": "水合物"
+    }
+    ,
+    "recompound":{
+        "1": "复合"
+    }
+    ,
+    "Claim":{
+        "1": "宣称"
+    }
+    ,
+    "GetaBuddy":{
+        "1": "找个朋友"
+    }
+    ,
+    "CurrentBuddy":{
+        "1": "当前好友"
+    }
+    ,
+    "None":{
+        "1": "没有任何"
+    }
+    ,
+    "Manager":{
+        "1": "经理"
+    }
+    ,
+    "Beneficiary":{
+        "1": "受益人"
+    }
+    ,
+    "LastCheckin":{
+        "1": "上次签到"
+    }
+    ,
+    "InactivityThreshold":{
+        "1": "不活动阈值"
+    }
+    ,
+    "Buddy":{
+        "1": "伙伴"
+    }
+    ,
+    "Update":{
+        "1": "更新"
+    }
+
+    ,
+    "ReferralLink":{
+        "1": "推荐链接"
+    }
+    ,
+    "CheckoutDrippers":{
+        "1": "结账滴头"
+    }
+    ,
+    "PlayerLookup":{
+        "1": "玩家查找"
+    }
+    ,
+    "GO":{
+        "1": "去"
+    }
+    ,
+    "PlayerInfo":{
+        "1": "玩家信息"
+    }
+    ,
+    "Directs":{
+        "1": "指导"
+    }
+    ,
+    "NetDeposits":{
+        "1": "净存款"
+    }
+    ,
+    "AirdropSent":{
+        "1": "空投已发送"
+    }
+    ,
+    "Received":{
+        "1": "已收到"
+    }
+
+    ,
+    "AirdropLastSent":{
+        "1": "空投最后发送"
+    }
+    ,
+    "Never":{
+        "1": "绝不"
+    }
+    ,
+    "TeamViewer":{
+        "1": "团队查看器"
+    }
+    ,
+    "TeamAirdrop":{
+        "1": "团队空投"
+    }
+    ,
+    "DirectAirdrop":{
+        "1": "直接空投"
+    }
+    ,
+    "Player":{
+        "1": "播放器"
+    }
+    ,
+    "Usemyaddress":{
+        "1": "使用我的地址"
+    }
+    ,
+    "Viewall":{
+        "1": "查看全部"
+    }
+    ,
+    "Show":{
+        "1": "展示"
+    }
+    ,
+    "Campaign":{
+        "1": "活动"
+    }
+    ,
+    "Dividebudgetbetweenmatchingplayers":{
+        "1": "在匹配的玩家之间分配预算"
+    }
+
+    ,
+    "Rewardsbudgettoonematchingplayer":{
+        "1": "奖励预算给一位匹配的玩家"
+    }
+    ,
+    "Dividedbudgetacross5matchingplayers":{
+        "1": "将预算分配给 5 个匹配的玩家"
+    }
+    ,
+    "Dividedbudgetacross20matchingplayers":{
+        "1": "将预算分配给 20 个匹配的玩家"
+    }
+    ,
+    "Dividedbudgetacross50matchingplayers":{
+        "1": "将预算分配给 50 个匹配的玩家"
+    }
+    ,
+    "Dividedbudgetacross100matchingplayers":{
+        "1": "将预算分配给 100 个匹配的玩家"
+    },
+    "Eligiblematchingplayersselectedatrandom":{
+        "1": "随机选择符合条件的匹配玩家"
+    },
+    "Minimumdirects":{
+        "1": "最低指导"
+    },
+    "Teamdepth":{
+        "1": "团队深度"
+    }
+    ,
+    "Minimumnetdeposits":{
+        "1": "最低净存款"
+    }
+    ,
+    "Budget":{
+        "1": "预算"
+    }
+    ,
+    "RUN":{
+        "1": "跑"
+    }
+    ,
+    "Numberofrecipients":{
+        "1": "收件人数量"
+    }
+    ,
+    "EstimatedDripperperson":{
+        "1": "预计每人滴水量"
+    }
+    ,
+    "SEND":{
+        "1": "发送"
+    }
+    ,
+    "CampaignConsole":{
+        "1": "活动控制台"
+    }
+    ,
+    "CampaignViewer":{
+        "1": "活动查看器"
+    }
+    ,
+    "Address":{
+        "1": "地址"
+    }
+    ,
+    "Deposits":{
+        "1": "存款"
+    },
+    "Status":{
+        "1": "地位"
+    },
+    "About":{
+        "1": "关于"
+    }
+    ,
+    "PlayerscanparticipatebypurchasingDRIPfromtheplatform'sSWAPpage,joininganotheruser’sDRIPteam(1DRIPminimumrequirement)DepositingDRIPtotheFaucetcontractearnsaconsistent1%dailyreturnoftheirDRIP(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,Faucet'scontractcannotdrainandwillALWAYSbeabletoprovidetheDRIPthathasbeenrewarded.DRIPrewardscomefroma10%taxonallDRIPtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
+        "1": "玩家可以通过从平台的 SWAP 页面购买 DRIP 来参与，加入另一个用户的 DRIP 团队（最低要求 1 DRIP） 将 DRIP 存入水龙头合约可以被动地获得持续 1% 的每日 DRIP 回报（365% 最高支出）。玩家还可以通过定期存款、滚动奖励以及基于团队的推荐来增加收入。与许多其他承诺每日百分比回报一致的平台不同，Faucet 的合约不会耗尽，并且始终能够提供已获得奖励的 DRIP。 DRIP 奖励来自对所有 DRIP 交易征收 10% 的税，不包括从平台的 SWAP 页面购买。"
+    }
+    ,
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopayDRIPrewardsnewDRIPwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheDRIPnetwork,theprobabilitythatthesystemwillneedtomintnewDRIPtopayrewardsisextremelylow.SinceDRIPdepositedintoFaucetaresenttoaburnaddressandDRIPisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,DRIPistheonlydeflationarydailyROIplatform.ThebeststrategyforDRIPistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
+        "1": "如果出现税收池不足以支付 DRIP 奖励的情况，将铸造新的 DRIP 以确保支付奖励。鉴于 DRIP 网络背后的博弈论，系统需要铸造新的 DRIP 来支付奖励的概率极低。由于存入 Faucet 的 DRIP 被发送到一个销毁地址，并且 DRIP 通过水库合约不断被锁定在流动性池中，因此 DRIP 是唯一的通货紧缩每日 ROI 平台。 DRIP 的最佳策略是通过直接推荐来建立您的团队，从而专注于现实世界的采用，因为您将从推荐的存款中获得奖金奖励，并根据您钱包中持有的 bR34P 数量从他们推荐的玩家那里获得下线奖金"
+    }
+    ,
+
+
+
+
+    "Rewards":{
+        "1": "奖励"
+    }
+    ,
+    "TotalDROPS":{
+        "1": "总滴水量"
+    }
+    ,
+    "DROP":{
+        "1": "降低"
+    }
+    ,
+    "Stake":{
+        "1": "赌注"
+    }
+
+    ,
+    "Compounds":{
+        "1": "化合物"
+    }
+    ,
+    "Count":{
+        "1": "数数"
+    }
+    ,
+    "TotalWithdrawn":{
+        "1": "总提款"
+    }
+    ,
+    "CompoundedTotal":{
+        "1": "复合合计"
+    }
+
+    ,
+    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoDRIP":{
+        "1": "Reservoir 是 The DRIP Network 的解决方案，适用于希望通过向 DRIP 增加流动性而从非通胀高产农业中获益的玩家"
+    }
+    ,
+    "COMPOUND":{
+        "1": "化合物"
+    }
+    ,
+    "CLAIM":{
+        "1": "宣称"
+    }
+    ,
+    "BuyandDeposit":{
+        "1": "购买和存款"
+    }
+
+    ,
+    "Estimated":{
+        "1": "Estimated"
+    },
+    "BUY":{
+        "1": "买"
+    }
+
+    ,
+    "Withdraw":{
+        "1": "提取"
+    },
+    "DropBalance":{
+        "1": "掉落余额"
+    },
+    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoDRIP.Herearethenumbers":{
+        "1": "Reservoir 是 The DRIP Network 的解决方案，适用于希望通过向 DRIP 增加流动性而从非通胀高产农业中获益的玩家。这是数字"
+    }
+    ,
+    "UserCount":{
+        "1": "用户数"
+    }
+    ,
+    "TotalValueLocked":{
+        "1": "总价值锁定"
+    }
+    ,
+    "DividendPool":{
+        "1": "分红池"
+    }
+    ,
+    "JoinusonTelegram":{
+        "1": "加入我们的 Telegram"
+    },
+    "JoinusTwiter":{
+        "1": "加入我们"
+    }
+
+}
