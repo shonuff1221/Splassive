@@ -12,15 +12,15 @@ const Facuet = () => {
   let [isChange, setIschange] = useState("Viewer");
   const { t, i18n } = useTranslation();
   const changeViewer = () => {
-    console.log("fhjkehwfuiwehuifhwe")
+    console.log("fhjkehwfuiwehuifhwe");
     setIschange("Viewer");
   };
   const changeAirdrop = () => {
-    console.log("fhjkehwfu")
+    console.log("fhjkehwfu");
     setIschange("Airdrop");
   };
   const changeDirect = () => {
-    console.log("fhj")
+    console.log("fhj");
     setIschange("Direct");
   };
   return (
@@ -504,7 +504,8 @@ const Facuet = () => {
                           id="__BVID__241__BV_tab_controls_"
                         >
                           <li>
-                            <a style={{cursor: "pointer"}}
+                            <a
+                              style={{ cursor: "pointer" }}
                               onClick={() => {
                                 changeViewer();
                               }}
@@ -514,7 +515,8 @@ const Facuet = () => {
                             </a>
                           </li>
                           <li>
-                            <a style={{cursor: "pointer"}}
+                            <a
+                              style={{ cursor: "pointer" }}
                               onClick={() => {
                                 changeAirdrop();
                               }}
@@ -524,7 +526,8 @@ const Facuet = () => {
                             </a>
                           </li>
                           <li>
-                            <a style={{cursor: "pointer"}}
+                            <a
+                              style={{ cursor: "pointer" }}
                               onClick={() => {
                                 changeDirect();
                               }}
@@ -546,9 +549,416 @@ const Facuet = () => {
                           id="__BVID__242"
                           aria-labelledby="__BVID__242___BV_tab_button__"
                         >
-                          {
-                            isChange == "Viewer" ? (
-                              <div id="Viewerpart">
+                          {isChange == "Viewer" ? (
+                            <div id="Viewerpart">
+                              <form className>
+                                <div id="buddy-input">
+                                  <fieldset
+                                    className="form-group"
+                                    id="__BVID__216"
+                                  >
+                                    <h3>
+                                      <legend
+                                        tabIndex={-1}
+                                        className="bv-no-focus-ring col-form-label pt-1 fst-italic"
+                                        id="__BVID__216__BV_label_"
+                                      >
+                                        <p style={{ lineHeight: "40%" }}>
+                                          {t("Player.1")}
+                                        </p>
+                                      </legend>
+                                    </h3>
+                                    <div>
+                                      <input
+                                        type="text"
+                                        placeholder="Address"
+                                        className="form-control"
+                                        id="__BVID__217"
+                                      />
+                                    </div>
+                                  </fieldset>
+                                  <div className="d-flex justify-content-end">
+                                    <button
+                                      type="button"
+                                      className="btn btn-primary fst-italic"
+                                    >
+                                      {t("Usemyaddress.1")}
+                                    </button>
+                                    <button
+                                      type="button"
+                                      className="btn btn-primary fst-italic"
+                                    >
+                                      {t("Viewall.1")}
+                                    </button>
+                                  </div>
+                                </div>
+                              </form>
+                              <button
+                                type="button"
+                                className="btn btn-secondary fst-italic"
+                              >
+                                {t("Show.1")}
+                              </button>
+                            </div>
+                          ) : isChange == "Airdrop" ? (
+                            <div>
+                              <form className>
+                                <div id="buddy-input">
+                                  <fieldset
+                                    className="form-group"
+                                    id="__BVID__216"
+                                  >
+                                    <h3>
+                                      <legend
+                                        tabIndex={-1}
+                                        className="bv-no-focus-ring col-form-label pt-1 fst-italic"
+                                        id="__BVID__216__BV_label_"
+                                      >
+                                        <p style={{ lineHeight: "40%" }}>
+                                          {t("Player.1")}
+                                        </p>
+                                      </legend>
+                                    </h3>
+                                    <div>
+                                      <input
+                                        type="text"
+                                        placeholder="Address"
+                                        className="form-control"
+                                        id="__BVID__217"
+                                      />
+                                    </div>
+                                  </fieldset>
+                                  <div className="d-flex justify-content-end">
+                                    <button
+                                      type="button"
+                                      className="btn btn-secondary fst-italic"
+                                    >
+                                      {t("Usemyaddress.1")}
+                                    </button>
+                                  </div>
+                                </div>
+                              </form>
+                              <form className>
+                                <div id="buddy-input">
+                                  <fieldset
+                                    className="form-group"
+                                    id="__BVID__216"
+                                  >
+                                    <h3>
+                                      <legend
+                                        tabIndex={-1}
+                                        className="bv-no-focus-ring col-form-label pt-1 fst-italic"
+                                        id="__BVID__216__BV_label_"
+                                      >
+                                        <p style={{ lineHeight: "40%" }}>
+                                          {t("Campaign.1")}
+                                        </p>
+                                      </legend>
+                                    </h3>
+                                    <div className="row">
+                                      <div className="col-md-12">
+                                        <form className="">
+                                          <div class="select-wrapper ">
+                                            <select class="select form-control">
+                                              <option value="value1">
+                                                {t(
+                                                  "Dividebudgetbetweenmatchingplayers.1"
+                                                )}
+                                              </option>
+                                              <option value="value1">
+                                                {t(
+                                                  "Rewardsbudgettoonematchingplayer.1"
+                                                )}{" "}
+                                                *
+                                              </option>
+                                              <option value="value2">
+                                                {t(
+                                                  "Dividedbudgetacross5matchingplayers.1"
+                                                )}{" "}
+                                                *
+                                              </option>
+                                              <option value="value3">
+                                                {t(
+                                                  "Dividedbudgetacross20matchingplayers.1"
+                                                )}{" "}
+                                                *
+                                              </option>
+                                              <option value="value2">
+                                                {t(
+                                                  "Dividedbudgetacross50matchingplayers.1"
+                                                )}{" "}
+                                                *
+                                              </option>
+                                              <option value="value2">
+                                                {t(
+                                                  "Dividedbudgetacross100matchingplayers.1"
+                                                )}{" "}
+                                                *
+                                              </option>
+                                            </select>
+                                          </div>
+                                        </form>
+                                      </div>
+                                    </div>
+                                    <small className="fst-italic">
+                                      *{" "}
+                                      {t(
+                                        "Eligiblematchingplayersselectedatrandom.1"
+                                      )}
+                                    </small>
+                                  </fieldset>
+                                </div>
+                              </form>
+                              <div className="row ">
+                                <div className="col-md-3 mt-3">
+                                  <p
+                                    className="fst-italic"
+                                    style={{ lineHeight: "40%" }}
+                                  >
+                                    {t("Minimumdirects.1")}
+                                  </p>
+                                  <form className="">
+                                    <div class="select-wrapper ">
+                                      <select class="select form-control fst-italic">
+                                        <option value="value1">
+                                          {t("None.1")}
+                                        </option>
+                                        <option value="value1">1</option>
+                                        <option value="value2">5</option>
+                                        <option value="value3">15</option>
+                                      </select>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div className="col-md-3 mt-3">
+                                  <p
+                                    className="fst-italic"
+                                    style={{ lineHeight: "40%" }}
+                                  >
+                                    {t("Teamdepth.1")}
+                                  </p>
+                                  <form className="">
+                                    <div class="select-wrapper ">
+                                      <select class="select form-control fst-italic">
+                                        <option value="value1">1</option>
+                                        <option value="value1">2</option>
+                                        <option value="value2">10</option>
+                                        <option value="value3">15</option>
+                                      </select>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div className="col-md-3 mt-3">
+                                  <p
+                                    className="fst-italic"
+                                    style={{ lineHeight: "40%" }}
+                                  >
+                                    {t("Minimumnetdeposits.1")}
+                                  </p>
+                                  <form className="">
+                                    <div class="select-wrapper ">
+                                      <select class="select form-control fst-italic">
+                                        <option value="value1">
+                                          1+ {t("DRIP.1")}
+                                        </option>
+                                        <option value="value1">
+                                          25+ {t("DRIP.1")}
+                                        </option>
+                                        <option value="value2">
+                                          50+ {t("DRIP.1")}
+                                        </option>
+                                        <option value="value3">
+                                          100+ {t("DRIP.1")}
+                                        </option>
+                                        <option value="value2">
+                                          250+ {t("DRIP.1")}
+                                        </option>
+                                        <option value="value2">
+                                          500+ {t("DRIP.1")}
+                                        </option>
+                                        <option value="value2">
+                                          1000+ {t("DRIP.1")}
+                                        </option>
+                                        <option value="value2">
+                                          2000+ {t("DRIP.1")}
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+
+                              <div className="row">
+                                <div className="col-md-6 mt-4">
+                                  <fieldset
+                                    className="form-group"
+                                    id="__BVID__216"
+                                  >
+                                    <h3>
+                                      <legend
+                                        tabIndex={-1}
+                                        className="bv-no-focus-ring col-form-label pt-1 fst-italic"
+                                        id="__BVID__216__BV_label_"
+                                      >
+                                        <p style={{ lineHeight: "40%" }}>
+                                          {t("Budget.1")}
+                                        </p>
+                                      </legend>
+                                    </h3>
+                                    <div>
+                                      <input
+                                        type="text"
+                                        placeholder="0"
+                                        className="form-control"
+                                        id="__BVID__217"
+                                      />
+                                    </div>
+                                  </fieldset>
+                                  <div>
+                                    <button
+                                      type="button"
+                                      className="btn btn-secondary fst-italic"
+                                    >
+                                      {t("RUN.1")}
+                                    </button>
+                                  </div>
+                                </div>
+                                <div className="col-md-6 mt-4 lh-base">
+                                  <p
+                                    className="text-end"
+                                    style={{ lineHeight: "30%" }}
+                                  >
+                                    {t("Available.1")}:
+                                    <label className="user-balance text-white fst-italic">
+                                      0 {t("DRIP.1")}
+                                    </label>
+                                  </p>
+                                  <p
+                                    className="text-end"
+                                    style={{ lineHeight: "30%" }}
+                                  >
+                                    {t("Numberofrecipients.1")}:
+                                    <label className="user-balance text-white fst-italic">
+                                      0
+                                    </label>
+                                  </p>
+                                  <p
+                                    className="text-end"
+                                    style={{ lineHeight: "30%" }}
+                                  >
+                                    {t("EstimatedDripperperson.1")}:
+                                    <label className="user-balance text-white fst-italic">
+                                      NAN
+                                    </label>
+                                  </p>
+                                  <div
+                                    className="d-flex justify-content-end"
+                                    style={{ lineHeight: "30%" }}
+                                  >
+                                    <button
+                                      type="button"
+                                      className="btn btn-secondary fst-italic "
+                                    >
+                                      {t("SEND.1")}{" "}
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                              <hr />
+                              <div className="row">
+                                <div className="col-md-5">
+                                  <h3>
+                                    <legend
+                                      tabIndex={-1}
+                                      className="bv-no-focus-ring col-form-label pt-1 fst-italic"
+                                      id="__BVID__216__BV_label_"
+                                    >
+                                      <p
+                                        style={{
+                                          lineHeight: "40%",
+                                          fontSize: "20px",
+                                        }}
+                                      >
+                                        {t("CampaignConsole.1")}
+                                      </p>
+                                    </legend>
+                                  </h3>
+                                  <textarea value={0}></textarea>
+                                </div>
+                                <div className="col-md-7">
+                                  <h3>
+                                    <legend
+                                      tabIndex={-1}
+                                      className="bv-no-focus-ring col-form-label pt-1 fst-italic"
+                                      id="__BVID__216__BV_label_"
+                                    >
+                                      <p
+                                        style={{
+                                          lineHeight: "40%",
+                                          fontSize: "20px",
+                                        }}
+                                      >
+                                        {t("CampaignViewer.1")}
+                                      </p>
+                                    </legend>
+                                  </h3>
+                                  <div className="row ">
+                                    <div className="col-lg-2 mt-2 fst-italic">
+                                      <p
+                                        style={{
+                                          lineHeight: "40%",
+                                          fontSize: "19px",
+                                        }}
+                                      >
+                                        {t("Address.1")}
+                                      </p>
+                                    </div>
+                                    <div className="col-lg-2 mt-2 fst-italic">
+                                      <p
+                                        style={{
+                                          lineHeight: "40%",
+                                          fontSize: "19px",
+                                        }}
+                                      >
+                                        {t("Directs.1")}
+                                      </p>
+                                    </div>
+                                    <div className="col-lg-3 mt-2 fst-italic">
+                                      <p
+                                        style={{
+                                          lineHeight: "40%",
+                                          fontSize: "19px",
+                                        }}
+                                      >
+                                        {t("Deposits.1")}
+                                      </p>
+                                    </div>
+                                    <div className="col-lg-2 mt-1 fst-italic">
+                                      <Form.Check type="checkbox" />
+                                    </div>
+                                    <div className="col-lg-2 mt-2 fst-italic">
+                                      <p
+                                        style={{
+                                          lineHeight: "40%",
+                                          fontSize: "19px",
+                                        }}
+                                      >
+                                        {t("Status.1")}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ) : isChange == "Direct" ? (
+                            <div id="Airdroppart">
+                              <p
+                                className="card-text fst-italic"
+                                style={{ fontSize: "25px" }}
+                              >
+                                {t("DirectAirdrop.1")}
+                              </p>
+                              <div id="buddy-input">
                                 <form className>
                                   <div id="buddy-input">
                                     <fieldset
@@ -575,468 +985,53 @@ const Facuet = () => {
                                         />
                                       </div>
                                     </fieldset>
-                                    <div className="d-flex justify-content-end">
-                                      <button
-                                        type="button"
-                                        className="btn btn-primary fst-italic"
-                                      >
-                                        {t("Usemyaddress.1")}
-                                      </button>
-                                      <button
-                                        type="button"
-                                        className="btn btn-primary fst-italic"
-                                      >
-                                        {t("Viewall.1")}
-                                      </button>
-                                    </div>
                                   </div>
                                 </form>
-                                <button
-                                  type="button"
-                                  className="btn btn-secondary fst-italic"
-                                >
-                                  {t("Show.1")}
-                                </button>
                               </div>
-                            ) : (
-                              (isChange == "Airdrop" ? (
-                                <div>
-                                  <form className>
-                                    <div id="buddy-input">
-                                      <fieldset
-                                        className="form-group"
-                                        id="__BVID__216"
-                                      >
-                                        <h3>
-                                          <legend
-                                            tabIndex={-1}
-                                            className="bv-no-focus-ring col-form-label pt-1 fst-italic"
-                                            id="__BVID__216__BV_label_"
-                                          >
-                                            <p style={{ lineHeight: "40%" }}>
-                                              {t("Player.1")}
-                                            </p>
-                                          </legend>
-                                        </h3>
-                                        <div>
-                                          <input
-                                            type="text"
-                                            placeholder="Address"
-                                            className="form-control"
-                                            id="__BVID__217"
-                                          />
-                                        </div>
-                                      </fieldset>
-                                      <div className="d-flex justify-content-end">
-                                        <button
-                                          type="button"
-                                          className="btn btn-secondary fst-italic"
-                                        >
-                                          {t("Usemyaddress.1")}
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </form>
-                                  <form className>
-                                    <div id="buddy-input">
-                                      <fieldset
-                                        className="form-group"
-                                        id="__BVID__216"
-                                      >
-                                        <h3>
-                                          <legend
-                                            tabIndex={-1}
-                                            className="bv-no-focus-ring col-form-label pt-1 fst-italic"
-                                            id="__BVID__216__BV_label_"
-                                          >
-                                            <p style={{ lineHeight: "40%" }}>
-                                              {t("Campaign.1")}
-                                            </p>
-                                          </legend>
-                                        </h3>
-                                        <div className="row">
-                                          <div className="col-md-12">
-                                            <form className="">
-                                              <div class="select-wrapper ">
-                                                <select class="select form-control">
-                                                  <option value="value1">
-                                                    {t(
-                                                      "Dividebudgetbetweenmatchingplayers.1"
-                                                    )}
-                                                  </option>
-                                                  <option value="value1">
-                                                    {t(
-                                                      "Rewardsbudgettoonematchingplayer.1"
-                                                    )}{" "}
-                                                    *
-                                                  </option>
-                                                  <option value="value2">
-                                                    {t(
-                                                      "Dividedbudgetacross5matchingplayers.1"
-                                                    )}{" "}
-                                                    *
-                                                  </option>
-                                                  <option value="value3">
-                                                    {t(
-                                                      "Dividedbudgetacross20matchingplayers.1"
-                                                    )}{" "}
-                                                    *
-                                                  </option>
-                                                  <option value="value2">
-                                                    {t(
-                                                      "Dividedbudgetacross50matchingplayers.1"
-                                                    )}{" "}
-                                                    *
-                                                  </option>
-                                                  <option value="value2">
-                                                    {t(
-                                                      "Dividedbudgetacross100matchingplayers.1"
-                                                    )}{" "}
-                                                    *
-                                                  </option>
-                                                </select>
-                                              </div>
-                                            </form>
-                                          </div>
-                                        </div>
-                                        <small className="fst-italic">
-                                          *{" "}
-                                          {t(
-                                            "Eligiblematchingplayersselectedatrandom.1"
-                                          )}
-                                        </small>
-                                      </fieldset>
-                                    </div>
-                                  </form>
-                                  <div className="row ">
-                                    <div className="col-md-3 mt-3">
-                                      <p
-                                        className="fst-italic"
-                                        style={{ lineHeight: "40%" }}
-                                      >
-                                        {t("Minimumdirects.1")}
+                              <div className="form-group">
+                                <div className="row">
+                                  <div className="col-6 text-left">
+                                    <label className="text-white fst-italic">
+                                      <p style={{ lineHHeight: "30%" }}>
+                                        {t("Amount.1")}
                                       </p>
-                                      <form className="">
-                                        <div class="select-wrapper ">
-                                          <select class="select form-control fst-italic">
-                                            <option value="value1">
-                                              {t("None.1")}
-                                            </option>
-                                            <option value="value1">1</option>
-                                            <option value="value2">5</option>
-                                            <option value="value3">15</option>
-                                          </select>
-                                        </div>
-                                      </form>
-                                    </div>
-                                    <div className="col-md-3 mt-3">
-                                      <p
-                                        className="fst-italic"
-                                        style={{ lineHeight: "40%" }}
-                                      >
-                                        {t("Teamdepth.1")}
-                                      </p>
-                                      <form className="">
-                                        <div class="select-wrapper ">
-                                          <select class="select form-control fst-italic">
-                                            <option value="value1">1</option>
-                                            <option value="value1">2</option>
-                                            <option value="value2">10</option>
-                                            <option value="value3">15</option>
-                                          </select>
-                                        </div>
-                                      </form>
-                                    </div>
-                                    <div className="col-md-3 mt-3">
-                                      <p
-                                        className="fst-italic"
-                                        style={{ lineHeight: "40%" }}
-                                      >
-                                        {t("Minimumnetdeposits.1")}
-                                      </p>
-                                      <form className="">
-                                        <div class="select-wrapper ">
-                                          <select class="select form-control fst-italic">
-                                            <option value="value1">
-                                              1+ {t("DRIP.1")}
-                                            </option>
-                                            <option value="value1">
-                                              25+ {t("DRIP.1")}
-                                            </option>
-                                            <option value="value2">
-                                              50+ {t("DRIP.1")}
-                                            </option>
-                                            <option value="value3">
-                                              100+ {t("DRIP.1")}
-                                            </option>
-                                            <option value="value2">
-                                              250+ {t("DRIP.1")}
-                                            </option>
-                                            <option value="value2">
-                                              500+ {t("DRIP.1")}
-                                            </option>
-                                            <option value="value2">
-                                              1000+ {t("DRIP.1")}
-                                            </option>
-                                            <option value="value2">
-                                              2000+ {t("DRIP.1")}
-                                            </option>
-                                          </select>
-                                        </div>
-                                      </form>
-                                    </div>
+                                    </label>
                                   </div>
-
-                                  <div className="row">
-                                    <div className="col-md-6 mt-4">
-                                      <fieldset
-                                        className="form-group"
-                                        id="__BVID__216"
-                                      >
-                                        <h3>
-                                          <legend
-                                            tabIndex={-1}
-                                            className="bv-no-focus-ring col-form-label pt-1 fst-italic"
-                                            id="__BVID__216__BV_label_"
-                                          >
-                                            <p style={{ lineHeight: "40%" }}>
-                                              {t("Budget.1")}
-                                            </p>
-                                          </legend>
-                                        </h3>
-                                        <div>
-                                          <input
-                                            type="text"
-                                            placeholder="0"
-                                            className="form-control"
-                                            id="__BVID__217"
-                                          />
-                                        </div>
-                                      </fieldset>
-                                      <div>
-                                        <button
-                                          type="button"
-                                          className="btn btn-secondary fst-italic"
-                                        >
-                                          {t("RUN.1")}
-                                        </button>
-                                      </div>
-                                    </div>
-                                    <div className="col-md-6 mt-4 lh-base">
-                                      <p
-                                        className="text-end"
-                                        style={{ lineHeight: "30%" }}
-                                      >
-                                        {t("Available.1")}:
-                                        <label className="user-balance text-white fst-italic">
-                                          0 {t("DRIP.1")}
-                                        </label>
-                                      </p>
-                                      <p
-                                        className="text-end"
-                                        style={{ lineHeight: "30%" }}
-                                      >
-                                        {t("Numberofrecipients.1")}:
-                                        <label className="user-balance text-white fst-italic">
-                                          0
-                                        </label>
-                                      </p>
-                                      <p
-                                        className="text-end"
-                                        style={{ lineHeight: "30%" }}
-                                      >
-                                        {t("EstimatedDripperperson.1")}:
-                                        <label className="user-balance text-white fst-italic">
-                                          NAN
-                                        </label>
-                                      </p>
-                                      <div
-                                        className="d-flex justify-content-end"
-                                        style={{ lineHeight: "30%" }}
-                                      >
-                                        <button
-                                          type="button"
-                                          className="btn btn-secondary fst-italic "
-                                        >
-                                          {t("SEND.1")}{" "}
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <hr />
-                                  <div className="row">
-                                    <div className="col-md-5">
-                                      <h3>
-                                        <legend
-                                          tabIndex={-1}
-                                          className="bv-no-focus-ring col-form-label pt-1 fst-italic"
-                                          id="__BVID__216__BV_label_"
-                                        >
-                                          <p
-                                            style={{
-                                              lineHeight: "40%",
-                                              fontSize: "20px",
-                                            }}
-                                          >
-                                            {t("CampaignConsole.1")}
-                                          </p>
-                                        </legend>
-                                      </h3>
-                                      <textarea value={0}></textarea>
-                                    </div>
-                                    <div className="col-md-7">
-                                      <h3>
-                                        <legend
-                                          tabIndex={-1}
-                                          className="bv-no-focus-ring col-form-label pt-1 fst-italic"
-                                          id="__BVID__216__BV_label_"
-                                        >
-                                          <p
-                                            style={{
-                                              lineHeight: "40%",
-                                              fontSize: "20px",
-                                            }}
-                                          >
-                                            {t("CampaignViewer.1")}
-                                          </p>
-                                        </legend>
-                                      </h3>
-                                      <div className="row ">
-                                        <div className="col-lg-2 mt-2 fst-italic">
-                                          <p
-                                            style={{
-                                              lineHeight: "40%",
-                                              fontSize: "19px",
-                                            }}
-                                          >
-                                            {t("Address.1")}
-                                          </p>
-                                        </div>
-                                        <div className="col-lg-2 mt-2 fst-italic">
-                                          <p
-                                            style={{
-                                              lineHeight: "40%",
-                                              fontSize: "19px",
-                                            }}
-                                          >
-                                            {t("Directs.1")}
-                                          </p>
-                                        </div>
-                                        <div className="col-lg-3 mt-2 fst-italic">
-                                          <p
-                                            style={{
-                                              lineHeight: "40%",
-                                              fontSize: "19px",
-                                            }}
-                                          >
-                                            {t("Deposits.1")}
-                                          </p>
-                                        </div>
-                                        <div className="col-lg-2 mt-1 fst-italic">
-                                          <Form.Check type="checkbox" />
-                                        </div>
-                                        <div className="col-lg-2 mt-2 fst-italic">
-                                          <p
-                                            style={{
-                                              lineHeight: "40%",
-                                              fontSize: "19px",
-                                            }}
-                                          >
-                                            {t("Status.1")}
-                                          </p>
-                                        </div>
-                                      </div>
-                                    </div>
+                                  <div className="col-6 text-right fst-italic">
+                                    {" "}
+                                    <p style={{ lineHHeight: "30%" }}>
+                                      {t("Available.1")}:
+                                      <label className="user-balance text-white fst-italic">
+                                        0 {t("DRIP.1")}
+                                      </label>
+                                    </p>
                                   </div>
                                 </div>
-                              ) : (
-                                (isChange == "Direct" ? (
-                                  <div id="Airdroppart">
-                                    <p
-                                      className="card-text fst-italic"
-                                      style={{ fontSize: "25px" }}
-                                    >
-                                      {t("DirectAirdrop.1")}
-                                    </p>
-                                    <div id="buddy-input">
-                                      <form className>
-                                        <div id="buddy-input">
-                                          <fieldset
-                                            className="form-group"
-                                            id="__BVID__216"
-                                          >
-                                            <h3>
-                                              <legend
-                                                tabIndex={-1}
-                                                className="bv-no-focus-ring col-form-label pt-1 fst-italic"
-                                                id="__BVID__216__BV_label_"
-                                              >
-                                                <p
-                                                  style={{ lineHeight: "40%" }}
-                                                >
-                                                  {t("Player.1")}
-                                                </p>
-                                              </legend>
-                                            </h3>
-                                            <div>
-                                              <input
-                                                type="text"
-                                                placeholder="Address"
-                                                className="form-control"
-                                                id="__BVID__217"
-                                              />
-                                            </div>
-                                          </fieldset>
-                                        </div>
-                                      </form>
-                                    </div>
-                                    <div className="form-group">
-                                      <div className="row">
-                                        <div className="col-6 text-left">
-                                          <label className="text-white fst-italic">
-                                            <p style={{ lineHHeight: "30%" }}>
-                                              {t("Amount.1")}
-                                            </p>
-                                          </label>
-                                        </div>
-                                        <div className="col-6 text-right fst-italic">
-                                          {" "}
-                                          <p style={{ lineHHeight: "30%" }}>
-                                            {t("Available.1")}:
-                                            <label className="user-balance text-white fst-italic">
-                                              0 {t("DRIP.1")}
-                                            </label>
-                                          </p>
-                                        </div>
-                                      </div>
-                                      <div
-                                        role="group"
-                                        className="input-group"
-                                        style={{ lineHHeight: "30%" }}
-                                      >
-                                        <input
-                                          type="number"
-                                          placeholder="DRIP"
-                                          className="form-control"
-                                          id="__BVID__213"
-                                        />
-                                      </div>
-                                    </div>
-                                    <div>
-                                      <button
-                                        type="button"
-                                        className="btn btn-primary fst-italic"
-                                      >
-                                        {t("SEND.1")}
-                                      </button>
-                                    </div>
-                                  </div>
-                                ) : (
-                                  <></>
-                                ))
-                              ))
-                            )
-                          }
+                                <div
+                                  role="group"
+                                  className="input-group"
+                                  style={{ lineHHeight: "30%" }}
+                                >
+                                  <input
+                                    type="number"
+                                    placeholder="DRIP"
+                                    className="form-control"
+                                    id="__BVID__213"
+                                  />
+                                </div>
+                              </div>
+                              <div>
+                                <button
+                                  type="button"
+                                  className="btn btn-primary fst-italic"
+                                >
+                                  {t("SEND.1")}
+                                </button>
+                              </div>
+                            </div>
+                          ) : (
+                            <></>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -1063,11 +1058,63 @@ const Facuet = () => {
               </div>
             </div>
           </div>
-          
         </div>
-        
       </div>
+      {/* <div>
+          <div className="header">
+            <div>
+              <svg
+                data-v-ab5e3c86
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28"
+                preserveAspectRatio="none"
+                shapeRendering="auto"
+                className="waves"
+              >
+                <defs data-v-ab5e3c86>
+                  <path
+                    data-v-ab5e3c86
+                    id="gentle-wave"
+                    d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                  />
+                </defs>
+                <g data-v-ab5e3c86 className="parallax">
+                  <use
+                    data-v-ab5e3c86
+                    xlinkHref="#gentle-wave"
+                    x={48}
+                    y={0}
+                    fill="rgba(255,255,255,0.7"
+                  />
+                  <use
+                    data-v-ab5e3c86
+                    xlinkHref="#gentle-wave"
+                    x={48}
+                    y={3}
+                    fill="rgba(255,255,255,0.5)"
+                  />
+                  <use
+                    data-v-ab5e3c86
+                    xlinkHref="#gentle-wave"
+                    x={48}
+                    y={5}
+                    fill="rgba(255,255,255,0.3)"
+                  />
+                  <use
+                    data-v-ab5e3c86
+                    xlinkHref="#gentle-wave"
+                    x={48}
+                    y={7}
+                    fill="#fff"
+                  />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div> */}
       <div>
+        <div>
           <div className="header">
             <div>
               <svg
@@ -1120,6 +1167,7 @@ const Facuet = () => {
             </div>
           </div>
         </div>
+      </div>
     </div>
   );
 };

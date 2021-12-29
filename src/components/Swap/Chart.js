@@ -17,7 +17,7 @@ const data = [
   { month: "Feb", appStore: 89 },
   { month: "Mar", appStore: 107 },
   { month: "Apr", appStore: 113 },
-  { month: "May", appStore: 105 },
+  { month: "May", appStore: 13 },
   { month: "Jun", appStore: 91 },
   { month: "Jul", appStore: 110 },
   { month: "Aug", appStore: 111 },

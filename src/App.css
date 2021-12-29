@@ -1,4 +1,4 @@
-/* .imagex{
+F/* .imagex{
     background-image: url("./images/bg.jpg"); 
 
   background-position: center; 
@@ -9793,7 +9793,7 @@ a[data-v-15de93f6] {
 body {
   background-image: url("./images/bg.jpg");
   width: 100%;
-  height: 100vh;
+  height: 900vh;
   /* background-size: cover; */
   /* position: fixed; */
   top: 0;

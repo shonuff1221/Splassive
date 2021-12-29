@@ -80,7 +80,7 @@ const Navbarapp = () => {
                   {t('FAUCET.1')}
                   </Nav.Link>
                 </Link>
-                <Link to="/reservoir">
+                <Link to="/reservoir" style={{ textDecoration: "none" }}>
                   <Nav.Link href="#reservoir" id="navbartext">
                   {t('RESERVOIR.1')}
                   </Nav.Link>

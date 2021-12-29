@@ -14,21 +14,24 @@ import Reservoir from "./components/Reservoir/Reservoir";
 import WaterWave from "react-water-wave";
 import bg1 from "./images/bg1.jpg";
 import Home from "./Home";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 function App() {
   const { t, i18n } = useTranslation();
   useEffect(() => {
-    $(document).ready(function() {
-      try {
-        $('body').ripples({
-          resolution: 200,
-          perturbance: 0.01
-        });
-      }
-      catch (e) {
-        $('.error').show().text(e);
-      }
+    $(".full-landing-image").ripples({
+      resolution: 200,
+      perturbance: 0.01,
     });
+    // $(document).ready(function () {
+    //   try {
+    //     $("body").ripples({
+    //       resolution: 300,
+    //       perturbance: 0.01,
+    //     });
+    //   } catch (e) {
+    //     $(".error").show().text(e);
+    //   }
+    // });
   }, [$]);
   return (
     <div className="full-landing-image">
