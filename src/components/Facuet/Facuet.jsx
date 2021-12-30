@@ -7,20 +7,16 @@ import user from "../../images/user.png";
 import Form from "react-bootstrap/Form";
 import "./Facuet.css";
 import { useTranslation } from "react-i18next";
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 const Facuet = () => {
   let [isChange, setIschange] = useState("Viewer");
   const { t, i18n } = useTranslation();
   const changeViewer = () => {
-    console.log("fhjkehwfuiwehuifhwe");
     setIschange("Viewer");
   };
   const changeAirdrop = () => {
-    console.log("fhjkehwfu");
     setIschange("Airdrop");
   };
   const changeDirect = () => {
-    console.log("fhj");
     setIschange("Direct");
   };
   return (
