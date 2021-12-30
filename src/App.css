@@ -11,6 +11,19 @@ F/* .imagex{
   color: #fff;
 }
 
+
+.popoverhere{
+    margin-left: -15.5rem;
+
+}
+
+.popoverhere2{
+    margin-left: -6rem;
+
+}
+.Ullist{
+    list-style: none;
+}
 /* .blink {
     -webkit-animation: blinker-data-v-de8c4aa0 1.2s ease-out infinite;
     animation: blinker-data-v-de8c4aa0 1.2s ease-out infinite
@@ -11810,6 +11823,19 @@ pre code {
   .container-xxl {
     max-width: 1400px;
   }
+}
+
+@media (min-width:280px) and (max-width:480px) {
+    .popoverhere{
+        margin-left:auto;
+     justify-content: space-evenly;
+    }
+    
+    .popoverhere2{
+        margin-left: auto;
+    
+    }
+    
 }
 
 .row {

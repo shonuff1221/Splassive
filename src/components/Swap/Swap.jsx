@@ -1,15 +1,107 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import coin from "../../images/coin.png";
 import balance from "../../images/balance.png";
+import Web3 from "web3";
 import drops from "../../images/drops.png";
 import van from "../../images/van.png";
 import contact from "../../images/contact (2).png";
 import transfer from "../../images/transfer.png";
 import { useTranslation } from "react-i18next";
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
+import Button from 'react-bootstrap/Button'
 import Chart from "./Chart";
+import {loadWeb3} from "../api"
+import { fountainContractAddress, fountainContractAbi } from "../utils/Fountain"
+// import { useState } from "react";
 
 const Swap = () => {
+  let [boxOne, setBoxOne] = useState(false)
+  let [tripType, setTripType] = useState(1);
+  let [radioVal, setradioVal] = useState();
+  let [enteredVal, setEnteredval] = useState();
+  let [estimate, setEstimate] = useState();
+  let [minRecieved, setMinrecieved] = useState();
   const { t, i18n } = useTranslation();
+  const inputEl = useRef();
+
+  const enterAmount1 = async () => {
+    const web3 = window.web3;
+    let myvalue = inputEl.current.value;
+    let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+    myvalue = web3.utils.toWei(myvalue);
+    setEnteredval(myvalue);
+    console.log('entered Value = ', myvalue)
+   
+    let tokensInputPrice = await contractOf.methods.getBnbToTokenInputPrice(myvalue).call();
+    tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
+    tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
+    // tripType = parseFloat(tripType);
+    console.log(typeof (tripType))
+
+    let miniumrcvd = (tripType * tokensInputPrice) / 100;
+    let percentValue= tokensInputPrice-miniumrcvd;
+
+    setEstimate(tokensInputPrice);
+    setMinrecieved(percentValue)
+    console.log("miniumrcvd ; ", miniumrcvd);
+
+  }
+  const swapBnbtoToken =async()=>{
+    console.log("ASD")
+     await enterAmount1();
+    const web3 = window.web3;
+    let acc= await loadWeb3();
+    let myvalue = inputEl.current.value;
+    myvalue=web3.utils.toWei(myvalue);
+    
+    let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+    let tokensInputPrice = await contractOf.methods.getBnbToTokenInputPrice(myvalue).call();
+    console.log(typeof (tripType))
+    let miniumrcvd = (tripType * tokensInputPrice) / 100;
+    let percentValue= tokensInputPrice-miniumrcvd;
+    console.log("AJSJD", myvalue)
+    console.log("Min ",minRecieved);
+    console.log("Valuseas", myvalue)
+     await contractOf.methods.bnbToTokenSwapInput(estimate).send({
+       from:acc,
+       value:myvalue
+     });
+
+  }
+
+
+  const show = () => {
+
+    setBoxOne(!boxOne)
+  }
+
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
+  const [data, setdata] = React.useState(null);
+
+  const handleClickon = (event) => {
+    setdata(event.currentTarget);
+  };
+
+  const handleCloseon = () => {
+    setdata(null);
+  };
+
+  const opento = Boolean(data);
+  const idto = opento ? 'simple-popover' : undefined;
   return (
     // <div className="router-view">
     <div id="fountain">
@@ -108,6 +200,8 @@ const Swap = () => {
                         </div>
                         <div role="group" className="input-group">
                           <input
+                            ref={inputEl}
+                            onChange={() => enterAmount1()}
                             type="number"
                             placeholder="BNB"
                             className="form-control"
@@ -118,13 +212,8 @@ const Swap = () => {
                               className="dropdown b-dropdown btn-group"
                               id="__BVID__91"
                             >
-                              <button
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                                type="button"
-                                className="btn dropdown-toggle btn-info text-decoration-none dropdown-toggle-no-caret"
-                                id="__BVID__91__BV_toggle_"
-                              >
+
+                              <Button aria-describedby={id} variant="info" onClick={handleClickon}>
                                 <svg
                                   viewBox="0 0 16 16"
                                   width="1em"
@@ -141,116 +230,142 @@ const Swap = () => {
                                     <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"></path>
                                   </g>
                                 </svg>
-                              </button>
-                              <ul
-                                role="menu"
-                                tabIndex={-1}
-                                className="dropdown-menu dropdown-menu-right"
-                                aria-labelledby="__BVID__91__BV_toggle_"
+                              </Button>
+                              <Popover
+                                className="popoverhere"
+                                id={idto}
+                                open={opento}
+                                anchorEl={data}
+                                onClose={handleCloseon}
+
+                                anchorOrigin={{
+                                  vertical: 'bottom',
+                                  horizontal: 'left',
+                                }}
+
                               >
-                                <li role="presentation">
-                                  <div
-                                    role="group"
-                                    className="form-group"
-                                    id="__BVID__92"
-                                    style={{ whiteSpace: "nowrap" }}
-                                  >
-                                    <label
-                                      htmlFor="dropdown-slippage-config"
-                                      className="d-block"
-                                      id="__BVID__92__BV_label_"
+                                <Typography sx={{ p: 2 }}> <ul
+                                  role="menu"
+                                  tabIndex={1}
+                                  className="Ullist"
+
+                                >
+                                  <li role="presentation">
+                                    <div
+                                      role="group"
+                                      className="form-group"
+                                      id="__BVID__101"
+                                      style={{ whiteSpace: "nowrap" }}
                                     >
-                                      {t("Slippagetolerance.1")}
-                                    </label>
-                                    <div>
-                                      <div
-                                        role="radiogroup"
-                                        tabIndex={-1}
-                                        className="pt-2 bv-no-focus-ring"
-                                        id="__BVID__93"
+                                      <label
+                                        htmlFor="dropdown-sell-slippage-config"
+                                        className="d-block"
+                                        id="__BVID__101__BV_label_"
                                       >
-                                        <div className="custom-control custom-control-inline custom-radio">
-                                          <input
-                                            type="radio"
-                                            className="custom-control-input"
-                                            defaultValue={1}
-                                            id="__BVID__93_BV_option_0"
-                                            name="__BVID__93"
-                                          />
-                                          <label
-                                            className="custom-control-label"
-                                            htmlFor="__BVID__93_BV_option_0"
+                                        {t("Slippagetolerance.1")}
+                                        
+                                      </label>
+                                      <div>
+                                        <div
+                                          role="radiogroup"
+                                          tabIndex={-1}
+                                          className="pt-2 bv-no-focus-ring"
+                                          id="__BVID__102"
+                                          style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}
+                                        >
+
+                                          <div
+                                            className="radio-btn"
+                                            onClick={() => {
+                                              setTripType("1");
+                                            }}
                                           >
-                                            <span>1%</span>
-                                          </label>
+                                            <input
+                                              type="radio"
+                                              value={tripType}
+                                              name="tripType"
+                                              checked={tripType === "1"}
+                                            />
+                                            1%
+                                          </div>
+
+                                          <div
+                                            className="radio-btn"
+                                            onClick={() => {
+                                              setTripType("3");
+                                            }}
+                                          >
+                                            <input
+                                              type="radio"
+                                              value={tripType}
+                                              name="tripType"
+                                              checked={tripType === "3"}
+                                            />
+                                            3%
+                                          </div>
+
+                                          <div
+                                            className="radio-btn"
+                                            onClick={() => {
+                                              setTripType("5");
+                                            }}
+                                          >
+                                            <input
+                                              type="radio"
+                                              value={tripType}
+                                              name="tripType"
+                                              checked={tripType === "5"}
+                                            />
+                                            5%
+                                          </div>
                                         </div>
-                                        <div className="custom-control custom-control-inline custom-radio">
+                                        <div role="group" className="input-group">
                                           <input
-                                            type="radio"
-                                            className="custom-control-input"
-                                            defaultValue={3}
-                                            id="__BVID__93_BV_option_1"
-                                            name="__BVID__93"
+                                            // id="dropdown-sell-slippage-config"
+                                            type="number"
+                                            value={tripType}
+                                            placeholder="0.1%"
+                                            max={50}
+                                            className="form-control"
+                                            onChange={
+
+
+                                              (e) => setTripType(e.target.value)
+                                              // console.log("here")}
+                                              // checked={inputVal==""}
+                                            }
                                           />
-                                          <label
-                                            className="custom-control-label"
-                                            htmlFor="__BVID__93_BV_option_1"
-                                          >
-                                            <span>3%</span>
-                                          </label>
-                                        </div>
-                                        <div className="custom-control custom-control-inline custom-radio">
-                                          <input
-                                            type="radio"
-                                            className="custom-control-input"
-                                            defaultValue={5}
-                                            id="__BVID__93_BV_option_2"
-                                            name="__BVID__93"
-                                          />
-                                          <label
-                                            className="custom-control-label"
-                                            htmlFor="__BVID__93_BV_option_2"
-                                          >
-                                            <span>5%</span>
-                                          </label>
-                                        </div>
-                                      </div>
-                                      <div role="group" className="input-group">
-                                        <input
-                                          id="dropdown-slippage-config"
-                                          type="number"
-                                          placeholder="0.1%"
-                                          max={50}
-                                          className="form-control"
-                                        />
-                                        <div className="input-group-append">
-                                          <button
-                                            type="button"
-                                            className="btn btn-secondary btn-sm"
-                                          >
-                                            %
-                                          </button>
+                                          <div className="input-group-append">
+                                            <button
+                                              type="button"
+                                              className="btn btn-secondary btn-sm"
+                                            >
+                                              %
+                                            </button>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </li>
-                              </ul>
+                                  </li>
+                                </ul>
+                                </Typography>
+                              </Popover>
+
                             </div>
                           </div>
                         </div>
                         <div className="row">
                           <div className="col-6 text-left fst-italic">
                             <small className="form-text">
-                              <p>{t("Estimatereceived.1")}</p>
+                              <p>{t("Estimatereceived.1")} {estimate}</p>
                             </small>
                             <small className="form-text fst-italic">
-                              <p>{t("Minimumreceived.1")}: </p>{" "}
+                              <p>{t("Minimumreceived.1")}: {minRecieved}</p>{" "}
                             </small>
                           </div>
                           <div className="col-6 text-right fst-italic">
                             <small className="form-text">
-                              <p>{t("Slippagetolerance.1")}: 3% </p>
+                              <p>{t("Slippagetolerance.1")}: {tripType}% </p>
                             </small>
                           </div>
                         </div>
@@ -258,7 +373,9 @@ const Swap = () => {
                     </form>
                     <div className="row justify-content-end">
                       <div className="col-12 text-left">
-                        <button type="button" className="btn btn-outline-light">
+                        <button
+                        onClick={()=>swapBnbtoToken()}
+                        type="button" className="btn btn-outline-light">
                           {t("Buy.1")}
                         </button>
                       </div>
@@ -301,7 +418,7 @@ const Swap = () => {
                         <div role="group" className="input-group">
                           <input
                             type="number"
-                            placeholder="Pearl"
+                            placeholder="DRIP"
                             className="form-control"
                             id="__BVID__99"
                           />
@@ -313,13 +430,8 @@ const Swap = () => {
                               className="dropdown b-dropdown btn-group"
                               id="__BVID__100"
                             >
-                              <button
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                                type="button"
-                                className="btn dropdown-toggle btn-info text-decoration-none dropdown-toggle-no-caret"
-                                id="__BVID__100__BV_toggle_"
-                              >
+
+                              <Button aria-describedby={id} variant="info" onClick={handleClick}>
                                 <svg
                                   viewBox="0 0 16 16"
                                   width="1em"
@@ -336,12 +448,131 @@ const Swap = () => {
                                     <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"></path>
                                   </g>
                                 </svg>
-                              </button>
-                              <ul
+                              </Button>
+                              <Popover
+                                className="popoverhere2"
+                                id={id}
+                                open={open}
+                                anchorEl={anchorEl}
+                                onClose={handleClose}
+                                anchorOrigin={{
+                                  vertical: 'bottom',
+                                  horizontal: 'left',
+                                }}
+                              >
+                                <Typography sx={{ p: 2 }}>
+                                  <ul
+                                    role="menu"
+                                    tabIndex={1}
+                                    className="Ullist"
+
+                                  >
+                                    <li role="presentation">
+                                      <div
+                                        role="group"
+                                        className="form-group"
+                                        id="__BVID__101"
+                                        style={{ whiteSpace: "nowrap" }}
+                                      >
+                                        <label
+                                          htmlFor="dropdown-sell-slippage-config"
+                                          className="d-block"
+                                          id="__BVID__101__BV_label_"
+                                        >
+                                          {t("Slippagetolerance.1")}
+                                        </label>
+                                        <div>
+                                          <div
+                                            role="radiogroup"
+                                            tabIndex={-1}
+                                            className="pt-2 bv-no-focus-ring"
+                                            id="__BVID__102"
+                                            style={{ display: "flex", flexDirection: "row", justifyContent: "space-evenly" }}
+                                          >
+
+                                            <div
+                                              className="radio-btn"
+                                              onClick={() => {
+                                                setTripType("1");
+                                              }}
+                                            >
+                                              <input
+                                                type="radio"
+                                                value={tripType}
+                                                name="tripType"
+                                                checked={tripType === "1"}
+                                              />
+                                              1%
+                                            </div>
+
+                                            <div
+                                              className="radio-btn"
+                                              onClick={() => {
+                                                setTripType("3");
+                                              }}
+                                            >
+                                              <input
+                                                type="radio"
+                                                value={tripType}
+                                                name="tripType"
+                                                checked={tripType === "3"}
+                                              />
+                                              3%
+                                            </div>
+
+                                            <div
+                                              className="radio-btn"
+                                              onClick={() => {
+                                                setTripType("5");
+                                              }}
+                                            >
+                                              <input
+                                                type="radio"
+                                                value={tripType}
+                                                name="tripType"
+                                                checked={tripType === "5"}
+                                              />
+                                              5%
+                                            </div>
+                                          </div>
+                                          <div role="group" className="input-group">
+                                            <input
+                                              // id="dropdown-sell-slippage-config"
+                                              type="number"
+                                              value={tripType}
+                                              placeholder="0.11%"
+
+                                              max={50}
+                                              className="form-control"
+                                              onChange={
+
+
+                                                (e) => setTripType(e.target.value)
+                                                // console.log("here")}
+                                                // checked={inputVal==""}
+                                              }
+                                            />
+                                            <div className="input-group-append">
+                                              <button
+                                                type="button"
+                                                className="btn btn-secondary btn-sm"
+                                              >
+                                                %
+                                              </button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </li>
+                                  </ul></Typography>
+                              </Popover>
+
+                              {/* {
+                                boxOne? 
+                                <ul
                                 role="menu"
-                                tabIndex={-1}
-                                className="dropdown-menu dropdown-menu-right"
-                                aria-labelledby="__BVID__100__BV_toggle_"
+                                tabIndex={1}
+                                
                               >
                                 <li role="presentation">
                                   <div
@@ -431,6 +662,11 @@ const Swap = () => {
                                   </div>
                                 </li>
                               </ul>
+                              :
+                              <>
+                              </>
+                              } */}
+
                             </div>
                           </div>
                         </div>
@@ -620,60 +856,60 @@ const Swap = () => {
         </div>
       </div> */}
       <div>
+        <div>
+          <div className="header">
             <div>
-              <div className="header">
-                <div>
-                  <svg
+              <svg
+                data-v-ab5e3c86
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28"
+                preserveAspectRatio="none"
+                shapeRendering="auto"
+                className="waves"
+              >
+                <defs data-v-ab5e3c86>
+                  <path
                     data-v-ab5e3c86
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlnsXlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 24 150 28"
-                    preserveAspectRatio="none"
-                    shapeRendering="auto"
-                    className="waves"
-                  >
-                    <defs data-v-ab5e3c86>
-                      <path
-                        data-v-ab5e3c86
-                        id="gentle-wave"
-                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
-                      />
-                    </defs>
-                    <g data-v-ab5e3c86 className="parallax">
-                      <use
-                        data-v-ab5e3c86
-                        xlinkHref="#gentle-wave"
-                        x={48}
-                        y={0}
-                        fill="rgba(255,255,255,0.7"
-                      />
-                      <use
-                        data-v-ab5e3c86
-                        xlinkHref="#gentle-wave"
-                        x={48}
-                        y={3}
-                        fill="rgba(255,255,255,0.5)"
-                      />
-                      <use
-                        data-v-ab5e3c86
-                        xlinkHref="#gentle-wave"
-                        x={48}
-                        y={5}
-                        fill="rgba(255,255,255,0.3)"
-                      />
-                      <use
-                        data-v-ab5e3c86
-                        xlinkHref="#gentle-wave"
-                        x={48}
-                        y={7}
-                        fill="#fff"
-                      />
-                    </g>
-                  </svg>
-                </div>
-              </div>
+                    id="gentle-wave"
+                    d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                  />
+                </defs>
+                <g data-v-ab5e3c86 className="parallax">
+                  <use
+                    data-v-ab5e3c86
+                    xlinkHref="#gentle-wave"
+                    x={48}
+                    y={0}
+                    fill="rgba(255,255,255,0.7"
+                  />
+                  <use
+                    data-v-ab5e3c86
+                    xlinkHref="#gentle-wave"
+                    x={48}
+                    y={3}
+                    fill="rgba(255,255,255,0.5)"
+                  />
+                  <use
+                    data-v-ab5e3c86
+                    xlinkHref="#gentle-wave"
+                    x={48}
+                    y={5}
+                    fill="rgba(255,255,255,0.3)"
+                  />
+                  <use
+                    data-v-ab5e3c86
+                    xlinkHref="#gentle-wave"
+                    x={48}
+                    y={7}
+                    fill="#fff"
+                  />
+                </g>
+              </svg>
             </div>
           </div>
+        </div>
+      </div>
     </div>
   );
 };
