@@ -1,15 +1,97 @@
-import React, { useState } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import money from "../../images/money.png";
 import astro from "../../images/astro.png";
 import dummy from "../../images/dummy.png";
 import shake from "../../images/shake.png";
 import user from "../../images/user.png";
 import Form from "react-bootstrap/Form";
+import { faucetContractAddress, faucetContractAbi, faucetTokenAddress, faucetTokenAbi } from "../utils/Faucet";
+import {buddySystemAddress,buddySystemAbi} from "../utils/BuddySystem"
 import "./Facuet.css";
 import { useTranslation } from "react-i18next";
+import { loadWeb3 } from "../api";
 const Facuet = () => {
   let [isChange, setIschange] = useState("Viewer");
+  let [availabe,setAvailable]= useState(0);
+  let [myDeposited, setMyDeposited] =useState(0);
+  let [maxPayout, setMaxPayout]=useState(0);
+  let [clamied, setClaimed] = useState(0);
+  let [team, setTeam]=useState(0);
+  let [rewarded, setRewarded]=useState(0);
+
+
+
   const { t, i18n } = useTranslation();
+  const inputEl = useRef();
+  const buddy =useRef();
+
+const getData=async()=>{
+    let acc = await loadWeb3();
+    const web3 = window.web3;
+    let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+    let userInfoTotal = await contractOf.methods.userInfoTotals(acc).call();
+    let payOutOf = await contractOf.methods.payoutOf(acc).call();
+    let contractInfo = await contractOf.methods.contractInfo().call();
+    let totalDeposits = userInfoTotal.total_deposits;
+    totalDeposits = web3.utils.fromWei(totalDeposits);
+    let maxPay = payOutOf.max_payout;
+    maxPay = web3.utils.fromWei(maxPay);
+    let netPay =payOutOf.net_payout;
+    netPay = web3.utils.fromWei(netPay);
+    netPay = parseFloat(netPay).toFixed(6)
+    let team = contractInfo._total_users
+    setMyDeposited(totalDeposits);
+    setMaxPayout(maxPay);
+    setAvailable(netPay);
+
+}
+
+  const depositAmount = async () => {
+    let acc = await loadWeb3();
+    const web3 = window.web3;
+    let enteredVal = inputEl.current.value;
+    console.log("You entered val = ", web3.utils.toWei(enteredVal)); 
+    let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
+    let referral = await contractOfBuddy.methods.buddyOf(acc).call();
+    console.log("Tayy ; ",referral)
+    if(referral.length>15){
+    let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+    let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+    await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
+      .send({
+        from: acc
+      })
+
+      await contractOf.methods.deposit("0x4113ccD05D440f9580d55B2B34C92d6cC82eAB3c",web3.utils.toWei(enteredVal)).send({
+        from: acc
+      })
+    }else{
+      console.log("No Buddy Please get A buddy first")
+    }
+  }
+
+  const updatemyBuddy=async()=>{
+    let acc = await loadWeb3();
+    let enteredVal = buddy.current.value;
+    console.log("Your Buddy: ",enteredVal )
+    const web3 = window.web3;
+    let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
+    await contractOfBuddy.methods.updateBuddy(enteredVal).send({
+      from: acc
+    })
+  }
+  const myClaim= async()=>{
+    let acc = await loadWeb3();
+    const web3 = window.web3;
+    let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+    await contractOf.methods.claim().send({
+      from:acc
+    })
+
+  }
+
+
+
   const changeViewer = () => {
     setIschange("Viewer");
   };
@@ -19,6 +101,11 @@ const Facuet = () => {
   const changeDirect = () => {
     setIschange("Direct");
   };
+  useEffect(() => {
+    setInterval(() => {
+      getData();
+    }, 1000);
+  }, []);
   return (
     <div className="router-view">
       <div id="faucet">
@@ -47,7 +134,7 @@ const Facuet = () => {
                         {t("Available.1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">...</span>
+                        <span className="notranslate">{availabe}</span>
                       </p>
                       <p className="text-small fst-italic">
                         {t("DRIP.1")} ≈ ... {t("USDT.1")}
@@ -61,7 +148,7 @@ const Facuet = () => {
                         {t("Deposit.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">...</span>
+                        <span className="notranslate">{myDeposited}</span>
                       </p>
                       <p className="text-small fst-italic">
                         {t("DRIP.1")} ≈ ... {t("USDT.1")}
@@ -101,7 +188,7 @@ const Facuet = () => {
                         {t("MaxPayout.1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">...</span>
+                        <span className="notranslate">{maxPayout}</span>
                       </p>
                       <p className="text-small fst-italic">{t("DRIP.1")}</p>
                     </div>
@@ -192,6 +279,7 @@ const Facuet = () => {
                           </div>
                           <div role="group" className="input-group">
                             <input
+                              ref ={inputEl}
                               type="number"
                               placeholder="Pearl"
                               className="form-control"
@@ -212,6 +300,7 @@ const Facuet = () => {
                         <div className="row justify-content-end">
                           <div className="col-12 text-left">
                             <button
+                            onClick={()=>depositAmount()}
                               type="button"
                               className="btn btn-outline-light"
                             >
@@ -233,6 +322,7 @@ const Facuet = () => {
                     {t("HYDRATE.1")}({t("recompound.1")})
                   </button>
                   <button
+                  onClick={()=>myClaim()}
                     type="button"
                     className="btn btn-outline-light btn-block"
                   >
@@ -330,6 +420,7 @@ const Facuet = () => {
                           </h3>
                           <div>
                             <input
+                            ref={buddy}
                               type="text"
                               placeholder="Address"
                               className="form-control"
@@ -339,6 +430,7 @@ const Facuet = () => {
                         </fieldset>
                         <div>
                           <button
+                          onClick={()=>updatemyBuddy()}
                             type="button"
                             className="btn btn-outline-light"
                           >

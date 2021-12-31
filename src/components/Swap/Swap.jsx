@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect} from "react";
 import coin from "../../images/coin.png";
 import balance from "../../images/balance.png";
 import Web3 from "web3";
@@ -11,62 +11,192 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from 'react-bootstrap/Button'
 import Chart from "./Chart";
-import {loadWeb3} from "../api"
+import axios from 'axios';
+import { loadWeb3 } from "../api"
+import { faucetTokenAddress, faucetTokenAbi } from "../utils/Faucet";
 import { fountainContractAddress, fountainContractAbi } from "../utils/Fountain"
 // import { useState } from "react";
 
 const Swap = () => {
   let [boxOne, setBoxOne] = useState(false)
   let [tripType, setTripType] = useState(1);
+  let [tripType1, setTripType1] = useState(1);
   let [radioVal, setradioVal] = useState();
-  let [enteredVal, setEnteredval] = useState();
+  let [enteredVal, setEnteredval] = useState(0);
   let [estimate, setEstimate] = useState();
+  let [estimateDrip, setEstimateDrip] = useState();
+  let [minRecievedDrip, setMinRecievedDrip] = useState();
   let [minRecieved, setMinrecieved] = useState();
+  let [tenPerVal, setTenperVal] = useState(0);
+  let [userDripBalance, setuserDripBalance]=useState(0);
+  let [usersBalance, setUsersBalance] =useState(0);
+  let [bnbPrice, setBnbPrice] = useState([]);
+  let [usdtPrice,setUsdPrice]=useState();
   const { t, i18n } = useTranslation();
   const inputEl = useRef();
+  const inputE2 = useRef();
 
-  const enterAmount1 = async () => {
+  const getData =async()=>{
+    axios.get(`https://min-api.cryptocompare.com/data/price?fsym=BNB&tsyms=USD`)
+      .then(res => {
+        const person = res.data.USD;
+        setBnbPrice({person})
+      });
+    
+      console.log("APi ",bnbPrice.person)
+      setUsdPrice(bnbPrice.person);
     const web3 = window.web3;
-    let myvalue = inputEl.current.value;
-    let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
-    myvalue = web3.utils.toWei(myvalue);
-    setEnteredval(myvalue);
-    console.log('entered Value = ', myvalue)
-   
-    let tokensInputPrice = await contractOf.methods.getBnbToTokenInputPrice(myvalue).call();
-    tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
-    tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
-    // tripType = parseFloat(tripType);
-    console.log(typeof (tripType))
+    let acc = await loadWeb3()
+    let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+    let dripBalance =await tokenContractOf.methods.balanceOf(acc).call();
+    let balance = await web3.eth.getBalance(acc);
+    balance =web3.utils.fromWei(balance);
+    balance = parseFloat(balance).toFixed(3);
+    dripBalance=web3.utils.fromWei(dripBalance)
+    dripBalance = parseFloat(dripBalance).toFixed(3)
+    setuserDripBalance(dripBalance);
+    setUsersBalance(balance);
 
-    let miniumrcvd = (tripType * tokensInputPrice) / 100;
-    let percentValue= tokensInputPrice-miniumrcvd;
 
-    setEstimate(tokensInputPrice);
-    setMinrecieved(percentValue)
-    console.log("miniumrcvd ; ", miniumrcvd);
 
   }
-  const swapBnbtoToken =async()=>{
-    console.log("ASD")
-     await enterAmount1();
+
+  const enterBuyAmount1 = async () => {
     const web3 = window.web3;
-    let acc= await loadWeb3();
     let myvalue = inputEl.current.value;
-    myvalue=web3.utils.toWei(myvalue);
-    
+    let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+
+
+    // console.log('entered Value = ', myvalue)
+    if (myvalue > 0) {
+      myvalue = web3.utils.toWei(myvalue);
+      setEnteredval(myvalue);
+
+      let tokensInputPrice = await contractOf.methods.getBnbToTokenInputPrice(myvalue).call();
+      tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
+      tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
+      // tripType = parseFloat(tripType);
+      // console.log(typeof (tripType))
+
+      let miniumrcvd = (tripType * tokensInputPrice) / 100;
+      let percentValue = tokensInputPrice - miniumrcvd;
+      percentValue = parseFloat(percentValue).toFixed(3)
+
+      setEstimate(tokensInputPrice);
+      setMinrecieved(percentValue)
+    } else {
+      setEstimate();
+      setMinrecieved()
+
+    }
+    // console.log("miniumrcvd ; ", miniumrcvd);
+
+  }
+  const enterBuyAmount2 = async () => {
+    console.log("funk to");
+    const web3 = window.web3;
+    let myvalue = inputE2.current.value;
+    let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+
+
+    if (myvalue > 0) {
+      myvalue = web3.utils.toWei(myvalue);
+      console.log("eNTERTERD VALUE", myvalue)
+
+      setEnteredval(myvalue);
+      let tokensOutputPrice = await contractOf.methods.getTokenToBnbInputPrice(myvalue).call();
+      tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice)
+      console.log("BNB", tokensOutputPrice)
+
+      let tenPercentVal = (tokensOutputPrice * 10)/100;
+      tenPercentVal = tokensOutputPrice - tenPercentVal;
+      // tenPercentVal = web3.utils.fromWei(tenPercentVal);
+      let miniumrcvdDrip = (tripType1 * tenPercentVal) / 100;
+      let percentValue = tenPercentVal - miniumrcvdDrip;
+      percentValue = parseFloat(percentValue).toFixed(3)
+      tenPercentVal =parseFloat(tenPercentVal).toFixed(3);
+      
+      // tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice)
+      tokensOutputPrice = parseFloat(tokensOutputPrice).toFixed(3);
+
+      percentValue = parseFloat(percentValue).toFixed(3)
+      setMinRecievedDrip(percentValue);
+      setEstimateDrip(tokensOutputPrice);
+      setTenperVal(tenPercentVal)
+    } else {
+      setEstimateDrip(0);
+      setMinRecievedDrip(0);
+      setTenperVal(0)
+
+    }
+    // console.log("miniumrcvd ; ", miniumrcvd);
+
+  }
+  const swapBnbtoToken = async () => {
+    console.log("ASD")
+    await enterBuyAmount1();
+    const web3 = window.web3;
+    let acc = await loadWeb3();
+    let myvalue = inputEl.current.value;
+    myvalue = web3.utils.toWei(myvalue);
+
     let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
     let tokensInputPrice = await contractOf.methods.getBnbToTokenInputPrice(myvalue).call();
-    console.log(typeof (tripType))
+    // console.log(typeof (tripType))
     let miniumrcvd = (tripType * tokensInputPrice) / 100;
-    let percentValue= tokensInputPrice-miniumrcvd;
-    console.log("AJSJD", myvalue)
-    console.log("Min ",minRecieved);
-    console.log("Valuseas", myvalue)
-     await contractOf.methods.bnbToTokenSwapInput(estimate).send({
-       from:acc,
-       value:myvalue
-     });
+    let percentValue = tokensInputPrice - miniumrcvd;
+    percentValue = percentValue.toString();
+    console.log("AJSJD", myvalue.toString())
+    console.log("percentValue ", percentValue.toString());
+    console.log("myValue", myvalue);
+
+    await contractOf.methods.bnbToTokenSwapInput(percentValue).send({
+      from: acc,
+      value: myvalue.toString()
+    });
+
+  }
+
+  const myApproval = async () => {
+    console.log("Approve")
+    const web3 = window.web3;
+    let acc = await loadWeb3();
+    let myvalue = inputE2.current.value;
+    let myvalue1 = web3.utils.toWei(myvalue);
+    let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+    await tokenContractOf.methods.approve(fountainContractAddress, web3.utils.toWei(myvalue1))
+      .send({
+        from: acc
+      })
+  }
+
+  const bnbSwapSell = async () => {
+
+    console.log("ASD")
+    // await enterBuyAmount2();
+    const web3 = window.web3;
+    let acc = await loadWeb3();
+    let myvalue = inputE2.current.value;
+    let myvalue1 = web3.utils.toWei(myvalue);
+    let parameter = web3.utils.toWei(minRecievedDrip);
+
+    let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+    let tokensOutputPrice = await contractOf.methods.getTokenToBnbInputPrice(myvalue).call();
+
+    // console.log(typeof (tripType))
+    let miniumrcvd = (tripType1 * tokensOutputPrice) / 100;
+    let percentValue = tokensOutputPrice - miniumrcvd;
+    percentValue = percentValue.toString();
+    console.log("AJSJD", myvalue.toString())
+    console.log("percentValue ", percentValue.toString());
+    console.log("myValue", myvalue);
+
+
+
+    await contractOf.methods.tokenToBnbSwapInput(myvalue1,parameter).send({
+      from: acc,
+      
+    });
 
   }
 
@@ -102,6 +232,13 @@ const Swap = () => {
 
   const opento = Boolean(data);
   const idto = opento ? 'simple-popover' : undefined;
+
+  useEffect(() => {
+    setInterval(() => {
+      getData()
+    }, 1000);
+  }, []);
+
   return (
     // <div className="router-view">
     <div id="fountain">
@@ -142,10 +279,10 @@ const Swap = () => {
                       {t("BNBBalance.1")}
                     </h5>
                     <p className="text-large mb-2 text-white fst-italic">
-                      <span className="notranslate">0.0000</span>
+                      <span className="notranslate">{usersBalance}</span>
                     </p>
                     <p className="text-small fst-italic">
-                      {t("BNB.1")} ≈ NaN {t("USDT.1")}
+                      {t("BNB.1")} ≈{usdtPrice} {t("USDT.1")}
                     </p>
                   </div>
                 </div>
@@ -156,7 +293,7 @@ const Swap = () => {
                       {t("DRIPBalance.1")}{" "}
                     </h5>
                     <p className="text-large  mb-2 text-white fst-italic">
-                      <span className="notranslate">0</span>
+                      <span className="notranslate">{userDripBalance}</span>
                     </p>
                     <p className="text-small fst-italic">
                       {t("DRIP.1")} ≈ 0.000 {t("USDT.1")}
@@ -193,7 +330,7 @@ const Swap = () => {
                               {t("BNBBalance.1")}
                               <label className="user-balance text-white fst-italic">
                                 {" "}
-                                0.0000
+                                {usersBalance}
                               </label>
                             </p>
                           </div>
@@ -201,7 +338,7 @@ const Swap = () => {
                         <div role="group" className="input-group">
                           <input
                             ref={inputEl}
-                            onChange={() => enterAmount1()}
+                            onChange={() => enterBuyAmount1()}
                             type="number"
                             placeholder="BNB"
                             className="form-control"
@@ -263,7 +400,7 @@ const Swap = () => {
                                         id="__BVID__101__BV_label_"
                                       >
                                         {t("Slippagetolerance.1")}
-                                        
+
                                       </label>
                                       <div>
                                         <div
@@ -374,8 +511,8 @@ const Swap = () => {
                     <div className="row justify-content-end">
                       <div className="col-12 text-left">
                         <button
-                        onClick={()=>swapBnbtoToken()}
-                        type="button" className="btn btn-outline-light">
+                          onClick={() => swapBnbtoToken()}
+                          type="button" className="btn btn-outline-light">
                           {t("Buy.1")}
                         </button>
                       </div>
@@ -410,17 +547,19 @@ const Swap = () => {
                             <p>
                               {t("DRIPBalance.1")}:
                               <label className="user-balance text-white fst-italic">
-                                N/A
+                             {userDripBalance}
                               </label>{" "}
                             </p>
                           </div>
                         </div>
                         <div role="group" className="input-group">
                           <input
+                            ref={inputE2}
                             type="number"
                             placeholder="DRIP"
                             className="form-control"
                             id="__BVID__99"
+                            onChange={() => enterBuyAmount2()}
                           />
                           <div className="input-group-append">
                             <button type="button" className="btn btn-info">
@@ -493,14 +632,14 @@ const Swap = () => {
                                             <div
                                               className="radio-btn"
                                               onClick={() => {
-                                                setTripType("1");
+                                                setTripType1("1");
                                               }}
                                             >
                                               <input
                                                 type="radio"
-                                                value={tripType}
-                                                name="tripType"
-                                                checked={tripType === "1"}
+                                                value={tripType1}
+                                                name="tripType1"
+                                                checked={tripType1 === "1"}
                                               />
                                               1%
                                             </div>
@@ -508,14 +647,14 @@ const Swap = () => {
                                             <div
                                               className="radio-btn"
                                               onClick={() => {
-                                                setTripType("3");
+                                                setTripType1("3");
                                               }}
                                             >
                                               <input
                                                 type="radio"
-                                                value={tripType}
+                                                value={tripType1}
                                                 name="tripType"
-                                                checked={tripType === "3"}
+                                                checked={tripType1 === "3"}
                                               />
                                               3%
                                             </div>
@@ -523,23 +662,28 @@ const Swap = () => {
                                             <div
                                               className="radio-btn"
                                               onClick={() => {
-                                                setTripType("5");
+                                                setTripType1("5");
                                               }}
                                             >
                                               <input
                                                 type="radio"
-                                                value={tripType}
+                                                value={tripType1}
                                                 name="tripType"
-                                                checked={tripType === "5"}
+                                                checked={tripType1 === "5"}
                                               />
                                               5%
                                             </div>
                                           </div>
                                           <div role="group" className="input-group">
+
+
+
+
+
                                             <input
                                               // id="dropdown-sell-slippage-config"
                                               type="number"
-                                              value={tripType}
+                                              value={tripType1}
                                               placeholder="0.11%"
 
                                               max={50}
@@ -547,7 +691,7 @@ const Swap = () => {
                                               onChange={
 
 
-                                                (e) => setTripType(e.target.value)
+                                                (e) => setTripType1(e.target.value)
                                                 // console.log("here")}
                                                 // checked={inputVal==""}
                                               }
@@ -674,12 +818,12 @@ const Swap = () => {
                           <div className="col-6 text-left fst-italic">
                             <small className="form-text">
                               <p style={{ lineHeight: "120%" }}>
-                                {t("Estimatereceived.1")}*:
+                                {t("Estimatereceived.1")}*:{tenPerVal}
                               </p>
                             </small>
                             <small className="form-text fst-italic">
                               <p style={{ lineHeight: "10%" }}>
-                                {t("Minimumreceived.1")}:{" "}
+                                {t("Minimumreceived.1")}:{minRecievedDrip}
                               </p>
                             </small>
                             <small className="form-text text-left">
@@ -691,7 +835,7 @@ const Swap = () => {
                           <div className="col-6 text-right fst-italic">
                             <small className="form-text">
                               <p style={{ lineHeight: "100%" }}>
-                                {t("Slippagetolerance.1")}: 3%
+                                {t("Slippagetolerance.1")}: {tripType1}%
                               </p>
                             </small>
                           </div>
@@ -700,15 +844,21 @@ const Swap = () => {
                     </form>
                     <div className="row justify-content-end">
                       <div className="col-12 text-left">
-                        <button type="button" className="btn btn-outline-light">
+                        <button
+                          onClick={() => bnbSwapSell()}
+                          type="button" className="btn btn-outline-light">
                           {t("Sell.1")}
                         </button>
                         <div
                           className="allowanceSelect"
-                          style={{ float: "right" }}
-                        >
+                          style={{ float: "right" }} >
                           <div className="custom-control custom-switch b-custom-control-lg">
-                            <input
+                          <button
+                          onClick={() => myApproval()}
+                          type="button" className="btn btn-outline-light">
+                          {t("Approve.1")}
+                        </button>
+                            {/* <input
                               type="checkbox"
                               name="check-button"
                               className="custom-control-input"
@@ -721,7 +871,7 @@ const Swap = () => {
                             >
                               {" "}
                               <p>{t("ApproveDRIP.1")}</p>
-                            </label>
+                            </label> */}
                           </div>
                         </div>
                       </div>

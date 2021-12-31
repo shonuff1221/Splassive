@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import balance from "../../images/balance.png";
 import undo from "../../images/undo.png";
 import refresh from "../../images/refresh.png";
@@ -10,9 +10,34 @@ import pearl from "../../images/pearl.png";
 import dummy from "../../images/dummy.png";
 import transfer from "../../images/transfer.png";
 import { useTranslation } from "react-i18next";
+import { loadWeb3 } from "../api";
+import { faucetContractAddress, faucetContractAbi, faucetTokenAddress, faucetTokenAbi } from "../utils/Faucet";
+
 
 function Reservoir() {
   const { t, i18n } = useTranslation();
+  let [deposit, setDeposit]= useState(0);
+  let [totalWithDrawn, setTotalWithDrawn] =useState(0);
+const getData=async()=>{
+  let acc = await loadWeb3();
+    const web3 = window.web3;
+    let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+    let contractInfo = await contractOf.methods.contractInfo().call();
+    let totalWithdraw = contractInfo._total_withdraw;
+    let stake = contractInfo._total_deposited;
+    totalWithdraw = web3.utils.fromWei(totalWithdraw);
+    totalWithdraw= parseFloat(totalWithdraw).toFixed(6);
+    stake = web3.utils.fromWei(stake);
+    stake = parseFloat(stake).toFixed(6);
+    setTotalWithDrawn(totalWithdraw);
+    setDeposit(stake);
+}
+useEffect(() => {
+  setInterval(() => {
+    getData();
+  }, 1000);
+}, []);
+
   return (
     <div className="router-view">
       <div id="reservoir">
@@ -65,7 +90,7 @@ function Reservoir() {
                         {t("Stake.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">...</span>
+                        <span className="notranslate">{deposit}</span>
                       </p>
                       <p className="text-small fst-italic">%</p>
                     </div>
@@ -89,7 +114,7 @@ function Reservoir() {
                       {t("TotalWithdrawn.1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">...</span>
+                        <span className="notranslate">{totalWithDrawn}</span>
                       </p>
                       <p className="text-small fst-italic">{t("BNB.1")}</p>
                     </div>
