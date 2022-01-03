@@ -18,7 +18,7 @@ const Facuet = () => {
   let [clamied, setClaimed] = useState(0);
   let [team, setTeam]=useState(0);
   let [rewarded, setRewarded]=useState(0);
-
+  
 
 
   const { t, i18n } = useTranslation();
@@ -26,6 +26,8 @@ const Facuet = () => {
   const buddy =useRef();
 
 const getData=async()=>{
+
+   
     let acc = await loadWeb3();
     const web3 = window.web3;
     let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
@@ -33,17 +35,25 @@ const getData=async()=>{
     let payOutOf = await contractOf.methods.payoutOf(acc).call();
     let contractInfo = await contractOf.methods.contractInfo().call();
     let totalDeposits = userInfoTotal.total_deposits;
-    totalDeposits = web3.utils.fromWei(totalDeposits);
-    let maxPay = payOutOf.max_payout;
-    maxPay = web3.utils.fromWei(maxPay);
+    let myclaimsAvailable = await contractOf.methods.claimsAvailable(acc).call();
     let netPay =payOutOf.net_payout;
+    let maxPay = payOutOf.max_payout;
+    let myTeam = contractInfo._total_users
+    myclaimsAvailable = web3.utils.fromWei(myclaimsAvailable);
+    myclaimsAvailable = parseFloat(myclaimsAvailable).toFixed(6)
+    
+   
+    totalDeposits = web3.utils.fromWei(totalDeposits);
+    maxPay = web3.utils.fromWei(maxPay);
     netPay = web3.utils.fromWei(netPay);
     netPay = parseFloat(netPay).toFixed(6)
-    let team = contractInfo._total_users
+    console.log("team = ", myTeam);
+
     setMyDeposited(totalDeposits);
     setMaxPayout(maxPay);
     setAvailable(netPay);
-
+    setTeam(myTeam);
+    setClaimed(myclaimsAvailable);
 }
 
   const depositAmount = async () => {
@@ -162,7 +172,7 @@ const getData=async()=>{
                         {t("Claimed.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">...</span>
+                        <span className="notranslate">{clamied}</span>
                       </p>
                       <p className="text-small fst-italic">{t("DRIP.1")}</p>
                     </div>
@@ -200,7 +210,7 @@ const getData=async()=>{
                         {t("Team.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">... / ... </span>
+                        <span className="notranslate">{team}</span>
                       </p>
                       <p className="text-small fst-italic">
                         {t("Players.1")} ({t("Direct.1")} / {t("Total.1")})

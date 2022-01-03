@@ -2,7 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import React, { useEffect } from "react";
 import $ from "jquery";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { render } from "react-dom";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
@@ -28,6 +29,7 @@ function App() {
   }, [$]);
   return (
     <div className="full-landing-image">
+      <ToastContainer />
       <BrowserRouter>
         <Navbar />
         <Routes>

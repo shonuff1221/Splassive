@@ -1,8 +1,9 @@
-import React, { useState, useRef,useEffect} from "react";
+import React, { useState, useRef, useEffect } from "react";
 import coin from "../../images/coin.png";
 import balance from "../../images/balance.png";
 import Web3 from "web3";
 import drops from "../../images/drops.png";
+import { ToastContainer, toast } from 'react-toastify';
 import van from "../../images/van.png";
 import contact from "../../images/contact (2).png";
 import transfer from "../../images/transfer.png";
@@ -13,7 +14,7 @@ import Button from 'react-bootstrap/Button'
 import Chart from "./Chart";
 import axios from 'axios';
 import { loadWeb3 } from "../api"
-import { faucetTokenAddress, faucetTokenAbi } from "../utils/Faucet";
+import { faucetTokenAddress, faucetTokenAbi, faucetContractAddress } from "../utils/Faucet";
 import { fountainContractAddress, fountainContractAbi } from "../utils/Fountain"
 // import { useState } from "react";
 
@@ -28,35 +29,45 @@ const Swap = () => {
   let [minRecievedDrip, setMinRecievedDrip] = useState();
   let [minRecieved, setMinrecieved] = useState();
   let [tenPerVal, setTenperVal] = useState(0);
-  let [userDripBalance, setuserDripBalance]=useState(0);
-  let [usersBalance, setUsersBalance] =useState(0);
-  let [bnbPrice, setBnbPrice] = useState([]);
-  let [usdtPrice,setUsdPrice]=useState();
+  let [userDripBalance, setuserDripBalance] = useState(0);
+  let [usersBalance, setUsersBalance] = useState(0);
+  let [bnbPrice, setBnbPrice] = useState(0);
+  let [dripUsdtprice, setdripUsdtPrice] = useState(0);
+  let [usdtPrice, setUsdPrice] = useState(0);
+  let [isToogle, setisToogle] = useState(false);
   const { t, i18n } = useTranslation();
   const inputEl = useRef();
   const inputE2 = useRef();
 
-  const getData =async()=>{
-    axios.get(`https://min-api.cryptocompare.com/data/price?fsym=BNB&tsyms=USD`)
-      .then(res => {
-        const person = res.data.USD;
-        setBnbPrice({person})
-      });
-    
-      console.log("APi ",bnbPrice.person)
-      setUsdPrice(bnbPrice.person);
-    const web3 = window.web3;
-    let acc = await loadWeb3()
-    let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-    let dripBalance =await tokenContractOf.methods.balanceOf(acc).call();
-    let balance = await web3.eth.getBalance(acc);
-    balance =web3.utils.fromWei(balance);
-    balance = parseFloat(balance).toFixed(3);
-    dripBalance=web3.utils.fromWei(dripBalance)
-    dripBalance = parseFloat(dripBalance).toFixed(3)
-    setuserDripBalance(dripBalance);
-    setUsersBalance(balance);
+  const getData = async () => {
+    try {
+      let usdValue = await axios.get("https://min-api.cryptocompare.com/data/price?fsym=BNB&tsyms=USD");
+      let currentBnB = usdValue.data.USD
+      setUsdPrice(currentBnB);
+      const web3 = window.web3;
+      let acc = await loadWeb3()
+      let balance = await web3.eth.getBalance(acc);
+      balance = web3.utils.fromWei(balance);
+      balance = parseFloat(balance).toFixed(3);
+      setUsersBalance(balance);
+      let converted = currentBnB * balance
+      converted = parseFloat(converted).toFixed(3);
+      setBnbPrice(converted);
+      let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+      let myCurrbalance = await web3.eth.getBalance(acc);
 
+      let dripBalance = await tokenContractOf.methods.balanceOf(acc).call();
+      let covertedDrip = myCurrbalance / dripBalance;
+      covertedDrip = covertedDrip * currentBnB
+      covertedDrip = parseFloat(covertedDrip).toFixed(4);
+      dripBalance = web3.utils.fromWei(dripBalance)
+      dripBalance = parseFloat(dripBalance).toFixed(3)
+      setuserDripBalance(dripBalance);
+      setdripUsdtPrice(covertedDrip);
+
+    } catch (e) {
+      console.log("Error while fetching Api", e);
+    }
 
 
   }
@@ -108,14 +119,14 @@ const Swap = () => {
       tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice)
       console.log("BNB", tokensOutputPrice)
 
-      let tenPercentVal = (tokensOutputPrice * 10)/100;
+      let tenPercentVal = (tokensOutputPrice * 10) / 100;
       tenPercentVal = tokensOutputPrice - tenPercentVal;
       // tenPercentVal = web3.utils.fromWei(tenPercentVal);
       let miniumrcvdDrip = (tripType1 * tenPercentVal) / 100;
       let percentValue = tenPercentVal - miniumrcvdDrip;
       percentValue = parseFloat(percentValue).toFixed(3)
-      tenPercentVal =parseFloat(tenPercentVal).toFixed(3);
-      
+      tenPercentVal = parseFloat(tenPercentVal).toFixed(3);
+
       // tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice)
       tokensOutputPrice = parseFloat(tokensOutputPrice).toFixed(3);
 
@@ -135,68 +146,87 @@ const Swap = () => {
   const swapBnbtoToken = async () => {
     console.log("ASD")
     await enterBuyAmount1();
-    const web3 = window.web3;
-    let acc = await loadWeb3();
-    let myvalue = inputEl.current.value;
-    myvalue = web3.utils.toWei(myvalue);
+    try {
+      const web3 = window.web3;
+      let acc = await loadWeb3();
+      let myvalue = inputEl.current.value;
+      if (myvalue > 0) {
+        myvalue = web3.utils.toWei(myvalue);
 
-    let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
-    let tokensInputPrice = await contractOf.methods.getBnbToTokenInputPrice(myvalue).call();
-    // console.log(typeof (tripType))
-    let miniumrcvd = (tripType * tokensInputPrice) / 100;
-    let percentValue = tokensInputPrice - miniumrcvd;
-    percentValue = percentValue.toString();
-    console.log("AJSJD", myvalue.toString())
-    console.log("percentValue ", percentValue.toString());
-    console.log("myValue", myvalue);
+        let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+        let tokensInputPrice = await contractOf.methods.getBnbToTokenInputPrice(myvalue).call();
+        // console.log(typeof (tripType))
+        let miniumrcvd = (tripType * tokensInputPrice) / 100;
+        let percentValue = tokensInputPrice - miniumrcvd;
+        percentValue = percentValue.toString();
+        console.log("AJSJD", myvalue.toString())
+        console.log("percentValue ", percentValue.toString());
+        console.log("myValue", myvalue);
 
-    await contractOf.methods.bnbToTokenSwapInput(percentValue).send({
-      from: acc,
-      value: myvalue.toString()
-    });
-
+        await contractOf.methods.bnbToTokenSwapInput(percentValue).send({
+          from: acc,
+          value: myvalue.toString()
+        });
+        toast.success("Transaction SucessFull")
+      }
+      else {
+        toast.error("Looks Like You Forgot to Enter Amount")
+      }
+    } catch (e) {
+      toast.error("Oops You Cancelled Transaction")
+    }
   }
 
-  const myApproval = async () => {
-    console.log("Approve")
-    const web3 = window.web3;
-    let acc = await loadWeb3();
-    let myvalue = inputE2.current.value;
-    let myvalue1 = web3.utils.toWei(myvalue);
-    let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-    await tokenContractOf.methods.approve(fountainContractAddress, web3.utils.toWei(myvalue1))
-      .send({
-        from: acc
-      })
-  }
 
   const bnbSwapSell = async () => {
 
     console.log("ASD")
-    // await enterBuyAmount2();
-    const web3 = window.web3;
-    let acc = await loadWeb3();
-    let myvalue = inputE2.current.value;
-    let myvalue1 = web3.utils.toWei(myvalue);
-    let parameter = web3.utils.toWei(minRecievedDrip);
+    await enterBuyAmount2();
+    try {
+      const web3 = window.web3;
+      let acc = await loadWeb3();
+      let myvalue = inputE2.current.value;
+      if (myvalue > 0) {
 
-    let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
-    let tokensOutputPrice = await contractOf.methods.getTokenToBnbInputPrice(myvalue).call();
+        let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+        let myAllowance = await tokenContractOf.methods.allowance(acc, fountainContractAddress);
+        if (myAllowance > 0) {
+          let myvalue1 = web3.utils.toWei(myvalue);
+          if (myvalue > myAllowance) {
+            let parameter = web3.utils.toWei(minRecievedDrip);
 
-    // console.log(typeof (tripType))
-    let miniumrcvd = (tripType1 * tokensOutputPrice) / 100;
-    let percentValue = tokensOutputPrice - miniumrcvd;
-    percentValue = percentValue.toString();
-    console.log("AJSJD", myvalue.toString())
-    console.log("percentValue ", percentValue.toString());
-    console.log("myValue", myvalue);
+            let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+            let tokensOutputPrice = await contractOf.methods.getTokenToBnbInputPrice(myvalue).call();
+            // console.log(typeof (tripType))
+            let miniumrcvd = (tripType1 * tokensOutputPrice) / 100;
+            let percentValue = tokensOutputPrice - miniumrcvd;
+            percentValue = percentValue.toString();
+            console.log("AJSJD", myvalue.toString())
+            console.log("percentValue ", percentValue.toString());
+            console.log("myValue", myvalue);
 
+            await contractOf.methods.tokenToBnbSwapInput(myvalue1, parameter).send({
+              from: acc,
 
+            });
 
-    await contractOf.methods.tokenToBnbSwapInput(myvalue1,parameter).send({
-      from: acc,
-      
-    });
+            toast.success("Transaction SuccessFull")
+          } else {
+            toast.error("Oops You Entered Value Greater than your approval amount")
+          }
+        }
+        else {
+          toast.error("It Seems Like you Dont Have ApprovedToken")
+        }
+      }
+
+      else {
+        toast.error("Looks Like You Forgot To Enter Amount")
+      }
+
+    } catch (e) {
+      toast.error("Oops You Cancelled Transaction")
+    }
 
   }
 
@@ -233,6 +263,35 @@ const Swap = () => {
   const opento = Boolean(data);
   const idto = opento ? 'simple-popover' : undefined;
 
+
+
+  const getToogle = async (e) => {
+    console.log(e.target.value);
+
+    try {
+      console.log("Approve")
+      const web3 = window.web3;
+      let acc = await loadWeb3();
+      let myvalue = inputE2.current.value;
+      if (myvalue > 0) {
+        let myvalue1 = web3.utils.toWei(myvalue);
+        let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+        await tokenContractOf.methods.approve(fountainContractAddress, web3.utils.toWei(myvalue1))
+          .send({
+            from: acc
+          });
+        toast.success("Transaction Successfull")
+        setisToogle(false)
+      } else {
+        toast.error("Looks Like You Forgot to Enter Amount")
+      }
+    } catch (e) {
+      console.log("Error While approving ", e);
+      toast.error("Oops you cancelled transaction")
+      setisToogle(false)
+    }
+
+  }
   useEffect(() => {
     setInterval(() => {
       getData()
@@ -282,7 +341,7 @@ const Swap = () => {
                       <span className="notranslate">{usersBalance}</span>
                     </p>
                     <p className="text-small fst-italic">
-                      {t("BNB.1")} ≈{usdtPrice} {t("USDT.1")}
+                      {t("BNB.1")} ≈{bnbPrice} {t("USDT.1")}
                     </p>
                   </div>
                 </div>
@@ -296,7 +355,7 @@ const Swap = () => {
                       <span className="notranslate">{userDripBalance}</span>
                     </p>
                     <p className="text-small fst-italic">
-                      {t("DRIP.1")} ≈ 0.000 {t("USDT.1")}
+                      {t("DRIP.1")} ≈{dripUsdtprice}{t("USDT.1")}
                     </p>
                   </div>
                 </div>
@@ -547,7 +606,7 @@ const Swap = () => {
                             <p>
                               {t("DRIPBalance.1")}:
                               <label className="user-balance text-white fst-italic">
-                             {userDripBalance}
+                                {userDripBalance}
                               </label>{" "}
                             </p>
                           </div>
@@ -853,17 +912,19 @@ const Swap = () => {
                           className="allowanceSelect"
                           style={{ float: "right" }} >
                           <div className="custom-control custom-switch b-custom-control-lg">
-                          <button
+                            {/* <button
                           onClick={() => myApproval()}
                           type="button" className="btn btn-outline-light">
                           {t("Approve.1")}
-                        </button>
-                            {/* <input
+                        </button> */}
+                            <input
                               type="checkbox"
                               name="check-button"
                               className="custom-control-input"
-                              defaultValue="true"
+                              // value={isToogle}
                               id="__BVID__107"
+                              checked={isToogle}
+                              onChange={getToogle}
                             />
                             <label
                               className="custom-control-label"
@@ -871,7 +932,7 @@ const Swap = () => {
                             >
                               {" "}
                               <p>{t("ApproveDRIP.1")}</p>
-                            </label> */}
+                            </label>
                           </div>
                         </div>
                       </div>
