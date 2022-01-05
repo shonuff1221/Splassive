@@ -1,102 +1,147 @@
-import React, { useState, useRef,useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import money from "../../images/money.png";
 import astro from "../../images/astro.png";
 import dummy from "../../images/dummy.png";
 import shake from "../../images/shake.png";
+import { ToastContainer, toast } from 'react-toastify';
 import user from "../../images/user.png";
 import Form from "react-bootstrap/Form";
 import { faucetContractAddress, faucetContractAbi, faucetTokenAddress, faucetTokenAbi } from "../utils/Faucet";
-import {buddySystemAddress,buddySystemAbi} from "../utils/BuddySystem"
+import { buddySystemAddress, buddySystemAbi } from "../utils/BuddySystem"
 import "./Facuet.css";
 import { useTranslation } from "react-i18next";
 import { loadWeb3 } from "../api";
+import { useNavigate, Link } from "react-router-dom"
 const Facuet = () => {
+  let navigate = useNavigate();
   let [isChange, setIschange] = useState("Viewer");
-  let [availabe,setAvailable]= useState(0);
-  let [myDeposited, setMyDeposited] =useState(0);
-  let [maxPayout, setMaxPayout]=useState(0);
+  let [availabe, setAvailable] = useState(0);
+  let [myDeposited, setMyDeposited] = useState(0);
+  let [maxPayout, setMaxPayout] = useState(0);
   let [clamied, setClaimed] = useState(0);
-  let [team, setTeam]=useState(0);
-  let [rewarded, setRewarded]=useState(0);
-  
+  let [team, setTeam] = useState(0);
+  let [rewarded, setRewarded] = useState(0);
+  let [userDripBalance, setuserDripBalance] = useState(0);
+
+  // player
+  let [direct, setdirect] = useState(0);
+  let [netDepppost, setnetDeposit] = useState(0);
+  let [Airdropsent, setAirdropsent] = useState(0);
+  let [AirdropLastSent, setAirdroplastsent] = useState(0);
+
 
 
   const { t, i18n } = useTranslation();
   const inputEl = useRef();
-  const buddy =useRef();
+  const buddy = useRef();
 
-const getData=async()=>{
+  const getData = async () => {
 
-   
+
     let acc = await loadWeb3();
     const web3 = window.web3;
     let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+    let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
     let userInfoTotal = await contractOf.methods.userInfoTotals(acc).call();
+    let nedeposit = userInfoTotal.total_deposits;
+    nedeposit = web3.utils.fromWei(nedeposit);
+    nedeposit = parseFloat(nedeposit).toFixed(3)
+    let aidropsent = userInfoTotal.airdrops_received;
+    aidropsent = web3.utils.fromWei(aidropsent);
+    aidropsent = parseFloat(aidropsent).toFixed(3);
+    let airlstdrp = userInfoTotal.airdrops_total;
+    airlstdrp= web3.utils.fromWei(airlstdrp);
+    airlstdrp=parseFloat(airlstdrp).toFixed(3);
+    let Uinfo = await contractOf.methods.userInfo(acc).call();
+    let totalclaimed = Uinfo.payouts;
     let payOutOf = await contractOf.methods.payoutOf(acc).call();
     let contractInfo = await contractOf.methods.contractInfo().call();
     let totalDeposits = userInfoTotal.total_deposits;
     let myclaimsAvailable = await contractOf.methods.claimsAvailable(acc).call();
-    let netPay =payOutOf.net_payout;
+    let netPay = payOutOf.net_payout;
     let maxPay = payOutOf.max_payout;
     let myTeam = contractInfo._total_users
-    myclaimsAvailable = web3.utils.fromWei(myclaimsAvailable);
-    myclaimsAvailable = parseFloat(myclaimsAvailable).toFixed(6)
-    
-   
+    let dripBalance = await tokenContractOf.methods.balanceOf(acc).call();
+    dripBalance = web3.utils.fromWei(dripBalance)
+    dripBalance = parseFloat(dripBalance).toFixed(3)
+    setuserDripBalance(dripBalance);
+    setnetDeposit(nedeposit);
+    setAirdropsent(aidropsent);
+    setAirdroplastsent(airlstdrp);
+    totalclaimed = web3.utils.fromWei(totalclaimed);
+    totalclaimed = parseFloat(totalclaimed).toFixed(3);
+    // myclaimsAvailable = web3.utils.fromWei(myclaimsAvailable);
+    // myclaimsAvailable = parseFloat(myclaimsAvailable).toFixed(6)
+
+
     totalDeposits = web3.utils.fromWei(totalDeposits);
     maxPay = web3.utils.fromWei(maxPay);
+    maxPay = parseFloat(maxPay).toFixed(3);
+    let AvmaxPay = maxPay - totalclaimed;
     netPay = web3.utils.fromWei(netPay);
     netPay = parseFloat(netPay).toFixed(6)
-    console.log("team = ", myTeam);
+    console.log("team = ", AvmaxPay);
+
 
     setMyDeposited(totalDeposits);
     setMaxPayout(maxPay);
-    setAvailable(netPay);
+    setAvailable(AvmaxPay);
     setTeam(myTeam);
-    setClaimed(myclaimsAvailable);
-}
+    setClaimed(totalclaimed);
+  }
 
   const depositAmount = async () => {
-    let acc = await loadWeb3();
-    const web3 = window.web3;
-    let enteredVal = inputEl.current.value;
-    console.log("You entered val = ", web3.utils.toWei(enteredVal)); 
-    let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
-    let referral = await contractOfBuddy.methods.buddyOf(acc).call();
-    console.log("Tayy ; ",referral)
-    if(referral.length>15){
-    let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-    let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-    await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
-      .send({
-        from: acc
-      })
-
-      await contractOf.methods.deposit("0x4113ccD05D440f9580d55B2B34C92d6cC82eAB3c",web3.utils.toWei(enteredVal)).send({
-        from: acc
-      })
-    }else{
-      console.log("No Buddy Please get A buddy first")
+    try {
+      let acc = await loadWeb3();
+      const web3 = window.web3;
+      let enteredVal = inputEl.current.value;
+      console.log("You entered val = ", web3.utils.toWei(enteredVal));
+      let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
+      let referral = await contractOfBuddy.methods.buddyOf(acc).call();
+      console.log("Tayy ; ", referral)
+      if (referral.length > 15) {
+        let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+        let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+        await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
+          .send({
+            from: acc
+          })
+        toast.success("Transaction successfull")
+        await contractOf.methods.deposit("0x4113ccD05D440f9580d55B2B34C92d6cC82eAB3c", web3.utils.toWei(enteredVal)).send({
+          from: acc
+        })
+        toast.success("Transaction successfull")
+      } else {
+        toast.error("No Buddy Please get A buddy first");
+        console.log("No Buddy Please get A buddy first")
+      }
+    } catch (e) {
+      toast.error("Transaction Failed")
     }
   }
 
-  const updatemyBuddy=async()=>{
+  const updatemyBuddy = async () => {
     let acc = await loadWeb3();
     let enteredVal = buddy.current.value;
-    console.log("Your Buddy: ",enteredVal )
+    console.log("Your Buddy: ", enteredVal)
     const web3 = window.web3;
     let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
     await contractOfBuddy.methods.updateBuddy(enteredVal).send({
       from: acc
     })
   }
-  const myClaim= async()=>{
-    let acc = await loadWeb3();
-    const web3 = window.web3;
-    let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-    await contractOf.methods.claim().send({
-      from:acc
-    })
+  const myClaim = async () => {
+    try {
+      let acc = await loadWeb3();
+      const web3 = window.web3;
+      let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+      await contractOf.methods.claim().send({
+        from: acc
+      })
+      toast.success("Transaction successfull")
+    } catch (e) {
+      toast.error("Transaction Failed")
+    }
 
   }
 
@@ -184,7 +229,7 @@ const getData=async()=>{
                         {t("Rewarded.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">... / ...</span>
+                        <span className="notranslate">{clamied}</span>
                       </p>
                       <p className="text-small fst-italic">
                         {t("Direct.1")} / {t("Indirect.1")}
@@ -249,10 +294,12 @@ const getData=async()=>{
                     >
                       {t("CopyReferralLink.1")}!
                     </button>
-                    <a href="/fountain" className>
+                    <Link
+
+                      to="/swap" >
                       {t("GetDRIP.1")}
-                    </a>
-                    <a target="_blank" href="https://youtu.be/TOJg308iREw">
+                    </Link>
+                    <a target="_blank" href="https://www.youtube.com/watch?v=TOJg308iREw">
                       {" "}
                       {t("Tutorial.1")}
                     </a>
@@ -282,14 +329,14 @@ const getData=async()=>{
                               <p>
                                 {t("DRIPBalance.1")}:
                                 <label className="user-balance text-white fst-italic">
-                                  N/A
+                                  {userDripBalance}
                                 </label>
                               </p>
                             </div>
                           </div>
                           <div role="group" className="input-group">
                             <input
-                              ref ={inputEl}
+                              ref={inputEl}
                               type="number"
                               placeholder="Pearl"
                               className="form-control"
@@ -310,7 +357,7 @@ const getData=async()=>{
                         <div className="row justify-content-end">
                           <div className="col-12 text-left">
                             <button
-                            onClick={()=>depositAmount()}
+                              onClick={() => depositAmount()}
                               type="button"
                               className="btn btn-outline-light"
                             >
@@ -332,7 +379,7 @@ const getData=async()=>{
                     {t("HYDRATE.1")}({t("recompound.1")})
                   </button>
                   <button
-                  onClick={()=>myClaim()}
+                    onClick={() => myClaim()}
                     type="button"
                     className="btn btn-outline-light btn-block"
                   >
@@ -430,7 +477,7 @@ const getData=async()=>{
                           </h3>
                           <div>
                             <input
-                            ref={buddy}
+                              ref={buddy}
                               type="text"
                               placeholder="Address"
                               className="form-control"
@@ -440,7 +487,7 @@ const getData=async()=>{
                         </fieldset>
                         <div>
                           <button
-                          onClick={()=>updatemyBuddy()}
+                            onClick={() => updatemyBuddy()}
                             type="button"
                             className="btn btn-outline-light"
                           >
@@ -537,7 +584,7 @@ const getData=async()=>{
                           className="fst-italic"
                           style={{ fontSize: "16px" }}
                         >
-                          0
+                         {team}
                         </span>
                       </div>
                     </div>
@@ -552,7 +599,7 @@ const getData=async()=>{
                           className="fst-italic"
                           style={{ fontSize: "16px" }}
                         >
-                          0 {t("DRIP.1")}
+                          {netDepppost} {t("DRIP.1")}
                         </span>
                       </div>
                     </div>
@@ -567,7 +614,7 @@ const getData=async()=>{
                           className="fst-italic"
                           style={{ fontSize: "16px" }}
                         >
-                          0.000 /0.000 {t("DRIP.1")}
+                          {Airdropsent} {t("DRIP.1")}
                         </span>
                       </div>
                     </div>
@@ -582,7 +629,7 @@ const getData=async()=>{
                           className="fst-italic"
                           style={{ fontSize: "16px" }}
                         >
-                          {t("Never.1")}
+                          {AirdropLastSent}
                         </span>
                       </div>
                     </div>
