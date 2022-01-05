@@ -35,6 +35,20 @@ const Swap = () => {
   let [dripUsdtprice, setdripUsdtPrice] = useState(0);
   let [usdtPrice, setUsdPrice] = useState(0);
   let [isToogle, setisToogle] = useState(false);
+  //New States for BnB Contract balanace and Drip C-bal
+  let [cBnbBalance, setCbnbBalance] = useState(0);
+  let [cDripBalance, setCdripBalance] = useState(0);
+
+  // states for B by D
+  let [division, setDivision] = useState(0);
+  let [oneDripPrice, setOnedripPrice] = useState(0);
+
+  // states for belowfooter swap
+  let [tSupllyDrip, setTsupplyDrip] = useState(0);
+  let [tSupllyFountain, setTsupplyFountain] = useState(0);
+  let [tTransactionsFountain, setTtransactionFountain] = useState(0);
+
+
   const { t, i18n } = useTranslation();
   const inputEl = useRef();
   const inputE2 = useRef();
@@ -42,29 +56,71 @@ const Swap = () => {
   const getData = async () => {
     try {
       let usdValue = await axios.get("https://min-api.cryptocompare.com/data/price?fsym=BNB&tsyms=USD");
-      let currentBnB = usdValue.data.USD
-      setUsdPrice(currentBnB);
+      // let currentBnB = usdValue.data.USD
+      let currentBnB = 520.12;
       const web3 = window.web3;
+      let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+      let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
       let acc = await loadWeb3()
       let balance = await web3.eth.getBalance(acc);
       balance = web3.utils.fromWei(balance);
       balance = parseFloat(balance).toFixed(3);
-      setUsersBalance(balance);
-      let converted = currentBnB * balance
+
+      let contractFBalance = await web3.eth.getBalance(fountainContractAddress);
+      contractFBalance = await web3.utils.fromWei(contractFBalance);
+      contractFBalance = parseFloat(contractFBalance).toFixed(3);
+
+      let contractFdripBalance = await tokenContractOf.methods.balanceOf(fountainContractAddress).call();
+      contractFdripBalance = web3.utils.fromWei(contractFdripBalance);
+      contractFdripBalance = parseFloat(contractFdripBalance).toFixed(3)
+      // console.log("contractFdripBalance", contractFdripBalance);
+
+      let supplyDrip = await tokenContractOf.methods.totalSupply().call();
+      supplyDrip = web3.utils.fromWei(supplyDrip);
+      supplyDrip = parseFloat(supplyDrip).toFixed(3);
+      // console.log("Supply 22Drip", supplyDrip);
+
+      let fonutainDrip = await contractOf.methods.totalSupply().call();
+      fonutainDrip = web3.utils.fromWei(fonutainDrip);
+      fonutainDrip = parseFloat(fonutainDrip).toFixed(3);
+
+      let transactionFountain = await contractOf.methods.totalTxs().call();
+      // transactionFountain= web3.utils.fromWei(transactionFountain);
+      // transactionFountain= parseFloat(transactionFountain).toFixed(3);
+
+      let converted = currentBnB * contractFBalance
       converted = parseFloat(converted).toFixed(3);
-      setBnbPrice(converted);
-      let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+
       let myCurrbalance = await web3.eth.getBalance(acc);
 
+      // console.log("contractFBalance", converted)
       let dripBalance = await tokenContractOf.methods.balanceOf(acc).call();
-      let covertedDrip = myCurrbalance / dripBalance;
+      let covertedDrip = contractFBalance / contractFdripBalance;
+      let BdividedByD = covertedDrip;
+      BdividedByD = parseFloat(BdividedByD).toFixed(3);
+      let priceOfoneDrip = covertedDrip * currentBnB;
+      priceOfoneDrip = parseFloat(priceOfoneDrip).toFixed(3);
+      // console.log("divided = ", BdividedByD);
+      // console.log("price of one drip", priceOfoneDrip);
       covertedDrip = covertedDrip * currentBnB
       covertedDrip = parseFloat(covertedDrip).toFixed(4);
+      covertedDrip = contractFdripBalance * covertedDrip;
+      covertedDrip = parseFloat(covertedDrip).toFixed(3);
       dripBalance = web3.utils.fromWei(dripBalance)
       dripBalance = parseFloat(dripBalance).toFixed(3)
+
+      setUsdPrice(currentBnB);
       setuserDripBalance(dripBalance);
       setdripUsdtPrice(covertedDrip);
-
+      setBnbPrice(converted);
+      setUsersBalance(balance);
+      setCbnbBalance(contractFBalance);
+      setCdripBalance(contractFdripBalance);
+      setDivision(BdividedByD);
+      setOnedripPrice(priceOfoneDrip);
+      setTsupplyDrip(supplyDrip);
+      setTsupplyFountain(fonutainDrip);
+      setTtransactionFountain(transactionFountain);
     } catch (e) {
       console.log("Error while fetching Api", e);
     }
@@ -145,14 +201,14 @@ const Swap = () => {
   }
   const swapBnbtoToken = async () => {
     console.log("ASD")
-    await enterBuyAmount1();
+    await enterBuyAmount1();  
     try {
       const web3 = window.web3;
       let acc = await loadWeb3();
       let myvalue = inputEl.current.value;
       if (myvalue > 0) {
+        if (usersBalance>myvalue){
         myvalue = web3.utils.toWei(myvalue);
-
         let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
         let tokensInputPrice = await contractOf.methods.getBnbToTokenInputPrice(myvalue).call();
         // console.log(typeof (tripType))
@@ -163,16 +219,24 @@ const Swap = () => {
         console.log("percentValue ", percentValue.toString());
         console.log("myValue", myvalue);
 
+        if(percentValue>0){
         await contractOf.methods.bnbToTokenSwapInput(percentValue).send({
           from: acc,
           value: myvalue.toString()
         });
         toast.success("Transaction SucessFull")
+      }else{
+        toast.error("Please Select Slippage Tolerance")
+      }
+      }else{
+        toast.error("Entered Amount is greater than Your balance.Please Recharge.")
+      }
       }
       else {
         toast.error("Looks Like You Forgot to Enter Amount")
       }
     } catch (e) {
+      console.log("Error ; ", e)
       toast.error("Oops You Cancelled Transaction")
     }
   }
@@ -180,7 +244,7 @@ const Swap = () => {
 
   const bnbSwapSell = async () => {
 
-    console.log("ASD")
+    console.log("ASD1")
     await enterBuyAmount2();
     try {
       const web3 = window.web3;
@@ -189,10 +253,11 @@ const Swap = () => {
       if (myvalue > 0) {
 
         let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-        let myAllowance = await tokenContractOf.methods.allowance(acc, fountainContractAddress);
+        let myAllowance = await tokenContractOf.methods.allowance(acc, fountainContractAddress).call();
+        console.log("My Allowances = ",web3.utils.fromWei(myAllowance))
         if (myAllowance > 0) {
           let myvalue1 = web3.utils.toWei(myvalue);
-          if (myvalue > myAllowance) {
+          if (myAllowance >myvalue ) {
             let parameter = web3.utils.toWei(minRecievedDrip);
 
             let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
@@ -202,15 +267,18 @@ const Swap = () => {
             let percentValue = tokensOutputPrice - miniumrcvd;
             percentValue = percentValue.toString();
             console.log("AJSJD", myvalue.toString())
-            console.log("percentValue ", percentValue.toString());
-            console.log("myValue", myvalue);
-
+            console.log("percentValue", percentValue.toString());
+            console.log("myValue", parameter);
+            if(parameter>0){
             await contractOf.methods.tokenToBnbSwapInput(myvalue1, parameter).send({
               from: acc,
 
             });
 
             toast.success("Transaction SuccessFull")
+          }else{
+            toast.error("Please Select Slippage Tolerance")
+          }
           } else {
             toast.error("Oops You Entered Value Greater than your approval amount")
           }
@@ -324,10 +392,10 @@ const Swap = () => {
                       {t("Price.1")}
                     </h5>
                     <p className="text-large mb-2 text-white fst-italic">
-                      <span className="notranslate">NaN {t("BNB/DRIP.1")}</span>
+                      <span className="notranslate"> {t("BNB/DRIP.1")} {division}</span>
                     </p>
                     <p className="text-small fst-italic">
-                      {t("BNB/DRIP.1")} ≈ NaN {t("USDT.1")}
+                      {t("BNB/DRIP.1")} ≈ {oneDripPrice} {t("USDT.1")}
                     </p>
                   </div>
                 </div>
@@ -338,7 +406,7 @@ const Swap = () => {
                       {t("BNBBalance.1")}
                     </h5>
                     <p className="text-large mb-2 text-white fst-italic">
-                      <span className="notranslate">{usersBalance}</span>
+                      <span className="notranslate">{cBnbBalance}</span>
                     </p>
                     <p className="text-small fst-italic">
                       {t("BNB.1")} ≈{bnbPrice} {t("USDT.1")}
@@ -352,7 +420,7 @@ const Swap = () => {
                       {t("DRIPBalance.1")}{" "}
                     </h5>
                     <p className="text-large  mb-2 text-white fst-italic">
-                      <span className="notranslate">{userDripBalance}</span>
+                      <span className="notranslate">{cDripBalance}</span>
                     </p>
                     <p className="text-small fst-italic">
                       {t("DRIP.1")} ≈{dripUsdtprice}{t("USDT.1")}
@@ -974,7 +1042,7 @@ const Swap = () => {
                   {t("Supply.1")}
                 </h5>
                 <p className="text-large mb-2 text-white fst-italic">
-                  <span className="notranslate">...</span>
+                  <span className="notranslate">{tSupllyDrip}</span>
                 </p>
                 <p className="text-small fst-italic">{t("DRIP.1")}</p>
               </div>
@@ -991,7 +1059,7 @@ const Swap = () => {
                   {t("ContractBalance.1")}
                 </h5>
                 <p className="text-large mb-2 text-white fst-italic">
-                  <span className="notranslate">...</span>
+                  <span className="notranslate">{tSupllyFountain}</span>
                 </p>
                 <p className="text-small fst-italic">
                   {t("DROPS.1")} ({t("DRIP.1")} / {t("LOCKED.1")})
@@ -1005,7 +1073,7 @@ const Swap = () => {
                   {t("Tranactions.1")}
                 </h5>
                 <p className="text-large mb-2 text-white">
-                  <span className="notranslate">...</span>
+                  <span className="notranslate">{tTransactionsFountain}</span>
                 </p>
                 <p className="text-small">{t("Txs.1")}</p>
               </div>

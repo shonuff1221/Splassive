@@ -21,37 +21,33 @@ const Facuet = () => {
   let [clamied, setClaimed] = useState(0);
   let [team, setTeam] = useState(0);
   let [rewarded, setRewarded] = useState(0);
-  let [userDripBalance, setuserDripBalance] = useState(0);
 
   // player
   let [direct, setdirect] = useState(0);
   let [netDepppost, setnetDeposit] = useState(0);
   let [Airdropsent, setAirdropsent] = useState(0);
   let [AirdropLastSent, setAirdroplastsent] = useState(0);
+  let [playerTeam, setPlayerteam]= useState(0);
 
+// users balance
+
+let [userDripBalance, setuserDripBalance] = useState(0);
+let [usersBalance, setUsersBalance] = useState(0);
+let [myCal, setMycal] = useState(0);
 
 
   const { t, i18n } = useTranslation();
   const inputEl = useRef();
   const buddy = useRef();
+  let addressInput = useRef();
 
   const getData = async () => {
-
-
     let acc = await loadWeb3();
     const web3 = window.web3;
     let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
     let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
     let userInfoTotal = await contractOf.methods.userInfoTotals(acc).call();
-    let nedeposit = userInfoTotal.total_deposits;
-    nedeposit = web3.utils.fromWei(nedeposit);
-    nedeposit = parseFloat(nedeposit).toFixed(3)
-    let aidropsent = userInfoTotal.airdrops_received;
-    aidropsent = web3.utils.fromWei(aidropsent);
-    aidropsent = parseFloat(aidropsent).toFixed(3);
-    let airlstdrp = userInfoTotal.airdrops_total;
-    airlstdrp= web3.utils.fromWei(airlstdrp);
-    airlstdrp=parseFloat(airlstdrp).toFixed(3);
+   
     let Uinfo = await contractOf.methods.userInfo(acc).call();
     let totalclaimed = Uinfo.payouts;
     let payOutOf = await contractOf.methods.payoutOf(acc).call();
@@ -61,13 +57,25 @@ const Facuet = () => {
     let netPay = payOutOf.net_payout;
     let maxPay = payOutOf.max_payout;
     let myTeam = contractInfo._total_users
+
     let dripBalance = await tokenContractOf.methods.balanceOf(acc).call();
-    dripBalance = web3.utils.fromWei(dripBalance)
-    dripBalance = parseFloat(dripBalance).toFixed(3)
+    dripBalance = web3.utils.fromWei(dripBalance);
+    dripBalance= parseFloat(dripBalance).toFixed(3);
+
+    let balance = await web3.eth.getBalance(acc);
+      balance = web3.utils.fromWei(balance);
+      balance = parseFloat(balance).toFixed(3);
+
+      let calculated= balance / dripBalance;
+      calculated= parseFloat(calculated).toFixed(6);
+
+      // console.log("jingha lal2a hu hu",calculated );
+
+
+    setUsersBalance(balance);
     setuserDripBalance(dripBalance);
-    setnetDeposit(nedeposit);
-    setAirdropsent(aidropsent);
-    setAirdroplastsent(airlstdrp);
+    setMycal(calculated);
+   
     totalclaimed = web3.utils.fromWei(totalclaimed);
     totalclaimed = parseFloat(totalclaimed).toFixed(3);
     // myclaimsAvailable = web3.utils.fromWei(myclaimsAvailable);
@@ -90,11 +98,50 @@ const Facuet = () => {
     setClaimed(totalclaimed);
   }
 
+  //Player Info
+  const goPlayerinfo=async()=>{
+    let enteredAddress = addressInput.current.value;
+    console.log("Here in player info get :",enteredAddress)
+    try{
+    let acc = await loadWeb3();
+    const web3 = window.web3;
+    let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+    let userInfoTotal = await contractOf.methods.userInfoTotals(enteredAddress).call();
+    let playeruserInfo = await contractOf.methods.userInfo(enteredAddress).call();
+    let myDirect = playeruserInfo.direct_bonus;
+    let nedeposit = userInfoTotal.total_deposits;
+    let myrefferals= userInfoTotal.referrals;
+    nedeposit = web3.utils.fromWei(nedeposit);
+    nedeposit = parseFloat(nedeposit).toFixed(3)
+    let aidropsent = userInfoTotal.airdrops_received;
+    aidropsent = web3.utils.fromWei(aidropsent);
+    aidropsent = parseFloat(aidropsent).toFixed(3);
+    let airlstdrp = userInfoTotal.airdrops_total;
+    airlstdrp= web3.utils.fromWei(airlstdrp);
+    airlstdrp=parseFloat(airlstdrp).toFixed(3);
+
+
+    setnetDeposit(nedeposit);
+    setAirdropsent(aidropsent);
+    setAirdroplastsent(airlstdrp);
+    setPlayerteam(myrefferals);
+    setdirect(myDirect);
+
+
+
+  }catch(e){
+    toast.error("Can't Fetch User's Information at the moment please try again later.")
+    console.log("error",e)
+  }
+  }
   const depositAmount = async () => {
     try {
       let acc = await loadWeb3();
       const web3 = window.web3;
       let enteredVal = inputEl.current.value;
+      console.log("You entered val = ", enteredVal);
+      if(enteredVal>0){
+        if(userDripBalance>parseFloat(enteredVal)){
       console.log("You entered val = ", web3.utils.toWei(enteredVal));
       let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
       let referral = await contractOfBuddy.methods.buddyOf(acc).call();
@@ -115,7 +162,13 @@ const Facuet = () => {
         toast.error("No Buddy Please get A buddy first");
         console.log("No Buddy Please get A buddy first")
       }
-    } catch (e) {
+    }else{
+      toast.error("Entered value is greater than your balance")
+    }
+    }else{
+      toast.error("Looks Like You Forgot To Enter Amount")
+    }
+  }catch (e) {
       toast.error("Transaction Failed")
     }
   }
@@ -281,7 +334,7 @@ const Facuet = () => {
                   <div className="text-left col-lg-5 col-md-12">
                     <div className="priceDiv">
                       <span className="text-white fst-italic">
-                        {t("Price.1")} 0.03840231 {t("BNB.1")}/{t("DRIP.1")}
+                        {t("Price.1")} {myCal} {t("BNB.1")}/{t("DRIP.1")}
                       </span>{" "}
                     </div>
                   </div>
@@ -536,6 +589,7 @@ const Facuet = () => {
                             </h3>
                             <div>
                               <input
+                              ref={addressInput}
                                 type="text"
                                 placeholder="Address"
                                 className="form-control"
@@ -545,6 +599,7 @@ const Facuet = () => {
                           </fieldset>
                           <div>
                             <button
+                              onClick={()=>goPlayerinfo()}
                               type="button"
                               className="btn btn-outline-light fst-italic"
                             >
@@ -569,7 +624,7 @@ const Facuet = () => {
                           className="fst-italic"
                           style={{ fontSize: "16px" }}
                         >
-                          0
+                          {direct}
                         </span>
                       </div>
                     </div>
@@ -584,7 +639,7 @@ const Facuet = () => {
                           className="fst-italic"
                           style={{ fontSize: "16px" }}
                         >
-                         {team}
+                         {playerTeam}
                         </span>
                       </div>
                     </div>
@@ -1123,6 +1178,7 @@ const Facuet = () => {
                                       </h3>
                                       <div>
                                         <input
+                                        
                                           type="text"
                                           placeholder="Address"
                                           className="form-control"
