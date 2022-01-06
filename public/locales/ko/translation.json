@@ -2,8 +2,8 @@
     "SWAP":{
         "1": "교환"
     },
-    "FAUCET":{
-        "1": "수도꼭지"
+    "THETAP":{
+        "1": "탭"
     },
     "RESERVOIR":{
         "1": "저수지"
@@ -107,8 +107,8 @@
         "1": "총 공급"
     }
     ,
-    "DRIP":{
-        "1": "똑똑 떨어지는 물방울 소리"
+    "Splash":{
+        "1": "튀김"
     }
     ,
     "Transactions":{
@@ -141,8 +141,8 @@
 
 
 
-    "FOUNTAIN":{
-        "1": "분수"
+    "TheWell":{
+        "1": "더 웰"
     }
     ,
     "Price":{
@@ -291,11 +291,11 @@
         "1": "총"
     }
     ,
-    "TheDRIPNetworksFaucetisalowriskhighrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout1%dailyreturnoninvestmentupto365%.":{
-        "1": "DRIP Network의 Faucet은 1%의 일일 투자 수익률을 최대 365%까지 지급함으로써 고수익 예금 증명서와 유사하게 작동하는 저위험 고수익 계약입니다."
+    "Splassive’sFaucetisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
+        "1": "Splassive의 Faucet은 2%의 일일 투자 수익률을 최대 360%까지 지급함으로써 고수익 예금 증명서와 유사하게 작동하는 저위험 고 보상 계약입니다."
     }
     ,
-    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals":{
+    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals.":{
         "1": "플레이어는 예금, 수화(복합) 보상 및 팀 기반 추천을 통해 수입을 복합 및 확장할 수 있습니다."
     }
     ,

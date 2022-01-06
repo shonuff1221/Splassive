@@ -28,7 +28,7 @@ function App() {
   })
   }, [$]);
   return (
-    <div className="full-landing-image">
+    <div >
       <ToastContainer />
       <BrowserRouter>
         <Navbar />

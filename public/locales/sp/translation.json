@@ -2,8 +2,8 @@
     "SWAP":{
         "1": "INTERCAMBIO"
     },
-    "FAUCET":{
-        "1": "GRIFO"
+    "THETAP":{
+        "1": "EL GRIFO"
     },
     "RESERVOIR":{
         "1": "RESERVORIO"
@@ -107,8 +107,8 @@
         "1": "Suministro total"
     }
     ,
-    "DRIP":{
-        "1": "GOTEO"
+    "Splash":{
+        "1": "Chapoteo"
     }
     ,
     "Transactions":{
@@ -141,8 +141,8 @@
 
 
 
-    "FOUNTAIN":{
-        "1": "FUENTE"
+    "TheWell":{
+        "1": "La pozo"
     }
     ,
     "Price":{
@@ -291,11 +291,11 @@
         "1": "Total"
     }
     ,
-    "TheDRIPNetworksFaucetisalowriskhighrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout1%dailyreturnoninvestmentupto365%.":{
-        "1": "El faucet de la red DRIP es un contrato de alta recompensa y bajo riesgo que opera de manera similar a un certificado de depósito de alto rendimiento al pagar un 1% de retorno diario de la inversión hasta un 365%."
+    "Splassive’sFaucetisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
+        "1": "Splassive's Faucet es un contrato de alta recompensa y bajo riesgo que funciona de manera similar a un certificado de depósito de alto rendimiento al pagar un 2% de retorno diario de la inversión hasta un 360%."
     }
     ,
-    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals":{
+    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals.":{
         "1": "Los jugadores pueden acumular y extender sus ganancias a través de depósitos, recompensas de hidratación (capitalización), así como a través de referencias basadas en equipos."
     }
     ,

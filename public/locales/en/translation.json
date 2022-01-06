@@ -2,8 +2,8 @@
     "SWAP":{
         "1": "SWAP"
     },
-    "FAUCET":{
-        "1": "FAUCET"
+    "THETAP":{
+        "1": "THE TAP"
     },
     "RESERVOIR":{
         "1": "RESERVOIR"
@@ -107,8 +107,8 @@
         "1": "Total supply"
     }
     ,
-    "DRIP":{
-        "1": "DRIP"
+    "Splash":{
+        "1": "Splash"
     }
     ,
     "Transactions":{
@@ -141,8 +141,8 @@
 
 
 
-    "FOUNTAIN":{
-        "1": "FOUNTAIN"
+    "TheWell":{
+        "1": "The WELL"
     }
     ,
     "Price":{
@@ -291,11 +291,11 @@
         "1": "Total"
     }
     ,
-    "TheDRIPNetworksFaucetisalowriskhighrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout1%dailyreturnoninvestmentupto365%.":{
-        "1": "The DRIP Network’s Faucet is a low-risk, high reward contract that operates similarly to a high yield certificate of deposit by paying out 1% daily return on investment up to 365%."
+    "Splassive’sFaucetisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
+        "1": "Splassive’s Faucet is a low-risk, high reward contract that operates similarly to a high yield certificate of deposit by paying out 2% daily return on investment up to 360%."
     }
     ,
-    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals":{
+    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals.":{
         "1": "Players can compound and extend their earnings through deposits, hydrating (compounding) rewards as well as through team based referrals."
     }
     ,

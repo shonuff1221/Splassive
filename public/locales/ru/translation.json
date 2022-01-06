@@ -2,8 +2,8 @@
     "SWAP":{
         "1": "МЕНЯТЬ"
     },
-    "FAUCET":{
-        "1": "FAUCET"
+    "THETAP":{
+        "1": "КРАН"
     },
     "RESERVOIR":{
         "1": "РЕЗЕРВУАР"
@@ -70,13 +70,16 @@
     ,
     "andteam.":{
         "1": "и команда."
-    },
-    "TheofficialtokenoftheDRIPNetworkisDRIP(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "Официальный токен сети DRIP - это DRIP (BEP-20) на блокчейне Binance Smart (BSC), который фиксирует ценность за счет дефицита, дефляции, устойчивости к цензуре и создания надежной, действительно децентрализованной цепочки блоков."
-    },
-    "TherecommendedexchangefortradingDRIPistheFountaincontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
-        "1": "Рекомендуемая биржа для торговли DRIP - это контракт Fountain, который можно найти прямо на веб-сайте платформы под вкладкой своп, поскольку он позволяет нам отказаться от начального 10% налога на покупки и обеспечивает самые низкие цены и максимальную ликвидность, что приводит к меньшему проскальзыванию. для более крупных сделок."
-    },
+    }
+    ,
+    "Splassive’sFaucetisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
+        "1": "Splassive’s Faucet - это контракт с низким уровнем риска и высоким вознаграждением, который работает аналогично высокодоходному депозитному сертификату, выплачивая 2% ежедневной прибыли на инвестиции до 360%."
+    }
+    ,
+    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals.":{
+        "1": "Игроки могут увеличивать и увеличивать свой заработок за счет депозитов, вознаграждений за счет накопления (начисления), а также за счет командных рефералов."
+    }
+    ,
     "TRADE":{
         "1": "ТОРГОВЛЯ"
     },
@@ -107,8 +110,8 @@
         "1": "Общее предложение"
     }
     ,
-    "DRIP":{
-        "1": "КАПАТЬ"
+    "Splash":{
+        "1": "Всплеск"
     }
     ,
     "Transactions":{
@@ -141,8 +144,8 @@
 
 
 
-    "FOUNTAIN":{
-        "1": "ФОНТАН"
+    "TheWell":{
+        "1": "ХОРОШО"
     }
     ,
     "Price":{

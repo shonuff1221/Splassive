@@ -1,9 +1,12 @@
 .images{
   /* background-image: url("../../images/bg.jpg"); 
-
+background-color: #86ad74;
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover;  */
+  background-color: #86ad74;
+  top: 0;
+  border: 2px solid #86ad74;
 }
 .translate {
   font-family: Aquino, cursive;
@@ -40,10 +43,21 @@
   font-style: italic;
   font-size: 15px;
 }
-@media (max-width: 765px) {
+.mainimages{
+  width: 400px;
+}
+@media (max-width: 770px) {
   .mainrow {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
+  }
+  .mainimages{
+    width: 330px;
+  }
+}
+@media(max-width: 480px){
+  .mainimages{
+    width: 240px;
   }
 }
