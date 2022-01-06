@@ -11,30 +11,146 @@ import dummy from "../../images/dummy.png";
 import transfer from "../../images/transfer.png";
 import { useTranslation } from "react-i18next";
 import { loadWeb3 } from "../api";
-import { faucetContractAddress, faucetContractAbi, faucetTokenAddress, faucetTokenAbi } from "../utils/Faucet";
-
+import { faucetContractAddress, faucetContractAbi} from "../utils/Faucet";
+import {fountainContractAbi, fountainContractAddress} from '../utils/Fountain';
+import {dripTokenAbi, dripTokenAddress} from '../utils/DripToken';
+import {reservoirAbi,reservoirAddress} from '../utils/Reservoir';
+import Web3 from "web3";
+const webSupply= new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
 
 function Reservoir() {
   const { t, i18n } = useTranslation();
-  let [deposit, setDeposit]= useState(0);
-  let [totalWithDrawn, setTotalWithDrawn] =useState(0);
-const getData=async()=>{
+
+  let [userBnbBalance, setUserBnbBalance]=useState(0);
+  let [userDropBalance, setUserDropBalance]=useState(0);
+  let [bnbDripPrice, setBnbDripPrice]=useState(0);
+  let [userReward, setUserReward]=useState(0)
+  let [totalDrops, setTotalDrops]= useState(0);
+  let [stake, setStake]=useState(0);
+  let [totalWithDraw, setTotalWithDraw]=useState(0);
+  let [compundTotal, setCompoundTotal]= useState(0);
+  let [player, setPlayer]=useState(0);
+  let [loackedValue, setLoackedValue]=useState(0);
+  let [totalTxs, setTotalTxs]=useState(0)
+
+const getDataWithMetaMask=async()=>{
+  try{
   let acc = await loadWeb3();
+  if(acc == "No Wallet"){
+    setUserReward(0)
+  }else{
     const web3 = window.web3;
-    let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-    let contractInfo = await contractOf.methods.contractInfo().call();
-    let totalWithdraw = contractInfo._total_withdraw;
-    let stake = contractInfo._total_deposited;
-    totalWithdraw = web3.utils.fromWei(totalWithdraw);
-    totalWithdraw= parseFloat(totalWithdraw).toFixed(6);
-    stake = web3.utils.fromWei(stake);
-    stake = parseFloat(stake).toFixed(6);
-    setTotalWithDrawn(totalWithdraw);
-    setDeposit(stake);
+    let contractOf = new web3.eth.Contract(reservoirAbi,reservoirAddress);
+    let userRew = await contractOf.methods.dividendsOf(acc).call();
+    userRew = web3.utils.fromWei(userRew);
+    userRew = parseFloat(userRew).toFixed(3);
+      setUserReward(userRew)
+   }  
+    }catch(e){
+      console.log("get data in ", e);
+    }
 }
+
+const getDataWithoutMetaMask=async()=>{
+  try{
+    let contract =new webSupply.eth.Contract(reservoirAbi,reservoirAddress);
+    let totalDro= await contract.methods.totalSupply().call();
+    let totalDeposit= await contract.methods.totalDeposits().call();
+    totalDeposit = await webSupply.utils.fromWei(totalDeposit);
+    totalDeposit= parseFloat(totalDeposit).toFixed(3);
+    let totalDraw= await contract.methods.totalWithdrawn().call();
+    totalDraw = await webSupply.utils.fromWei(totalDraw);
+    totalDraw= parseFloat(totalDraw).toFixed(3);
+    let cmpdTotal= await contract.methods.myDividends().call();
+    cmpdTotal = await webSupply.utils.fromWei(cmpdTotal);
+    cmpdTotal= parseFloat(cmpdTotal).toFixed(3);
+    let players= await contract.methods.players().call();
+    players = await webSupply.utils.fromWei(players);
+    players= parseFloat(players).toFixed(3);
+    let loackBalance= await contract.methods.lockedTokenBalance().call();
+    loackBalance = await webSupply.utils.fromWei(loackBalance);
+    loackBalance= parseFloat(loackBalance).toFixed(3);
+    let txs= await contract.methods.lockedTokenBalance().call();
+    txs = await webSupply.utils.fromWei(txs);
+    txs= parseFloat(txs).toFixed(3);
+    setTotalDrops(totalDro)
+    setStake(totalDeposit)
+    setTotalWithDraw(totalDraw);
+    setCompoundTotal(cmpdTotal);
+    setPlayer(players);
+    setLoackedValue(loackBalance)
+    setTotalTxs(txs)
+  }catch(e){
+    console.log("error while get without metamsk data", e);
+  }
+
+}
+
+const bnbBalance=async()=>{
+  try{
+    let acc=await loadWeb3();
+    if(acc== "No Wallet"){
+      setUserBnbBalance(0)
+    }else{
+    const web3= window.web3;
+    let userBnB= await web3.eth.getBalance(acc);
+    let convertUserBnB= await web3.utils.fromWei(userBnB);
+    convertUserBnB= parseFloat(convertUserBnB).toFixed(3)
+    setUserBnbBalance(convertUserBnB)
+  }
+  }catch(e){
+    console.log("error while get bnb balance", e);
+  }
+}
+const dropBalance=async()=>{
+  try{
+    let acc=await loadWeb3();
+    if(acc== "No Wallet"){
+      setUserDropBalance(0);
+    }else{
+    const web3= window.web3;
+    let contract= new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+    let userDrop= await contract.methods.balanceOf(acc).call();
+    let convertuserDrop= await web3.utils.fromWei(userDrop);
+    convertuserDrop= parseFloat(convertuserDrop).toFixed(3)
+    setUserDropBalance(convertuserDrop)
+
+  }
+  }catch(e){
+    console.log("error while get Drop balance", e);
+  }
+}
+
+const getPerBnbDripPrice=async()=>{
+try{
+let acc= await loadWeb3()
+if(acc == "No Wallet"){
+  setBnbDripPrice(0);
+}else{
+  let web3= window.web3;
+  let contract= new web3.eth.Contract(dripTokenAbi, dripTokenAddress);
+  let dropBal= await contract.methods.balanceOf(reservoirAddress).call();
+  dropBal= await web3.utils.fromWei(dropBal);
+  let reservireBnb= await web3.eth.getBalance(reservoirAddress);
+  reservireBnb= await web3.utils.fromWei(reservireBnb);
+let price= reservireBnb/ dropBal;
+price= parseFloat(price).toFixed(3)
+setBnbDripPrice(price);
+
+}
+
+}catch(e){
+  console.log("get Per Bnb Price", e);
+}
+}
+
 useEffect(() => {
   setInterval(() => {
-    getData();
+    getPerBnbDripPrice();
+  bnbBalance();
+  dropBalance()
+  getDataWithMetaMask();
+  getDataWithoutMetaMask();
   }, 1000);
 }, []);
 
@@ -66,7 +182,7 @@ useEffect(() => {
                         {t("Rewards..1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">...</span>
+                        <span className="notranslate">{userReward}</span>
                       </p>
                       <p className="text-small fst-italic">{t("BNB.1")}</p>
                     </div>
@@ -78,7 +194,7 @@ useEffect(() => {
                       {t("TotalDROPS.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">...</span>
+                        <span className="notranslate">{totalDrops}</span>
                       </p>
                       <p className="text-small fst-italic">{t("DROP.1")}</p>
                     </div>
@@ -90,7 +206,7 @@ useEffect(() => {
                         {t("Stake.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">{deposit}</span>
+                        <span className="notranslate">{stake}</span>
                       </p>
                       <p className="text-small fst-italic">%</p>
                     </div>
@@ -114,7 +230,7 @@ useEffect(() => {
                       {t("TotalWithdrawn.1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">{totalWithDrawn}</span>
+                        <span className="notranslate">{totalWithDraw}</span>
                       </p>
                       <p className="text-small fst-italic">{t("BNB.1")}</p>
                     </div>
@@ -126,7 +242,7 @@ useEffect(() => {
                         {t("CompoundedTotal.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">...</span>
+                        <span className="notranslate">{compundTotal}</span>
                       </p>
                       <p className="text-small fst-italic">{t("BNB.1")}</p>
                     </div>
@@ -170,7 +286,7 @@ useEffect(() => {
                       >
                         {t("BNBBalance.1")}:
                         <label className="user-balance text-white fst-italic">
-                          0.0000
+                          {userBnbBalance}
                         </label>
                       </p>
                       {/* </div> */}
@@ -189,9 +305,10 @@ useEffect(() => {
                             <p style={{ lineHeight: "20%" }}>
                               {t("Price.1")}:
                               <label className="user-balance text-white fst-italic">
-                                ...
+                              {t("BNB.1")}/{t("DRIP.1")}
+                              ≈
+                                {bnbDripPrice}
                               </label>
-                              {t("DRIP.1")}/{t("BNB.1")}
                             </p>
                           </div>
                         </div>
@@ -246,7 +363,7 @@ useEffect(() => {
                               <p style={{ lineHeight: "20%" }}>
                                 {t("DropBalance.1")}:
                                 <label className="user-balance text-white fst-italic">
-                                  N/A
+                                 {userDropBalance}
                                 </label>
                               </p>
                             </div>
@@ -291,7 +408,7 @@ useEffect(() => {
                     {t("Players.1")}
                   </h5>
                   <p className="text-large mb-2 text-white fst-italic">
-                    <span className="notranslate">...</span>
+                    <span className="notranslate">{player}</span>
                   </p>
                   <p className="text-small fst-italic">{t("UserCount.1")}</p>
                 </div>
@@ -303,7 +420,7 @@ useEffect(() => {
                   {t("TotalValueLocked.1")}
                   </h5>
                   <p className="text-large mb-2 text-white fst-italic">
-                    <span className="notranslate">...</span>
+                    <span className="notranslate">{loackedValue}</span>
                   </p>
                   <p className="text-small fst-italic">{t("DROPS.1")}</p>
                 </div>
@@ -315,7 +432,7 @@ useEffect(() => {
                     {t("Rewards.1")}
                   </h5>
                   <p className="text-large mb-2 text-white">
-                    <span className="notranslate">...</span>
+                    <span className="notranslate">{userReward}</span>
                   </p>
                   <p className="text-small">{t("BNB.1")}</p>
                 </div>
@@ -339,7 +456,8 @@ useEffect(() => {
                     {t("ContractBalance.1")}
                   </h5>
                   <p className="text-large mb-2 text-white">
-                    <span className="notranslate">... {t("BNB.1")}</span>
+                    <span className="notranslate">{totalDrops}</span>
+                    {/* ... {t("BNB.1")} */}
                   </p>
                   <p className="text-small">{t("DROPS.1")} ≈ ... {t("USDT.1")}</p>
                 </div>
@@ -351,7 +469,7 @@ useEffect(() => {
                     {t("Transactions.1")}
                   </h5>
                   <p className="text-large mb-2 text-white">
-                    <span className="notranslate">...</span>
+                    <span className="notranslate">{totalTxs}</span>
                   </p>
                   <p className="text-small">{t("Txs.1")}</p>
                 </div>
