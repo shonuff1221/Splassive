@@ -2,8 +2,8 @@
     "SWAP":{
         "1": "ÉCHANGER"
     },
-    "FAUCET":{
-        "1": "ROBINET"
+    "THETAP":{
+        "1": "LE ROBINET"
     },
     "RESERVOIR":{
         "1": "RÉSERVOIR"
@@ -104,11 +104,11 @@
     }
     ,
     "Totalsupply":{
-        "1": "Offre totale"
+        "1": "Éclaboussure"
     }
     ,
-    "DRIP":{
-        "1": "GOUTTE"
+    "Splash":{
+        "1": "Splash"
     }
     ,
     "Transactions":{
@@ -141,8 +141,8 @@
 
 
 
-    "FOUNTAIN":{
-        "1": "FONTAINE"
+    "TheWell":{
+        "1": "Le puits"
     }
     ,
     "Price":{
@@ -291,11 +291,11 @@
         "1": "Le total"
     }
     ,
-    "TheDRIPNetworksFaucetisalowriskhighrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout1%dailyreturnoninvestmentupto365%.":{
-        "1": "Le Faucet du réseau DRIP est un contrat à faible risque et à haute récompense qui fonctionne de la même manière qu'un certificat de dépôt à haut rendement en versant un retour sur investissement quotidien de 1% jusqu'à 365%."
+    "Splassive’sFaucetisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
+        "1": "Splassive's Faucet est un contrat à faible risque et à haute récompense qui fonctionne de la même manière qu'un certificat de dépôt à haut rendement en versant un retour sur investissement quotidien de 2% jusqu'à 360%."
     }
     ,
-    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals":{
+    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals.":{
         "1": "Les joueurs peuvent composer et étendre leurs gains par le biais de dépôts, de récompenses hydratantes (composantes) ainsi que par le biais de références basées sur l'équipe."
     }
     ,

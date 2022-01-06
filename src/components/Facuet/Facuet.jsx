@@ -215,7 +215,7 @@ let [myCal, setMycal] = useState(0);
     }, 1000);
   }, []);
   return (
-    <div className="router-view">
+    <div className="images">
       <div id="faucet">
         <div className="container">
           <div className="landing-page">
@@ -226,7 +226,7 @@ let [myCal, setMycal] = useState(0);
                     <div className="row">
                       <div className="col">
                         <span className="luck-title notranslate">
-                          {t("FAUCET.1")}
+                          {t("THETAP.1")}
                         </span>
                       </div>
                     </div>
@@ -238,11 +238,11 @@ let [myCal, setMycal] = useState(0);
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
                     <div className="price-top-part">
                       <img src={money} alt="" width="40px" />
-                      <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 text-white mt-2 fst-italic">
+                      <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-2 fst-italic" style={{ color: "#7c625a" }}>
                         {t("Available.1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">{availabe}</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{availabe}</span>
                       </p>
                       <p className="text-small fst-italic">
                         {t("DRIP.1")} ≈ ... {t("USDT.1")}
@@ -252,11 +252,11 @@ let [myCal, setMycal] = useState(0);
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
                     <div className="price-top-part">
                       <img src={astro} alt="" width="40px" />
-                      <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 text-white mt-2 fst-italic">
+                      <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-2 fst-italic" style={{ color: "#7c625a" }}>
                         {t("Deposit.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">{myDeposited}</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{myDeposited}</span>
                       </p>
                       <p className="text-small fst-italic">
                         {t("DRIP.1")} ≈ ... {t("USDT.1")}
@@ -266,11 +266,11 @@ let [myCal, setMycal] = useState(0);
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
                     <div className="price-top-part">
                       <img src={dummy} alt="" width="40px" />
-                      <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 text-white mt-2 fst-italic">
+                      <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-2 fst-italic" style={{ color: "#7c625a" }}>
                         {t("Claimed.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">{clamied}</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{clamied}</span>
                       </p>
                       <p className="text-small fst-italic">{t("DRIP.1")}</p>
                     </div>
@@ -278,11 +278,11 @@ let [myCal, setMycal] = useState(0);
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
                     <div className="price-top-part">
                       <img src={shake} alt="" width="40px" />
-                      <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-1 text-white fst-italic">
+                      <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-1 fst-italic" style={{ color: "#7c625a" }}>
                         {t("Rewarded.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">{clamied}</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{clamied}</span>
                       </p>
                       <p className="text-small fst-italic">
                         {t("Direct.1")} / {t("Indirect.1")}
@@ -292,11 +292,11 @@ let [myCal, setMycal] = useState(0);
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
                     <div className="price-top-part">
                       <img src={money} alt="" width="40px" />
-                      <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 text-white mt-1 fst-italic">
+                      <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-1 fst-italic" style={{ color: "#7c625a" }}>
                         {t("MaxPayout.1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">{maxPayout}</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{maxPayout}</span>
                       </p>
                       <p className="text-small fst-italic">{t("DRIP.1")}</p>
                     </div>
@@ -304,11 +304,11 @@ let [myCal, setMycal] = useState(0);
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
                     <div className="price-top-part">
                       <img src={user} alt="" width="40px" />
-                      <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-1 text-white fst-italic">
+                      <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-1 fst-italic" style={{ color: "#7c625a" }}>
                         {t("Team.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate">{team}</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{team}</span>
                       </p>
                       <p className="text-small fst-italic">
                         {t("Players.1")} ({t("Direct.1")} / {t("Total.1")})
@@ -316,16 +316,16 @@ let [myCal, setMycal] = useState(0);
                     </div>
                   </div>
                 </div>
-                <p className="col-12 white mb-3 text-justify fst-italic">
+                <p className="col-12 white mb-3 text-justify fst-italic text-white" style={{fontSize: "20px"}}>
                   {" "}
                   {t(
-                    "TheDRIPNetworksFaucetisalowriskhighrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout1%dailyreturnoninvestmentupto365%..1"
+                    "Splassive’sFaucetisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%..1"
                   )}
                 </p>
-                <p className="col-12 white mb-3 text-justify fst-italic">
+                <p className="col-12 white mb-3 text-justify fst-italic text-white" style={{fontSize: "20px"}}>
                   {" "}
                   {t(
-                    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals.1"
+                    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals..1"
                   )}
                 </p>
               </div>
@@ -333,7 +333,7 @@ let [myCal, setMycal] = useState(0);
                 <div className="row mb-2">
                   <div className="text-left col-lg-5 col-md-12">
                     <div className="priceDiv">
-                      <span className="text-white fst-italic">
+                      <span className="fst-italic" style={{ color: "#7c625a" }}>
                         {t("Price.1")} {myCal} {t("BNB.1")}/{t("DRIP.1")}
                       </span>{" "}
                     </div>
@@ -343,23 +343,23 @@ let [myCal, setMycal] = useState(0);
                       id="copyRefButton"
                       type="button"
                       className="btn btn-link"
-                      style={{ display: "none" }}
+                      style={{ display: "none", color: "#7c625a"   }}
                     >
                       {t("CopyReferralLink.1")}!
                     </button>
                     <Link
-
+                    style={{ color: "#7c625a" }}
                       to="/swap" >
                       {t("GetDRIP.1")}
                     </Link>
-                    <a target="_blank" href="https://www.youtube.com/watch?v=TOJg308iREw">
+                    <a target="_blank" href="https://www.youtube.com/watch?v=TOJg308iREw" style={{ color: "#7c625a" }}>
                       {" "}
                       {t("Tutorial.1")}
                     </a>
                   </div>
                 </div>
-                <div className="card mb-4 bg-info text-white">
-                  <div className="card-body">
+                <div className="card mb-4  text-white" style={{ backgroundColor: "#4e2e4b", color: "#dacc79", border: "2px solid #4e2e4b" }}>
+                  <div className="card-body" >
                     <p className="card-text"></p>
                     <div className="landing-page">
                       <div className="text-left">
@@ -426,17 +426,19 @@ let [myCal, setMycal] = useState(0);
                 <p className="col-12 white mb-3"></p>
                 <div>
                   <button
+                  style={{ color: "#7c625a", fontSize: "20px" }}
                     type="button"
                     className="btn btn-outline-light btn-block"
                   >
-                    {t("HYDRATE.1")}({t("recompound.1")})
+                    <b>{t("HYDRATE.1")}({t("recompound.1")})</b>
                   </button>
                   <button
+                  style={{ color: "#7c625a", fontSize: "20px" }}
                     onClick={() => myClaim()}
                     type="button"
                     className="btn btn-outline-light btn-block"
                   >
-                    {t("Claim.1")}
+                    <b>{t("Claim.1")}</b>
                   </button>
                 </div>
                 <p />
@@ -445,7 +447,7 @@ let [myCal, setMycal] = useState(0);
             <div className="row mb-4 mt-2">
               <div className="container col-12 col-xl-6 col-lg-6 col-md-6 mb-4">
                 <h2>{t("GetaBuddy.1")}</h2>
-                <div className="card bg-info text-white">
+                <div className="card text-white" style={{ backgroundColor: "#4e2e4b", color: "#dacc79", border: "2px solid #4e2e4b" }}>
                   <div className="card-body">
                     {/* <p className="card-text"> */}
                     <p className=" fst-italic" style={{ fontSize: "18px" }}>
@@ -564,7 +566,7 @@ let [myCal, setMycal] = useState(0);
               </div>
               <div className="container col-12 col-xl-6 col-lg-6 col-md-6 mb-4">
                 <h2>{t("CheckoutDrippers.1")}</h2>
-                <div className="card bg-info text-white">
+                <div className="card text-white" style={{ backgroundColor: "#4e2e4b", color: "#dacc79", border: "2px solid #4e2e4b" }}>
                   <div className="card-body">
                     <p
                       className="card-text fst-italic"
@@ -695,7 +697,7 @@ let [myCal, setMycal] = useState(0);
             <div className="conatiner">
               <div className="row pt-4 mt-4  d-flex justify-content-center">
                 <div className="col-12 mb-4 ">
-                  <div className="card bg-dark text-white">
+                  <div className="card text-white" style={{ backgroundColor: "#4e2e4b", color: "#dacc79", border: "2px solid #4e2e4b" }}>
                     <div className="tabs" id="__BVID__241">
                       <div className="card-header">
                         <ul
@@ -779,14 +781,16 @@ let [myCal, setMycal] = useState(0);
                                   </fieldset>
                                   <div className="d-flex justify-content-end">
                                     <button
+                                    style={{backgroundColor: "#86ad74" , color: "white"}}
                                       type="button"
-                                      className="btn btn-primary fst-italic"
+                                      className="btn fst-italic me-2"
                                     >
                                       {t("Usemyaddress.1")}
                                     </button>
                                     <button
+                                    style={{backgroundColor: "#86ad74" , color: "white", border: "1px solid #86ad74"}}
                                       type="button"
-                                      className="btn btn-primary fst-italic"
+                                      className="btn fst-italic"
                                     >
                                       {t("Viewall.1")}
                                     </button>
@@ -794,8 +798,9 @@ let [myCal, setMycal] = useState(0);
                                 </div>
                               </form>
                               <button
+                              style={{backgroundColor: "#7c625a" , color: "white", border: "1px solid #7c625a"}}
                                 type="button"
-                                className="btn btn-secondary fst-italic"
+                                className="btn fst-italic"
                               >
                                 {t("Show.1")}
                               </button>
@@ -830,8 +835,9 @@ let [myCal, setMycal] = useState(0);
                                   </fieldset>
                                   <div className="d-flex justify-content-end">
                                     <button
+                                    style={{backgroundColor: "#86ad74" , color: "white", border: "1px solid #86ad74"}}
                                       type="button"
-                                      className="btn btn-secondary fst-italic"
+                                      className="btn fst-italic"
                                     >
                                       {t("Usemyaddress.1")}
                                     </button>
@@ -1016,8 +1022,9 @@ let [myCal, setMycal] = useState(0);
                                   </fieldset>
                                   <div>
                                     <button
+                                    style={{backgroundColor: "#86ad74" , color: "white", border: "1px solid #86ad74"}}
                                       type="button"
-                                      className="btn btn-secondary fst-italic"
+                                      className="btn fst-italic"
                                     >
                                       {t("RUN.1")}
                                     </button>
@@ -1056,8 +1063,9 @@ let [myCal, setMycal] = useState(0);
                                     style={{ lineHeight: "30%" }}
                                   >
                                     <button
+                                    style={{backgroundColor: "#86ad74" , color: "white", border: "1px solid #86ad74"}}
                                       type="button"
-                                      className="btn btn-secondary fst-italic "
+                                      className="btn fst-italic "
                                     >
                                       {t("SEND.1")}{" "}
                                     </button>
@@ -1223,8 +1231,9 @@ let [myCal, setMycal] = useState(0);
                               </div>
                               <div>
                                 <button
+                                style={{backgroundColor: "#86ad74" , color: "white", border: "1px solid #86ad74"}}
                                   type="button"
-                                  className="btn btn-primary fst-italic"
+                                  className="btn fst-italic"
                                 >
                                   {t("SEND.1")}
                                 </button>
@@ -1242,14 +1251,14 @@ let [myCal, setMycal] = useState(0);
             </div>
             <div className="container col-12">
               <div className="row mb-4 mt-2">
-                <h2 className="text-white-50">{t("About.1")}</h2>
-                <p className="text-white fst-italic">
+                <h2 className="text-white">{t("About.1")}</h2>
+                <p className="text-white fst-italic" style={{fontSize: "20px"}}>
                   {t(
                     "PlayerscanparticipatebypurchasingDRIPfromtheplatform'sSWAPpage,joininganotheruser’sDRIPteam(1DRIPminimumrequirement)DepositingDRIPtotheFaucetcontractearnsaconsistent1%dailyreturnoftheirDRIP(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,Faucet'scontractcannotdrainandwillALWAYSbeabletoprovidetheDRIPthathasbeenrewarded.DRIPrewardscomefroma10%taxonallDRIPtransactionsexcludingbuysfromtheplatform'sSWAPpage..1"
                   )}
                 </p>
                 <p id="referral" />
-                <p className="text-white fst-italic">
+                <p className="text-white fst-italic" style={{fontSize: "20px"}}>
                   {t(
                     "IfthereiseverasituationwherethetaxpoolisnotenoughtopayDRIPrewardsnewDRIPwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheDRIPnetwork,theprobabilitythatthesystemwillneedtomintnewDRIPtopayrewardsisextremelylow.SinceDRIPdepositedintoFaucetaresenttoaburnaddressandDRIPisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,DRIPistheonlydeflationarydailyROIplatform.ThebeststrategyforDRIPistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet.1"
                   )}

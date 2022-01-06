@@ -19,6 +19,7 @@ import france from "../../images/france.png";
 import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import {loadWeb3} from '../api'
+import logo from "../../images/logo4.png"
 const Navbarapp = () => {
   const { t, i18n } = useTranslation();
   // const { account } = useWeb3React();
@@ -80,7 +81,7 @@ connectWallet();
                 style={{ color: "white" }}
                 className="navbarlogo m-md-2"
               >
-                PEARL NETWORK
+                <img src={logo} width="220px"/>
               </Navbar.Brand>
             </Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -94,7 +95,7 @@ connectWallet();
                 </Link>
                 <Link to="/facuet" style={{ textDecoration: "none" }}>
                   <Nav.Link href="#facuet" id="navbartext">
-                  {t('FAUCET.1')}
+                  {t('THETAP.1')}
                   </Nav.Link>
                 </Link>
                 <Link to="/reservoir" style={{ textDecoration: "none" }}>

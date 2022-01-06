@@ -5,7 +5,7 @@
   }
   
   .footer-logo {
-    width: 200px
+    width: 400px
   }
   .footer-circle-button {
     margin-top: 80px;
@@ -25,7 +25,9 @@
 
 .footer-telegram {
     height: 24px;
-    width: 24px
+    width: 24px;
+    color: #dacc79
+
 }
 
 .footer-link {
@@ -55,6 +57,9 @@
     .landing-page .footer .footer-content {
         padding-top: 80px
     }
+    .footer-logo {
+        width: 240px
+      }
 }
 
 .landing-page .footer .footer-circle-button {
