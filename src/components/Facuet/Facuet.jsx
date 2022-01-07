@@ -245,7 +245,7 @@ let [myCal, setMycal] = useState(0);
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{availabe}</span>
                       </p>
                       <p className="text-small fst-italic">
-                        {t("DRIP.1")} ≈ ... {t("USDT.1")}
+                        {t("Splash.1")} ≈ ... {t("USDT.1")}
                       </p>
                     </div>
                   </div>
@@ -259,7 +259,7 @@ let [myCal, setMycal] = useState(0);
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{myDeposited}</span>
                       </p>
                       <p className="text-small fst-italic">
-                        {t("DRIP.1")} ≈ ... {t("USDT.1")}
+                        {t("Splash.1")} ≈ ... {t("USDT.1")}
                       </p>
                     </div>
                   </div>
@@ -272,7 +272,7 @@ let [myCal, setMycal] = useState(0);
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{clamied}</span>
                       </p>
-                      <p className="text-small fst-italic">{t("DRIP.1")}</p>
+                      <p className="text-small fst-italic">{t("Splash.1")}</p>
                     </div>
                   </div>
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
@@ -298,7 +298,7 @@ let [myCal, setMycal] = useState(0);
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{maxPayout}</span>
                       </p>
-                      <p className="text-small fst-italic">{t("DRIP.1")}</p>
+                      <p className="text-small fst-italic">{t("Splash.1")}</p>
                     </div>
                   </div>
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
@@ -319,7 +319,7 @@ let [myCal, setMycal] = useState(0);
                 <p className="col-12 white mb-3 text-justify fst-italic text-white" style={{fontSize: "20px"}}>
                   {" "}
                   {t(
-                    "Splassive’sFaucetisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%..1"
+                    "Splassive’sTheTapisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%..1"
                   )}
                 </p>
                 <p className="col-12 white mb-3 text-justify fst-italic text-white" style={{fontSize: "20px"}}>
@@ -334,7 +334,7 @@ let [myCal, setMycal] = useState(0);
                   <div className="text-left col-lg-5 col-md-12">
                     <div className="priceDiv">
                       <span className="fst-italic" style={{ color: "#7c625a" }}>
-                        {t("Price.1")} {myCal} {t("BNB.1")}/{t("DRIP.1")}
+                        {t("Price.1")} {myCal} {t("BNB.1")}/{t("Splash.1")}
                       </span>{" "}
                     </div>
                   </div>
@@ -350,7 +350,7 @@ let [myCal, setMycal] = useState(0);
                     <Link
                     style={{ color: "#7c625a" }}
                       to="/swap" >
-                      {t("GetDRIP.1")}
+                      {t("GetSplash.1")}
                     </Link>
                     <a target="_blank" href="https://www.youtube.com/watch?v=TOJg308iREw" style={{ color: "#7c625a" }}>
                       {" "}
@@ -380,7 +380,7 @@ let [myCal, setMycal] = useState(0);
                             <div className="col-6 text-right fst-italic">
                               {" "}
                               <p>
-                                {t("DRIPBalance.1")}:
+                                {t("SplashBalance.1")}:
                                 <label className="user-balance text-white fst-italic">
                                   {userDripBalance}
                                 </label>
@@ -565,7 +565,7 @@ let [myCal, setMycal] = useState(0);
                 </div>
               </div>
               <div className="container col-12 col-xl-6 col-lg-6 col-md-6 mb-4">
-                <h2>{t("CheckoutDrippers.1")}</h2>
+                <h2>{t("CheckoutSplashpers.1")}</h2>
                 <div className="card text-white" style={{ backgroundColor: "#4e2e4b", color: "#dacc79", border: "2px solid #4e2e4b" }}>
                   <div className="card-body">
                     <p
@@ -656,7 +656,7 @@ let [myCal, setMycal] = useState(0);
                           className="fst-italic"
                           style={{ fontSize: "16px" }}
                         >
-                          {netDepppost} {t("DRIP.1")}
+                          {netDepppost} {t("Splash.1")}
                         </span>
                       </div>
                     </div>
@@ -671,7 +671,7 @@ let [myCal, setMycal] = useState(0);
                           className="fst-italic"
                           style={{ fontSize: "16px" }}
                         >
-                          {Airdropsent} {t("DRIP.1")}
+                          {Airdropsent} {t("Splash.1")}
                         </span>
                       </div>
                     </div>
@@ -965,28 +965,28 @@ let [myCal, setMycal] = useState(0);
                                     <div class="select-wrapper ">
                                       <select class="select form-control fst-italic">
                                         <option value="value1">
-                                          1+ {t("DRIP.1")}
+                                          1+ {t("Splash.1")}
                                         </option>
                                         <option value="value1">
-                                          25+ {t("DRIP.1")}
+                                          25+ {t("Splash.1")}
                                         </option>
                                         <option value="value2">
-                                          50+ {t("DRIP.1")}
+                                          50+ {t("Splash.1")}
                                         </option>
                                         <option value="value3">
-                                          100+ {t("DRIP.1")}
+                                          100+ {t("Splash.1")}
                                         </option>
                                         <option value="value2">
-                                          250+ {t("DRIP.1")}
+                                          250+ {t("Splash.1")}
                                         </option>
                                         <option value="value2">
-                                          500+ {t("DRIP.1")}
+                                          500+ {t("Splash.1")}
                                         </option>
                                         <option value="value2">
-                                          1000+ {t("DRIP.1")}
+                                          1000+ {t("Splash.1")}
                                         </option>
                                         <option value="value2">
-                                          2000+ {t("DRIP.1")}
+                                          2000+ {t("Splash.1")}
                                         </option>
                                       </select>
                                     </div>
@@ -1037,7 +1037,7 @@ let [myCal, setMycal] = useState(0);
                                   >
                                     {t("Available.1")}:
                                     <label className="user-balance text-white fst-italic">
-                                      0 {t("DRIP.1")}
+                                      0 {t("Splash.1")}
                                     </label>
                                   </p>
                                   <p
@@ -1053,7 +1053,7 @@ let [myCal, setMycal] = useState(0);
                                     className="text-end"
                                     style={{ lineHeight: "30%" }}
                                   >
-                                    {t("EstimatedDripperperson.1")}:
+                                    {t("EstimatedSplashperperson.1")}:
                                     <label className="user-balance text-white fst-italic">
                                       NAN
                                     </label>
@@ -1211,7 +1211,7 @@ let [myCal, setMycal] = useState(0);
                                     <p style={{ lineHHeight: "30%" }}>
                                       {t("Available.1")}:
                                       <label className="user-balance text-white fst-italic">
-                                        0 {t("DRIP.1")}
+                                        0 {t("Splash.1")}
                                       </label>
                                     </p>
                                   </div>
@@ -1223,7 +1223,7 @@ let [myCal, setMycal] = useState(0);
                                 >
                                   <input
                                     type="number"
-                                    placeholder="DRIP"
+                                    placeholder="Splash"
                                     className="form-control"
                                     id="__BVID__213"
                                   />
@@ -1254,13 +1254,13 @@ let [myCal, setMycal] = useState(0);
                 <h2 className="text-white">{t("About.1")}</h2>
                 <p className="text-white fst-italic" style={{fontSize: "20px"}}>
                   {t(
-                    "PlayerscanparticipatebypurchasingDRIPfromtheplatform'sSWAPpage,joininganotheruser’sDRIPteam(1DRIPminimumrequirement)DepositingDRIPtotheFaucetcontractearnsaconsistent1%dailyreturnoftheirDRIP(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,Faucet'scontractcannotdrainandwillALWAYSbeabletoprovidetheDRIPthathasbeenrewarded.DRIPrewardscomefroma10%taxonallDRIPtransactionsexcludingbuysfromtheplatform'sSWAPpage..1"
+                    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sSWAPpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent1%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sSWAPpage..1"
                   )}
                 </p>
                 <p id="referral" />
                 <p className="text-white fst-italic" style={{fontSize: "20px"}}>
                   {t(
-                    "IfthereiseverasituationwherethetaxpoolisnotenoughtopayDRIPrewardsnewDRIPwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheDRIPnetwork,theprobabilitythatthesystemwillneedtomintnewDRIPtopayrewardsisextremelylow.SinceDRIPdepositedintoFaucetaresenttoaburnaddressandDRIPisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,DRIPistheonlydeflationarydailyROIplatform.ThebeststrategyforDRIPistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet.1"
+                    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet.1"
                   )}
                   : 1-2, 2-3, 3-5, 4-8, 5-13, 6-21, 7-34, 8-55, 9-89, 10-144,
                   11-233, 12-377, 13-610, 14-987, 15-1597

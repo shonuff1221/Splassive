@@ -54,11 +54,11 @@
 
 
 
-    "DRIPNETWORK":{
-        "1": "滴灌网络"
+    "SplashNETWORK":{
+        "1": "溅灌网络"
     },
-    "DRIPNetworkisthelatestprojectdevelopedby":{
-        "1": "DRIP Network 是 DRIP Network 开发的最新项目"
+    "SplashNetworkisthelatestprojectdevelopedby":{
+        "1": "溅 Network 是 溅 Network 开发的最新项目"
     },
     "Forex_Shark":{
         "1": "Forex_Shark"
@@ -71,11 +71,11 @@
     "andteam.":{
         "1": "和团队."
     },
-    "TheofficialtokenoftheDRIPNetworkisDRIP(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "DRIP 网络的官方代币是币安智能区块链 (BSC) 上的 DRIP (BEP-20)，它通过稀缺、通货紧缩、抗审查以及建立在强大、真正去中心化的区块链上来获取价值"
+    "TheofficialtokenoftheSplashNetworkisSplash(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "溅 网络的官方代币是币安智能区块链 (BSC) 上的 溅 (BEP-20)，它通过稀缺、通货紧缩、抗审查以及建立在强大、真正去中心化的区块链上来获取价值"
     },
-    "TherecommendedexchangefortradingDRIPistheFountaincontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
-        "1": "推荐的 DRIP 交易交易所是 Fountain 合约，可以直接在平台网站的掉期选项卡下找到，因为它允许我们免除最初 10% 的买入税，并提供最低的价格和最高的流动性，从而减少滑点对于较大的交易"
+    "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
+        "1": "推荐的 溅 交易交易所是 井 合约，可以直接在平台网站的掉期选项卡下找到，因为它允许我们免除最初 10% 的买入税，并提供最低的价格和最高的流动性，从而减少滑点对于较大的交易"
     },
     "TRADE":{
         "1": "贸易"
@@ -89,8 +89,8 @@
     "STATS":{
         "1": "统计数据"
     },
-    "TheDRIPtokencapturestheentirevalueoftheDripNetworkandmakesitavailabletotheentireBNBCommunity":{
-        "1": "DRIP 代币捕获了 Drip Network 的全部价值，并使其可供整个 BNB 社区使用"
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireBNBCommunity":{
+        "1": "溅 代币捕获了 溅 Network 的全部价值，并使其可供整个 BNB 社区使用"
     },
     "Players":{
         "1": "球员"
@@ -149,8 +149,8 @@
         "1": "价格"
     }
     ,
-    "BNB/DRIP":{
-        "1": "币安/滴滴"
+    "BNB/Splash":{
+        "1": "币安/溅溅"
     }
     ,
     "BNBBalance":{
@@ -164,13 +164,13 @@
         "1": "比特币"
     }
     ,
-    "DRIPBalance":{
-        "1": "滴水平衡"
+    "SplashBalance":{
+        "1": "溅水平衡"
     }
     
     ,
-    "BuyDRIP":{
-        "1": "购买滴滴"
+    "BuySplash":{
+        "1": "购买溅溅"
     }
     
     ,
@@ -190,8 +190,8 @@
         "1": "买"
     }
     ,
-    "SELLDRIP":{
-        "1": "卖滴"
+    "SELLSplash":{
+        "1": "卖溅"
     }
     
     ,
@@ -207,8 +207,8 @@
         "1": "卖"
     }
     ,
-    "ApproveDRIP":{
-        "1": "批准滴滴"
+    "ApproveSplash":{
+        "1": "批准溅溅"
     }
     ,
     "Chart":{
@@ -219,8 +219,8 @@
         "1": "统计数据"
     }
     ,
-    "FountainisthebestwaytoexchangevalueintheDripNetwork!Herearethenumbers":{
-        "1": "Fountain是Drip Network中最好的价值交换方式！这是数字"
+    "TheWellisthebestwaytoexchangevalueintheSplashNetwork!Herearethenumbers":{
+        "1": "井是溅 Network中最好的价值交换方式！这是数字"
     }
 
     ,
@@ -233,7 +233,7 @@
     }
     ,
     "DROPS":{
-        "1": "滴滴"
+        "1": "溅溅"
     }
     ,
     "LOCKED":{
@@ -291,7 +291,7 @@
         "1": "全部的"
     }
     ,
-    "Splassive’sFaucetisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
+    "Splassive’sTheTapisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
         "1": "Splasive 的水龙头是一种低风险、高回报的合约，其运作方式类似于高收益存款证，每天支付 2% 的投资回报率，最高可达 360%。"
     }
     ,
@@ -302,8 +302,8 @@
     "CopyReferralLink":{
         "1": "复制推荐链接"
     },
-    "GetDRIP":{
-        "1": "获取滴水"
+    "GetSplash":{
+        "1": "获取溅水"
     }
     ,
     "Aminimumof1Pearlrequiredfordeposits":{
@@ -368,7 +368,7 @@
     }
     ,
     "CheckoutDrippers":{
-        "1": "结账滴头"
+        "1": "结账溅头"
     }
     ,
     "PlayerLookup":{
@@ -490,8 +490,8 @@
         "1": "收件人数量"
     }
     ,
-    "EstimatedDripperperson":{
-        "1": "预计每人滴水量"
+    "EstimatedSplashperperson":{
+        "1": "预计每人溅水量"
     }
     ,
     "SEND":{
@@ -520,12 +520,12 @@
         "1": "关于"
     }
     ,
-    "PlayerscanparticipatebypurchasingDRIPfromtheplatform'sSWAPpage,joininganotheruser’sDRIPteam(1DRIPminimumrequirement)DepositingDRIPtotheFaucetcontractearnsaconsistent1%dailyreturnoftheirDRIP(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,Faucet'scontractcannotdrainandwillALWAYSbeabletoprovidetheDRIPthathasbeenrewarded.DRIPrewardscomefroma10%taxonallDRIPtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
-        "1": "玩家可以通过从平台的 SWAP 页面购买 DRIP 来参与，加入另一个用户的 DRIP 团队（最低要求 1 DRIP） 将 DRIP 存入水龙头合约可以被动地获得持续 1% 的每日 DRIP 回报（365% 最高支出）。玩家还可以通过定期存款、滚动奖励以及基于团队的推荐来增加收入。与许多其他承诺每日百分比回报一致的平台不同，Faucet 的合约不会耗尽，并且始终能够提供已获得奖励的 DRIP。 DRIP 奖励来自对所有 DRIP 交易征收 10% 的税，不包括从平台的 SWAP 页面购买。"
+    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sSWAPpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent1%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
+        "1": "玩家可以通过从平台的 SWAP 页面购买 溅 来参与，加入另一个用户的 溅 团队（最低要求 1 溅） 将 溅 存入水龙头合约可以被动地获得持续 1% 的每日 溅 回报（365% 最高支出）。玩家还可以通过定期存款、滚动奖励以及基于团队的推荐来增加收入。与许多其他承诺每日百分比回报一致的平台不同，水龙头 的合约不会耗尽，并且始终能够提供已获得奖励的 溅。 溅 奖励来自对所有 溅 交易征收 10% 的税，不包括从平台的 SWAP 页面购买。"
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopayDRIPrewardsnewDRIPwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheDRIPnetwork,theprobabilitythatthesystemwillneedtomintnewDRIPtopayrewardsisextremelylow.SinceDRIPdepositedintoFaucetaresenttoaburnaddressandDRIPisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,DRIPistheonlydeflationarydailyROIplatform.ThebeststrategyforDRIPistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
-        "1": "如果出现税收池不足以支付 DRIP 奖励的情况，将铸造新的 DRIP 以确保支付奖励。鉴于 DRIP 网络背后的博弈论，系统需要铸造新的 DRIP 来支付奖励的概率极低。由于存入 Faucet 的 DRIP 被发送到一个销毁地址，并且 DRIP 通过水库合约不断被锁定在流动性池中，因此 DRIP 是唯一的通货紧缩每日 ROI 平台。 DRIP 的最佳策略是通过直接推荐来建立您的团队，从而专注于现实世界的采用，因为您将从推荐的存款中获得奖金奖励，并根据您钱包中持有的 bR34P 数量从他们推荐的玩家那里获得下线奖金"
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
+        "1": "如果出现税收池不足以支付 溅 奖励的情况，将铸造新的 溅 以确保支付奖励。鉴于 溅 网络背后的博弈论，系统需要铸造新的 溅 来支付奖励的概率极低。由于存入 水龙头 的 溅 被发送到一个销毁地址，并且 溅 通过水库合约不断被锁定在流动性池中，因此 溅 是唯一的通货紧缩每日 ROI 平台。 溅 的最佳策略是通过直接推荐来建立您的团队，从而专注于现实世界的采用，因为您将从推荐的存款中获得奖金奖励，并根据您钱包中持有的 bR34P 数量从他们推荐的玩家那里获得下线奖金"
     }
     ,
 
@@ -537,7 +537,7 @@
     }
     ,
     "TotalDROPS":{
-        "1": "总滴水量"
+        "1": "总溅水量"
     }
     ,
     "DROP":{
@@ -566,8 +566,8 @@
     }
 
     ,
-    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoDRIP":{
-        "1": "Reservoir 是 The DRIP Network 的解决方案，适用于希望通过向 DRIP 增加流动性而从非通胀高产农业中获益的玩家"
+    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash":{
+        "1": "Reservoir 是 The 溅 Network 的解决方案，适用于希望通过向 溅 增加流动性而从非通胀高产农业中获益的玩家"
     }
     ,
     "COMPOUND":{
@@ -597,8 +597,8 @@
     "DropBalance":{
         "1": "掉落余额"
     },
-    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoDRIP.Herearethenumbers":{
-        "1": "Reservoir 是 The DRIP Network 的解决方案，适用于希望通过向 DRIP 增加流动性而从非通胀高产农业中获益的玩家。这是数字"
+    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers":{
+        "1": "Reservoir 是 The 溅 Network 的解决方案，适用于希望通过向 溅 增加流动性而从非通胀高产农业中获益的玩家。这是数字"
     }
     ,
     "UserCount":{

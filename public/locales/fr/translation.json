@@ -54,11 +54,11 @@
 
 
 
-    "DRIPNETWORK":{
-        "1": "RÉSEAU GOUTTE À GOUTTE"
+    "SplashNETWORK":{
+        "1": "RÉSEAU Éclaboussure À Éclaboussure"
     },
-    "DRIPNetworkisthelatestprojectdevelopedby":{
-        "1": "DRIP Network est le dernier projet développé par"
+    "SplashNetworkisthelatestprojectdevelopedby":{
+        "1": "Éclaboussure Network est le dernier projet développé par"
     },
     "Forex_Shark":{
         "1": "Forex_Requin"
@@ -71,11 +71,11 @@
     "andteam.":{
         "1": "et équipe."
     },
-    "TheofficialtokenoftheDRIPNetworkisDRIP(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "Le jeton officiel du réseau DRIP est DRIP (BEP-20) sur la blockchain Binance Smart (BSC) qui capture de la valeur en étant rare, déflationniste, résistant à la censure et en étant construit sur une blockchain robuste et véritablement décentralisée."
+    "TheofficialtokenoftheSplashNetworkisSplash(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "Le jeton officiel du réseau Éclaboussure est Éclaboussure (BEP-20) sur la blockchain Binance Smart (BSC) qui capture de la valeur en étant rare, déflationniste, résistant à la censure et en étant construit sur une blockchain robuste et véritablement décentralisée."
     },
-    "TherecommendedexchangefortradingDRIPistheFountaincontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
-        "1": "L'échange recommandé pour le trading de DRIP est le contrat Fountain qui peut être trouvé directement sur le site Web des plateformes sous l'onglet swap, car il nous permet de renoncer à la taxe initiale de 10 % sur les achats et fournit les prix les plus bas et la liquidité la plus élevée, ce qui entraîne moins de glissement pour les métiers plus importants."
+    "TherecommendedexchangefortradingSplashistheThe Wellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
+        "1": "L'échange recommandé pour le trading de Éclaboussure est le contrat Le puits qui peut être trouvé directement sur le site Web des plateformes sous l'onglet swap, car il nous permet de renoncer à la taxe initiale de 10 % sur les achats et fournit les prix les plus bas et la liquidité la plus élevée, ce qui entraîne moins de glissement pour les métiers plus importants."
     },
     "TRADE":{
         "1": "COMMERCE"
@@ -89,8 +89,8 @@
     "STATS":{
         "1": "STATISTIQUES"
     },
-    "TheDRIPtokencapturestheentirevalueoftheDripNetworkandmakesitavailabletotheentireBNBCommunity":{
-        "1": "Le jeton DRIP capture toute la valeur du réseau Drip et le met à la disposition de l'ensemble de la communauté BNB"
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireBNBCommunity":{
+        "1": "Le jeton Éclaboussure capture toute la valeur du réseau Éclaboussure et le met à la disposition de l'ensemble de la communauté BNB"
     },
     "Players":{
         "1": "Joueuses"
@@ -149,8 +149,8 @@
         "1": "Prix"
     }
     ,
-    "BNB/DRIP":{
-        "1": "BNB/DRIP"
+    "BNB/Splash":{
+        "1": "BNB/Éclaboussure"
     }
     ,
     "BNBBalance":{
@@ -164,13 +164,13 @@
         "1": "BNB"
     }
     ,
-    "DRIPBalance":{
-        "1": "Solde goutte à goutte"
+    "SplashBalance":{
+        "1": "Solde Éclaboussure à Éclaboussure"
     }
     
     ,
-    "BuyDRIP":{
-        "1": "Acheter DRIP"
+    "BuySplash":{
+        "1": "Acheter Éclaboussure"
     }
     
     ,
@@ -190,8 +190,8 @@
         "1": "Acheter"
     }
     ,
-    "SELLDRIP":{
-        "1": "VENDRE GOUTTE"
+    "SELLSplash":{
+        "1": "VENDRE Éclaboussure"
     }
     
     ,
@@ -207,8 +207,8 @@
         "1": "Vendre"
     }
     ,
-    "ApproveDRIP":{
-        "1": "Approuver le DRIP"
+    "ApproveSplash":{
+        "1": "Approuver le Éclaboussure"
     }
     ,
     "Chart":{
@@ -219,8 +219,8 @@
         "1": "Statistiques"
     }
     ,
-    "FountainisthebestwaytoexchangevalueintheDripNetwork!Herearethenumbers":{
-        "1": "La fontaine est le meilleur moyen d'échanger de la valeur dans le réseau Drip ! voici les chiffres"
+    "TheWellisthebestwaytoexchangevalueintheSplashNetwork!Herearethenumbers":{
+        "1": "La fontaine est le meilleur moyen d'échanger de la valeur dans le réseau Éclaboussure ! voici les chiffres"
     }
 
     ,
@@ -233,7 +233,7 @@
     }
     ,
     "DROPS":{
-        "1": "GOUTTES"
+        "1": "ÉclaboussureS"
     }
     ,
     "LOCKED":{
@@ -291,8 +291,8 @@
         "1": "Le total"
     }
     ,
-    "Splassive’sFaucetisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
-        "1": "Splassive's Faucet est un contrat à faible risque et à haute récompense qui fonctionne de la même manière qu'un certificat de dépôt à haut rendement en versant un retour sur investissement quotidien de 2% jusqu'à 360%."
+    "Splassive’sTheTapisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
+        "1": "Splassive's Le robinet est un contrat à faible risque et à haute récompense qui fonctionne de la même manière qu'un certificat de dépôt à haut rendement en versant un retour sur investissement quotidien de 2% jusqu'à 360%."
     }
     ,
     "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals.":{
@@ -302,8 +302,8 @@
     "CopyReferralLink":{
         "1": "Copier le lien de parrainage"
     },
-    "GetDRIP":{
-        "1": "Obtenez DRIP"
+    "GetSplash":{
+        "1": "Obtenez Éclaboussure"
     }
     ,
     "Aminimumof1Pearlrequiredfordeposits":{
@@ -367,8 +367,8 @@
         "1": "Lien de référence"
     }
     ,
-    "CheckoutDrippers":{
-        "1": "Goutteurs à la caisse"
+    "CheckoutSplashpers":{
+        "1": "Éclaboussureurs à la caisse"
     }
     ,
     "PlayerLookup":{
@@ -490,8 +490,8 @@
         "1": "Nombre de destinataires"
     }
     ,
-    "EstimatedDripperperson":{
-        "1": "Goutte à goutte estimée par personne"
+    "EstimatedSplashperperson":{
+        "1": "Éclaboussure à Éclaboussure estimée par personne"
     }
     ,
     "SEND":{
@@ -520,12 +520,12 @@
         "1": "Sur"
     }
     ,
-    "PlayerscanparticipatebypurchasingDRIPfromtheplatform'sSWAPpage,joininganotheruser’sDRIPteam(1DRIPminimumrequirement)DepositingDRIPtotheFaucetcontractearnsaconsistent1%dailyreturnoftheirDRIP(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,Faucet'scontractcannotdrainandwillALWAYSbeabletoprovidetheDRIPthathasbeenrewarded.DRIPrewardscomefroma10%taxonallDRIPtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
-        "1": "Les joueurs peuvent participer en achetant le DRIP à partir de la page SWAP de la plate-forme, en rejoignant l'équipe DRIP d'un autre utilisateur (exigence minimale de 1 DRIP). Les joueurs peuvent également augmenter leurs gains grâce à des dépôts réguliers, des récompenses glissantes ainsi que des références basées sur l'équipe. Contrairement à de nombreuses autres plates-formes promettant un pourcentage de rendement quotidien constant, le contrat de Faucet ne peut pas s'écouler et sera TOUJOURS en mesure de fournir le DRIP qui a été récompensé. Les récompenses DRIP proviennent d'une taxe de 10 % sur toutes les transactions DRIP, à l'exclusion des achats effectués sur la page SWAP de la plate-forme."
+    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sSWAPpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent1%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
+        "1": "Les joueurs peuvent participer en achetant le Éclaboussure à partir de la page SWAP de la plate-forme, en rejoignant l'équipe Éclaboussure d'un autre utilisateur (exigence minimale de 1 Éclaboussure). Les joueurs peuvent également augmenter leurs gains grâce à des dépôts réguliers, des récompenses glissantes ainsi que des références basées sur l'équipe. Contrairement à de nombreuses autres plates-formes promettant un pourcentage de rendement quotidien constant, le contrat de Le robinet ne peut pas s'écouler et sera TOUJOURS en mesure de fournir le Éclaboussure qui a été récompensé. Les récompenses Éclaboussure proviennent d'une taxe de 10 % sur toutes les transactions Éclaboussure, à l'exclusion des achats effectués sur la page SWAP de la plate-forme."
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopayDRIPrewardsnewDRIPwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheDRIPnetwork,theprobabilitythatthesystemwillneedtomintnewDRIPtopayrewardsisextremelylow.SinceDRIPdepositedintoFaucetaresenttoaburnaddressandDRIPisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,DRIPistheonlydeflationarydailyROIplatform.ThebeststrategyforDRIPistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
-        "1": "Si jamais il y a une situation où le pool fiscal n'est pas suffisant pour payer les récompenses du RRD, un nouveau RRD sera créé pour garantir le paiement des récompenses. Compte tenu de la théorie des jeux derrière le réseau DRIP, la probabilité que le système ait besoin de créer un nouveau DRIP pour payer les récompenses est extrêmement faible. Étant donné que les DRIP déposés dans Faucet sont envoyés à une adresse de brûlage et que les DRIP sont constamment bloqués dans le pool de liquidités via le contrat de réservoir, DRIP est la seule plate-forme déflationniste de retour sur investissement quotidien. La meilleure stratégie pour DRIP est de se concentrer sur l'adoption dans le monde réel en construisant votre équipe grâce à des références directes, car vous recevrez des récompenses bonus des références sur leurs dépôts et des bonus de descendance des joueurs qu'ils réfèrent en fonction du montant de bR34P détenu dans votre portefeuille."
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
+        "1": "Si jamais il y a une situation où le pool fiscal n'est pas suffisant pour payer les récompenses du RRD, un nouveau RRD sera créé pour garantir le paiement des récompenses. Compte tenu de la théorie des jeux derrière le réseau Éclaboussure, la probabilité que le système ait besoin de créer un nouveau Éclaboussure pour payer les récompenses est extrêmement faible. Étant donné que les Éclaboussure déposés dans Le robinet sont envoyés à une adresse de brûlage et que les Éclaboussure sont constamment bloqués dans le pool de liquidités via le contrat de réservoir, Éclaboussure est la seule plate-forme déflationniste de retour sur investissement quotidien. La meilleure stratégie pour Éclaboussure est de se concentrer sur l'adoption dans le monde réel en construisant votre équipe grâce à des références directes, car vous recevrez des récompenses bonus des références sur leurs dépôts et des bonus de descendance des joueurs qu'ils réfèrent en fonction du montant de bR34P détenu dans votre portefeuille."
     }
     ,
 
@@ -537,7 +537,7 @@
     }
     ,
     "TotalDROPS":{
-        "1": "GOUTTES totales"
+        "1": "ÉclaboussureS totales"
     }
     ,
     "DROP":{
@@ -566,8 +566,8 @@
     }
 
     ,
-    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoDRIP":{
-        "1": "Reservoir est la solution de The DRIP Network pour les joueurs qui souhaitent bénéficier d'une agriculture à rendement non inflationniste en ajoutant des liquidités à DRIP"
+    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash":{
+        "1": "Reservoir est la solution de The Éclaboussure Network pour les joueurs qui souhaitent bénéficier d'une agriculture à rendement non inflationniste en ajoutant des liquidités à Éclaboussure"
     }
     ,
     "COMPOUND":{
@@ -597,8 +597,8 @@
     "DropBalance":{
         "1": "Baisser le solde"
     },
-    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoDRIP.Herearethenumbers":{
-        "1": "Reservoir est la solution du réseau DRIP pour les joueurs qui souhaitent bénéficier d'une agriculture à rendement non inflationniste en ajoutant des liquidités au DRIP. voici les chiffres"
+    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers":{
+        "1": "Reservoir est la solution du réseau Éclaboussure pour les joueurs qui souhaitent bénéficier d'une agriculture à rendement non inflationniste en ajoutant des liquidités au Éclaboussure. voici les chiffres"
     }
     ,
     "UserCount":{

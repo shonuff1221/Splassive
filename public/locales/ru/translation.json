@@ -54,11 +54,11 @@
 
 
 
-    "DRIPNETWORK":{
+    "SplashNETWORK":{
         "1": "КАПЕЛЬНАЯ СЕТЬ"
     },
-    "DRIPNetworkisthelatestprojectdevelopedby":{
-        "1": "DRIP Network - последний проект, разработанный"
+    "SplashNetworkisthelatestprojectdevelopedby":{
+        "1": "Всплеск Network - последний проект, разработанный"
     },
     "Forex_Shark":{
         "1": "Forex_Shark"
@@ -72,12 +72,12 @@
         "1": "и команда."
     }
     ,
-    "Splassive’sFaucetisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
-        "1": "Splassive’s Faucet - это контракт с низким уровнем риска и высоким вознаграждением, который работает аналогично высокодоходному депозитному сертификату, выплачивая 2% ежедневной прибыли на инвестиции до 360%."
+    "TheofficialtokenoftheSplashNetworkisSplash(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "Официальным токеном сети Splash является Splash (BEP-20) на блокчейне Binance Smart (BSC), который фиксирует ценность за счет того, что он является дефицитным, дефляционным, устойчивым к цензуре и построен на надежной, действительно децентрализованной цепочке блоков."
     }
     ,
-    "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals.":{
-        "1": "Игроки могут увеличивать и увеличивать свой заработок за счет депозитов, вознаграждений за счет накопления (начисления), а также за счет командных рефералов."
+    "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
+        "1": "Рекомендуемая биржа для торговли Splash - это контракт Колодец, который можно найти прямо на веб-сайте платформы под вкладкой своп, поскольку он позволяет нам отказаться от начального 10% налога на покупки и обеспечивает самые низкие цены и максимальную ликвидность, что приводит к меньшему проскальзыванию. для более крупных сделок."
     }
     ,
     "TRADE":{
@@ -92,8 +92,8 @@
     "STATS":{
         "1": "СТАТИСТИКА"
     },
-    "TheDRIPtokencapturestheentirevalueoftheDripNetworkandmakesitavailabletotheentireBNBCommunity":{
-        "1": "Токен DRIP фиксирует всю ценность сети Drip и делает ее доступной для всего сообщества BNB."
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireBNBCommunity":{
+        "1": "Токен Всплеск фиксирует всю ценность сети Всплеск и делает ее доступной для всего сообщества BNB."
     },
     "Players":{
         "1": "Игроки"
@@ -152,7 +152,7 @@
         "1": "Цена"
     }
     ,
-    "BNB/DRIP":{
+    "BNB/Splash":{
         "1": "BNB / ДРИП"
     }
     ,
@@ -167,13 +167,13 @@
         "1": "BNB"
     }
     ,
-    "DRIPBalance":{
+    "SplashBalance":{
         "1": "Капельный баланс"
     }
     
     ,
-    "BuyDRIP":{
-        "1": "Купить DRIP"
+    "BuySplash":{
+        "1": "Купить Всплеск"
     }
     
     ,
@@ -193,7 +193,7 @@
         "1": "Купить"
     }
     ,
-    "SELLDRIP":{
+    "SELLSplash":{
         "1": "ПРОДАТЬ КАПЕЛЬ"
     }
     
@@ -210,7 +210,7 @@
         "1": "Продавать"
     }
     ,
-    "ApproveDRIP":{
+    "ApproveSplash":{
         "1": "Утвердить КАПЕЛЬ"
     }
     ,
@@ -222,8 +222,8 @@
         "1": "Статистика"
     }
     ,
-    "FountainisthebestwaytoexchangevalueintheDripNetwork!Herearethenumbers":{
-        "1": "Fountain - лучший способ обменять стоимость в сети Drip Network! Вот числа"
+    "TheWellisthebestwaytoexchangevalueintheSplashNetwork!Herearethenumbers":{
+        "1": "Колодец - лучший способ обменять стоимость в сети Всплеск Network! Вот числа"
     }
 
     ,
@@ -294,8 +294,8 @@
         "1": "Всего"
     }
     ,
-    "TheDRIPNetworksFaucetisalowriskhighrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout1%dailyreturnoninvestmentupto365%.":{
-        "1": "Faucet сети DRIP - это контракт с низким уровнем риска и высоким вознаграждением, который работает аналогично высокодоходному депозитному сертификату, выплачивая 1% ежедневной прибыли на инвестиции до 365%."
+    "TheSplashNetworksTheTapisalowriskhighrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout1%dailyreturnoninvestmentupto365%.":{
+        "1": "Кран сети Всплеск - это контракт с низким уровнем риска и высоким вознаграждением, который работает аналогично высокодоходному депозитному сертификату, выплачивая 1% ежедневной прибыли на инвестиции до 365%."
     }
     ,
     "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals":{
@@ -305,7 +305,7 @@
     "CopyReferralLink":{
         "1": "Копировать реферальную ссылку"
     },
-    "GetDRIP":{
+    "GetSplash":{
         "1": "Получить капельницу"
     }
     ,
@@ -493,7 +493,7 @@
         "1": "Количество получателей"
     }
     ,
-    "EstimatedDripperperson":{
+    "EstimatedSplashperperson":{
         "1": "Расчетная капля на человека"
     }
     ,
@@ -523,12 +523,12 @@
         "1": "О"
     }
     ,
-    "PlayerscanparticipatebypurchasingDRIPfromtheplatform'sSWAPpage,joininganotheruser’sDRIPteam(1DRIPminimumrequirement)DepositingDRIPtotheFaucetcontractearnsaconsistent1%dailyreturnoftheirDRIP(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,Faucet'scontractcannotdrainandwillALWAYSbeabletoprovidetheDRIPthathasbeenrewarded.DRIPrewardscomefroma10%taxonallDRIPtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
-        "1": "Игроки могут участвовать, купив DRIP на странице SWAP платформы, присоединившись к команде DRIP другого пользователя (минимальное требование 1 DRIP). Внесение DRIP в контракт на сборщик дает стабильный ежедневный доход в размере 1% от их DRIP (максимальная выплата 365%) пассивно. Игроки также могут увеличивать свой доход за счет регулярных депозитов, скользящих вознаграждений, а также командных рефералов. В отличие от многих других платформ, обещающих постоянную ежедневную процентную доходность, контракт Faucet не может истощать и ВСЕГДА будет иметь возможность предоставить DRIP, который был вознагражден. Вознаграждения DRIP образуются из 10% налога на все транзакции DRIP, за исключением покупок со страницы SWAP платформы."
+    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sSWAPpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent1%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
+        "1": "Игроки могут участвовать, купив Всплеск на странице SWAP платформы, присоединившись к команде Всплеск другого пользователя (минимальное требование 1 Всплеск). Внесение Всплеск в контракт на сборщик дает стабильный ежедневный доход в размере 1% от их Всплеск (максимальная выплата 365%) пассивно. Игроки также могут увеличивать свой доход за счет регулярных депозитов, скользящих вознаграждений, а также командных рефералов. В отличие от многих других платформ, обещающих постоянную ежедневную процентную доходность, контракт Кран не может истощать и ВСЕГДА будет иметь возможность предоставить Всплеск, который был вознагражден. Вознаграждения Всплеск образуются из 10% налога на все транзакции Всплеск, за исключением покупок со страницы SWAP платформы."
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopayDRIPrewardsnewDRIPwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheDRIPnetwork,theprobabilitythatthesystemwillneedtomintnewDRIPtopayrewardsisextremelylow.SinceDRIPdepositedintoFaucetaresenttoaburnaddressandDRIPisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,DRIPistheonlydeflationarydailyROIplatform.ThebeststrategyforDRIPistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
-        "1": "Если когда-либо возникнет ситуация, когда налогового пула будет недостаточно для выплаты вознаграждений DRIP, будет создан новый DRIP для обеспечения выплаты вознаграждений. Учитывая теорию игр, лежащую в основе сети DRIP, вероятность того, что системе потребуется чеканить новый DRIP для выплаты вознаграждений, чрезвычайно мала. Поскольку DRIP, депонированные в Faucet, отправляются на адрес записи, а DRIP постоянно блокируется в пуле ликвидности через контракт на резервуар, DRIP является единственной дефляционной платформой для ежедневного возврата инвестиций. Лучшая стратегия для DRIP - сосредоточиться на внедрении в реальном мире, создавая свою команду за счет прямых рефералов, поскольку вы будете получать бонусные вознаграждения от рефералов на их депозиты и бонусы нижестоящих от игроков, которых они рекомендуют, в зависимости от суммы bR34P, хранящейся в вашем кошельке."
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
+        "1": "Если когда-либо возникнет ситуация, когда налогового пула будет недостаточно для выплаты вознаграждений Всплеск, будет создан новый Всплеск для обеспечения выплаты вознаграждений. Учитывая теорию игр, лежащую в основе сети Всплеск, вероятность того, что системе потребуется чеканить новый Всплеск для выплаты вознаграждений, чрезвычайно мала. Поскольку Всплеск, депонированные в Кран, отправляются на адрес записи, а Всплеск постоянно блокируется в пуле ликвидности через контракт на резервуар, Всплеск является единственной дефляционной платформой для ежедневного возврата инвестиций. Лучшая стратегия для Всплеск - сосредоточиться на внедрении в реальном мире, создавая свою команду за счет прямых рефералов, поскольку вы будете получать бонусные вознаграждения от рефералов на их депозиты и бонусы нижестоящих от игроков, которых они рекомендуют, в зависимости от суммы bR34P, хранящейся в вашем кошельке."
     }
     ,
 
@@ -569,8 +569,8 @@
     }
 
     ,
-    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoDRIP":{
-        "1": "Резервуар - это решение DRIP Network для игроков, которые хотят получить выгоду от неинфляционного выращивания урожая за счет добавления ликвидности к DRIP."
+    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash":{
+        "1": "Резервуар - это решение Всплеск Network для игроков, которые хотят получить выгоду от неинфляционного выращивания урожая за счет добавления ликвидности к Всплеск."
     }
     ,
     "COMPOUND":{
@@ -600,8 +600,8 @@
     "DropBalance":{
         "1": "Уронить Остаток средств"
     },
-    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoDRIP.Herearethenumbers":{
-        "1": "Резервуар - это решение DRIP Network для игроков, которые хотят получить выгоду от неинфляционного выращивания урожая за счет добавления ликвидности к DRIP. Вот числа"
+    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers":{
+        "1": "Резервуар - это решение Всплеск Network для игроков, которые хотят получить выгоду от неинфляционного выращивания урожая за счет добавления ликвидности к Всплеск. Вот числа"
     }
     ,
     "UserCount":{

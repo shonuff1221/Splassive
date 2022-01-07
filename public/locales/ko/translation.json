@@ -54,11 +54,11 @@
 
 
 
-    "DRIPNETWORK":{
+    "SplashNETWORK":{
         "1": "드립 네트워크"
     },
-    "DRIPNetworkisthelatestprojectdevelopedby":{
-        "1": "DRIP Network는 에서 개발한 최신 프로젝트입니다."
+    "SplashNetworkisthelatestprojectdevelopedby":{
+        "1": "튀김 Network는 에서 개발한 최신 프로젝트입니다."
     },
     "Forex_Shark":{
         "1": "외환_상어"
@@ -71,11 +71,11 @@
     "andteam.":{
         "1": "그리고 팀."
     },
-    "TheofficialtokenoftheDRIPNetworkisDRIP(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "DRIP 네트워크의 공식 토큰은 바이낸스 스마트 블록체인(BSC)의 DRIP(BEP-20)으로, 희소성, 디플레이션, 검열 저항성, 강력하고 진정으로 분산된 블록체인을 기반으로 구축되어 가치를 포착합니다."
+    "TheofficialtokenoftheSplashNetworkisSplash(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "튀김 네트워크의 공식 토큰은 바이낸스 스마트 블록체인(BSC)의 튀김(BEP-20)으로, 희소성, 디플레이션, 검열 저항성, 강력하고 진정으로 분산된 블록체인을 기반으로 구축되어 가치를 포착합니다."
     },
-    "TherecommendedexchangefortradingDRIPistheFountaincontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
-        "1": "DRIP 거래에 권장되는 거래소는 플랫폼 웹사이트의 스왑 탭에서 직접 찾을 수 있는 Fountain 계약입니다. 구매 시 초기 10% 세금을 면제하고 가장 낮은 가격과 가장 높은 유동성을 제공하여 미끄러짐을 줄일 수 있기 때문입니다. 더 큰 거래를 위해."
+    "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
+        "1": "튀김 거래에 권장되는 거래소는 플랫폼 웹사이트의 스왑 탭에서 직접 찾을 수 있는 우물 계약입니다. 구매 시 초기 10% 세금을 면제하고 가장 낮은 가격과 가장 높은 유동성을 제공하여 미끄러짐을 줄일 수 있기 때문입니다. 더 큰 거래를 위해."
     },
     "TRADE":{
         "1": "거래"
@@ -89,8 +89,8 @@
     "STATS":{
         "1": "통계"
     },
-    "TheDRIPtokencapturestheentirevalueoftheDripNetworkandmakesitavailabletotheentireBNBCommunity":{
-        "1": "DRIP 토큰은 Drip 네트워크의 전체 가치를 캡처하고 전체 BNB 커뮤니티에서 사용할 수 있도록 합니다."
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireBNBCommunity":{
+        "1": "튀김 토큰은 튀김 네트워크의 전체 가치를 캡처하고 전체 BNB 커뮤니티에서 사용할 수 있도록 합니다."
     },
     "Players":{
         "1": "선수"
@@ -149,7 +149,7 @@
         "1": "가격"
     }
     ,
-    "BNB/DRIP":{
+    "BNB/Splash":{
         "1": "비앤비/드립"
     }
     ,
@@ -164,12 +164,12 @@
         "1": "비앤비"
     }
     ,
-    "DRIPBalance":{
+    "SplashBalance":{
         "1": "드립 잔액"
     }
     
     ,
-    "BuyDRIP":{
+    "BuySplash":{
         "1": "드립 구매"
     }
     
@@ -190,7 +190,7 @@
         "1": "구입"
     }
     ,
-    "SELLDRIP":{
+    "SELLSplash":{
         "1": "드립 판매"
     }
     
@@ -207,7 +207,7 @@
         "1": "팔다"
     }
     ,
-    "ApproveDRIP":{
+    "ApproveSplash":{
         "1": "드립 승인"
     }
     ,
@@ -219,8 +219,8 @@
         "1": "통계"
     }
     ,
-    "FountainisthebestwaytoexchangevalueintheDripNetwork!Herearethenumbers":{
-        "1": "Fountain은 Drip Network에서 가치를 교환하는 가장 좋은 방법입니다! 다음은 숫자입니다."
+    "TheWellisthebestwaytoexchangevalueintheSplashNetwork!Herearethenumbers":{
+        "1": "우물은 튀김 Network에서 가치를 교환하는 가장 좋은 방법입니다! 다음은 숫자입니다."
     }
 
     ,
@@ -291,8 +291,8 @@
         "1": "총"
     }
     ,
-    "Splassive’sFaucetisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
-        "1": "Splassive의 Faucet은 2%의 일일 투자 수익률을 최대 360%까지 지급함으로써 고수익 예금 증명서와 유사하게 작동하는 저위험 고 보상 계약입니다."
+    "Splassive’sTheTapisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
+        "1": "Splassive의 탭은 2%의 일일 투자 수익률을 최대 360%까지 지급함으로써 고수익 예금 증명서와 유사하게 작동하는 저위험 고 보상 계약입니다."
     }
     ,
     "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals.":{
@@ -302,7 +302,7 @@
     "CopyReferralLink":{
         "1": "추천 링크 복사"
     },
-    "GetDRIP":{
+    "GetSplash":{
         "1": "드립 받기"
     }
     ,
@@ -490,7 +490,7 @@
         "1": "수신자 수"
     }
     ,
-    "EstimatedDripperperson":{
+    "EstimatedSplashperperson":{
         "1": "1인당 예상 드립"
     }
     ,
@@ -520,12 +520,12 @@
         "1": "에 대한"
     }
     ,
-    "PlayerscanparticipatebypurchasingDRIPfromtheplatform'sSWAPpage,joininganotheruser’sDRIPteam(1DRIPminimumrequirement)DepositingDRIPtotheFaucetcontractearnsaconsistent1%dailyreturnoftheirDRIP(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,Faucet'scontractcannotdrainandwillALWAYSbeabletoprovidetheDRIPthathasbeenrewarded.DRIPrewardscomefroma10%taxonallDRIPtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
-        "1": "플레이어는 플랫폼의 SWAP 페이지에서 DRIP을 구매하고 다른 사용자의 DRIP 팀에 합류하여 참여할 수 있습니다(1 DRIP 최소 요구 사항). Faucet 계약에 DRIP을 예치하면 DRIP의 1% 일일 수익(최대 지불금 최대 365%)을 소극적으로 얻을 수 있습니다. 플레이어는 또한 정기적인 예금, 롤링 보상 및 팀 기반 추천을 통해 수입을 복합할 수 있습니다. 일관된 일일 수익률을 약속하는 다른 많은 플랫폼과 달리 Faucet의 계약은 소진될 수 없으며 항상 보상을 받은 DRIP을 제공할 수 있습니다. DRIP 보상은 플랫폼의 SWAP 페이지에서 구매를 제외한 모든 DRIP 거래에 대한 10% 세금에서 나옵니다."
+    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sSWAPpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent1%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
+        "1": "플레이어는 플랫폼의 SWAP 페이지에서 튀김을 구매하고 다른 사용자의 튀김 팀에 합류하여 참여할 수 있습니다(1 튀김 최소 요구 사항). 탭 계약에 튀김을 예치하면 튀김의 1% 일일 수익(최대 지불금 최대 365%)을 소극적으로 얻을 수 있습니다. 플레이어는 또한 정기적인 예금, 롤링 보상 및 팀 기반 추천을 통해 수입을 복합할 수 있습니다. 일관된 일일 수익률을 약속하는 다른 많은 플랫폼과 달리 탭의 계약은 소진될 수 없으며 항상 보상을 받은 튀김을 제공할 수 있습니다. 튀김 보상은 플랫폼의 SWAP 페이지에서 구매를 제외한 모든 튀김 거래에 대한 10% 세금에서 나옵니다."
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopayDRIPrewardsnewDRIPwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheDRIPnetwork,theprobabilitythatthesystemwillneedtomintnewDRIPtopayrewardsisextremelylow.SinceDRIPdepositedintoFaucetaresenttoaburnaddressandDRIPisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,DRIPistheonlydeflationarydailyROIplatform.ThebeststrategyforDRIPistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
-        "1": "세금 풀이 DRIP 보상을 지불하기에 충분하지 않은 상황이 발생하면 보상이 지급되도록 새로운 DRIP이 발행됩니다. DRIP 네트워크 이면의 게임 이론을 고려할 때 시스템이 보상을 지불하기 위해 새로운 DRIP을 발행해야 할 확률은 매우 낮습니다. Faucet에 예치된 DRIP은 소각 주소로 전송되고 DRIP은 저수지 계약을 통해 유동성 풀에 지속적으로 잠겨 있기 때문에 DRIP은 유일한 디플레이션 일일 ROI 플랫폼입니다. DRIP의 가장 좋은 전략은 직접 추천을 통해 팀을 구축하여 실제 채택에 집중하는 것입니다. 지갑에 있는 bR34P의 양을 기준으로 추천한 플레이어의 예금 및 다운라인 보너스에 대한 추천으로 보너스 보상을 받을 수 있기 때문입니다."
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
+        "1": "세금 풀이 튀김 보상을 지불하기에 충분하지 않은 상황이 발생하면 보상이 지급되도록 새로운 튀김이 발행됩니다. 튀김 네트워크 이면의 게임 이론을 고려할 때 시스템이 보상을 지불하기 위해 새로운 튀김을 발행해야 할 확률은 매우 낮습니다. 탭에 예치된 튀김은 소각 주소로 전송되고 튀김은 저수지 계약을 통해 유동성 풀에 지속적으로 잠겨 있기 때문에 튀김은 유일한 디플레이션 일일 ROI 플랫폼입니다. 튀김의 가장 좋은 전략은 직접 추천을 통해 팀을 구축하여 실제 채택에 집중하는 것입니다. 지갑에 있는 bR34P의 양을 기준으로 추천한 플레이어의 예금 및 다운라인 보너스에 대한 추천으로 보너스 보상을 받을 수 있기 때문입니다."
     }
     ,
 
@@ -566,8 +566,8 @@
     }
 
     ,
-    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoDRIP":{
-        "1": "Reservoir는 DRIP에 유동성을 추가하여 비인플레이션 수확량 농업의 이점을 원하는 플레이어를 위한 DRIP 네트워크의 솔루션입니다."
+    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash":{
+        "1": "Reservoir는 튀김에 유동성을 추가하여 비인플레이션 수확량 농업의 이점을 원하는 플레이어를 위한 튀김 네트워크의 솔루션입니다."
     }
     ,
     "COMPOUND":{
@@ -597,8 +597,8 @@
     "DropBalance":{
         "1": "잔액 삭제"
     },
-    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoDRIP.Herearethenumbers":{
-        "1": "Reservoir는 DRIP에 유동성을 추가하여 비인플레이션 수확량 농업의 이점을 원하는 플레이어를 위한 DRIP 네트워크의 솔루션입니다. 다음은 숫자입니다."
+    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers":{
+        "1": "Reservoir는 튀김에 유동성을 추가하여 비인플레이션 수확량 농업의 이점을 원하는 플레이어를 위한 튀김 네트워크의 솔루션입니다. 다음은 숫자입니다."
     }
     ,
     "UserCount":{

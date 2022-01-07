@@ -54,11 +54,11 @@
 
 
 
-    "DRIPNETWORK":{
+    "SplashNETWORK":{
         "1": "RED DE GOTEO"
     },
-    "DRIPNetworkisthelatestprojectdevelopedby":{
-        "1": "DRIP Network es el último proyecto desarrollado por"
+    "SplashNetworkisthelatestprojectdevelopedby":{
+        "1": "Chapoteo Network es el último proyecto desarrollado por"
     },
     "Forex_Shark":{
         "1": "Forex_Shark"
@@ -71,11 +71,11 @@
     "andteam.":{
         "1": "y equipo."
     },
-    "TheofficialtokenoftheDRIPNetworkisDRIP(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "El token oficial de la red DRIP es DRIP (BEP-20) en la cadena de bloques Binance Smart (BSC) que captura valor al ser escasa, deflacionaria, resistente a la censura y al estar construida sobre una cadena de bloques robusta y verdaderamente descentralizada."
+    "TheofficialtokenoftheSplashNetworkisSplash(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "El token oficial de la red Chapoteo es Chapoteo (BEP-20) en la cadena de bloques Binance Smart (BSC) que captura valor al ser escasa, deflacionaria, resistente a la censura y al estar construida sobre una cadena de bloques robusta y verdaderamente descentralizada."
     },
-    "TherecommendedexchangefortradingDRIPistheFountaincontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
-        "1": "El intercambio recomendado para operar con DRIP es el contrato Fountain, que se puede encontrar directamente en el sitio web de la plataforma en la pestaña de intercambio, ya que nos permite renunciar al impuesto inicial del 10% sobre las compras y proporciona los precios más bajos y la mayor liquidez, lo que resulta en menos deslizamientos. para comercios más grandes."
+    "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
+        "1": "El intercambio recomendado para operar con Chapoteo es el contrato El pozo, que se puede encontrar directamente en el sitio web de la plataforma en la pestaña de intercambio, ya que nos permite renunciar al impuesto inicial del 10% sobre las compras y proporciona los precios más bajos y la mayor liquidez, lo que resulta en menos deslizamientos. para comercios más grandes."
     },
     "TRADE":{
         "1": "COMERCIO"
@@ -89,8 +89,8 @@
     "STATS":{
         "1": "ESTADÍSTICAS"
     },
-    "TheDRIPtokencapturestheentirevalueoftheDripNetworkandmakesitavailabletotheentireBNBCommunity":{
-        "1": "El token DRIP captura todo el valor de Drip Network y lo pone a disposición de toda la comunidad BNB."
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireBNBCommunity":{
+        "1": "El token Chapoteo captura todo el valor de Chapoteo Network y lo pone a disposición de toda la comunidad BNB."
     },
     "Players":{
         "1": "Jugadoras"
@@ -149,7 +149,7 @@
         "1": "Precio"
     }
     ,
-    "BNB/DRIP":{
+    "BNB/Splash":{
         "1": "BNB / GOTEO"
     }
     ,
@@ -164,13 +164,13 @@
         "1": "BNB"
     }
     ,
-    "DRIPBalance":{
-        "1": "Saldo de DRIP"
+    "SplashBalance":{
+        "1": "Saldo de Chapoteo"
     }
     
     ,
-    "BuyDRIP":{
-        "1": "Comprar DRIP"
+    "BuySplash":{
+        "1": "Comprar Chapoteo"
     }
     
     ,
@@ -190,7 +190,7 @@
         "1": "Comprar"
     }
     ,
-    "SELLDRIP":{
+    "SELLSplash":{
         "1": "VENDER GOTEO"
     }
     
@@ -207,8 +207,8 @@
         "1": "Vender"
     }
     ,
-    "ApproveDRIP":{
-        "1": "Aprobar DRIP"
+    "ApproveSplash":{
+        "1": "Aprobar Chapoteo"
     }
     ,
     "Chart":{
@@ -219,8 +219,8 @@
         "1": "Estadisticas"
     }
     ,
-    "FountainisthebestwaytoexchangevalueintheDripNetwork!Herearethenumbers":{
-        "1": "¡Fountain es la mejor manera de cambiar valor en Drip Network! Aquí están los números"
+    "TheWellisthebestwaytoexchangevalueintheSplashNetwork!Herearethenumbers":{
+        "1": "El pozo es la mejor manera de cambiar valor en Chapoteo Network! Aquí están los números"
     }
 
     ,
@@ -291,8 +291,8 @@
         "1": "Total"
     }
     ,
-    "Splassive’sFaucetisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
-        "1": "Splassive's Faucet es un contrato de alta recompensa y bajo riesgo que funciona de manera similar a un certificado de depósito de alto rendimiento al pagar un 2% de retorno diario de la inversión hasta un 360%."
+    "Splassive’sTheTapisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%.":{
+        "1": "Splassive's El grifo es un contrato de alta recompensa y bajo riesgo que funciona de manera similar a un certificado de depósito de alto rendimiento al pagar un 2% de retorno diario de la inversión hasta un 360%."
     }
     ,
     "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals.":{
@@ -302,8 +302,8 @@
     "CopyReferralLink":{
         "1": "Copiar enlace de referencia"
     },
-    "GetDRIP":{
-        "1": "Obtener DRIP"
+    "GetSplash":{
+        "1": "Obtener Chapoteo"
     }
     ,
     "Aminimumof1Pearlrequiredfordeposits":{
@@ -490,7 +490,7 @@
         "1": "Número de destinatarias"
     }
     ,
-    "EstimatedDripperperson":{
+    "EstimatedSplashperperson":{
         "1": "Goteo estimado por persona"
     }
     ,
@@ -520,12 +520,12 @@
         "1": "Estado"
     }
     ,
-    "PlayerscanparticipatebypurchasingDRIPfromtheplatform'sSWAPpage,joininganotheruser’sDRIPteam(1DRIPminimumrequirement)DepositingDRIPtotheFaucetcontractearnsaconsistent1%dailyreturnoftheirDRIP(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,Faucet'scontractcannotdrainandwillALWAYSbeabletoprovidetheDRIPthathasbeenrewarded.DRIPrewardscomefroma10%taxonallDRIPtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
-        "1": "Los jugadores pueden participar comprando DRIP desde la página SWAP de la plataforma, uniéndose al equipo de DRIP de otro usuario (requisito mínimo de 1 DRIP) Al depositar DRIP en el contrato de Faucet, se obtiene un retorno diario constante del 1% de su DRIP (pago máximo del 365%) de forma pasiva. Los jugadores también pueden acumular sus ganancias a través de depósitos regulares, recompensas continuas y referencias basadas en equipos. A diferencia de muchas otras plataformas que prometen un% de retorno diario constante, el contrato de Faucet no se puede agotar y SIEMPRE podrá proporcionar el DRIP que ha sido recompensado. Las recompensas de DRIP provienen de un impuesto del 10% en todas las transacciones de DRIP, excluidas las compras de la página SWAP de la plataforma."
+    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sSWAPpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent1%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
+        "1": "Los jugadores pueden participar comprando Chapoteo desde la página SWAP de la plataforma, uniéndose al equipo de Chapoteo de otro usuario (requisito mínimo de 1 Chapoteo) Al depositar Chapoteo en el contrato de El grifo, se obtiene un retorno diario constante del 1% de su Chapoteo (pago máximo del 365%) de forma pasiva. Los jugadores también pueden acumular sus ganancias a través de depósitos regulares, recompensas continuas y referencias basadas en equipos. A diferencia de muchas otras plataformas que prometen un% de retorno diario constante, el contrato de El grifo no se puede agotar y SIEMPRE podrá proporcionar el Chapoteo que ha sido recompensado. Las recompensas de Chapoteo provienen de un impuesto del 10% en todas las transacciones de Chapoteo, excluidas las compras de la página SWAP de la plataforma."
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopayDRIPrewardsnewDRIPwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheDRIPnetwork,theprobabilitythatthesystemwillneedtomintnewDRIPtopayrewardsisextremelylow.SinceDRIPdepositedintoFaucetaresenttoaburnaddressandDRIPisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,DRIPistheonlydeflationarydailyROIplatform.ThebeststrategyforDRIPistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
-        "1": "Si alguna vez hay una situación en la que el fondo de impuestos no es suficiente para pagar las recompensas de DRIP, se acuñará un nuevo DRIP para garantizar que se paguen las recompensas. Dada la teoría del juego detrás de la red DRIP, la probabilidad de que el sistema necesite acuñar un nuevo DRIP para pagar recompensas es extremadamente baja. Dado que los DRIP depositados en Faucet se envían a una dirección de grabación y DRIP se bloquea constantemente en el fondo de liquidez a través del contrato de depósito, DRIP es la única plataforma de ROI diaria deflacionaria. La mejor estrategia para DRIP es enfocarse en la adopción del mundo real mediante la construcción de su equipo a través de referencias directas, ya que recibirá recompensas de bonificación de las referencias en sus depósitos y bonificaciones de línea descendente de los jugadores que refieren según la cantidad de bR34P que tiene en su billetera."
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
+        "1": "Si alguna vez hay una situación en la que el fondo de impuestos no es suficiente para pagar las recompensas de Chapoteo, se acuñará un nuevo Chapoteo para garantizar que se paguen las recompensas. Dada la teoría del juego detrás de la red Chapoteo, la probabilidad de que el sistema necesite acuñar un nuevo Chapoteo para pagar recompensas es extremadamente baja. Dado que los Chapoteo depositados en El grifo se envían a una dirección de grabación y Chapoteo se bloquea constantemente en el fondo de liquidez a través del contrato de depósito, Chapoteo es la única plataforma de ROI diaria deflacionaria. La mejor estrategia para Chapoteo es enfocarse en la adopción del mundo real mediante la construcción de su equipo a través de referencias directas, ya que recibirá recompensas de bonificación de las referencias en sus depósitos y bonificaciones de línea descendente de los jugadores que refieren según la cantidad de bR34P que tiene en su billetera."
     }
     ,
 
@@ -566,8 +566,8 @@
     }
 
     ,
-    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoDRIP":{
-        "1": "Reservoir es la solución de la red DRIP para los jugadores que desean beneficiarse de la agricultura de rendimiento no inflacionario mediante la adición de liquidez a DRIP"
+    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash":{
+        "1": "Reservoir es la solución de la red Chapoteo para los jugadores que desean beneficiarse de la agricultura de rendimiento no inflacionario mediante la adición de liquidez a Chapoteo"
     }
     ,
     "COMPOUND":{
@@ -597,8 +597,8 @@
     "DropBalance":{
         "1": "Saldo de caída"
     },
-    "ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoDRIP.Herearethenumbers":{
-        "1": "Reservoir es la solución de la red DRIP para los jugadores que desean beneficiarse de la agricultura de rendimiento no inflacionario mediante la adición de liquidez a DRIP. Aquí están los números"
+    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers":{
+        "1": "Reservoir es la solución de la red Chapoteo para los jugadores que desean beneficiarse de la agricultura de rendimiento no inflacionario mediante la adición de liquidez a Chapoteo. Aquí están los números"
     }
     ,
     "UserCount":{

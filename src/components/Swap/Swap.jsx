@@ -429,11 +429,11 @@ const Swap = () => {
                           style={{ color: "#ab9769", fontSize: "20px" }}
                         >
                           {" "}
-                          {t("BNB/DRIP.1")} {division}
+                          {t("BNB/Splash.1")} {division}
                         </span>
                       </p>
                       <p className="text-small fst-italic">
-                        {t("BNB/DRIP.1")} ≈ {oneDripPrice} {t("USDT.1")}
+                        {t("BNB/Splash.1")} ≈ {oneDripPrice} {t("USDT.1")}
                       </p>
                     </div>
                   </div>
@@ -466,7 +466,7 @@ const Swap = () => {
                         className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-3  fst-italic"
                         style={{ color: "#7c625a" }}
                       >
-                        {t("DRIPBalance.1")}{" "}
+                        {t("SplashBalance.1")}{" "}
                       </h5>
                       <p className="text-large  mb-2 text-white fst-italic">
                         <span
@@ -477,7 +477,7 @@ const Swap = () => {
                         </span>
                       </p>
                       <p className="text-small fst-italic">
-                        {t("DRIP.1")} ≈{dripUsdtprice}
+                        {t("Splash.1")} ≈{dripUsdtprice}
                         {t("USDT.1")}
                       </p>
                     </div>
@@ -497,7 +497,7 @@ const Swap = () => {
                       <div className="text-left">
                         <h3>
                           <p className="notranslate fst-italic">
-                            {t("BuyDRIP.1")}
+                            {t("BuySplash.1")}
                           </p>
                         </h3>
                       </div>
@@ -737,7 +737,7 @@ const Swap = () => {
                         <h3>
                           <span className="notranslate fst-italic">
                             <p style={{ fontSize: "20px" }}>
-                              {t("SELLDRIP.1")}
+                              {t("SELLSplash.1")}
                             </p>
                           </span>
                         </h3>
@@ -753,7 +753,7 @@ const Swap = () => {
                             <div className="col-9 text-right fst-italic">
                               {" "}
                               <p>
-                                {t("DRIPBalance.1")}:
+                                {t("SplashBalance.1")}:
                                 <label className="user-balance text-white fst-italic">
                                   {userDripBalance}
                                 </label>{" "}
@@ -764,7 +764,7 @@ const Swap = () => {
                             <input
                               ref={inputE2}
                               type="number"
-                              placeholder="DRIP"
+                              placeholder="Splash"
                               className="form-control"
                               id="__BVID__99"
                               onChange={() => enterBuyAmount2()}
@@ -1004,7 +1004,7 @@ const Swap = () => {
                                 htmlFor="__BVID__107"
                               >
                                 {" "}
-                                <p>{t("ApproveDRIP.1")}</p>
+                                <p>{t("ApproveSplash.1")}</p>
                               </label>
                             </div>
                           </div>
@@ -1035,7 +1035,7 @@ const Swap = () => {
                 <h1>{t("Stats.1")}</h1>
                 <p style={{color: "white", fontSize: "20px"}}>
                   {t(
-                    "FountainisthebestwaytoexchangevalueintheDripNetwork!Herearethenumbers.1"
+                    "TheWellisthebestwaytoexchangevalueintheSplashNetwork!Herearethenumbers.1"
                   )}
                   ...
                 </p>
@@ -1049,7 +1049,7 @@ const Swap = () => {
                   <p className="text-large mb-2 text-white fst-italic">
                     <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{tSupllyDrip}</span>
                   </p>
-                  <p className="text-small fst-italic">{t("DRIP.1")}</p>
+                  <p className="text-small fst-italic">{t("Splash.1")}</p>
                 </div>
               </div>
               <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
@@ -1067,7 +1067,7 @@ const Swap = () => {
                     <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{tSupllyFountain}</span>
                   </p>
                   <p className="text-small fst-italic">
-                    {t("DROPS.1")} ({t("DRIP.1")} / {t("LOCKED.1")})
+                    {t("DROPS.1")} ({t("Splash.1")} / {t("LOCKED.1")})
                   </p>
                 </div>
               </div>

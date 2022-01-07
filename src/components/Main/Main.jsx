@@ -22,7 +22,7 @@ const Main = () => {
                     <div className="row">
                       <div className="col">
                         <span class="luck-title notranslate">
-                          <b> {t("DRIPNETWORK.1")}</b>
+                          <b> {t("SplashNETWORK.1")}</b>
                         </span>
                       </div>
                     </div>
@@ -30,15 +30,15 @@ const Main = () => {
                 </div>
               </div>
               <div className="container col-12 col-xl-8 col-lg-8 col-md-8 text-white text1" style={{fontSize: "20px"}}>
-              {t("DRIPNetworkisthelatestprojectdevelopedby.1")}{" "}
+              {t("SplashNetworkisthelatestprojectdevelopedby.1")}{" "}
                 <a style={{ color: "#7c625a" }} href="">{t("Forex_Shark.1")}</a>, <a style={{ color: "#7c625a" }} href="">{t("BB.1")}</a> {t("andteam..1")}
               </div>
               <div className="container col-12 col-xl-8 col-lg-8 col-md-8 text-white text2" style={{fontSize: "20px"}}>
-              {t("TheofficialtokenoftheDRIPNetworkisDRIP(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain..1")}
+              {t("TheofficialtokenoftheSplashNetworkisSplash(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain..1")}
               </div>
               <br />
               <div className="container col-12 col-xl-8 col-lg-8 col-md-8 text-white text3" style={{fontSize: "20px"}}>
-              {t("TherecommendedexchangefortradingDRIPistheFountaincontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades..1")}
+              {t("TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades..1")}
               </div>
               <div className="raw mainrow">
                 <div className="col-xl-6 col-lg-6 col-md-6 mb-4 pt-4 ">
@@ -96,7 +96,7 @@ const Main = () => {
                 {t("STATS.1")}
                 </h1>
                 <p data-v-2b20e1ea id="mainpp" className="text-white" style={{fontSize: "20px"}}>
-                {t("TheDRIPtokencapturestheentirevalueoftheDripNetworkandmakesitavailabletotheentireBNBCommunity.1")}!
+                {t("TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireBNBCommunity.1")}!
                 </p>
               </div>
               <div className="container col-6 col-xl-3 col-lg-3 col-md-3 text-center">
@@ -132,7 +132,7 @@ const Main = () => {
                   <p className="text-large mb-2 text-white">
                     <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>0</span>
                   </p>
-                  <p className="text-small">{t("DRIP.1")} ≈ N/A</p>
+                  <p className="text-small">{t("Splash.1")} ≈ N/A</p>
                 </div>
               </div>
               <div className="container col-6 col-xl-3 col-lg-3 col-md-3 text-center">

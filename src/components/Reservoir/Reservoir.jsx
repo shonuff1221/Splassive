@@ -250,7 +250,7 @@ useEffect(() => {
                 </div>
                 <p className="col-12 white mb-3 text-justify fst-italic text-white" style={{fontSize: "20px"}}>
                   {" "}
-                  {t("ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoDRIP.1")}
+                  {t("ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash.1")}
                 </p>
                 <p className="col-12 white mb-3"></p>
                 <div>
@@ -307,7 +307,7 @@ useEffect(() => {
                             <p style={{ lineHeight: "20%" }}>
                               {t("Price.1")}:
                               <label className="user-balance text-white fst-italic">
-                              {t("BNB.1")}/{t("DRIP.1")}
+                              {t("BNB.1")}/{t("Splash.1")}
                               ≈
                                 {bnbDripPrice}
                               </label>
@@ -400,7 +400,7 @@ useEffect(() => {
               <div className="container col-10 text-center">
                 <h1>{t("Stats.1")}</h1>
                 <p className="text-white mb-4" style={{fontSize: "20px"}}>
-                {t("ReservoirisTheDRIPNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoDRIP.Herearethenumbers.1")}...
+                {t("ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers.1")}...
                 </p>
               </div>
               <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
@@ -448,7 +448,7 @@ useEffect(() => {
                   <p className="text-large mb-2 text-white">
                     <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>... / ...</span>
                   </p>
-                  <p className="text-small">{t("DROPS.1")} ({t("DRIP.1")} / {t("LOCKED.1")})</p>
+                  <p className="text-small">{t("DROPS.1")} ({t("Splash.1")} / {t("LOCKED.1")})</p>
                 </div>
               </div>
               <div className="container col-6 col-xl-4 col-lg-4 col-md-4 mt-3 text-center">
