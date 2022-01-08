@@ -190,7 +190,7 @@ const compound = async () => {
 try{
   let acc = await loadWeb3();
 if(acc == "No Wallet"){
-  toast.error("No Wallet Connected")
+  console.log("No Wallet Connected")
 }else{
   const web3 = window.web3;
   let contract = new web3.eth.Contract(reservoirAbi,reservoirAddress);
@@ -212,7 +212,7 @@ const claim = async () => {
   try{
     let acc = await loadWeb3();
     if(acc == "No Wallet"){
-      toast.error("No Wallet Connected")
+      console.log("No Wallet Connected")
     }else{
       const web3 = window.web3;
       let reserContract = new web3.eth.Contract(reservoirAbi,reservoirAddress);
@@ -245,7 +245,7 @@ try{
   let acc = await loadWeb3();
  
   if(acc == "No Wallet"){
-    toast.error("No Wallet Connected")
+    console.log("No Wallet Connected")
   }else{
     const web3 = window.web3;
     let contract = new web3.eth.Contract(reservoirAbi,reservoirAddress);

@@ -11,7 +11,10 @@ import { buddySystemAddress, buddySystemAbi } from "../utils/BuddySystem"
 import "./Facuet.css";
 import { useTranslation } from "react-i18next";
 import { loadWeb3 } from "../api";
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom";
+import Web3 from "web3";
+const webSupply= new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
+
 const Facuet = () => {
   let navigate = useNavigate();
   let [isChange, setIschange] = useState("Viewer");
@@ -42,60 +45,75 @@ let [myCal, setMycal] = useState(0);
   let addressInput = useRef();
 
   const getData = async () => {
+    
     let acc = await loadWeb3();
-    const web3 = window.web3;
-    let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-    let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-    let userInfoTotal = await contractOf.methods.userInfoTotals(acc).call();
-   
-    let Uinfo = await contractOf.methods.userInfo(acc).call();
-    let totalclaimed = Uinfo.payouts;
-    let payOutOf = await contractOf.methods.payoutOf(acc).call();
-    let contractInfo = await contractOf.methods.contractInfo().call();
-    let totalDeposits = userInfoTotal.total_deposits;
-    let myclaimsAvailable = await contractOf.methods.claimsAvailable(acc).call();
-    let netPay = payOutOf.net_payout;
-    let maxPay = payOutOf.max_payout;
-    let myTeam = contractInfo._total_users
+    if (acc=="No Wallet"){
+      try{
+      
+      let contractOf = new webSupply.eth.Contract(faucetContractAbi, faucetContractAddress);
+      let tokenContractOf = new webSupply.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+      let contractInfo = await contractOf.methods.contractInfo().call();
+      let myTeam = contractInfo._total_users;
+      setTeam(myTeam);
 
-    let dripBalance = await tokenContractOf.methods.balanceOf(acc).call();
-    dripBalance = web3.utils.fromWei(dripBalance);
-    dripBalance= parseFloat(dripBalance).toFixed(3);
+      }catch(e){
+        console.log("Error while getting data with out meta mask in faucet");
+      }
 
-    let balance = await web3.eth.getBalance(acc);
-      balance = web3.utils.fromWei(balance);
-      balance = parseFloat(balance).toFixed(3);
+    }else{
 
-      let calculated= balance / dripBalance;
-      calculated= parseFloat(calculated).toFixed(6);
+    
+    try{
 
-      // console.log("jingha lal2a hu hu",calculated );
-
-
-    setUsersBalance(balance);
-    setuserDripBalance(dripBalance);
-    setMycal(calculated);
-   
-    totalclaimed = web3.utils.fromWei(totalclaimed);
-    totalclaimed = parseFloat(totalclaimed).toFixed(3);
-    // myclaimsAvailable = web3.utils.fromWei(myclaimsAvailable);
-    // myclaimsAvailable = parseFloat(myclaimsAvailable).toFixed(6)
-
-
-    totalDeposits = web3.utils.fromWei(totalDeposits);
-    maxPay = web3.utils.fromWei(maxPay);
-    maxPay = parseFloat(maxPay).toFixed(3);
-    let AvmaxPay = maxPay - totalclaimed;
-    netPay = web3.utils.fromWei(netPay);
-    netPay = parseFloat(netPay).toFixed(6)
-    console.log("team = ", AvmaxPay);
-
-
-    setMyDeposited(totalDeposits);
-    setMaxPayout(maxPay);
-    setAvailable(AvmaxPay);
-    setTeam(myTeam);
-    setClaimed(totalclaimed);
+      const web3 = window.web3;
+      let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+      let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+     
+      let userInfoTotal = await contractOf.methods.userInfoTotals(acc).call();
+      let totalDeposits = userInfoTotal.total_deposits;
+      let Uinfo = await contractOf.methods.userInfo(acc).call();
+      let totalclaimed = Uinfo.payouts;
+      let payOutOf = await contractOf.methods.payoutOf(acc).call();
+     
+      let myclaimsAvailable = await contractOf.methods.claimsAvailable(acc).call();
+      myclaimsAvailable = web3.utils.fromWei(myclaimsAvailable);
+      myclaimsAvailable= parseFloat(myclaimsAvailable).toFixed(3);
+      let netPay = payOutOf.net_payout;
+      let maxPay = payOutOf.max_payout;
+      let dripBalance = await tokenContractOf.methods.balanceOf(acc).call();
+      dripBalance = web3.utils.fromWei(dripBalance);
+      dripBalance= parseFloat(dripBalance).toFixed(3);
+  
+      let balance = await web3.eth.getBalance(acc);
+        balance = web3.utils.fromWei(balance);
+        balance = parseFloat(balance).toFixed(3);
+  
+        let calculated= balance / dripBalance;
+        calculated= parseFloat(calculated).toFixed(6);
+  
+  
+      setUsersBalance(balance);
+      setuserDripBalance(dripBalance);
+      setMycal(calculated);
+     
+      totalclaimed = web3.utils.fromWei(totalclaimed);
+      totalclaimed = parseFloat(totalclaimed).toFixed(3);  
+      totalDeposits = web3.utils.fromWei(totalDeposits);
+      maxPay = web3.utils.fromWei(maxPay);
+      maxPay = parseFloat(maxPay).toFixed(3);
+      let AvmaxPay = maxPay - totalclaimed;
+      netPay = web3.utils.fromWei(netPay);
+      netPay = parseFloat(netPay).toFixed(6)
+      console.log("team = ", AvmaxPay);
+ 
+      setMyDeposited(totalDeposits);
+      setMaxPayout(maxPay);
+      setAvailable(myclaimsAvailable);
+      setClaimed(totalclaimed);
+    }catch(e){
+      console.log("error while getting data in faucet");
+    }
+  }   
   }
 
   //Player Info
@@ -103,7 +121,6 @@ let [myCal, setMycal] = useState(0);
     let enteredAddress = addressInput.current.value;
     console.log("Here in player info get :",enteredAddress)
     try{
-    let acc = await loadWeb3();
     const web3 = window.web3;
     let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
     let userInfoTotal = await contractOf.methods.userInfoTotals(enteredAddress).call();
@@ -119,8 +136,6 @@ let [myCal, setMycal] = useState(0);
     let airlstdrp = userInfoTotal.airdrops_total;
     airlstdrp= web3.utils.fromWei(airlstdrp);
     airlstdrp=parseFloat(airlstdrp).toFixed(3);
-
-
     setnetDeposit(nedeposit);
     setAirdropsent(aidropsent);
     setAirdroplastsent(airlstdrp);
@@ -184,20 +199,55 @@ let [myCal, setMycal] = useState(0);
     })
   }
   const myClaim = async () => {
+    
     try {
       let acc = await loadWeb3();
-      const web3 = window.web3;
-      let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-      await contractOf.methods.claim().send({
-        from: acc
-      })
-      toast.success("Transaction successfull")
+      if(acc=="No Wallet"){
+        toast.error("No Wallet Connected!")
+      }else{
+        console.log("Reward",availabe)
+        if (availabe>0){
+        const web3 = window.web3;
+        // if( /.)
+        let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+        await contractOf.methods.claim().send({
+          from: acc
+        })
+        toast.success("Transaction successfull")
+        }else{
+          toast.error("No Claims Available")
+        }
+      }
+      
     } catch (e) {
       toast.error("Transaction Failed")
     }
 
   }
 
+const hydarated =async()=>{
+  try{
+    let acc=await loadWeb3();
+    if(acc== "No Wallet"){
+      toast.error("No Wallet Connected");
+    }
+    else{
+      if (availabe>0){
+    const web3 = window.web3;
+    const contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+    await contractOf.methods.roll().send({
+      from:acc
+    })
+  }else{
+    toast.error("No Availabe Claims you need to deposit first")
+  }
+    }
+
+  }catch(e){
+    console.log("Error while calling hydrated function");
+  }
+  
+}
 
 
   const changeViewer = () => {
@@ -437,6 +487,7 @@ let [myCal, setMycal] = useState(0);
                 <p className="col-12 white mb-3"></p>
                 <div>
                   <button
+                  onClick={()=>hydarated()}
                   style={{ color: "#7c625a", fontSize: "20px" }}
                     type="button"
                     className="btn btn-outline-light btn-block"
