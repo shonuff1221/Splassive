@@ -45,19 +45,19 @@ background-color: #86ad74;
 }
 .mainimages{
   width: 400px;
-}
+} 
 @media (max-width: 770px) {
   .mainrow {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
   }
-  .mainimages{
+  /* .mainimages{
     width: 330px;
-  }
+  } */
 }
 @media(max-width: 480px){
-  .mainimages{
+  /* .mainimages{
     width: 240px;
-  }
+  } */
 }

@@ -11,8 +11,8 @@
     "Whitepaper":{
         "1": "Papier blanc"
     },
-    "BuyBR34P":{
-        "1": "Acheter BR34P"
+    "SplashDAO":{
+        "1": "Éclaboussure DAO"
     },
     "Tutorial":{
         "1": "Didacticiel"
@@ -60,8 +60,8 @@
     "SplashNetworkisthelatestprojectdevelopedby":{
         "1": "Éclaboussure Network est le dernier projet développé par"
     },
-    "Forex_Shark":{
-        "1": "Forex_Requin"
+    "SplassiveTeam":{
+        "1": "Équipe Splassive"
     }
     ,
     "BB":{
@@ -71,11 +71,11 @@
     "andteam.":{
         "1": "et équipe."
     },
-    "TheofficialtokenoftheSplashNetworkisSplash(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "Le jeton officiel du réseau Éclaboussure est Éclaboussure (BEP-20) sur la blockchain Binance Smart (BSC) qui capture de la valeur en étant rare, déflationniste, résistant à la censure et en étant construit sur une blockchain robuste et véritablement décentralisée."
+    "TheofficialtokenoftheSplashNetworkisSplash(CRO)ontheCronosChain(CRO)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "Le jeton officiel du Splash Network est Splash (CRO) sur la chaîne Cronos (CRO) qui capture de la valeur en étant rare, déflationniste, résistant à la censure et en étant construit sur une blockchain robuste et véritablement décentralisée."
     },
-    "TherecommendedexchangefortradingSplashistheThe Wellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
-        "1": "L'échange recommandé pour le trading de Éclaboussure est le contrat Le puits qui peut être trouvé directement sur le site Web des plateformes sous l'onglet swap, car il nous permet de renoncer à la taxe initiale de 10 % sur les achats et fournit les prix les plus bas et la liquidité la plus élevée, ce qui entraîne moins de glissement pour les métiers plus importants."
+    "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheTheWelltab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
+        "1": "L'échange recommandé pour le trading de Éclaboussure est le contrat Le puits qui peut être trouvé directement sur le site Web des plateformes sous l'onglet KAIVO, car il nous permet de renoncer à la taxe initiale de 10 % sur les achats et fournit les prix les plus bas et la liquidité la plus élevée, ce qui entraîne moins de glissement pour les métiers plus importants."
     },
     "TRADE":{
         "1": "COMMERCE"
@@ -89,8 +89,8 @@
     "STATS":{
         "1": "STATISTIQUES"
     },
-    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireBNBCommunity":{
-        "1": "Le jeton Éclaboussure capture toute la valeur du réseau Éclaboussure et le met à la disposition de l'ensemble de la communauté BNB"
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireCROCommunity":{
+        "1": "Le jeton Éclaboussure capture toute la valeur du réseau Éclaboussure et le met à la disposition de l'ensemble de la communauté CRO"
     },
     "Players":{
         "1": "Joueuses"
@@ -149,19 +149,19 @@
         "1": "Prix"
     }
     ,
-    "BNB/Splash":{
-        "1": "BNB/Éclaboussure"
+    "CRO/Splash":{
+        "1": "CRO/Éclaboussure"
     }
     ,
-    "BNBBalance":{
-        "1": "Solde en BNB"
+    "CROBalance":{
+        "1": "Solde en CRO"
     }
     ,
     "USDT":{
         "1": "USDT"
     },
-    "BNB":{
-        "1": "BNB"
+    "CRO":{
+        "1": "CRO"
     }
     ,
     "SplashBalance":{
@@ -326,12 +326,12 @@
         "1": "Réclamer"
     }
     ,
-    "GetaBuddy":{
-        "1": "Obtenez un copain"
+    "JoinTheWave":{
+        "1": "Rejoignez la vague"
     }
     ,
-    "CurrentBuddy":{
-        "1": "Copain actuel"
+    "CurrentWaveStarter":{
+        "1": "Démarreur de vague actuelle"
     }
     ,
     "None":{
@@ -354,8 +354,8 @@
         "1": "Seuil d'inactivité"
     }
     ,
-    "Buddy":{
-        "1": "Copine"
+    "WaveStarter":{
+        "1": "Démarreur de vague"
     }
     ,
     "Update":{
@@ -367,8 +367,8 @@
         "1": "Lien de référence"
     }
     ,
-    "CheckoutSplashpers":{
-        "1": "Éclaboussureurs à la caisse"
+    "CheckoutWhoSplashed":{
+        "1": "Vérifier qui a éclaboussé"
     }
     ,
     "PlayerLookup":{
@@ -520,12 +520,12 @@
         "1": "Sur"
     }
     ,
-    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sSWAPpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent1%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
-        "1": "Les joueurs peuvent participer en achetant le Éclaboussure à partir de la page SWAP de la plate-forme, en rejoignant l'équipe Éclaboussure d'un autre utilisateur (exigence minimale de 1 Éclaboussure). Les joueurs peuvent également augmenter leurs gains grâce à des dépôts réguliers, des récompenses glissantes ainsi que des références basées sur l'équipe. Contrairement à de nombreuses autres plates-formes promettant un pourcentage de rendement quotidien constant, le contrat de Le robinet ne peut pas s'écouler et sera TOUJOURS en mesure de fournir le Éclaboussure qui a été récompensé. Les récompenses Éclaboussure proviennent d'une taxe de 10 % sur toutes les transactions Éclaboussure, à l'exclusion des achats effectués sur la page SWAP de la plate-forme."
+    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sTheWellpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent2%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sTheWellpage.":{
+        "1": "Les joueurs peuvent participer en achetant le Éclaboussure à partir de la page KAIVO de la plate-forme, en rejoignant 2'équipe Éclaboussure d'un autre utilisateur (exigence minimale de 1 Éclaboussure). Les joueurs peuvent également augmenter leurs gains grâce à des dépôts réguliers, des récompenses glissantes ainsi que des références basées sur l'équipe. Contrairement à de nombreuses autres plates-formes promettant un pourcentage de rendement quotidien constant, le contrat de Le robinet ne peut pas s'écouler et sera TOUJOURS en mesure de fournir le Éclaboussure qui a été récompensé. Les récompenses Éclaboussure proviennent d'une taxe de 10 % sur toutes les transactions Éclaboussure, à l'exclusion des achats effectués sur la page KAIVO de la plate-forme."
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
-        "1": "Si jamais il y a une situation où le pool fiscal n'est pas suffisant pour payer les récompenses du RRD, un nouveau RRD sera créé pour garantir le paiement des récompenses. Compte tenu de la théorie des jeux derrière le réseau Éclaboussure, la probabilité que le système ait besoin de créer un nouveau Éclaboussure pour payer les récompenses est extrêmement faible. Étant donné que les Éclaboussure déposés dans Le robinet sont envoyés à une adresse de brûlage et que les Éclaboussure sont constamment bloqués dans le pool de liquidités via le contrat de réservoir, Éclaboussure est la seule plate-forme déflationniste de retour sur investissement quotidien. La meilleure stratégie pour Éclaboussure est de se concentrer sur l'adoption dans le monde réel en construisant votre équipe grâce à des références directes, car vous recevrez des récompenses bonus des références sur leurs dépôts et des bonus de descendance des joueurs qu'ils réfèrent en fonction du montant de bR34P détenu dans votre portefeuille."
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet":{
+        "1": "Si jamais il y a une situation où le pool fiscal n'est pas suffisant pour payer les récompenses du RRD, un nouveau RRD sera créé pour garantir le paiement des récompenses. Compte tenu de la théorie des jeux derrière le réseau Éclaboussure, la probabilité que le système ait besoin de créer un nouveau Éclaboussure pour payer les récompenses est extrêmement faible. Étant donné que les Éclaboussure déposés dans Le robinet sont envoyés à une adresse de brûlage et que les Éclaboussure sont constamment bloqués dans le pool de liquidités via le contrat de réservoir, Éclaboussure est la seule plate-forme déflationniste de retour sur investissement quotidien. La meilleure stratégie pour Éclaboussure est de se concentrer sur l'adoption dans le monde réel en construisant votre équipe grâce à des références directes, car vous recevrez des récompenses bonus des références sur leurs dépôts et des bonus de descendance des joueurs qu'ils réfèrent en fonction du montant de Éclaboussure DAO détenu dans votre portefeuille."
     }
     ,
 

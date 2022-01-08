@@ -11,8 +11,8 @@
     "Whitepaper":{
         "1": "Whitepaper"
     },
-    "BuyBR34P":{
-        "1": "Buy BR34P"
+    "SplashDAO":{
+        "1": "Splash DAO"
     },
     "Tutorial":{
         "1": "Tutorial"
@@ -60,8 +60,8 @@
     "SplashNetworkisthelatestprojectdevelopedby":{
         "1": "Splash Network is the latest project developed by"
     },
-    "Forex_Shark":{
-        "1": "Forex_Shark"
+    "SplassiveTeam":{
+        "1": "Splassive Team"
     }
     ,
     "BB":{
@@ -71,11 +71,11 @@
     "andteam.":{
         "1": "and team."
     },
-    "TheofficialtokenoftheSplashNetworkisSplash(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "The official token of the Splash Network is Splash (BEP-20) on the Binance Smart blockchain (BSC) that captures value by being scarce, deflationary, censorship resistant, and by being built on a robust, truly decentralized blockchain."
+    "TheofficialtokenoftheSplashNetworkisSplash(CRO)ontheCronosChain(CRO)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "The official token of the Splash Network is Splash (CRO) on the Cronos Chain (CRO) that captures value by being scarce, deflationary, censorship resistant, and by being built on a robust, truly decentralized blockchain."
     },
-    "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
-        "1": "The recommended exchange for trading Splash is the The Well contract which can be found directly on the platforms website under the swap tab, as it allows us to waive the initial 10% tax on buys and provides the lowest prices and highest liquidity, resulting in less slippage for larger trades."
+    "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheTheWelltab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
+        "1": "The recommended exchange for trading Splash is the The Well contract which can be found directly on the platforms website under the The Well tab, as it allows us to waive the initial 10% tax on buys and provides the lowest prices and highest liquidity, resulting in less slippage for larger trades."
     },
     "TRADE":{
         "1": "TRADE"
@@ -89,8 +89,8 @@
     "STATS":{
         "1": "STATS"
     },
-    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireBNBCommunity":{
-        "1": "The Splash token captures the entire value of the Splash Network and makes it available to the entire BNB Community"
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireCROCommunity":{
+        "1": "The Splash token captures the entire value of the Splash Network and makes it available to the entire CRO Community"
     },
     "Players":{
         "1": "Players"
@@ -149,19 +149,19 @@
         "1": "Price"
     }
     ,
-    "BNB/Splash":{
-        "1": "BNB/Splash"
+    "CRO/Splash":{
+        "1": "CRO/Splash"
     }
     ,
-    "BNBBalance":{
-        "1": "BNB Balance"
+    "CROBalance":{
+        "1": "CRO Balance"
     }
     ,
     "USDT":{
         "1": "USDT"
     },
-    "BNB":{
-        "1": "BNB"
+    "CRO":{
+        "1": "CRO"
     }
     ,
     "SplashBalance":{
@@ -326,12 +326,12 @@
         "1": "Claim"
     }
     ,
-    "GetaBuddy":{
-        "1": "Get a Buddy"
+    "JoinTheWave":{
+        "1": "Join The Wave"
     }
     ,
-    "CurrentBuddy":{
-        "1": "Current Buddy"
+    "CurrentWaveStarter":{
+        "1": "Current Wave Starter"
     }
     ,
     "None":{
@@ -354,8 +354,8 @@
         "1": "Inactivity Threshold"
     }
     ,
-    "Buddy":{
-        "1": "Buddy"
+    "WaveStarter":{
+        "1": "Wave Starter"
     }
     ,
     "Update":{
@@ -367,8 +367,8 @@
         "1": "Referral Link"
     }
     ,
-    "CheckoutSplashpers":{
-        "1": "Checkout Splashpers"
+    "CheckoutWhoSplashed":{
+        "1": "Checkout Who Splashed"
     }
     ,
     "PlayerLookup":{
@@ -520,12 +520,12 @@
         "1": "About"
     }
     ,
-    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sSWAPpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent1%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
-        "1": "Players can participate by purchasing Splash from the platform's SWAP page, joining another user’s Splash team (1 Splash minimum requirement) Depositing Splash to the The Tap contract earns a consistent 1% daily return of their Splash (365% maximum payout) passively. Players can also compound their earnings through regular deposits, rolling rewards as well as team based referrals. Unlike many other platforms promising a consistent daily % return, The Tap's contract cannot drain and will ALWAYS be able to provide the Splash that has been rewarded. Splash rewards come from a 10% tax on all Splash transactions excluding buys from the platform's SWAP page."
+    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sTheWellpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent2%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sTheWellpage.":{
+        "1": "Players can participate by purchasing Splash from the platform's The WELL page, joining another user’s Splash team (1 Splash minimum requirement) Depositing Splash to the The Tap contract earns a consistent 2% daily return of their Splash (360% maximum payout) passively. Players can also compound their earnings through regular deposits, rolling rewards as well as team based referrals. Unlike many other platforms promising a consistent daily % return, The Tap's contract cannot drain and will ALWAYS be able to provide the Splash that has been rewarded. Splash rewards come from a 10% tax on all Splash transactions excluding buys from the platform's The WELL page."
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
-        "1": "If there is ever a situation where the tax pool is not enough to pay Splash rewards new Splash will be minted to ensure rewards are paid out. Given the game theory behind the Splash network, the probability that the system will need to mint new Splash to pay rewards is extremely low. Since Splash deposited into The Tap are sent to a burn address and Splash is constantly being locked in the liquidity pool through the reservoir contract, Splash is the only deflationary daily ROI platform. The best strategy for Splash is to focus on real world adoption by building out your team through direct referrals, as you will receive bonus rewards from referrals on their deposits and downline bonuses from players they refer based on the amount of bR34P held in your wallet"
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet":{
+        "1": "If there is ever a situation where the tax pool is not enough to pay Splash rewards new Splash will be minted to ensure rewards are paid out. Given the game theory behind the Splash network, the probability that the system will need to mint new Splash to pay rewards is extremely low. Since Splash deposited into The Tap are sent to a burn address and Splash is constantly being locked in the liquidity pool through the reservoir contract, Splash is the only deflationary daily ROI platform. The best strategy for Splash is to focus on real world adoption by building out your team through direct referrals, as you will receive bonus rewards from referrals on their deposits and downline bonuses from players they refer based on the amount of Splash DAO held in your wallet"
     }
     ,
 

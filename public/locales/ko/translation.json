@@ -11,8 +11,8 @@
     "Whitepaper":{
         "1": "백지"
     },
-    "BuyBR34P":{
-        "1": "BR34P 구매"
+    "SplashDAO":{
+        "1": "스플래쉬 DAO"
     },
     "Tutorial":{
         "1": "지도 시간"
@@ -60,8 +60,8 @@
     "SplashNetworkisthelatestprojectdevelopedby":{
         "1": "튀김 Network는 에서 개발한 최신 프로젝트입니다."
     },
-    "Forex_Shark":{
-        "1": "외환_상어"
+    "SplassiveTeam":{
+        "1": "스플래시브 팀"
     }
     ,
     "BB":{
@@ -71,10 +71,10 @@
     "andteam.":{
         "1": "그리고 팀."
     },
-    "TheofficialtokenoftheSplashNetworkisSplash(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "튀김 네트워크의 공식 토큰은 바이낸스 스마트 블록체인(BSC)의 튀김(BEP-20)으로, 희소성, 디플레이션, 검열 저항성, 강력하고 진정으로 분산된 블록체인을 기반으로 구축되어 가치를 포착합니다."
+    "TheofficialtokenoftheSplashNetworkisSplash(CRO)ontheCronosChain(CRO)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "Splash Network의 공식 토큰은 Cronos Chain(CRO)의 Splash(CRO)로, 희소성, 디플레이션, 검열 저항, 강력하고 진정으로 분산된 블록체인을 기반으로 구축되어 가치를 포착합니다."
     },
-    "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
+    "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheTheWelltab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
         "1": "튀김 거래에 권장되는 거래소는 플랫폼 웹사이트의 스왑 탭에서 직접 찾을 수 있는 우물 계약입니다. 구매 시 초기 10% 세금을 면제하고 가장 낮은 가격과 가장 높은 유동성을 제공하여 미끄러짐을 줄일 수 있기 때문입니다. 더 큰 거래를 위해."
     },
     "TRADE":{
@@ -89,8 +89,8 @@
     "STATS":{
         "1": "통계"
     },
-    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireBNBCommunity":{
-        "1": "튀김 토큰은 튀김 네트워크의 전체 가치를 캡처하고 전체 BNB 커뮤니티에서 사용할 수 있도록 합니다."
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireCROCommunity":{
+        "1": "튀김 토큰은 튀김 네트워크의 전체 가치를 캡처하고 전체 CRO 커뮤니티에서 사용할 수 있도록 합니다."
     },
     "Players":{
         "1": "선수"
@@ -149,18 +149,18 @@
         "1": "가격"
     }
     ,
-    "BNB/Splash":{
+    "CRO/Splash":{
         "1": "비앤비/드립"
     }
     ,
-    "BNBBalance":{
-        "1": "BNB 잔액"
+    "CROBalance":{
+        "1": "CRO 잔액"
     }
     ,
     "USDT":{
         "1": "USDT"
     },
-    "BNB":{
+    "CRO":{
         "1": "비앤비"
     }
     ,
@@ -326,12 +326,12 @@
         "1": "주장하다"
     }
     ,
-    "GetaBuddy":{
-        "1": "친구 사귀기"
+    "JoinTheWave":{
+        "1": "웨이브에 합류"
     }
     ,
-    "CurrentBuddy":{
-        "1": "현재 친구"
+    "CurrentWaveStarter":{
+        "1": "현재 웨이브 스타터"
     }
     ,
     "None":{
@@ -354,8 +354,8 @@
         "1": "비활성 임계값"
     }
     ,
-    "Buddy":{
-        "1": "친구"
+    "WaveStarter":{
+        "1": "웨이브 스타터"
     }
     ,
     "Update":{
@@ -367,8 +367,8 @@
         "1": "관련 링크"
     }
     ,
-    "CheckoutDrippers":{
-        "1": "체크아웃 드리퍼스"
+    "CheckoutWhoSplashed":{
+        "1": "누가 스플래쉬를 했는지 체크아웃"
     }
     ,
     "PlayerLookup":{
@@ -520,12 +520,12 @@
         "1": "에 대한"
     }
     ,
-    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sSWAPpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent1%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
-        "1": "플레이어는 플랫폼의 SWAP 페이지에서 튀김을 구매하고 다른 사용자의 튀김 팀에 합류하여 참여할 수 있습니다(1 튀김 최소 요구 사항). 탭 계약에 튀김을 예치하면 튀김의 1% 일일 수익(최대 지불금 최대 365%)을 소극적으로 얻을 수 있습니다. 플레이어는 또한 정기적인 예금, 롤링 보상 및 팀 기반 추천을 통해 수입을 복합할 수 있습니다. 일관된 일일 수익률을 약속하는 다른 많은 플랫폼과 달리 탭의 계약은 소진될 수 없으며 항상 보상을 받은 튀김을 제공할 수 있습니다. 튀김 보상은 플랫폼의 SWAP 페이지에서 구매를 제외한 모든 튀김 거래에 대한 10% 세금에서 나옵니다."
+    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sTheWellpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent2%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sTheWellpage.":{
+        "1": "플레이어는 플랫폼의 우물 페이지에서 튀김을 구매하고 다른 사용자의 튀김 팀에 합류하여 참여할 수 있습니다(1 튀김 최소 요구 사항). 탭 계약에 튀김을 예치하면 튀김의 2% 일일 수익(최대 지불금 최대 365%)을 소극적으로 얻을 수 있습니다. 플레이어는 또한 정기적인 예금, 롤링 보상 및 팀 기반 추천을 통해 수입을 복합할 수 있습니다. 일관된 일일 수익률을 약속하는 다른 많은 플랫폼과 달리 탭의 계약은 소진될 수 없으며 항상 보상을 받은 튀김을 제공할 수 있습니다. 튀김 보상은 플랫폼의 우물 페이지에서 구매를 제외한 모든 튀김 거래에 대한 10% 세금에서 나옵니다."
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
-        "1": "세금 풀이 튀김 보상을 지불하기에 충분하지 않은 상황이 발생하면 보상이 지급되도록 새로운 튀김이 발행됩니다. 튀김 네트워크 이면의 게임 이론을 고려할 때 시스템이 보상을 지불하기 위해 새로운 튀김을 발행해야 할 확률은 매우 낮습니다. 탭에 예치된 튀김은 소각 주소로 전송되고 튀김은 저수지 계약을 통해 유동성 풀에 지속적으로 잠겨 있기 때문에 튀김은 유일한 디플레이션 일일 ROI 플랫폼입니다. 튀김의 가장 좋은 전략은 직접 추천을 통해 팀을 구축하여 실제 채택에 집중하는 것입니다. 지갑에 있는 bR34P의 양을 기준으로 추천한 플레이어의 예금 및 다운라인 보너스에 대한 추천으로 보너스 보상을 받을 수 있기 때문입니다."
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet":{
+        "1": "세금 풀이 Splash 보상을 지불하기에 충분하지 않은 상황이 발생하면 보상이 지급되도록 새로운 Splash가 발행됩니다. Splash 네트워크 이면의 게임 이론을 감안할 때 시스템이 보상을 지불하기 위해 새로운 Splash를 발행해야 할 확률은 매우 낮습니다. The Tap에 예치된 Splash는 소각 주소로 전송되고 Splash는 저수지 계약을 통해 유동성 풀에 지속적으로 잠겨 있기 때문에 Splash는 유일한 디플레이션 일일 ROI 플랫폼입니다. Splash에 대한 최고의 전략은 직접 추천을 통해 팀을 구축하여 실제 채택에 집중하는 것입니다. 귀하는 지갑에 있는 Splash DAO의 양에 따라 추천하는 플레이어로부터 예금에 대한 추천과 다운라인 보너스를 통해 보너스 보상을 받을 수 있기 때문입니다."
     }
     ,
 

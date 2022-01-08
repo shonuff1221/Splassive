@@ -419,7 +419,7 @@ const Swap = () => {
                       <img src={coin} alt="" width="60px" />
                       <h5
                         className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-3 fst-italic"
-                        style={{ color: "#7c625a" }}
+                        style={{ color: "#7c625a", fontSize: "20px"  }}
                       >
                         {t("Price.1")}
                       </h5>
@@ -429,11 +429,11 @@ const Swap = () => {
                           style={{ color: "#ab9769", fontSize: "20px" }}
                         >
                           {" "}
-                          {t("BNB/Splash.1")} {division}
+                          {t("CRO/Splash.1")} {division}
                         </span>
                       </p>
                       <p className="text-small fst-italic">
-                        {t("BNB/Splash.1")} ≈ {oneDripPrice} {t("USDT.1")}
+                        {t("CRO/Splash.1")} ≈ {oneDripPrice} {t("USDT.1")}
                       </p>
                     </div>
                   </div>
@@ -444,7 +444,7 @@ const Swap = () => {
                         className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-3 fst-italic"
                         style={{ color: "#7c625a" }}
                       >
-                        {t("BNBBalance.1")}
+                        {t("CROBalance.1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
                         <span
@@ -455,7 +455,7 @@ const Swap = () => {
                         </span>
                       </p>
                       <p className="text-small fst-italic">
-                        {t("BNB.1")} ≈{bnbPrice} {t("USDT.1")}
+                        {t("CRO.1")} ≈{bnbPrice} {t("USDT.1")}
                       </p>
                     </div>
                   </div>
@@ -496,7 +496,7 @@ const Swap = () => {
                     <div className="landing-page">
                       <div className="text-left">
                         <h3>
-                          <p className="notranslate fst-italic">
+                          <p className="notranslate fst-italic" style={{ fontSize: "20px" }}>
                             {t("BuySplash.1")}
                           </p>
                         </h3>
@@ -512,7 +512,7 @@ const Swap = () => {
                             <div className="col-6 text-right fst-italic">
                               {" "}
                               <p>
-                                {t("BNBBalance.1")}
+                                {t("CROBalance.1")}
                                 <label className="user-balance text-white fst-italic">
                                   {" "}
                                   {usersBalance}
@@ -525,7 +525,7 @@ const Swap = () => {
                               ref={inputEl}
                               onChange={() => enterBuyAmount1()}
                               type="number"
-                              placeholder="BNB"
+                              placeholder="CRO"
                               className="form-control"
                               id="__BVID__90"
                             />
@@ -689,7 +689,7 @@ const Swap = () => {
                             <div className="col-6 text-left fst-italic">
                               <small className="form-text">
                                 <p>
-                                  {t("Estimatereceived.1")} {estimate}
+                                  {t("Estimatereceived.1")}: {estimate}
                                 </p>
                               </small>
 
@@ -938,7 +938,7 @@ const Swap = () => {
                             <div className="col-6 text-left fst-italic">
                               <small className="form-text">
                                 <p style={{ lineHeight: "120%" }}>
-                                  {t("Estimatereceived.1")}*:{tenPerVal}
+                                  {t("Estimatereceived.1")}:{tenPerVal}
                                 </p>
                               </small>
                               <small className="form-text fst-italic">

@@ -11,8 +11,8 @@
     "Whitepaper":{
         "1": "白皮书"
     },
-    "BuyBR34P":{
-        "1": "购买 BR34P"
+    "SplashDAO":{
+        "1": "飞溅DAO"
     },
     "Tutorial":{
         "1": "教程"
@@ -60,8 +60,8 @@
     "SplashNetworkisthelatestprojectdevelopedby":{
         "1": "溅 Network 是 溅 Network 开发的最新项目"
     },
-    "Forex_Shark":{
-        "1": "Forex_Shark"
+    "SplassiveTeam":{
+        "1": "分裂团队"
     }
     ,
     "BB":{
@@ -71,10 +71,10 @@
     "andteam.":{
         "1": "和团队."
     },
-    "TheofficialtokenoftheSplashNetworkisSplash(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "溅 网络的官方代币是币安智能区块链 (BSC) 上的 溅 (BEP-20)，它通过稀缺、通货紧缩、抗审查以及建立在强大、真正去中心化的区块链上来获取价值"
+    "TheofficialtokenoftheSplashNetworkisSplash(CRO)ontheCronosChain(CRO)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "Splash Network 的官方代币是 Cronos 链 (CRO) 上的 Splash (CRO)，它通过稀缺、通缩、抗审查以及建立在强大、真正去中心化的区块链上来获取价值。"
     },
-    "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
+    "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheTheWelltab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
         "1": "推荐的 溅 交易交易所是 井 合约，可以直接在平台网站的掉期选项卡下找到，因为它允许我们免除最初 10% 的买入税，并提供最低的价格和最高的流动性，从而减少滑点对于较大的交易"
     },
     "TRADE":{
@@ -89,8 +89,8 @@
     "STATS":{
         "1": "统计数据"
     },
-    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireBNBCommunity":{
-        "1": "溅 代币捕获了 溅 Network 的全部价值，并使其可供整个 BNB 社区使用"
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireCROCommunity":{
+        "1": "溅 代币捕获了 溅 Network 的全部价值，并使其可供整个 CRO 社区使用"
     },
     "Players":{
         "1": "球员"
@@ -149,18 +149,18 @@
         "1": "价格"
     }
     ,
-    "BNB/Splash":{
+    "CRO/Splash":{
         "1": "币安/溅溅"
     }
     ,
-    "BNBBalance":{
-        "1": "BNB 余额"
+    "CROBalance":{
+        "1": "CRO 余额"
     }
     ,
     "USDT":{
         "1": "USDT"
     },
-    "BNB":{
+    "CRO":{
         "1": "比特币"
     }
     ,
@@ -326,12 +326,12 @@
         "1": "宣称"
     }
     ,
-    "GetaBuddy":{
-        "1": "找个朋友"
+    "JoinTheWave":{
+        "1": "加入浪潮"
     }
     ,
-    "CurrentBuddy":{
-        "1": "当前好友"
+    "CurrentWaveStarter":{
+        "1": "电流波启动器"
     }
     ,
     "None":{
@@ -354,8 +354,8 @@
         "1": "不活动阈值"
     }
     ,
-    "Buddy":{
-        "1": "伙伴"
+    "WaveStarter":{
+        "1": "波启动器"
     }
     ,
     "Update":{
@@ -367,8 +367,8 @@
         "1": "推荐链接"
     }
     ,
-    "CheckoutDrippers":{
-        "1": "结账溅头"
+    "CheckoutWhoSplashed":{
+        "1": "结帐谁溅"
     }
     ,
     "PlayerLookup":{
@@ -520,12 +520,12 @@
         "1": "关于"
     }
     ,
-    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sSWAPpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent1%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
-        "1": "玩家可以通过从平台的 SWAP 页面购买 溅 来参与，加入另一个用户的 溅 团队（最低要求 1 溅） 将 溅 存入水龙头合约可以被动地获得持续 1% 的每日 溅 回报（365% 最高支出）。玩家还可以通过定期存款、滚动奖励以及基于团队的推荐来增加收入。与许多其他承诺每日百分比回报一致的平台不同，水龙头 的合约不会耗尽，并且始终能够提供已获得奖励的 溅。 溅 奖励来自对所有 溅 交易征收 10% 的税，不包括从平台的 SWAP 页面购买。"
+    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sTheWellpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent2%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sTheWellpage.":{
+        "1": "玩家可以通过从平台的 井 页面购买 溅 来参与，加入另一个用户的 溅 团队（最低要求 1 溅） 将 溅 存入水龙头合约可以被动地获得持续 2% 的每日 溅 回报（365% 最高支出）。玩家还可以通过定期存款、滚动奖励以及基于团队的推荐来增加收入。与许多其他承诺每日百分比回报一致的平台不同，水龙头 的合约不会耗尽，并且始终能够提供已获得奖励的 溅。 溅 奖励来自对所有 溅 交易征收 10% 的税，不包括从平台的 井 页面购买。"
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
-        "1": "如果出现税收池不足以支付 溅 奖励的情况，将铸造新的 溅 以确保支付奖励。鉴于 溅 网络背后的博弈论，系统需要铸造新的 溅 来支付奖励的概率极低。由于存入 水龙头 的 溅 被发送到一个销毁地址，并且 溅 通过水库合约不断被锁定在流动性池中，因此 溅 是唯一的通货紧缩每日 ROI 平台。 溅 的最佳策略是通过直接推荐来建立您的团队，从而专注于现实世界的采用，因为您将从推荐的存款中获得奖金奖励，并根据您钱包中持有的 bR34P 数量从他们推荐的玩家那里获得下线奖金"
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet":{
+        "1": "如果出现税收池不足以支付 溅 奖励的情况，将铸造新的 溅 以确保支付奖励。鉴于 溅 网络背后的博弈论，系统需要铸造新的 溅 来支付奖励的概率极低。由于存入 水龙头 的 溅 被发送到一个销毁地址，并且 溅 通过水库合约不断被锁定在流动性池中，因此 溅 是唯一的通货紧缩每日 ROI 平台。 溅 的最佳策略是通过直接推荐来建立您的团队，从而专注于现实世界的采用，因为您将从推荐的存款中获得奖金奖励，并根据您钱包中持有的 飞溅DAO 数量从他们推荐的玩家那里获得下线奖金"
     }
     ,
 

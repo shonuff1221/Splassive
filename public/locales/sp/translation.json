@@ -11,8 +11,8 @@
     "Whitepaper":{
         "1": "Papel blanco"
     },
-    "BuyBR34P":{
-        "1": "Comprar BR34P"
+    "SplashDAO":{
+        "1": "Splash DAO"
     },
     "Tutorial":{
         "1": "Tutorial"
@@ -60,8 +60,8 @@
     "SplashNetworkisthelatestprojectdevelopedby":{
         "1": "Chapoteo Network es el último proyecto desarrollado por"
     },
-    "Forex_Shark":{
-        "1": "Forex_Shark"
+    "SplassiveTeam":{
+        "1": "Equipo de Splassive"
     }
     ,
     "BB":{
@@ -72,10 +72,10 @@
         "1": "y equipo."
     },
     "TheofficialtokenoftheSplashNetworkisSplash(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "El token oficial de la red Chapoteo es Chapoteo (BEP-20) en la cadena de bloques Binance Smart (BSC) que captura valor al ser escasa, deflacionaria, resistente a la censura y al estar construida sobre una cadena de bloques robusta y verdaderamente descentralizada."
+        "1": "El token oficial de Splash Network es Splash (CRO) en Cronos Chain (CRO) que captura valor al ser escaso, deflacionario, resistente a la censura y al estar construido sobre una cadena de bloques robusta y verdaderamente descentralizada."
     },
-    "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheswaptab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
-        "1": "El intercambio recomendado para operar con Chapoteo es el contrato El pozo, que se puede encontrar directamente en el sitio web de la plataforma en la pestaña de intercambio, ya que nos permite renunciar al impuesto inicial del 10% sobre las compras y proporciona los precios más bajos y la mayor liquidez, lo que resulta en menos deslizamientos. para comercios más grandes."
+    "TheofficialtokenoftheSplashNetworkisSplash(CRO)ontheCronosChain(CRO)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "The official token of the Splash Network is Splash (CRO) on the Cronos Chain (CRO) that captures value by being scarce, deflationary, censorship resistant, and by being built on a robust, truly decentralized blockchain."
     },
     "TRADE":{
         "1": "COMERCIO"
@@ -89,8 +89,8 @@
     "STATS":{
         "1": "ESTADÍSTICAS"
     },
-    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireBNBCommunity":{
-        "1": "El token Chapoteo captura todo el valor de Chapoteo Network y lo pone a disposición de toda la comunidad BNB."
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireCROCommunity":{
+        "1": "El token Chapoteo captura todo el valor de Chapoteo Network y lo pone a disposición de toda la comunidad CRO."
     },
     "Players":{
         "1": "Jugadoras"
@@ -149,19 +149,19 @@
         "1": "Precio"
     }
     ,
-    "BNB/Splash":{
-        "1": "BNB / GOTEO"
+    "CRO/Splash":{
+        "1": "CRO / GOTEO"
     }
     ,
-    "BNBBalance":{
-        "1": "Saldo BNB"
+    "CROBalance":{
+        "1": "Saldo CRO"
     }
     ,
     "USDT":{
         "1": "USDT"
     },
-    "BNB":{
-        "1": "BNB"
+    "CRO":{
+        "1": "CRO"
     }
     ,
     "SplashBalance":{
@@ -326,12 +326,12 @@
         "1": "Afirmar"
     }
     ,
-    "GetaBuddy":{
-        "1": "Conseguir un amigo"
+    "JoinTheWave":{
+        "1": "Únete a la ola"
     }
     ,
-    "CurrentBuddy":{
-        "1": "Compañero actual"
+    "CurrentWaveStarter":{
+        "1": "Arrancador de onda actual"
     }
     ,
     "None":{
@@ -354,8 +354,8 @@
         "1": "Umbral de inactividad"
     }
     ,
-    "Buddy":{
-        "1": "Amiga"
+    "WaveStarter":{
+        "1": "Arrancador de olas"
     }
     ,
     "Update":{
@@ -367,8 +367,8 @@
         "1": "Enlace de referencia"
     }
     ,
-    "CheckoutDrippers":{
-        "1": "Goteros de pago"
+    "CheckoutWhoSplashed":{
+        "1": "Comprobar quién salpicó"
     }
     ,
     "PlayerLookup":{
@@ -520,12 +520,12 @@
         "1": "Estado"
     }
     ,
-    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sSWAPpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent1%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sSWAPpage.":{
-        "1": "Los jugadores pueden participar comprando Chapoteo desde la página SWAP de la plataforma, uniéndose al equipo de Chapoteo de otro usuario (requisito mínimo de 1 Chapoteo) Al depositar Chapoteo en el contrato de El grifo, se obtiene un retorno diario constante del 1% de su Chapoteo (pago máximo del 365%) de forma pasiva. Los jugadores también pueden acumular sus ganancias a través de depósitos regulares, recompensas continuas y referencias basadas en equipos. A diferencia de muchas otras plataformas que prometen un% de retorno diario constante, el contrato de El grifo no se puede agotar y SIEMPRE podrá proporcionar el Chapoteo que ha sido recompensado. Las recompensas de Chapoteo provienen de un impuesto del 10% en todas las transacciones de Chapoteo, excluidas las compras de la página SWAP de la plataforma."
+    "PlayerscanparticipatebypurchasingSplashfromtheplatform'sTheWellpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent1%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sTheWellpage.":{
+        "1": "Los jugadores pueden participar comprando Chapoteo desde la página EL POZO de la plataforma, uniéndose al equipo de Chapoteo de otro usuario (requisito mínimo de 1 Chapoteo) Al depositar Chapoteo en el contrato de El grifo, se obtiene un retorno diario constante del 2% de su Chapoteo (pago máximo del 365%) de forma pasiva. Los jugadores también pueden acumular sus ganancias a través de depósitos regulares, recompensas continuas y referencias basadas en equipos. A diferencia de muchas otras plataformas que prometen un% de retorno diario constante, el contrato de El grifo no se puede agotar y SIEMPRE podrá proporcionar el Chapoteo que ha sido recompensado. Las recompensas de Chapoteo provienen de un impuesto del 10% en todas las transacciones de Chapoteo, excluidas las compras de la página EL POZO de la plataforma."
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofbR34Pheldinyourwallet":{
-        "1": "Si alguna vez hay una situación en la que el fondo de impuestos no es suficiente para pagar las recompensas de Chapoteo, se acuñará un nuevo Chapoteo para garantizar que se paguen las recompensas. Dada la teoría del juego detrás de la red Chapoteo, la probabilidad de que el sistema necesite acuñar un nuevo Chapoteo para pagar recompensas es extremadamente baja. Dado que los Chapoteo depositados en El grifo se envían a una dirección de grabación y Chapoteo se bloquea constantemente en el fondo de liquidez a través del contrato de depósito, Chapoteo es la única plataforma de ROI diaria deflacionaria. La mejor estrategia para Chapoteo es enfocarse en la adopción del mundo real mediante la construcción de su equipo a través de referencias directas, ya que recibirá recompensas de bonificación de las referencias en sus depósitos y bonificaciones de línea descendente de los jugadores que refieren según la cantidad de bR34P que tiene en su billetera."
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet":{
+        "1": "Si alguna vez hay una situación en la que el fondo de impuestos no es suficiente para pagar las recompensas de Chapoteo, se acuñará un nuevo Chapoteo para garantizar que se paguen las recompensas. Dada la teoría del juego detrás de la red Chapoteo, la probabilidad de que el sistema necesite acuñar un nuevo Chapoteo para pagar recompensas es extremadamente baja. Dado que los Chapoteo depositados en El grifo se envían a una dirección de grabación y Chapoteo se bloquea constantemente en el fondo de liquidez a través del contrato de depósito, Chapoteo es la única plataforma de ROI diaria deflacionaria. La mejor estrategia para Chapoteo es enfocarse en la adopción del mundo real mediante la construcción de su equipo a través de referencias directas, ya que recibirá recompensas de bonificación de las referencias en sus depósitos y bonificaciones de línea descendente de los jugadores que refieren según la cantidad de salpicadura dao que tiene en su billetera."
     }
     ,
 

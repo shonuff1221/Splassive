@@ -3,11 +3,11 @@ import balance from "../../images/balance.png";
 import undo from "../../images/undo.png";
 import refresh from "../../images/refresh.png";
 import speedometer from "../../images/speedometer.png";
-import astro from "../../images/astro.png";
+import astro from "../../images/drops.png";
 import contact from "../../images/contact (2).png";
 import user from "../../images/user.png";
 import pearl from "../../images/pearl.png";
-import dummy from "../../images/dummy.png";
+import dummy from "../../images/dollar.png";
 import transfer from "../../images/transfer.png";
 import { useTranslation } from "react-i18next";
 import { toast } from 'react-toastify';
@@ -313,7 +313,7 @@ useEffect(() => {
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{reward}</span>
                       </p>
-                      <p className="text-small fst-italic">{t("BNB.1")}</p>
+                      <p className="text-small fst-italic" style={{backgroundColor: "#4e2e4b"}}>{t("CRO.1")}</p>
                     </div>
                   </div>
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
@@ -325,7 +325,7 @@ useEffect(() => {
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{totalDrops}</span>
                       </p>
-                      <p className="text-small fst-italic">{t("DROP.1")}</p>
+                      <p className="text-small fst-italic" style={{backgroundColor: "#4e2e4b"}}>{t("DROP.1")}</p>
                     </div>
                   </div>
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
@@ -337,43 +337,43 @@ useEffect(() => {
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{stake}</span>
                       </p>
-                      <p className="text-small fst-italic">%</p>
+                      <p className="text-small fst-italic" style={{backgroundColor: "#4e2e4b"}}>%</p>
                     </div>
                   </div>
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
                     <div className="price-top-part">
-                      <img src={refresh} alt="" width="40px" />
+                      <img src={refresh} alt="" width="54px" />
                       <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-1 fst-italic" style={{ color: "#7c625a" }}>
                         {t("Compounds.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>...</span>
                       </p>
-                      <p className="text-small fst-italic">{t("Count.1")}</p>
+                      <p className="text-small fst-italic" style={{backgroundColor: "#4e2e4b"}}>{t("Count.1")}</p>
                     </div>
                   </div>
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
                     <div className="price-top-part">
-                      <img src={contact} alt="" width="80px" />
+                      <img src={contact} alt="" width="94px" />
                       <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-1 fst-italic" style={{ color: "#7c625a" }}>
                       {t("TotalWithdrawn.1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{totalWithDraw}</span>
                       </p>
-                      <p className="text-small fst-italic">{t("BNB.1")}</p>
+                      <p className="text-small fst-italic" style={{backgroundColor: "#4e2e4b"}}>{t("CRO.1")}</p>
                     </div>
                   </div>
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
                     <div className="price-top-part">
-                      <img src={undo} alt="" width="40px" />
+                      <img src={undo} alt="" width="30px" />
                       <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-1 fst-italic" style={{ color: "#7c625a" }}>
                         {t("CompoundedTotal.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{compundTotal}</span>
                       </p>
-                      <p className="text-small fst-italic">{t("BNB.1")}</p>
+                      <p className="text-small fst-italic" style={{backgroundColor: "#4e2e4b"}}>{t("CRO.1")}</p>
                     </div>
                   </div>
                 </div>
@@ -418,7 +418,7 @@ useEffect(() => {
                         className="d-flex justify-content-end fst-italic"
                         style={{ lineHeight: "10%" }}
                       >
-                        {t("BNBBalance.1")}:
+                        {t("CROBalance.1")}:
                         <label className="user-balance text-white fst-italic">
                         {userBnbBalance}
                         </label>
@@ -439,7 +439,7 @@ useEffect(() => {
                             <p style={{ lineHeight: "20%" }}>
                               {t("Price.1")}:
                               <label className="user-balance text-white fst-italic">
-                              {t("BNB.1")}/{t("Splash.1")}
+                              {t("CRO.1")}/{t("Splash.1")}
                               ≈
                                 {bnbDripPrice}
                               </label>
@@ -449,7 +449,7 @@ useEffect(() => {
                         <div role="group" className="input-group">
                           <input
                             type="number"
-                            placeholder="BNB"
+                            placeholder="CRO"
                             className="form-control"
                             id="__BVID__213"
                             ref={buyInput}
@@ -555,7 +555,7 @@ useEffect(() => {
               </div>
               <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
                 <div className="price-top-part">
-                  <img src={pearl} alt="" width="60px" />
+                  <img src={astro} alt="" width="60px" />
                   <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-3 fst-italic" style={{ color: "#7c625a" }}>
                   {t("TotalValueLocked.1")}
                   </h5>
@@ -574,7 +574,7 @@ useEffect(() => {
                   <p className="text-large mb-2 text-white">
                     <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{reward}</span>
                   </p>
-                  <p className="text-small">{t("BNB.1")}</p>
+                  <p className="text-small">{t("CRO.1")}</p>
                 </div>
               </div>
               <div className="container col-6 col-xl-4 col-lg-4 col-md-4 mt-3 text-center">
@@ -596,7 +596,7 @@ useEffect(() => {
                     {t("ContractBalance.1")}
                   </h5>
                   <p className="text-large mb-2 text-white">
-                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}> {totalDrops} {t("BNB.1")}</span>
+                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}> {totalDrops} {t("CRO.1")}</span>
                   </p>
                   <p className="text-small">{t("DROPS.1")} ≈{t("USDT.1")}</p>
                 </div>
