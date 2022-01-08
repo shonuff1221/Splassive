@@ -260,6 +260,7 @@ const hydarated =async()=>{
     setIschange("Direct");
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
     setInterval(() => {
       getData();
     }, 1000);

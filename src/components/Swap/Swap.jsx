@@ -788,6 +788,7 @@ const addMaxBalance=async()=>{
   };
   useEffect(() => {
     getDataWitoutMetamask();
+    window.scrollTo(0, 0);
     setInterval(() => {
       getData();
     },1000)

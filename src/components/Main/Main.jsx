@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./Main.css";
 import I from "../../images/logo4.png";
 import user from "../../images/user.png";
@@ -6,9 +6,16 @@ import curve from "../../images/curve.png";
 import van from "../../images/van.png";
 import transfer from "../../images/transfer.png";
 import { useTranslation } from "react-i18next";
+import { useNavigate} from "react-router-dom";
 
 const Main = () => {
   const { t, i18n } = useTranslation();
+  const tradeNvigate = useNavigate();
+  const stakeNavigate = useNavigate();
+  const farmNavigate = useNavigate();
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  },[])
   return (
     <div className="images">
       <div className="router-view">
@@ -64,25 +71,21 @@ const Main = () => {
                 <div className="col-xl-6 col-lg-6 col-md-6 mb-4 pt-4 ">
                   <p className="col-11 white mb-3 text-justify" />
                   <p className="col-11 white text-center ">
-                    <a
+                    {/* <a
                       href="http://pearl.survey4earn.com/swap"
                       className
                       style={{ textDecoration: "none" }}
-                    >
+                    > */}
                       <button
                         style={{ color: "#7c625a", fontSize: "20px" }}
                         type="button"
                         className="btn btn-outline-light btn-block m-3"
+                        onClick={()=>tradeNvigate("/swap")}
                       >
                         <b>{t("TRADE.1")}</b>
                       </button>
-                    </a>
-                    <a
-                      href="http://pearl.survey4earn.com/faucet"
-                      className
-                      className
-                      style={{ textDecoration: "none" }}
-                    >
+                    {/* </a> */}
+                  
                       <button
                         style={{
                           color: "#7c625a",
@@ -91,17 +94,12 @@ const Main = () => {
                         }}
                         type="button"
                         className="btn btn-outline-light btn-block m-3"
+                        onClick={()=>stakeNavigate("/facuet")}
                       >
                         <b>{t("STAKE.1")}</b>
                       </button>
-                    </a>
-                    <a
-                      href="http://pearl.survey4earn.com/frontend/assets/invetment plans.pdf"
-                      target="_blank"
-                      className
-                      className
-                      style={{ textDecoration: "none" }}
-                    >
+                   
+                    
                       <button
                         style={{
                           color: "#7c625a",
@@ -110,10 +108,11 @@ const Main = () => {
                         }}
                         type="button "
                         className="btn btn-outline-light btn-block m-3"
+                       onClick={()=>farmNavigate("/reservoir")}
                       >
                         <b>{t("LIQUIDITYFARM.1")}</b>
                       </button>
-                    </a>
+                   
                     {/* <a href="http://pearl.survey4earn.com/frontend/assets/road_map.pdf" className target="_blank"><button type="button" className="btn btn-outline-light btn-block">Road Map</button></a>
                   <img src={I}/>
                   <a href="http://pearl.survey4earn.com/frontend/assets/Liquidity.pdf" className target="_blank"><button type="button" className="btn btn-outline-light btn-block">Liquidity</button></a> */}
