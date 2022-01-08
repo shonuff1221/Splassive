@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect, useRef} from "react";
 import balance from "../../images/balance.png";
 import undo from "../../images/undo.png";
 import refresh from "../../images/refresh.png";
@@ -10,6 +10,7 @@ import pearl from "../../images/pearl.png";
 import dummy from "../../images/dummy.png";
 import transfer from "../../images/transfer.png";
 import { useTranslation } from "react-i18next";
+import { toast } from 'react-toastify';
 import { loadWeb3 } from "../api";
 import { faucetContractAddress, faucetContractAbi} from "../utils/Faucet";
 import {fountainContractAbi, fountainContractAddress} from '../utils/Fountain';
@@ -20,7 +21,8 @@ const webSupply= new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
 
 function Reservoir() {
   const { t, i18n } = useTranslation();
-
+  let buyInput = useRef()
+  let withdrawInput = useRef();
   let [userBnbBalance, setUserBnbBalance]=useState(0);
   let [userDropBalance, setUserDropBalance]=useState(0);
   let [bnbDripPrice, setBnbDripPrice]=useState(0);
@@ -32,7 +34,7 @@ function Reservoir() {
   let [player, setPlayer]=useState(0);
   let [loackedValue, setLoackedValue]=useState(0);
   let [totalTxs, setTotalTxs]=useState(0)
-
+  let [reward, setReward]=useState(0)
 const getDataWithMetaMask=async()=>{
   try{
   let acc = await loadWeb3();
@@ -55,6 +57,8 @@ const getDataWithoutMetaMask=async()=>{
   try{
     let contract =new webSupply.eth.Contract(reservoirAbi,reservoirAddress);
     let totalDro= await contract.methods.totalSupply().call();
+    totalDro = await webSupply.utils.fromWei(totalDro);
+    totalDro= parseFloat(totalDro).toFixed(3);
     let totalDeposit= await contract.methods.totalDeposits().call();
     totalDeposit = await webSupply.utils.fromWei(totalDeposit);
     totalDeposit= parseFloat(totalDeposit).toFixed(3);
@@ -65,14 +69,15 @@ const getDataWithoutMetaMask=async()=>{
     cmpdTotal = await webSupply.utils.fromWei(cmpdTotal);
     cmpdTotal= parseFloat(cmpdTotal).toFixed(3);
     let players= await contract.methods.players().call();
-    players = await webSupply.utils.fromWei(players);
-    players= parseFloat(players).toFixed(3);
+    // players = await webSupply.utils.fromWei(players);
+    // players= parseFloat(players).toFixed(3);
     let loackBalance= await contract.methods.lockedTokenBalance().call();
     loackBalance = await webSupply.utils.fromWei(loackBalance);
     loackBalance= parseFloat(loackBalance).toFixed(3);
-    let txs= await contract.methods.lockedTokenBalance().call();
-    txs = await webSupply.utils.fromWei(txs);
-    txs= parseFloat(txs).toFixed(3);
+    let txs= await contract.methods.totalTxs().call();
+    let rew = await contract.methods.dividendBalance().call()
+    rew =  webSupply.utils.fromWei(rew);
+    rew= parseFloat(rew).toFixed(3);
     setTotalDrops(totalDro)
     setStake(totalDeposit)
     setTotalWithDraw(totalDraw);
@@ -80,6 +85,7 @@ const getDataWithoutMetaMask=async()=>{
     setPlayer(players);
     setLoackedValue(loackBalance)
     setTotalTxs(txs)
+    setReward(rew);
   }catch(e){
     console.log("error while get without metamsk data", e);
   }
@@ -109,7 +115,7 @@ const dropBalance=async()=>{
       setUserDropBalance(0);
     }else{
     const web3= window.web3;
-    let contract= new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+    let contract= new web3.eth.Contract(reservoirAbi,reservoirAddress);
     let userDrop= await contract.methods.balanceOf(acc).call();
     let convertuserDrop= await web3.utils.fromWei(userDrop);
     convertuserDrop= parseFloat(convertuserDrop).toFixed(3)
@@ -144,6 +150,129 @@ setBnbDripPrice(price);
 }
 }
 
+const buy=async()=>{
+  try{
+    let acc=await loadWeb3();
+    if(acc == "No Wallet"){
+alert("no wallet")
+    }else{
+      const web3= window.web3;
+    let bal= await web3.eth.getBalance(acc);
+    bal = web3.utils.fromWei(bal)
+
+      // let bal =await web3.eth.getBalance(acc);
+            if(buyInput.current.value == "" && buyInput.current.value == undefined  ){
+              toast.error("Please Enter any Value")
+            }else if(  bal < buyInput.current.value  ){
+              
+              toast.error("fund insufficient");
+            }else if(buyInput.current.value  < 0.01){
+              toast.error("Entered Value is below then min 0.01")
+
+            }else {
+              let contract = new web3.eth.Contract(reservoirAbi,reservoirAddress);
+              
+              await contract.methods.buy().send({
+                from:acc,
+                value: web3.utils.toWei(buyInput.current.value)
+              })
+              toast.success("Transaction Successed")
+            }
+    }
+
+  }catch(e){
+    console.log("error while buy function", e);
+    toast.error("Transaction Rejected")
+  }
+
+}
+const compound = async () => {
+try{
+  let acc = await loadWeb3();
+if(acc == "No Wallet"){
+  toast.error("No Wallet Connected")
+}else{
+  const web3 = window.web3;
+  let contract = new web3.eth.Contract(reservoirAbi,reservoirAddress);
+  let val =await contract.methods.dividendsOf(acc).call()
+  if(val > 0){
+
+    await contract.methods.reinvest().send({
+      from:acc
+    })
+  }else{
+    toast.error("your dividend balance is low")
+  }
+}
+}catch(e){
+  console.log("error while compound", e);
+}
+}
+const claim = async () => {
+  try{
+    let acc = await loadWeb3();
+    if(acc == "No Wallet"){
+      toast.error("No Wallet Connected")
+    }else{
+      const web3 = window.web3;
+      let reserContract = new web3.eth.Contract(reservoirAbi,reservoirAddress);
+      let fountainContract = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+      let isWhiteList= await fountainContract.methods.whitelist(acc).call();
+      let dividendsOf = await reserContract.methods.dividendsOf(acc).call();
+      dividendsOf= web3.utils.fromWei(dividendsOf)
+      let myDividends = await reserContract.methods.myDividends().call();
+      myDividends = web3.utils.fromWei(myDividends)
+      console.log("myDividends list", dividendsOf);
+      if(dividendsOf <= 0 ){
+        toast.error("you have zero dividends")
+      }else if(isWhiteList == false ){
+        toast.error("you are not white listed")
+      }else if(myDividends <= 0){
+        toast.error("you have zero dividends")
+      }else{
+        await reserContract.methods.withdraw().call({from:acc})
+      }
+      
+
+    }
+  
+  }catch(e){
+    console.log("error while claim", e);
+  }
+}
+const withdraw= async () =>{
+try{
+  let acc = await loadWeb3();
+ 
+  if(acc == "No Wallet"){
+    toast.error("No Wallet Connected")
+  }else{
+    const web3 = window.web3;
+    let contract = new web3.eth.Contract(reservoirAbi,reservoirAddress);
+    let balance = await contract.methods.balanceOf(acc).call();
+    balance = web3.utils.fromWei(balance);    
+    if(withdrawInput.current.value == "" ){
+      toast.error("Enter value please");
+    }
+    else if( withdrawInput.current.value <= 0){
+      toast.error("Kindly Enter greater than 0")
+    }else if(balance <=0){
+      toast.error("insufficient Balance")
+    }else if(withdrawInput.current.value <= balance  ){
+      let val = web3.utils.toWei(withdrawInput.current.value);
+      await contract.methods.sell(val).send({from:acc});
+      toast.success("Withdraw Successed")
+    }else{
+      toast.error("insufficient funds")
+    }
+  
+    
+  }
+
+}catch(e){
+  console.log("error while withdraw", e);
+}
+}
 useEffect(() => {
   setInterval(() => {
     getPerBnbDripPrice();
@@ -182,7 +311,7 @@ useEffect(() => {
                         {t("Rewards.1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>...</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{reward}</span>
                       </p>
                       <p className="text-small fst-italic">{t("BNB.1")}</p>
                     </div>
@@ -194,7 +323,7 @@ useEffect(() => {
                       {t("TotalDROPS.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>...</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{totalDrops}</span>
                       </p>
                       <p className="text-small fst-italic">{t("DROP.1")}</p>
                     </div>
@@ -242,7 +371,7 @@ useEffect(() => {
                         {t("CompoundedTotal.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>...</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{compundTotal}</span>
                       </p>
                       <p className="text-small fst-italic">{t("BNB.1")}</p>
                     </div>
@@ -258,13 +387,16 @@ useEffect(() => {
                   style={{ color: "#7c625a", fontSize: "20px" }}
                     type="button"
                     className="btn btn-outline-light btn-block"
+                    onClick={compound}
                   >
                     <b>{t("COMPOUND.1")}</b>
+                    
                   </button>
                   <button
                   style={{ color: "#7c625a",fontSize: "20px" }}
                     type="button"
                     className="btn btn-outline-light btn-block"
+                    onClick={claim}
                   >
                     <b>{t("CLAIM.1")}</b>
                   </button>
@@ -320,6 +452,7 @@ useEffect(() => {
                             placeholder="BNB"
                             className="form-control"
                             id="__BVID__213"
+                            ref={buyInput}
                           />
                         </div>
 
@@ -331,6 +464,7 @@ useEffect(() => {
                         <div className="col-12 text-left">
                           <button
                             type="button"
+                            onClick={()=>buy()}
                             className="btn btn-outline-light"
                           >
                             {t("BUY.1")}
@@ -376,6 +510,7 @@ useEffect(() => {
                               placeholder="DROPS"
                               className="form-control"
                               id="__BVID__213"
+                              ref={withdrawInput}
                             />
                           </div>
                         </div>
@@ -384,7 +519,10 @@ useEffect(() => {
                             <button
                               type="button"
                               className="btn btn-outline-light"
+                              
+                              onClick={withdraw}
                             >
+                             
                               {t("Withdraw.1")}
                             </button>
                           </div>
@@ -434,7 +572,7 @@ useEffect(() => {
                     {t("Rewards.1")}
                   </h5>
                   <p className="text-large mb-2 text-white">
-                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{userReward}</span>
+                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{reward}</span>
                   </p>
                   <p className="text-small">{t("BNB.1")}</p>
                 </div>
@@ -458,9 +596,9 @@ useEffect(() => {
                     {t("ContractBalance.1")}
                   </h5>
                   <p className="text-large mb-2 text-white">
-                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{totalDrops} {t("BNB.1")}</span>
+                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}> {totalDrops} {t("BNB.1")}</span>
                   </p>
-                  <p className="text-small">{t("DROPS.1")} ≈ ... {t("USDT.1")}</p>
+                  <p className="text-small">{t("DROPS.1")} ≈{t("USDT.1")}</p>
                 </div>
               </div>
               <div className="container col-6 col-xl-4 col-lg-4 col-md-4 mt-3 text-center">
