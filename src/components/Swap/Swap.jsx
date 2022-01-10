@@ -118,12 +118,10 @@ const Swap = () => {
         .call();
       contractFdripBalance = webSupply.utils.fromWei(contractFdripBalance);
       contractFdripBalance = parseFloat(contractFdripBalance).toFixed(3);
-      // console.log("contractFdripBalance", contractFdripBalance);
 
       let supplyDrip = await tokenContractOf.methods.totalSupply().call();
       supplyDrip = webSupply.utils.fromWei(supplyDrip);
       supplyDrip = parseFloat(supplyDrip).toFixed(3);
-      // console.log("Supply 22Drip", supplyDrip);
 
       let fonutainDrip = await contractOf.methods.totalSupply().call();
       fonutainDrip = webSupply.utils.fromWei(fonutainDrip);
@@ -136,17 +134,13 @@ const Swap = () => {
       let converted = currentBnB * contractFBalance;
       converted = parseFloat(converted).toFixed(3);
 
-      // let myCurrbalance = await web3.eth.getBalance(acc);
-
-      // console.log("contractFBalance", converted)
       
       let covertedDrip = contractFBalance / contractFdripBalance;
       let BdividedByD = covertedDrip;
       BdividedByD = parseFloat(BdividedByD).toFixed(3);
       let priceOfoneDrip = covertedDrip * currentBnB;
       priceOfoneDrip = parseFloat(priceOfoneDrip).toFixed(3);
-      // console.log("divided = ", BdividedByD);
-      // console.log("price of one drip", priceOfoneDrip);
+      
       covertedDrip = covertedDrip * currentBnB;
       covertedDrip = parseFloat(covertedDrip).toFixed(4);
       covertedDrip = contractFdripBalance * covertedDrip;
@@ -196,15 +190,13 @@ const addMaxBalance=async()=>{
 
 }
   const enterBuyAmount1 = async () => {
-    console.log("Func 1")
+    
     const web3 = window.web3;
     let myvalue = inputEl.current.value;
     let contractOf = new web3.eth.Contract(
       fountainContractAbi,
       fountainContractAddress
     );
-
-    // console.log('entered Value = ', myvalue)
     if (myvalue > 0) {
       myvalue = web3.utils.toWei(myvalue);
       setEnteredval(myvalue);
@@ -214,8 +206,7 @@ const addMaxBalance=async()=>{
         .call();
       tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
       tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
-      // tripType = parseFloat(tripType);
-      // console.log(typeof (tripType))
+      
       
       let miniumrcvd = (tripType * tokensInputPrice) / 100;
       let percentValue = tokensInputPrice - miniumrcvd;
@@ -227,19 +218,17 @@ const addMaxBalance=async()=>{
       setEstimate();
       setMinrecieved();
     }
-    // console.log("miniumrcvd ; ", miniumrcvd);
   };
   const enterRadioAmount1 = async () => {
     let myMultiplyValue = 1;
     let myvalue = inputEl.current.value;
-    console.log("Radio 1")
+
     const web3 = window.web3;
     let contractOf = new web3.eth.Contract(
       fountainContractAbi,
       fountainContractAddress
     );
 
-    // console.log('entered Value = ', myvalue)
     if (myvalue > 0) {
       myvalue = web3.utils.toWei(myvalue);
       setEnteredval(myvalue);
@@ -249,9 +238,7 @@ const addMaxBalance=async()=>{
         .call();
       tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
       tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
-      // tripType = parseFloat(tripType);
-      // console.log(typeof (tripType))
-      
+    
       let miniumrcvd = (myMultiplyValue * tokensInputPrice) / 100;
       let percentValue = tokensInputPrice - miniumrcvd;
       percentValue = parseFloat(percentValue).toFixed(3);
@@ -261,7 +248,7 @@ const addMaxBalance=async()=>{
       setEstimate();
       setMinrecieved();
     }
-    // console.log("miniumrcvd ; ", miniumrcvd);
+  
   };
   const enterRadioAmount3 = async () => {
     let myMultiplyValue = 3;
@@ -273,7 +260,6 @@ const addMaxBalance=async()=>{
       fountainContractAddress
     );
 
-    // console.log('entered Value = ', myvalue)
     if (myvalue > 0) {
       myvalue = web3.utils.toWei(myvalue);
       setEnteredval(myvalue);
@@ -283,8 +269,7 @@ const addMaxBalance=async()=>{
         .call();
       tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
       tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
-      // tripType = parseFloat(tripType);
-      // console.log(typeof (tripType))
+    
       
       let miniumrcvd = (myMultiplyValue * tokensInputPrice) / 100;
       let percentValue = tokensInputPrice - miniumrcvd;
@@ -296,19 +281,16 @@ const addMaxBalance=async()=>{
       setEstimate();
       setMinrecieved();
     }
-    // console.log("miniumrcvd ; ", miniumrcvd);
   };
   const enterRadioAmount5 = async () => {
     let myMultiplyValue =5;
-    console.log("Radio 5")
+ 
     const web3 = window.web3;
     let myvalue = inputEl.current.value;
     let contractOf = new web3.eth.Contract(
       fountainContractAbi,
       fountainContractAddress
     );
-
-    // console.log('entered Value = ', myvalue)
     if (myvalue > 0) {
       myvalue = web3.utils.toWei(myvalue);
       setEnteredval(myvalue);
@@ -318,8 +300,6 @@ const addMaxBalance=async()=>{
         .call();
       tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
       tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
-      // tripType = parseFloat(tripType);
-      // console.log(typeof (tripType))
       
       let miniumrcvd = (myMultiplyValue * tokensInputPrice) / 100;
       let percentValue = tokensInputPrice - miniumrcvd;
@@ -331,7 +311,6 @@ const addMaxBalance=async()=>{
       setEstimate();
       setMinrecieved();
     }
-    // console.log("miniumrcvd ; ", miniumrcvd);
   };
   const myOnchangeInputBuySwap=async()=>{
    let myCurrentVal= mYentered.current.value;
@@ -340,7 +319,6 @@ const addMaxBalance=async()=>{
 
    setTripType(myCurrentVal);
 
-   console.log("myOnchangeInputBuySwap 5",tripType)
    const web3 = window.web3;
    let myvalue = inputEl.current.value;
    let contractOf = new web3.eth.Contract(
@@ -348,7 +326,6 @@ const addMaxBalance=async()=>{
      fountainContractAddress
    );
 
-   // console.log('entered Value = ', myvalue)
    if (myvalue > 0) {
      myvalue = web3.utils.toWei(myvalue);
      setEnteredval(myvalue);
@@ -358,8 +335,7 @@ const addMaxBalance=async()=>{
        .call();
      tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
      tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
-     // tripType = parseFloat(tripType);
-     // console.log(typeof (tripType))
+
      
      let miniumrcvd = (myCurrentVal * tokensInputPrice) / 100;
      let percentValue = tokensInputPrice - miniumrcvd;
@@ -380,7 +356,7 @@ const addMaxBalance=async()=>{
 }
   }
   const myRadioSellSplash1 = async () => {
-    console.log("myRadioSellSplash1");
+
     let myValFormul=1;
     const web3 = window.web3;
     let myvalue = inputE2.current.value;
@@ -391,14 +367,12 @@ const addMaxBalance=async()=>{
 
     if (myvalue > 0) {
       myvalue = web3.utils.toWei(myvalue);
-      console.log("eNTERTERD VALUE", myvalue);
 
       setEnteredval(myvalue);
       let tokensOutputPrice = await contractOf.methods
         .getTokenToBnbInputPrice(myvalue)
         .call();
       tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice);
-      console.log("BNB", tokensOutputPrice);
 
       let tenPercentVal = (tokensOutputPrice * 10) / 100;
       tenPercentVal = tokensOutputPrice - tenPercentVal;
@@ -420,11 +394,9 @@ const addMaxBalance=async()=>{
       setMinRecievedDrip(0);
       setTenperVal(0);
     }
-    // console.log("miniumrcvd ; ", miniumrcvd);
   };
   const myRadioSellSplash3 = async () => {
-    let myValFormul =3
-    console.log("myRadioSellSplash 3");
+    let myValFormul =3;
     const web3 = window.web3;
     let myvalue = inputE2.current.value;
     let contractOf = new web3.eth.Contract(
@@ -434,14 +406,12 @@ const addMaxBalance=async()=>{
 
     if (myvalue > 0) {
       myvalue = web3.utils.toWei(myvalue);
-      console.log("eNTERTERD VALUE", myvalue);
 
       setEnteredval(myvalue);
       let tokensOutputPrice = await contractOf.methods
         .getTokenToBnbInputPrice(myvalue)
         .call();
       tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice);
-      console.log("BNB", tokensOutputPrice);
 
       let tenPercentVal = (tokensOutputPrice * 10) / 100;
       tenPercentVal = tokensOutputPrice - tenPercentVal;

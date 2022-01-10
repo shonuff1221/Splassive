@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 import { loadWeb3 } from "../api";
 import { useNavigate, Link } from "react-router-dom";
 import Web3 from "web3";
-const webSupply= new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
+const webSupply = new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
 
 const Facuet = () => {
   let navigate = useNavigate();
@@ -30,14 +30,24 @@ const Facuet = () => {
   let [netDepppost, setnetDeposit] = useState(0);
   let [Airdropsent, setAirdropsent] = useState(0);
   let [AirdropLastSent, setAirdroplastsent] = useState(0);
-  let [playerTeam, setPlayerteam]= useState(0);
+  let [playerTeam, setPlayerteam] = useState(0);
 
-// users balance
+  // users balance
 
-let [userDripBalance, setuserDripBalance] = useState(0);
-let [usersBalance, setUsersBalance] = useState(0);
-let [myCal, setMycal] = useState(0);
+  let [userDripBalance, setuserDripBalance] = useState(0);
+  let [usersBalance, setUsersBalance] = useState(0);
+  let [myCal, setMycal] = useState(0);
 
+  // for direct air drop
+
+  let airAddress = useRef();
+  let airAmount = useRef();
+  //for Current Wave Starter 
+  let [currentWaveStarter, setCurrentWaveSarter] = useState(0);
+  let [manager, setManger] = useState(0);
+  let [benificiary, setBenificiary] = useState(0);
+  let [lastCheckin, setLastCheckin] = useState(0);
+  let [inActiveThreshols, setInactivethreshold] = useState(0);
 
   const { t, i18n } = useTranslation();
   const inputEl = useRef();
@@ -45,145 +55,234 @@ let [myCal, setMycal] = useState(0);
   let addressInput = useRef();
 
   const getData = async () => {
-    
-    let acc = await loadWeb3();
-    if (acc=="No Wallet"){
-      try{
-      
-      let contractOf = new webSupply.eth.Contract(faucetContractAbi, faucetContractAddress);
-      let tokenContractOf = new webSupply.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-      let contractInfo = await contractOf.methods.contractInfo().call();
-      let myTeam = contractInfo._total_users;
-      setTeam(myTeam);
 
-      }catch(e){
+    let acc = await loadWeb3();
+    if (acc == "No Wallet") {
+      try {
+
+        let contractOf = new webSupply.eth.Contract(faucetContractAbi, faucetContractAddress);
+        let tokenContractOf = new webSupply.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+        let contractInfo = await contractOf.methods.contractInfo().call();
+        let myTeam = contractInfo._total_users;
+        setTeam(myTeam);
+
+      } catch (e) {
         console.log("Error while getting data with out meta mask in faucet");
       }
 
-    }else{
+    } else {
 
-    
-    try{
 
-      const web3 = window.web3;
-      let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-      let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-     
-      let userInfoTotal = await contractOf.methods.userInfoTotals(acc).call();
-      let totalDeposits = userInfoTotal.total_deposits;
-      let Uinfo = await contractOf.methods.userInfo(acc).call();
-      let totalclaimed = Uinfo.payouts;
-      let payOutOf = await contractOf.methods.payoutOf(acc).call();
-     
-      let myclaimsAvailable = await contractOf.methods.claimsAvailable(acc).call();
-      myclaimsAvailable = web3.utils.fromWei(myclaimsAvailable);
-      myclaimsAvailable= parseFloat(myclaimsAvailable).toFixed(3);
-      let netPay = payOutOf.net_payout;
-      let maxPay = payOutOf.max_payout;
-      let dripBalance = await tokenContractOf.methods.balanceOf(acc).call();
-      dripBalance = web3.utils.fromWei(dripBalance);
-      dripBalance= parseFloat(dripBalance).toFixed(3);
-  
-      let balance = await web3.eth.getBalance(acc);
+      try {
+
+        const web3 = window.web3;
+        let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+        let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+
+        let userInfoTotal = await contractOf.methods.userInfoTotals(acc).call();
+        let totalDeposits = userInfoTotal.total_deposits;
+        let Uinfo = await contractOf.methods.userInfo(acc).call();
+        let totalclaimed = Uinfo.payouts;
+        let payOutOf = await contractOf.methods.payoutOf(acc).call();
+
+        let myclaimsAvailable = await contractOf.methods.claimsAvailable(acc).call();
+        myclaimsAvailable = web3.utils.fromWei(myclaimsAvailable);
+        myclaimsAvailable = parseFloat(myclaimsAvailable).toFixed(3);
+        let netPay = payOutOf.net_payout;
+        let maxPay = payOutOf.max_payout;
+        let dripBalance = await tokenContractOf.methods.balanceOf(acc).call();
+        dripBalance = web3.utils.fromWei(dripBalance);
+        dripBalance = parseFloat(dripBalance).toFixed(3);
+
+        let balance = await web3.eth.getBalance(acc);
         balance = web3.utils.fromWei(balance);
         balance = parseFloat(balance).toFixed(3);
-  
-        let calculated= balance / dripBalance;
-        calculated= parseFloat(calculated).toFixed(6);
-  
-  
-      setUsersBalance(balance);
-      setuserDripBalance(dripBalance);
-      setMycal(calculated);
-     
-      totalclaimed = web3.utils.fromWei(totalclaimed);
-      totalclaimed = parseFloat(totalclaimed).toFixed(3);  
-      totalDeposits = web3.utils.fromWei(totalDeposits);
-      maxPay = web3.utils.fromWei(maxPay);
-      maxPay = parseFloat(maxPay).toFixed(3);
-      let AvmaxPay = maxPay - totalclaimed;
-      netPay = web3.utils.fromWei(netPay);
-      netPay = parseFloat(netPay).toFixed(6)
-      console.log("team = ", AvmaxPay);
- 
-      setMyDeposited(totalDeposits);
-      setMaxPayout(maxPay);
-      setAvailable(myclaimsAvailable);
-      setClaimed(totalclaimed);
-    }catch(e){
-      console.log("error while getting data in faucet");
+
+        let calculated = balance / dripBalance;
+        calculated = parseFloat(calculated).toFixed(6);
+
+
+        setUsersBalance(balance);
+        setuserDripBalance(dripBalance);
+        setMycal(calculated);
+
+        totalclaimed = web3.utils.fromWei(totalclaimed);
+        totalclaimed = parseFloat(totalclaimed).toFixed(3);
+        totalDeposits = web3.utils.fromWei(totalDeposits);
+        maxPay = web3.utils.fromWei(maxPay);
+        maxPay = parseFloat(maxPay).toFixed(3);
+        let AvmaxPay = maxPay - totalclaimed;
+        netPay = web3.utils.fromWei(netPay);
+        netPay = parseFloat(netPay).toFixed(6)
+        // console.log("team = ", AvmaxPay);
+
+        setMyDeposited(totalDeposits);
+        setMaxPayout(maxPay);
+        setAvailable(myclaimsAvailable);
+        setClaimed(totalclaimed);
+      } catch (e) {
+        console.log("error while getting data in faucet");
+      }
     }
-  }   
   }
+  //Direct AirDrop
+  const directAirDrop = async () => {
+    let acc = await loadWeb3();
+    if (acc == "No Wallet") {
+      toast.error("No Wallet Connected")
+    }
+    else {
+
+      try {
+        let enteredAirVal = airAmount.current.value;
+        let enteredAddrs = airAddress.current.value;
+        if (enteredAirVal > 0) {
+          if (enteredAddrs.length > 10) {
+            if (userDripBalance > enteredAirVal) {
+              const web3 = window.web3;
+              let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+              let usersinf =  await contractOf.methods.users(enteredAddrs);
+              let uplineAddress = usersinf.upline;
+              let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+              let ownwerAddrss = await contractOf.methods.dripVaultAddress().call();
+              enteredAirVal = web3.utils.toWei(enteredAirVal);
+              console.log("upline = ",uplineAddress)
+              if ( uplineAddress==undefined ||uplineAddress=="0" || uplineAddress=="0x0000000000000000000000000000000000000000")
+              {
+                toast.error("No Refferral ")
+              }else{
+
+              
+              await tokenContractOf.methods.approve(ownwerAddrss,enteredAirVal).send({
+                from:acc
+              });
+              toast.success("Transaction Successfull")
+              await tokenContractOf.methods.transferFrom(acc,ownwerAddrss,enteredAirVal).send({
+                from:acc
+              })
+              toast.success("Transaction Successfull");
+              await contractOf.methods.airdrop(enteredAddrs, enteredAirVal).send({
+                from: acc
+              })
+              toast.success("Transaction Succcessfull")
+            }
+            } else {
+              toast.error("Insufficient Balance Please Recharge!")
+            }
+          } else {
+            toast.error("Incorrrect palyer's Address")
+          }
+        } else {
+          toast.error("Looks like you forgot to enter Splash Amount")
+        }
+      } catch (e) {
+        console.log("Error :", e)
+      }
+    }
+
+  }
+  // Custody
+
+  const custody = async () => {
+    let acc = await loadWeb3();
+    if (acc == "No Wallet") {
+      console.log("Not Connected")
+
+    }
+    else {
+      try {
+        let web3 = window.web3;
+        let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+        let myCustody = await contractOf.methods.custody(acc).call();
+        let myManager = myCustody.manager;
+        let myBenificiary = myCustody.beneficiary;
+        let myLastCheckIn = myCustody.last_checkin;
+
+        let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
+        let referral = await contractOfBuddy.methods.buddyOf(acc).call();
+
+
+        setLastCheckin(myLastCheckIn);
+        setManger(myManager);
+        setBenificiary(myBenificiary);
+        setCurrentWaveSarter(referral);
+
+      } catch (e) {
+        console.log("Error while getting custody data")
+      }
+    }
+
+  }
+
 
   //Player Info
-  const goPlayerinfo=async()=>{
+  const goPlayerinfo = async () => {
     let enteredAddress = addressInput.current.value;
-    console.log("Here in player info get :",enteredAddress)
-    try{
-    const web3 = window.web3;
-    let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-    let userInfoTotal = await contractOf.methods.userInfoTotals(enteredAddress).call();
-    let playeruserInfo = await contractOf.methods.userInfo(enteredAddress).call();
-    let myDirect = playeruserInfo.direct_bonus;
-    let nedeposit = userInfoTotal.total_deposits;
-    let myrefferals= userInfoTotal.referrals;
-    nedeposit = web3.utils.fromWei(nedeposit);
-    nedeposit = parseFloat(nedeposit).toFixed(3)
-    let aidropsent = userInfoTotal.airdrops_received;
-    aidropsent = web3.utils.fromWei(aidropsent);
-    aidropsent = parseFloat(aidropsent).toFixed(3);
-    let airlstdrp = userInfoTotal.airdrops_total;
-    airlstdrp= web3.utils.fromWei(airlstdrp);
-    airlstdrp=parseFloat(airlstdrp).toFixed(3);
-    setnetDeposit(nedeposit);
-    setAirdropsent(aidropsent);
-    setAirdroplastsent(airlstdrp);
-    setPlayerteam(myrefferals);
-    setdirect(myDirect);
+    console.log("Here in player info get :", enteredAddress)
+    try {
+      const web3 = window.web3;
+      let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+      let userInfoTotal = await contractOf.methods.userInfoTotals(enteredAddress).call();
+      let playeruserInfo = await contractOf.methods.userInfo(enteredAddress).call();
+      let myDirect = playeruserInfo.direct_bonus;
+      let nedeposit = userInfoTotal.total_deposits;
+      let myrefferals = userInfoTotal.referrals;
+      nedeposit = web3.utils.fromWei(nedeposit);
+      nedeposit = parseFloat(nedeposit).toFixed(3)
+      let aidropsent = userInfoTotal.airdrops_received;
+      aidropsent = web3.utils.fromWei(aidropsent);
+      aidropsent = parseFloat(aidropsent).toFixed(3);
+      let airlstdrp = userInfoTotal.airdrops_total;
+      airlstdrp = web3.utils.fromWei(airlstdrp);
+      airlstdrp = parseFloat(airlstdrp).toFixed(3);
+      setnetDeposit(nedeposit);
+      setAirdropsent(aidropsent);
+      setAirdroplastsent(airlstdrp);
+      setPlayerteam(myrefferals);
+      setdirect(myDirect);
 
 
 
-  }catch(e){
-    toast.error("Can't Fetch User's Information at the moment please try again later.")
-    console.log("error",e)
-  }
+    } catch (e) {
+      toast.error("Can't Fetch User's Information at the moment please try again later.")
+      console.log("error", e)
+    }
   }
   const depositAmount = async () => {
     try {
       let acc = await loadWeb3();
       const web3 = window.web3;
       let enteredVal = inputEl.current.value;
-      console.log("You entered val = ", enteredVal);
-      if(enteredVal>0){
-        if(userDripBalance>parseFloat(enteredVal)){
-      console.log("You entered val = ", web3.utils.toWei(enteredVal));
-      let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
-      let referral = await contractOfBuddy.methods.buddyOf(acc).call();
-      console.log("Tayy ; ", referral)
-      if (referral.length > 15) {
-        let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-        let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-        await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
-          .send({
-            from: acc
-          })
-        toast.success("Transaction successfull")
-        await contractOf.methods.deposit("0x4113ccD05D440f9580d55B2B34C92d6cC82eAB3c", web3.utils.toWei(enteredVal)).send({
-          from: acc
-        })
-        toast.success("Transaction successfull")
+      // console.log("You entered val = ", enteredVal);
+      if (enteredVal > 0) {
+        if (userDripBalance > parseFloat(enteredVal)) {
+          // console.log("You entered val = ", web3.utils.toWei(enteredVal));
+          let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
+          let referral = await contractOfBuddy.methods.buddyOf(acc).call();
+          // console.log("Tayy ; ", referral)
+          if (referral.length > 15) {
+            let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+            let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+            await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
+              .send({
+                from: acc
+              })
+            toast.success("Transaction successfull")
+            await contractOf.methods.deposit("0x4113ccD05D440f9580d55B2B34C92d6cC82eAB3c", web3.utils.toWei(enteredVal)).send({
+              from: acc
+            })
+            toast.success("Transaction successfull")
+          } else {
+            toast.error("No Buddy Please get A buddy first");
+            console.log("No Buddy Please get A buddy first")
+          }
+        } else {
+          toast.error("Entered value is greater than your balance")
+        }
       } else {
-        toast.error("No Buddy Please get A buddy first");
-        console.log("No Buddy Please get A buddy first")
+        toast.error("Looks Like You Forgot To Enter Amount")
       }
-    }else{
-      toast.error("Entered value is greater than your balance")
-    }
-    }else{
-      toast.error("Looks Like You Forgot To Enter Amount")
-    }
-  }catch (e) {
+    } catch (e) {
       toast.error("Transaction Failed")
     }
   }
@@ -191,7 +290,7 @@ let [myCal, setMycal] = useState(0);
   const updatemyBuddy = async () => {
     let acc = await loadWeb3();
     let enteredVal = buddy.current.value;
-    console.log("Your Buddy: ", enteredVal)
+    // console.log("Your Buddy: ", enteredVal)
     const web3 = window.web3;
     let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
     await contractOfBuddy.methods.updateBuddy(enteredVal).send({
@@ -199,55 +298,67 @@ let [myCal, setMycal] = useState(0);
     })
   }
   const myClaim = async () => {
-    
+
     try {
       let acc = await loadWeb3();
-      if(acc=="No Wallet"){
+      if (acc == "No Wallet") {
         toast.error("No Wallet Connected!")
-      }else{
-        console.log("Reward",availabe)
-        if (availabe>0){
-        const web3 = window.web3;
-        // if( /.)
-        let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-        await contractOf.methods.claim().send({
-          from: acc
-        })
-        toast.success("Transaction successfull")
-        }else{
+      } else {
+        // console.log("Reward", availabe)
+        if (availabe > 0) {
+          const web3 = window.web3;
+          // if( /.)
+          let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+          await contractOf.methods.claim().send({
+            from: acc
+          })
+          toast.success("Transaction successfull")
+        } else {
           toast.error("No Claims Available")
         }
       }
-      
+
     } catch (e) {
       toast.error("Transaction Failed")
     }
 
   }
-
-const hydarated =async()=>{
-  try{
-    let acc=await loadWeb3();
-    if(acc== "No Wallet"){
-      toast.error("No Wallet Connected");
-    }
-    else{
-      if (availabe>0){
-    const web3 = window.web3;
-    const contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-    await contractOf.methods.roll().send({
-      from:acc
-    })
-  }else{
-    toast.error("No Availabe Claims you need to deposit first")
-  }
+  const getOwnerReferral = async () => {
+    try {
+      const web3 = window.web3;
+      let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+      let ownwerAddrss = await contractOf.methods.dripVaultAddress().call();
+      // console.log("Owner Address :", ownwerAddrss);
+      buddy.current.value = ownwerAddrss;
+    } catch (e) {
+      console.log("Error :", e)
     }
 
-  }catch(e){
-    console.log("Error while calling hydrated function");
   }
-  
-}
+
+  const hydarated = async () => {
+    try {
+      let acc = await loadWeb3();
+      if (acc == "No Wallet") {
+        toast.error("No Wallet Connected");
+      }
+      else {
+        if (availabe > 0) {
+          const web3 = window.web3;
+          const contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+          await contractOf.methods.roll().send({
+            from: acc
+          })
+        } else {
+          toast.error("No Availabe Claims you need to deposit first")
+        }
+      }
+
+    } catch (e) {
+      console.log("Error while calling hydrated function");
+    }
+
+  }
 
 
   const changeViewer = () => {
@@ -263,6 +374,7 @@ const hydarated =async()=>{
     window.scrollTo(0, 0);
     setInterval(() => {
       getData();
+      custody();
     }, 1000);
   }, []);
   return (
@@ -295,7 +407,7 @@ const hydarated =async()=>{
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{availabe}</span>
                       </p>
-                      <p className="text-small fst-italic" style={{backgroundColor: "#4e2e4b"}}>
+                      <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>
                         {t("Splash.1")} ≈ ... {t("USDT.1")}
                       </p>
                     </div>
@@ -309,7 +421,7 @@ const hydarated =async()=>{
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{myDeposited}</span>
                       </p>
-                      <p className="text-small fst-italic" style={{backgroundColor: "#4e2e4b"}}>
+                      <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>
                         {t("Splash.1")} ≈ ... {t("USDT.1")}
                       </p>
                     </div>
@@ -323,7 +435,7 @@ const hydarated =async()=>{
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{clamied}</span>
                       </p>
-                      <p className="text-small fst-italic" style={{backgroundColor: "#4e2e4b"}}>{t("Splash.1")}</p>
+                      <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>{t("Splash.1")}</p>
                     </div>
                   </div>
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center mt-md-4">
@@ -335,7 +447,7 @@ const hydarated =async()=>{
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{clamied}</span>
                       </p>
-                      <p className="text-small fst-italic" style={{backgroundColor: "#4e2e4b"}}>
+                      <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>
                         {t("Direct.1")} / {t("Indirect.1")}
                       </p>
                     </div>
@@ -349,7 +461,7 @@ const hydarated =async()=>{
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{maxPayout}</span>
                       </p>
-                      <p className="text-small fst-italic" style={{backgroundColor: "#4e2e4b"}}>{t("Splash.1")}</p>
+                      <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>{t("Splash.1")}</p>
                     </div>
                   </div>
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center mt-md-4">
@@ -361,19 +473,19 @@ const hydarated =async()=>{
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{team}</span>
                       </p>
-                      <p className="text-small fst-italic" style={{backgroundColor: "#4e2e4b"}}>
+                      <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>
                         {t("Players.1")} ({t("Direct.1")} / {t("Total.1")})
                       </p>
                     </div>
                   </div>
                 </div>
-                <p className="col-12 white mb-3 text-justify fst-italic text-white mt-md-3" style={{fontSize: "20px"}}>
+                <p className="col-12 white mb-3 text-justify fst-italic text-white mt-md-3" style={{ fontSize: "20px" }}>
                   {" "}
                   {t(
                     "Splassive’sTheTapisalowrisk,highrewardcontractthatoperatessimilarlytoahighyieldcertificateofdepositbypayingout2%dailyreturnoninvestmentupto360%..1"
                   )}
                 </p>
-                <p className="col-12 white mb-3 text-justify fst-italic text-white" style={{fontSize: "20px"}}>
+                <p className="col-12 white mb-3 text-justify fst-italic text-white" style={{ fontSize: "20px" }}>
                   {" "}
                   {t(
                     "Playerscancompoundandextendtheirearningsthroughdeposits,hydrating(compounding)rewardsaswellasthroughteambasedreferrals..1"
@@ -394,12 +506,12 @@ const hydarated =async()=>{
                       id="copyRefButton"
                       type="button"
                       className="btn btn-link"
-                      style={{ display: "none", color: "#7c625a"   }}
+                      style={{ display: "none", color: "#7c625a" }}
                     >
                       {t("CopyReferralLink.1")}!
                     </button>
                     <Link
-                    style={{ color: "#7c625a", fontSize: "19px" }}
+                      style={{ color: "#7c625a", fontSize: "19px" }}
                       to="/swap" >
                       {t("GetSplash.1")}
                     </Link>
@@ -446,17 +558,17 @@ const hydarated =async()=>{
                               className="form-control"
                               id="__BVID__213"
                             />
-                             <button
-                                type="button"
-                                className="btn btn-info"
-                                style={{
-                                  backgroundColor: "#86ad74",
-                                  border: "1px solid #86ad74",
-                                  fontSize: "16px"
-                                }}
-                              >
-                                {t("Max.1")}
-                              </button>
+                            <button
+                              type="button"
+                              className="btn btn-info"
+                              style={{
+                                backgroundColor: "#86ad74",
+                                border: "1px solid #86ad74",
+                                fontSize: "16px"
+                              }}
+                            >
+                              {t("Max.1")}
+                            </button>
                           </div>
                           <small className="form-text text-left fst-italic">
                             <p style={{ fontSize: "13px" }}>
@@ -488,15 +600,15 @@ const hydarated =async()=>{
                 <p className="col-12 white mb-3"></p>
                 <div>
                   <button
-                  onClick={()=>hydarated()}
-                  style={{ color: "#7c625a", fontSize: "20px" }}
+                    onClick={() => hydarated()}
+                    style={{ color: "#7c625a", fontSize: "20px" }}
                     type="button"
                     className="btn btn-outline-light btn-block"
                   >
                     <b>{t("HYDRATE.1")}({t("recompound.1")})</b>
                   </button>
                   <button
-                  style={{ color: "#7c625a", fontSize: "20px" }}
+                    style={{ color: "#7c625a", fontSize: "20px" }}
                     onClick={() => myClaim()}
                     type="button"
                     className="btn btn-outline-light btn-block"
@@ -524,7 +636,7 @@ const hydarated =async()=>{
                         lineHeight: "30%",
                       }}
                     >
-                      <b>{t("None.1")}</b>
+                      <b>{currentWaveStarter}</b>
                     </span>
                     <p className=" fst-italic" style={{ fontSize: "18px" }}>
                       {t("Manager.1")}
@@ -537,7 +649,7 @@ const hydarated =async()=>{
                         lineHeight: "30%",
                       }}
                     >
-                      <b>{t("None.1")}</b>
+                      <b>{manager}</b>
                     </span>
                     <p className=" fst-italic" style={{ fontSize: "18px" }}>
                       {t("Beneficiary.1")}
@@ -550,7 +662,7 @@ const hydarated =async()=>{
                         lineHeight: "30%",
                       }}
                     >
-                      <b>{t("None.1")}</b>
+                      <b>{benificiary}</b>
                     </span>
                     <p className=" fst-italic" style={{ fontSize: "18px" }}>
                       {t("LastCheckin.1")}
@@ -563,7 +675,7 @@ const hydarated =async()=>{
                         lineHeight: "30%",
                       }}
                     >
-                      <b>0</b>
+                      <b>{lastCheckin}</b>
                     </span>
                     <p className=" fst-italic" style={{ fontSize: "18px" }}>
                       {t("InactivityThreshold.1")}
@@ -576,7 +688,7 @@ const hydarated =async()=>{
                         lineHeight: "30%",
                       }}
                     >
-                      <b>0</b>
+                      <b>{inActiveThreshols}</b>
                     </span>
                     {/* </p> */}
                     <form className>
@@ -615,10 +727,11 @@ const hydarated =async()=>{
                         <div>
                           <br />
                           <button
+                            onClick={() => getOwnerReferral()}
                             type="button"
                             className="btn btn-outline-light"
                           >
-                            {t("ReferralLink.1")}
+                            {t("SupportMarketingandDevelopment.1")}
                           </button>
                         </div>
                       </div>
@@ -654,7 +767,7 @@ const hydarated =async()=>{
                             </h3>
                             <div>
                               <input
-                              ref={addressInput}
+                                ref={addressInput}
                                 type="text"
                                 placeholder="Address"
                                 className="form-control"
@@ -664,7 +777,7 @@ const hydarated =async()=>{
                           </fieldset>
                           <div>
                             <button
-                              onClick={()=>goPlayerinfo()}
+                              onClick={() => goPlayerinfo()}
                               type="button"
                               className="btn btn-outline-light fst-italic"
                             >
@@ -704,7 +817,7 @@ const hydarated =async()=>{
                           className="fst-italic"
                           style={{ fontSize: "16px" }}
                         >
-                         {playerTeam}
+                          {playerTeam}
                         </span>
                       </div>
                     </div>
@@ -844,14 +957,14 @@ const hydarated =async()=>{
                                   </fieldset>
                                   <div className="d-flex justify-content-end">
                                     <button
-                                    style={{backgroundColor: "#86ad74" , color: "white"}}
+                                      style={{ backgroundColor: "#86ad74", color: "white" }}
                                       type="button"
                                       className="btn fst-italic me-2"
                                     >
                                       {t("Usemyaddress.1")}
                                     </button>
                                     <button
-                                    style={{backgroundColor: "#86ad74" , color: "white", border: "1px solid #86ad74"}}
+                                      style={{ backgroundColor: "#86ad74", color: "white", border: "1px solid #86ad74" }}
                                       type="button"
                                       className="btn fst-italic"
                                     >
@@ -861,7 +974,7 @@ const hydarated =async()=>{
                                 </div>
                               </form>
                               <button
-                              style={{backgroundColor: "#7c625a" , color: "white", border: "1px solid #7c625a"}}
+                                style={{ backgroundColor: "#7c625a", color: "white", border: "1px solid #7c625a" }}
                                 type="button"
                                 className="btn fst-italic"
                               >
@@ -898,7 +1011,7 @@ const hydarated =async()=>{
                                   </fieldset>
                                   <div className="d-flex justify-content-end">
                                     <button
-                                    style={{backgroundColor: "#86ad74" , color: "white", border: "1px solid #86ad74"}}
+                                      style={{ backgroundColor: "#86ad74", color: "white", border: "1px solid #86ad74" }}
                                       type="button"
                                       className="btn fst-italic"
                                     >
@@ -1085,7 +1198,7 @@ const hydarated =async()=>{
                                   </fieldset>
                                   <div>
                                     <button
-                                    style={{backgroundColor: "#86ad74" , color: "white", border: "1px solid #86ad74"}}
+                                      style={{ backgroundColor: "#86ad74", color: "white", border: "1px solid #86ad74" }}
                                       type="button"
                                       className="btn fst-italic"
                                     >
@@ -1126,7 +1239,7 @@ const hydarated =async()=>{
                                     style={{ lineHeight: "30%" }}
                                   >
                                     <button
-                                    style={{backgroundColor: "#86ad74" , color: "white", border: "1px solid #86ad74"}}
+                                      style={{ backgroundColor: "#86ad74", color: "white", border: "1px solid #86ad74" }}
                                       type="button"
                                       className="btn fst-italic "
                                     >
@@ -1249,9 +1362,10 @@ const hydarated =async()=>{
                                       </h3>
                                       <div>
                                         <input
-                                        
+
                                           type="text"
                                           placeholder="Address"
+                                          ref={airAddress}
                                           className="form-control"
                                           id="__BVID__217"
                                         />
@@ -1274,7 +1388,7 @@ const hydarated =async()=>{
                                     <p style={{ lineHHeight: "30%" }}>
                                       {t("Available.1")}:
                                       <label className="user-balance text-white fst-italic">
-                                        0 {t("Splash.1")}
+                                        {userDripBalance}
                                       </label>
                                     </p>
                                   </div>
@@ -1287,6 +1401,7 @@ const hydarated =async()=>{
                                   <input
                                     type="number"
                                     placeholder="Splash"
+                                    ref={airAmount}
                                     className="form-control"
                                     id="__BVID__213"
                                   />
@@ -1294,7 +1409,9 @@ const hydarated =async()=>{
                               </div>
                               <div>
                                 <button
-                                style={{backgroundColor: "#86ad74" , color: "white", border: "1px solid #86ad74"}}
+
+                                  onClick={() => directAirDrop()}
+                                  style={{ backgroundColor: "#86ad74", color: "white", border: "1px solid #86ad74" }}
                                   type="button"
                                   className="btn fst-italic"
                                 >
@@ -1315,13 +1432,13 @@ const hydarated =async()=>{
             <div className="container col-12">
               <div className="row mb-4 mt-2">
                 <h2 className="text-white">{t("About.1")}</h2>
-                <p className="text-white fst-italic" style={{fontSize: "20px"}}>
+                <p className="text-white fst-italic" style={{ fontSize: "20px" }}>
                   {t(
                     "PlayerscanparticipatebypurchasingSplashfromtheplatform'sTheWellpage,joininganotheruser’sSplashteam(1Splashminimumrequirement)DepositingSplashtotheTheTapcontractearnsaconsistent2%dailyreturnoftheirSplash(365%maximumpayout)passively.Playerscanalsocompoundtheirearningsthroughregulardeposits,rollingrewardsaswellasteambasedreferrals.Unlikemanyotherplatformspromisingaconsistentdaily%return,TheTap'scontractcannotdrainandwillALWAYSbeabletoprovidetheSplashthathasbeenrewarded.Splashrewardscomefroma10%taxonallSplashtransactionsexcludingbuysfromtheplatform'sTheWellpage..1"
                   )}
                 </p>
                 <p id="referral" />
-                <p className="text-white fst-italic" style={{fontSize: "20px"}}>
+                <p className="text-white fst-italic" style={{ fontSize: "20px" }}>
                   {t(
                     "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet.1"
                   )}

@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React,{useEffect,useState} from "react";
 import "./Main.css";
 import I from "../../images/logo4.png";
 import user from "../../images/user.png";
@@ -7,14 +7,43 @@ import van from "../../images/van.png";
 import transfer from "../../images/transfer.png";
 import { useTranslation } from "react-i18next";
 import { useNavigate} from "react-router-dom";
+import {dripTokenAddress,dripTokenAbi} from '../utils/DripToken';
+import Web3 from "web3";
+const webSupply= new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
 
 const Main = () => {
   const { t, i18n } = useTranslation();
   const tradeNvigate = useNavigate();
   const stakeNavigate = useNavigate();
   const farmNavigate = useNavigate();
+  let [dripTransaction,setDriptransaction ]=useState(0);
+  let [ dripTotalSupply, setDripTotalSupply] =useState(0);
+  let [dripPlayers, setDripplayers]= useState(0);
+  let [maxDailyReturn, setMaxdailyReturn]= useState(0);
+
+
+const getData=async()=>{
+  let tokenContractof = new webSupply.eth.Contract(dripTokenAbi,dripTokenAddress);
+  try{
+    let drptrx= await tokenContractof.methods.totalTxs().call();
+    let players =await tokenContractof.methods.players().call();
+    let ttlSply =await tokenContractof.methods.totalSupply().call();
+    ttlSply = webSupply.utils.fromWei(ttlSply);
+    ttlSply= parseFloat(ttlSply).toFixed(3);
+    console.log("TRDX", players);
+    setDriptransaction(drptrx);
+    setDripTotalSupply(ttlSply);
+    setDripplayers(players);
+
+  }catch(e){
+    console.log("Error while Fetching Data In Main")
+  }
+}
   useEffect(()=>{
     window.scrollTo(0, 0);
+    setInterval(() => {
+      getData();
+    }, 1000);
   },[])
   return (
     <div className="images">
@@ -158,7 +187,7 @@ const Main = () => {
                       className="notranslate"
                       style={{ color: "#ab9769", fontSize: "20px" }}
                     >
-                      0
+                      {dripPlayers}
                     </span>
                   </p>
                   <p className="text-small"> {t("count.1")}</p>
@@ -176,7 +205,14 @@ const Main = () => {
                   <p className="text-large mb-2 text-white">
                     <span className="notranslate" />
                   </p>
-                  <p className="text-small" />
+                  <p className="text-small"  >
+                     {/* <span
+                      className="notranslate"
+                      style={{ color: "#ab9769", fontSize: "20px" }}
+                    >
+                     {maxDailyReturn}
+                    </span> */}
+                  </p>
                 </div>
               </div>
               <div className="container col-6 col-xl-3 col-lg-3 col-md-3 text-center">
@@ -193,7 +229,7 @@ const Main = () => {
                       className="notranslate"
                       style={{ color: "#ab9769", fontSize: "20px" }}
                     >
-                      0
+                     {dripTotalSupply}
                     </span>
                   </p>
                   <p className="text-small">{t("Splash.1")} ≈ N/A</p>
@@ -213,7 +249,7 @@ const Main = () => {
                       className="notranslate"
                       style={{ color: "#ab9769", fontSize: "20px" }}
                     >
-                      0
+                    {dripTransaction} 
                     </span>
                   </p>
                   <p className="text-small ">{t("count.1")}</p>
