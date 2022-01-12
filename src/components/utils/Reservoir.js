@@ -1,563 +1,563 @@
-export const reservoirAddress = "0x43Cb239218a632f9b34EC783cB72F978ce3B8F60";
+export const reservoirAddress = "0xeEc83a83764c41f9c602694dfCffC9E75A8Ef3B6";
 export const reservoirAbi = [{
-    "constant": true,
-    "inputs": [{
-        "name": "_customerAddress",
-        "type": "address"
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
     }],
     "name": "dividendsOf",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "lockedTokenBalance",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
     "inputs": [{
-        "name": "_customerAddress",
-        "type": "address"
+        "type": "address",
+        "name": "_customerAddress"
+    }],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "lockedTokenBalance",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256[15]",
+        "name": ""
     }],
     "name": "statsOf",
-    "outputs": [{
-        "name": "",
-        "type": "uint256[15]"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "totalSupply",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "myDividends",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "dividendBalance",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [],
-    "name": "sweep",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [],
-    "name": "withdraw",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "totalTokenBalance",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "totalClaims",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
     "inputs": [{
-        "name": "_amount",
-        "type": "uint256"
+        "type": "address",
+        "name": "_customerAddress"
+    }],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "totalSupply",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "myDividends",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "dividendBalance",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "sweep",
+    "inputs": [],
+    "constant": false
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "withdraw",
+    "inputs": [],
+    "constant": false
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "totalTokenBalance",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "totalClaims",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
     }],
     "name": "calculateTaxedBnbToTokenLiquidity",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
     "inputs": [{
-        "name": "_amount",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "_amount"
+    }],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
     }],
     "name": "calculateTaxedLiquidityToBnb",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "collateralAddress",
-    "outputs": [{
-        "name": "",
-        "type": "address"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "totalWithdrawn",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "totalTxs",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
     "inputs": [{
-        "name": "_amount",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "_amount"
+    }],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "address",
+        "name": ""
+    }],
+    "name": "collateralAddress",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "totalWithdrawn",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "totalTxs",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
     }],
     "name": "calculateLiquidityToBnb",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
     "inputs": [{
-        "name": "_customerAddress",
-        "type": "address"
+        "type": "uint256",
+        "name": "_amount"
+    }],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
     }],
     "name": "balanceOf",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "distributionInterval",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "totalDeposits",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "swapAddress",
-    "outputs": [{
-        "name": "",
-        "type": "address"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "myTokens",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
     "inputs": [{
-        "name": "_customerAddress",
-        "type": "address"
+        "type": "address",
+        "name": "_customerAddress"
+    }],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "distributionInterval",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "totalDeposits",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "address",
+        "name": ""
+    }],
+    "name": "swapAddress",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "myTokens",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
     }],
     "name": "dailyEstimateBnb",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [],
-    "name": "buy",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": true,
-    "stateMutability": "payable",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "lastPayout",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "collateralBalance",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
     "inputs": [{
-        "name": "_customerAddress",
-        "type": "address"
+        "type": "address",
+        "name": "_customerAddress"
+    }],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "payable",
+    "payable": true,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "buy",
+    "inputs": [],
+    "constant": false
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "lastPayout",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
+    "name": "collateralBalance",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
     }],
     "name": "bnbBalance",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
+    "inputs": [{
+        "type": "address",
+        "name": "_customerAddress"
     }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
+    "constant": true
 }, {
-    "constant": true,
-    "inputs": [],
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
     "name": "players",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
+    "inputs": [],
+    "constant": true
 }, {
-    "constant": false,
-    "inputs": [{
-        "name": "_amountOfTokens",
-        "type": "uint256"
-    }],
-    "name": "sell",
-    "outputs": [],
-    "payable": false,
+    "type": "function",
     "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": true,
+    "payable": false,
+    "outputs": [],
+    "name": "sell",
     "inputs": [{
-        "name": "_customerAddress",
-        "type": "address"
+        "type": "uint256",
+        "name": "_amountOfTokens"
+    }],
+    "constant": false
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
     }],
     "name": "dailyEstimate",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
+    "inputs": [{
+        "type": "address",
+        "name": "_customerAddress"
     }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
+    "constant": true
 }, {
-    "constant": true,
-    "inputs": [],
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "uint256",
+        "name": ""
+    }],
     "name": "balanceInterval",
-    "outputs": [{
-        "name": "",
-        "type": "uint256"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": false,
     "inputs": [],
-    "name": "reinvest",
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
     "outputs": [{
-        "name": "",
-        "type": "uint256"
+        "type": "uint256",
+        "name": ""
     }],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "name": "reinvest",
+    "inputs": [],
+    "constant": false
 }, {
+    "type": "constructor",
+    "stateMutability": "nonpayable",
+    "payable": false,
     "inputs": [{
-        "name": "_swapAddress",
-        "type": "address"
+        "type": "address",
+        "name": "_swapAddress"
     }, {
-        "name": "_collateralAddress",
-        "type": "address"
-    }],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+        "type": "address",
+        "name": "_collateralAddress"
+    }]
 }, {
-    "payable": true,
+    "type": "fallback",
     "stateMutability": "payable",
-    "type": "fallback"
+    "payable": true
 }, {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": true,
-        "name": "customerAddress",
-        "type": "address"
-    }, {
-        "indexed": false,
-        "name": "invested",
-        "type": "uint256"
-    }, {
-        "indexed": false,
-        "name": "tokens",
-        "type": "uint256"
-    }, {
-        "indexed": false,
-        "name": "soldTokens",
-        "type": "uint256"
-    }, {
-        "indexed": false,
-        "name": "timestamp",
-        "type": "uint256"
-    }],
+    "type": "event",
     "name": "onLeaderBoard",
-    "type": "event"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": true,
+        "type": "address",
         "name": "customerAddress",
-        "type": "address"
+        "indexed": true
     }, {
-        "indexed": false,
-        "name": "incomingeth",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "invested",
+        "indexed": false
     }, {
-        "indexed": false,
-        "name": "tokensMinted",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "tokens",
+        "indexed": false
     }, {
-        "indexed": false,
+        "type": "uint256",
+        "name": "soldTokens",
+        "indexed": false
+    }, {
+        "type": "uint256",
         "name": "timestamp",
-        "type": "uint256"
+        "indexed": false
     }],
+    "anonymous": false
+}, {
+    "type": "event",
     "name": "onTokenPurchase",
-    "type": "event"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": true,
+        "type": "address",
         "name": "customerAddress",
-        "type": "address"
+        "indexed": true
     }, {
-        "indexed": false,
-        "name": "tokensBurned",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "incomingeth",
+        "indexed": false
     }, {
-        "indexed": false,
-        "name": "ethEarned",
-        "type": "uint256"
-    }, {
-        "indexed": false,
-        "name": "timestamp",
-        "type": "uint256"
-    }],
-    "name": "onTokenSell",
-    "type": "event"
-}, {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": true,
-        "name": "customerAddress",
-        "type": "address"
-    }, {
-        "indexed": false,
-        "name": "ethReinvested",
-        "type": "uint256"
-    }, {
-        "indexed": false,
+        "type": "uint256",
         "name": "tokensMinted",
-        "type": "uint256"
+        "indexed": false
     }, {
-        "indexed": false,
+        "type": "uint256",
         "name": "timestamp",
-        "type": "uint256"
+        "indexed": false
     }],
+    "anonymous": false
+}, {
+    "type": "event",
+    "name": "onTokenSell",
+    "inputs": [{
+        "type": "address",
+        "name": "customerAddress",
+        "indexed": true
+    }, {
+        "type": "uint256",
+        "name": "tokensBurned",
+        "indexed": false
+    }, {
+        "type": "uint256",
+        "name": "ethEarned",
+        "indexed": false
+    }, {
+        "type": "uint256",
+        "name": "timestamp",
+        "indexed": false
+    }],
+    "anonymous": false
+}, {
+    "type": "event",
     "name": "onReinvestment",
-    "type": "event"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": true,
+        "type": "address",
         "name": "customerAddress",
-        "type": "address"
+        "indexed": true
     }, {
-        "indexed": false,
-        "name": "ethWithdrawn",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "ethReinvested",
+        "indexed": false
     }, {
-        "indexed": false,
+        "type": "uint256",
+        "name": "tokensMinted",
+        "indexed": false
+    }, {
+        "type": "uint256",
         "name": "timestamp",
-        "type": "uint256"
+        "indexed": false
     }],
+    "anonymous": false
+}, {
+    "type": "event",
     "name": "onWithdraw",
-    "type": "event"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": true,
+        "type": "address",
         "name": "customerAddress",
-        "type": "address"
+        "indexed": true
     }, {
-        "indexed": false,
-        "name": "tokens",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "ethWithdrawn",
+        "indexed": false
     }, {
-        "indexed": false,
+        "type": "uint256",
         "name": "timestamp",
-        "type": "uint256"
+        "indexed": false
     }],
+    "anonymous": false
+}, {
+    "type": "event",
     "name": "onClaim",
-    "type": "event"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": true,
-        "name": "from",
-        "type": "address"
+        "type": "address",
+        "name": "customerAddress",
+        "indexed": true
     }, {
-        "indexed": true,
-        "name": "to",
-        "type": "address"
-    }, {
-        "indexed": false,
+        "type": "uint256",
         "name": "tokens",
-        "type": "uint256"
+        "indexed": false
     }, {
-        "indexed": false,
+        "type": "uint256",
         "name": "timestamp",
-        "type": "uint256"
+        "indexed": false
     }],
+    "anonymous": false
+}, {
+    "type": "event",
     "name": "onTransfer",
-    "type": "event"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": false,
-        "name": "bnbBalance",
-        "type": "uint256"
+        "type": "address",
+        "name": "from",
+        "indexed": true
     }, {
-        "indexed": false,
-        "name": "tokenBalance",
-        "type": "uint256"
+        "type": "address",
+        "name": "to",
+        "indexed": true
     }, {
-        "indexed": false,
+        "type": "uint256",
+        "name": "tokens",
+        "indexed": false
+    }, {
+        "type": "uint256",
         "name": "timestamp",
-        "type": "uint256"
+        "indexed": false
     }],
+    "anonymous": false
+}, {
+    "type": "event",
     "name": "onBalance",
-    "type": "event"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": false,
-        "name": "amount",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "bnbBalance",
+        "indexed": false
+    }, {
+        "type": "uint256",
+        "name": "tokenBalance",
+        "indexed": false
+    }, {
+        "type": "uint256",
+        "name": "timestamp",
+        "indexed": false
     }],
+    "anonymous": false
+}, {
+    "type": "event",
     "name": "onLiquiditySweep",
-    "type": "event"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": false,
+        "type": "uint256",
         "name": "amount",
-        "type": "uint256"
+        "indexed": false
     }],
+    "anonymous": false
+}, {
+    "type": "event",
     "name": "onLiquidityProviderReward",
-    "type": "event"
+    "inputs": [{
+        "type": "uint256",
+        "name": "amount",
+        "indexed": false
+    }],
+    "anonymous": false
 }]

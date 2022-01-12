@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Button from "react-bootstrap/Button";
 import Chart from "./Chart";
 import axios from "axios";
+import price from 'crypto-price';
 import { loadWeb3 } from "../api";
 import {
   faucetTokenAddress,
@@ -24,7 +25,7 @@ import {
 } from "../utils/Fountain";
 // import { useState } from "react";
 import "./Swap.css";
-const webSupply = new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
+const webSupply = new Web3("https://cronos-testnet-3.crypto.org:8545");
 const Swap = () => {
   let [boxOne, setBoxOne] = useState(false);
   let [tripType, setTripType] = useState(1);
@@ -53,7 +54,7 @@ const Swap = () => {
   let [tSupllyDrip, setTsupplyDrip] = useState(0);
   let [tSupllyFountain, setTsupplyFountain] = useState(0);
   let [tTransactionsFountain, setTtransactionFountain] = useState(0);
-
+  let [croValue, setCroValue]= useState(0);
   const { t, i18n } = useTranslation();
   const inputEl = useRef();
   let inputE2 = useRef();
@@ -84,7 +85,7 @@ const Swap = () => {
         setUsersBalance(balance);
 
         let dripBalance = await tokenContractOf.methods.balanceOf(acc).call();
-        dripBalance = webSupply.utils.fromWei(dripBalance);
+        dripBalance = web3.utils.fromWei(dripBalance);
       dripBalance = parseFloat(dripBalance).toFixed(3);
       setuserDripBalance(dripBalance);
       }
@@ -94,10 +95,9 @@ const Swap = () => {
   };
   const getDataWitoutMetamask = async () => {
     try{
-      let usdValue = await axios.get(
-        "https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT"
-      );
-      let currentBnB = usdValue.data.price
+      let usdValue = await price.getBasePrice('CRO', 'USDT');
+      console.log("CRO",usdValue.price); 
+      let currentBnB = usdValue.price
       // let currentBnB = 520.12;
       let contractOf = new webSupply.eth.Contract(
         fountainContractAbi,
@@ -139,7 +139,7 @@ const Swap = () => {
       let BdividedByD = covertedDrip;
       BdividedByD = parseFloat(BdividedByD).toFixed(3);
       let priceOfoneDrip = covertedDrip * currentBnB;
-      priceOfoneDrip = parseFloat(priceOfoneDrip).toFixed(3);
+      priceOfoneDrip = parseFloat(priceOfoneDrip).toFixed(5);
       
       covertedDrip = covertedDrip * currentBnB;
       covertedDrip = parseFloat(covertedDrip).toFixed(4);
@@ -190,22 +190,23 @@ const addMaxBalance=async()=>{
 
 }
   const enterBuyAmount1 = async () => {
-    
-    const web3 = window.web3;
+ 
     let myvalue = inputEl.current.value;
-    let contractOf = new web3.eth.Contract(
+    console.log("Here on change",myvalue)
+    let contractOf = new webSupply.eth.Contract(
       fountainContractAbi,
       fountainContractAddress
     );
+    console.log("Contract of", contractOf.methods);
     if (myvalue > 0) {
-      myvalue = web3.utils.toWei(myvalue);
+      myvalue = webSupply.utils.toWei(myvalue);
       setEnteredval(myvalue);
 
-      let tokensInputPrice = await contractOf.methods
-        .getBnbToTokenInputPrice(myvalue)
-        .call();
-      tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
+      let tokensInputPrice = await contractOf.methods.getBnbToTokenInputPrice(myvalue).call();
+        console.log("tokensInputPrice", tokensInputPrice);
+      tokensInputPrice = webSupply.utils.fromWei(tokensInputPrice);
       tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
+      
       
       
       let miniumrcvd = (tripType * tokensInputPrice) / 100;

@@ -1,800 +1,800 @@
-export const fountainContractAddress = "0xaee62F904e54Ad9314766c474CA4234146fE446f";
+export const fountainContractAddress = "0xd669310a0e734A1D45151748b84b40CA5A76e1E8";
 export const fountainContractAbi = [{
-    "inputs": [{
-        "internalType": "address",
-        "name": "token_addr",
-        "type": "address"
-    }],
+    "type": "constructor",
     "stateMutability": "nonpayable",
-    "type": "constructor"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": true,
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
-    }, {
-        "indexed": true,
-        "internalType": "address",
-        "name": "spender",
-        "type": "address"
-    }, {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "value",
-        "type": "uint256"
-    }],
+        "type": "address",
+        "name": "token_addr",
+        "internalType": "address"
+    }]
+}, {
+    "type": "event",
     "name": "Approval",
-    "type": "event"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": true,
+        "type": "address",
+        "name": "owner",
         "internalType": "address",
-        "name": "previousOwner",
-        "type": "address"
+        "indexed": true
     }, {
-        "indexed": true,
+        "type": "address",
+        "name": "spender",
         "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-    }],
-    "name": "OwnershipTransferred",
-    "type": "event"
-}, {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": true,
-        "internalType": "address",
-        "name": "from",
-        "type": "address"
+        "indexed": true
     }, {
-        "indexed": true,
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-    }, {
-        "indexed": false,
-        "internalType": "uint256",
+        "type": "uint256",
         "name": "value",
-        "type": "uint256"
+        "internalType": "uint256",
+        "indexed": false
     }],
+    "anonymous": false
+}, {
+    "type": "event",
+    "name": "OwnershipTransferred",
+    "inputs": [{
+        "type": "address",
+        "name": "previousOwner",
+        "internalType": "address",
+        "indexed": true
+    }, {
+        "type": "address",
+        "name": "newOwner",
+        "internalType": "address",
+        "indexed": true
+    }],
+    "anonymous": false
+}, {
+    "type": "event",
     "name": "Transfer",
-    "type": "event"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": false,
+        "type": "address",
+        "name": "from",
         "internalType": "address",
-        "name": "addr",
-        "type": "address"
+        "indexed": true
+    }, {
+        "type": "address",
+        "name": "to",
+        "internalType": "address",
+        "indexed": true
+    }, {
+        "type": "uint256",
+        "name": "value",
+        "internalType": "uint256",
+        "indexed": false
     }],
+    "anonymous": false
+}, {
+    "type": "event",
     "name": "WhitelistedAddressAdded",
-    "type": "event"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": false,
-        "internalType": "address",
+        "type": "address",
         "name": "addr",
-        "type": "address"
+        "internalType": "address",
+        "indexed": false
     }],
+    "anonymous": false
+}, {
+    "type": "event",
     "name": "WhitelistedAddressRemoved",
-    "type": "event"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": true,
-        "internalType": "address",
-        "name": "provider",
-        "type": "address"
-    }, {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "bnb_amount",
-        "type": "uint256"
-    }, {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "token_amount",
-        "type": "uint256"
-    }],
-    "name": "onAddLiquidity",
-    "type": "event"
-}, {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": true,
-        "internalType": "address",
-        "name": "buyer",
-        "type": "address"
-    }, {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "token_amount",
-        "type": "uint256"
-    }, {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "bnb_amount",
-        "type": "uint256"
-    }],
-    "name": "onBnbPurchase",
-    "type": "event"
-}, {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "balance",
-        "type": "uint256"
-    }],
-    "name": "onContractBalance",
-    "type": "event"
-}, {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": true,
-        "internalType": "address",
-        "name": "provider",
-        "type": "address"
-    }, {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-    }],
-    "name": "onLiquidity",
-    "type": "event"
-}, {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "price",
-        "type": "uint256"
-    }],
-    "name": "onPrice",
-    "type": "event"
-}, {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": true,
-        "internalType": "address",
-        "name": "provider",
-        "type": "address"
-    }, {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "bnb_amount",
-        "type": "uint256"
-    }, {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "token_amount",
-        "type": "uint256"
-    }],
-    "name": "onRemoveLiquidity",
-    "type": "event"
-}, {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "liquidity",
-        "type": "uint256"
-    }, {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "price",
-        "type": "uint256"
-    }],
-    "name": "onSummary",
-    "type": "event"
-}, {
-    "anonymous": false,
-    "inputs": [{
-        "indexed": true,
-        "internalType": "address",
-        "name": "buyer",
-        "type": "address"
-    }, {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "bnb_amount",
-        "type": "uint256"
-    }, {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "token_amount",
-        "type": "uint256"
-    }],
-    "name": "onTokenPurchase",
-    "type": "event"
-}, {
-    "inputs": [{
-        "internalType": "address",
+        "type": "address",
         "name": "addr",
-        "type": "address"
+        "internalType": "address",
+        "indexed": false
+    }],
+    "anonymous": false
+}, {
+    "type": "event",
+    "name": "onAddLiquidity",
+    "inputs": [{
+        "type": "address",
+        "name": "provider",
+        "internalType": "address",
+        "indexed": true
+    }, {
+        "type": "uint256",
+        "name": "bnb_amount",
+        "internalType": "uint256",
+        "indexed": true
+    }, {
+        "type": "uint256",
+        "name": "token_amount",
+        "internalType": "uint256",
+        "indexed": true
+    }],
+    "anonymous": false
+}, {
+    "type": "event",
+    "name": "onBnbPurchase",
+    "inputs": [{
+        "type": "address",
+        "name": "buyer",
+        "internalType": "address",
+        "indexed": true
+    }, {
+        "type": "uint256",
+        "name": "token_amount",
+        "internalType": "uint256",
+        "indexed": true
+    }, {
+        "type": "uint256",
+        "name": "bnb_amount",
+        "internalType": "uint256",
+        "indexed": true
+    }],
+    "anonymous": false
+}, {
+    "type": "event",
+    "name": "onContractBalance",
+    "inputs": [{
+        "type": "uint256",
+        "name": "balance",
+        "internalType": "uint256",
+        "indexed": false
+    }],
+    "anonymous": false
+}, {
+    "type": "event",
+    "name": "onLiquidity",
+    "inputs": [{
+        "type": "address",
+        "name": "provider",
+        "internalType": "address",
+        "indexed": true
+    }, {
+        "type": "uint256",
+        "name": "amount",
+        "internalType": "uint256",
+        "indexed": true
+    }],
+    "anonymous": false
+}, {
+    "type": "event",
+    "name": "onPrice",
+    "inputs": [{
+        "type": "uint256",
+        "name": "price",
+        "internalType": "uint256",
+        "indexed": false
+    }],
+    "anonymous": false
+}, {
+    "type": "event",
+    "name": "onRemoveLiquidity",
+    "inputs": [{
+        "type": "address",
+        "name": "provider",
+        "internalType": "address",
+        "indexed": true
+    }, {
+        "type": "uint256",
+        "name": "bnb_amount",
+        "internalType": "uint256",
+        "indexed": true
+    }, {
+        "type": "uint256",
+        "name": "token_amount",
+        "internalType": "uint256",
+        "indexed": true
+    }],
+    "anonymous": false
+}, {
+    "type": "event",
+    "name": "onSummary",
+    "inputs": [{
+        "type": "uint256",
+        "name": "liquidity",
+        "internalType": "uint256",
+        "indexed": false
+    }, {
+        "type": "uint256",
+        "name": "price",
+        "internalType": "uint256",
+        "indexed": false
+    }],
+    "anonymous": false
+}, {
+    "type": "event",
+    "name": "onTokenPurchase",
+    "inputs": [{
+        "type": "address",
+        "name": "buyer",
+        "internalType": "address",
+        "indexed": true
+    }, {
+        "type": "uint256",
+        "name": "bnb_amount",
+        "internalType": "uint256",
+        "indexed": true
+    }, {
+        "type": "uint256",
+        "name": "token_amount",
+        "internalType": "uint256",
+        "indexed": true
+    }],
+    "anonymous": false
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [{
+        "type": "bool",
+        "name": "success",
+        "internalType": "bool"
     }],
     "name": "addAddressToWhitelist",
-    "outputs": [{
-        "internalType": "bool",
-        "name": "success",
-        "type": "bool"
-    }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "address[]",
-        "name": "addrs",
-        "type": "address[]"
+        "type": "address",
+        "name": "addr",
+        "internalType": "address"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [{
+        "type": "bool",
+        "name": "success",
+        "internalType": "bool"
     }],
     "name": "addAddressesToWhitelist",
-    "outputs": [{
-        "internalType": "bool",
-        "name": "success",
-        "type": "bool"
-    }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
-        "name": "min_liquidity",
-        "type": "uint256"
-    }, {
-        "internalType": "uint256",
-        "name": "max_tokens",
-        "type": "uint256"
+        "type": "address[]",
+        "name": "addrs",
+        "internalType": "address[]"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "payable",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "addLiquidity",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "payable",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
+        "type": "uint256",
+        "name": "min_liquidity",
+        "internalType": "uint256"
     }, {
-        "internalType": "address",
-        "name": "spender",
-        "type": "address"
+        "type": "uint256",
+        "name": "max_tokens",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "allowance",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "address",
-        "name": "spender",
-        "type": "address"
+        "type": "address",
+        "name": "owner",
+        "internalType": "address"
     }, {
-        "internalType": "uint256",
-        "name": "value",
-        "type": "uint256"
+        "type": "address",
+        "name": "spender",
+        "internalType": "address"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [{
+        "type": "bool",
+        "name": "",
+        "internalType": "bool"
     }],
     "name": "approve",
-    "outputs": [{
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-    }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
+        "type": "address",
+        "name": "spender",
+        "internalType": "address"
+    }, {
+        "type": "uint256",
+        "name": "value",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "balanceOf",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "bnbBalance",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
-        "name": "min_tokens",
-        "type": "uint256"
+        "type": "address",
+        "name": "owner",
+        "internalType": "address"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
+    }],
+    "name": "bnbBalance",
+    "inputs": []
+}, {
+    "type": "function",
+    "stateMutability": "payable",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "bnbToTokenSwapInput",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "payable",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
-        "name": "tokens_bought",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "min_tokens",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "payable",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "bnbToTokenSwapOutput",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "payable",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "decimals",
-    "outputs": [{
-        "internalType": "uint8",
-        "name": "",
-        "type": "uint8"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "address",
-        "name": "spender",
-        "type": "address"
-    }, {
-        "internalType": "uint256",
-        "name": "subtractedValue",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "tokens_bought",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint8",
+        "name": "",
+        "internalType": "uint8"
+    }],
+    "name": "decimals",
+    "inputs": []
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [{
+        "type": "bool",
+        "name": "",
+        "internalType": "bool"
     }],
     "name": "decreaseAllowance",
-    "outputs": [{
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-    }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
-        "name": "bnb_sold",
-        "type": "uint256"
+        "type": "address",
+        "name": "spender",
+        "internalType": "address"
+    }, {
+        "type": "uint256",
+        "name": "subtractedValue",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "getBnbToLiquidityInputPrice",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
+        "type": "uint256",
         "name": "bnb_sold",
-        "type": "uint256"
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "getBnbToTokenInputPrice",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
-        "name": "tokens_bought",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "bnb_sold",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "getBnbToTokenOutputPrice",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
-        "name": "input_amount",
-        "type": "uint256"
-    }, {
-        "internalType": "uint256",
-        "name": "input_reserve",
-        "type": "uint256"
-    }, {
-        "internalType": "uint256",
-        "name": "output_reserve",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "tokens_bought",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "getInputPrice",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "input_amount",
+        "internalType": "uint256"
+    }, {
+        "type": "uint256",
+        "name": "input_reserve",
+        "internalType": "uint256"
+    }, {
+        "type": "uint256",
+        "name": "output_reserve",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
+    }, {
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "getLiquidityToReserveInputPrice",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }, {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
-        "name": "output_amount",
-        "type": "uint256"
-    }, {
-        "internalType": "uint256",
-        "name": "input_reserve",
-        "type": "uint256"
-    }, {
-        "internalType": "uint256",
-        "name": "output_reserve",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "amount",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "getOutputPrice",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
-        "name": "tokens_sold",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "output_amount",
+        "internalType": "uint256"
+    }, {
+        "type": "uint256",
+        "name": "input_reserve",
+        "internalType": "uint256"
+    }, {
+        "type": "uint256",
+        "name": "output_reserve",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "getTokenToBnbInputPrice",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
-        "name": "bnb_bought",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "tokens_sold",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "getTokenToBnbOutputPrice",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "address",
-        "name": "spender",
-        "type": "address"
-    }, {
-        "internalType": "uint256",
-        "name": "addedValue",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "bnb_bought",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [{
+        "type": "bool",
+        "name": "",
+        "internalType": "bool"
     }],
     "name": "increaseAllowance",
-    "outputs": [{
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-    }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "isPaused",
-    "outputs": [{
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "name",
-    "outputs": [{
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "owner",
-    "outputs": [{
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "pause",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "providers",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "address",
-        "name": "addr",
-        "type": "address"
+        "type": "address",
+        "name": "spender",
+        "internalType": "address"
+    }, {
+        "type": "uint256",
+        "name": "addedValue",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "bool",
+        "name": "",
+        "internalType": "bool"
+    }],
+    "name": "isPaused",
+    "inputs": []
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "string",
+        "name": "",
+        "internalType": "string"
+    }],
+    "name": "name",
+    "inputs": []
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "address",
+        "name": "",
+        "internalType": "address"
+    }],
+    "name": "owner",
+    "inputs": []
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [],
+    "name": "pause",
+    "inputs": []
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
+    }],
+    "name": "providers",
+    "inputs": []
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [{
+        "type": "bool",
+        "name": "success",
+        "internalType": "bool"
     }],
     "name": "removeAddressFromWhitelist",
-    "outputs": [{
-        "internalType": "bool",
-        "name": "success",
-        "type": "bool"
-    }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "address[]",
-        "name": "addrs",
-        "type": "address[]"
+        "type": "address",
+        "name": "addr",
+        "internalType": "address"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [{
+        "type": "bool",
+        "name": "success",
+        "internalType": "bool"
     }],
     "name": "removeAddressesFromWhitelist",
-    "outputs": [{
-        "internalType": "bool",
-        "name": "success",
-        "type": "bool"
-    }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
+        "type": "address[]",
+        "name": "addrs",
+        "internalType": "address[]"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }, {
-        "internalType": "uint256",
-        "name": "min_bnb",
-        "type": "uint256"
-    }, {
-        "internalType": "uint256",
-        "name": "min_tokens",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "removeLiquidity",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }, {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "symbol",
-    "outputs": [{
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "tokenAddress",
-    "outputs": [{
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "tokenBalance",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
-        "name": "tokens_sold",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "amount",
+        "internalType": "uint256"
     }, {
-        "internalType": "uint256",
+        "type": "uint256",
         "name": "min_bnb",
-        "type": "uint256"
+        "internalType": "uint256"
+    }, {
+        "type": "uint256",
+        "name": "min_tokens",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "string",
+        "name": "",
+        "internalType": "string"
+    }],
+    "name": "symbol",
+    "inputs": []
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "address",
+        "name": "",
+        "internalType": "address"
+    }],
+    "name": "tokenAddress",
+    "inputs": []
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
+    }],
+    "name": "tokenBalance",
+    "inputs": []
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "tokenToBnbSwapInput",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "uint256",
-        "name": "bnb_bought",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "tokens_sold",
+        "internalType": "uint256"
     }, {
-        "internalType": "uint256",
-        "name": "max_tokens",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "min_bnb",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "tokenToBnbSwapOutput",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "totalSupply",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "totalTxs",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
+        "type": "uint256",
+        "name": "bnb_bought",
+        "internalType": "uint256"
     }, {
-        "internalType": "uint256",
-        "name": "value",
-        "type": "uint256"
+        "type": "uint256",
+        "name": "max_tokens",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
+    }],
+    "name": "totalSupply",
+    "inputs": []
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
+    }],
+    "name": "totalTxs",
+    "inputs": []
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [{
+        "type": "bool",
+        "name": "",
+        "internalType": "bool"
     }],
     "name": "transfer",
-    "outputs": [{
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-    }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "address",
-        "name": "from",
-        "type": "address"
-    }, {
-        "internalType": "address",
+        "type": "address",
         "name": "to",
-        "type": "address"
+        "internalType": "address"
     }, {
-        "internalType": "uint256",
+        "type": "uint256",
         "name": "value",
-        "type": "uint256"
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [{
+        "type": "bool",
+        "name": "",
+        "internalType": "bool"
     }],
     "name": "transferFrom",
-    "outputs": [{
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-    }],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "address",
-        "name": "newOwner",
-        "type": "address"
-    }],
-    "name": "transferOwnership",
+        "type": "address",
+        "name": "from",
+        "internalType": "address"
+    }, {
+        "type": "address",
+        "name": "to",
+        "internalType": "address"
+    }, {
+        "type": "uint256",
+        "name": "value",
+        "internalType": "uint256"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
+    "name": "transferOwnership",
     "inputs": [{
-        "internalType": "address",
-        "name": "owner",
-        "type": "address"
+        "type": "address",
+        "name": "newOwner",
+        "internalType": "address"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "uint256",
+        "name": "",
+        "internalType": "uint256"
     }],
     "name": "txs",
-    "outputs": [{
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-    }],
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "inputs": [],
-    "name": "unpause",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
     "inputs": [{
-        "internalType": "address",
+        "type": "address",
+        "name": "owner",
+        "internalType": "address"
+    }]
+}, {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "outputs": [],
+    "name": "unpause",
+    "inputs": []
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "outputs": [{
+        "type": "bool",
         "name": "",
-        "type": "address"
+        "internalType": "bool"
     }],
     "name": "whitelist",
-    "outputs": [{
-        "internalType": "bool",
+    "inputs": [{
+        "type": "address",
         "name": "",
-        "type": "bool"
-    }],
-    "stateMutability": "view",
-    "type": "function"
+        "internalType": "address"
+    }]
 }, {
-    "stateMutability": "payable",
-    "type": "receive"
+    "type": "receive",
+    "stateMutability": "payable"
 }]

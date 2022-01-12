@@ -17,7 +17,7 @@ import {fountainContractAbi, fountainContractAddress} from '../utils/Fountain';
 import {dripTokenAbi, dripTokenAddress} from '../utils/DripToken';
 import {reservoirAbi,reservoirAddress} from '../utils/Reservoir';
 import Web3 from "web3";
-const webSupply= new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
+const webSupply= new Web3("https://cronos-testnet-3.crypto.org:8545/");
 
 function Reservoir() {
   const { t, i18n } = useTranslation();

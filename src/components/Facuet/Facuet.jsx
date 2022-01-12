@@ -12,8 +12,9 @@ import "./Facuet.css";
 import { useTranslation } from "react-i18next";
 import { loadWeb3 } from "../api";
 import { useNavigate, Link } from "react-router-dom";
+import price from 'crypto-price';
 import Web3 from "web3";
-const webSupply = new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
+const webSupply = new Web3("https://cronos-testnet-3.crypto.org:8545");
 
 const Facuet = () => {
   let navigate = useNavigate();
@@ -55,7 +56,7 @@ const Facuet = () => {
   let addressInput = useRef();
 
   const getData = async () => {
-
+    
     let acc = await loadWeb3();
     if (acc == "No Wallet") {
       try {
@@ -121,7 +122,7 @@ const Facuet = () => {
         setAvailable(myclaimsAvailable);
         setClaimed(totalclaimed);
       } catch (e) {
-        console.log("error while getting data in faucet");
+        console.log("error while getting data in faucet",e);
       }
     }
   }
@@ -248,8 +249,12 @@ const Facuet = () => {
       console.log("error", e)
     }
   }
-  const depositAmount = async () => {
-    try {
+  const approveAmount = async () => {
+    try{
+      let acc = await loadWeb3();
+      if(acc == "No Wallet"){
+        toast.error("No wallet connected")
+    }else{
       let acc = await loadWeb3();
       const web3 = window.web3;
       let enteredVal = inputEl.current.value;
@@ -261,17 +266,17 @@ const Facuet = () => {
           let referral = await contractOfBuddy.methods.buddyOf(acc).call();
           // console.log("Tayy ; ", referral)
           if (referral.length > 15) {
-            let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+            // let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
             let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
             await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
               .send({
                 from: acc
               })
             toast.success("Transaction successfull")
-            await contractOf.methods.deposit("0x4113ccD05D440f9580d55B2B34C92d6cC82eAB3c", web3.utils.toWei(enteredVal)).send({
-              from: acc
-            })
-            toast.success("Transaction successfull")
+            // await contractOf.methods.deposit("0x4113ccD05D440f9580d55B2B34C92d6cC82eAB3c", web3.utils.toWei(enteredVal)).send({
+            //   from: acc
+            // })
+            // toast.success("Transaction successfull")
           } else {
             toast.error("No Buddy Please get A buddy first");
             console.log("No Buddy Please get A buddy first")
@@ -282,6 +287,52 @@ const Facuet = () => {
       } else {
         toast.error("Looks Like You Forgot To Enter Amount")
       }
+    }
+    }catch(e){
+      console.log("error while approve amount", e);
+    }
+  }
+  const depositAmount = async () => {
+    try {
+      let acc = await loadWeb3();
+      if(acc == "No Wallet"){
+        toast.error("No Wallet connected")
+      }else{
+      const web3 = window.web3;
+      let enteredVal = inputEl.current.value;
+      if (enteredVal > 0) {
+        if (userDripBalance > parseFloat(enteredVal)) {
+          let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
+          let referral = await contractOfBuddy.methods.buddyOf(acc).call();
+
+          if (referral.length > 15) {
+            let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+            // let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+            // await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
+            //   .send({
+            //     from: acc
+            //   })
+            let allowance = await contractOf.methods.allowance().call();
+            if(allowance > enteredVal){
+              await contractOf.methods.deposit("0x4113ccD05D440f9580d55B2B34C92d6cC82eAB3c", web3.utils.toWei(enteredVal)).send({
+                from: acc
+              })
+              toast.success("Transaction successfull")
+            }else{
+              toast.error("Entered value is greater than your approval amount ")
+            }
+           
+          } else {
+            toast.error("No Buddy Please get A buddy first");
+            console.log("No Buddy Please get A buddy first")
+          }
+        } else {
+          toast.error("Entered value is greater than your balance")
+        }
+      } else {
+        toast.error("Looks Like You Forgot To Enter Amount")
+      }
+    }
     } catch (e) {
       toast.error("Transaction Failed")
     }
@@ -582,15 +633,24 @@ const Facuet = () => {
                           </small>
                         </div>
                         <div className="row justify-content-end">
-                          <div className="col-12 text-left">
+                          <div className="col-12 d-flex flex-row justify-content-evenly">
+                            <button
+                              onClick={() => approveAmount()}
+                              type="button"
+                              className="btn btn-outline-light"
+                            >
+                              {t("Approve.1")}
+                            </button>
                             <button
                               onClick={() => depositAmount()}
                               type="button"
                               className="btn btn-outline-light"
                             >
                               {t("Deposit.1")}
+                              
                             </button>
                           </div>
+                          
                         </div>
                       </form>
                     </div>

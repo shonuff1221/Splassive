@@ -1,55 +1,55 @@
-export const buddySystemAddress = "0x490764ae3a7c6F4813CECf03A0ab253F2C69356A";
+export const buddySystemAddress = "0x657889639FaEd14F73138afA008a06C47b3dE1D9";
 export const buddySystemAbi = [{
-    "constant": false,
-    "inputs": [{
-        "name": "buddy",
-        "type": "address"
-    }],
-    "name": "updateBuddy",
-    "outputs": [],
-    "payable": false,
+    "type": "function",
     "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "myBuddy",
-    "outputs": [{
-        "name": "",
-        "type": "address"
-    }],
     "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
+    "outputs": [],
+    "name": "updateBuddy",
     "inputs": [{
-        "name": "player",
-        "type": "address"
+        "type": "address",
+        "name": "buddy"
+    }],
+    "constant": false
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "address",
+        "name": ""
+    }],
+    "name": "myBuddy",
+    "inputs": [],
+    "constant": true
+}, {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{
+        "type": "address",
+        "name": ""
     }],
     "name": "buddyOf",
-    "outputs": [{
-        "name": "",
-        "type": "address"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "payable": true,
-    "stateMutability": "payable",
-    "type": "fallback"
-}, {
-    "anonymous": false,
     "inputs": [{
-        "indexed": true,
-        "name": "player",
-        "type": "address"
-    }, {
-        "indexed": true,
-        "name": "buddy",
-        "type": "address"
+        "type": "address",
+        "name": "player"
     }],
+    "constant": true
+}, {
+    "type": "fallback",
+    "stateMutability": "payable",
+    "payable": true
+}, {
+    "type": "event",
     "name": "onUpdateBuddy",
-    "type": "event"
+    "inputs": [{
+        "type": "address",
+        "name": "player",
+        "indexed": true
+    }, {
+        "type": "address",
+        "name": "buddy",
+        "indexed": true
+    }],
+    "anonymous": false
 }]
