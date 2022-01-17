@@ -68,7 +68,7 @@ export const loadWeb3 = async () => {
            await window.web3.eth.getChainId((err, netId) => {
                 console.log("networkId==>", netId);
                 switch (netId.toString()) {
-                  case "338":
+                  case "43113":
                     isConnected=true;
                     break;
                   default:

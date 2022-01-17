@@ -1,55 +1,55 @@
-export const buddySystemAddress = "0x657889639FaEd14F73138afA008a06C47b3dE1D9";
+export const buddySystemAddress = "0x6320DBF6BEf21321767c6165045FB5370429b369";
 export const buddySystemAbi = [{
-    "type": "function",
-    "stateMutability": "nonpayable",
-    "payable": false,
-    "outputs": [],
-    "name": "updateBuddy",
+    "constant": false,
     "inputs": [{
-        "type": "address",
-        "name": "buddy"
+        "name": "buddy",
+        "type": "address"
     }],
-    "constant": false
-}, {
-    "type": "function",
-    "stateMutability": "view",
+    "name": "updateBuddy",
+    "outputs": [],
     "payable": false,
-    "outputs": [{
-        "type": "address",
-        "name": ""
-    }],
-    "name": "myBuddy",
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": true,
     "inputs": [],
-    "constant": true
-}, {
-    "type": "function",
-    "stateMutability": "view",
-    "payable": false,
+    "name": "myBuddy",
     "outputs": [{
-        "type": "address",
-        "name": ""
+        "name": "",
+        "type": "address"
+    }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{
+        "name": "player",
+        "type": "address"
     }],
     "name": "buddyOf",
-    "inputs": [{
-        "type": "address",
-        "name": "player"
+    "outputs": [{
+        "name": "",
+        "type": "address"
     }],
-    "constant": true
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
 }, {
-    "type": "fallback",
+    "payable": true,
     "stateMutability": "payable",
-    "payable": true
+    "type": "fallback"
 }, {
-    "type": "event",
-    "name": "onUpdateBuddy",
+    "anonymous": false,
     "inputs": [{
-        "type": "address",
+        "indexed": true,
         "name": "player",
-        "indexed": true
+        "type": "address"
     }, {
-        "type": "address",
+        "indexed": true,
         "name": "buddy",
-        "indexed": true
+        "type": "address"
     }],
-    "anonymous": false
+    "name": "onUpdateBuddy",
+    "type": "event"
 }]

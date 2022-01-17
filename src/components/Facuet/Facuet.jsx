@@ -14,7 +14,8 @@ import { loadWeb3 } from "../api";
 import { useNavigate, Link } from "react-router-dom";
 import price from 'crypto-price';
 import Web3 from "web3";
-const webSupply = new Web3("https://cronos-testnet-3.crypto.org:8545");
+const webSupply= new Web3("https://api.avax-test.network/ext/bc/C/rpc");
+// const webSupply = window.web3;
 
 const Facuet = () => {
   let navigate = useNavigate();
@@ -306,14 +307,17 @@ const Facuet = () => {
           let referral = await contractOfBuddy.methods.buddyOf(acc).call();
 
           if (referral.length > 15) {
+            let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
             let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+            console.log("allowance contract", contractOf.methods);
             // let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
             // await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
             //   .send({
             //     from: acc
             //   })
-            let allowance = await contractOf.methods.allowance().call();
-            if(allowance > enteredVal){
+            let allowance = await tokenContractOf.methods.allowance(acc,faucetContractAddress).call();
+            console.log("allowance", allowance);
+            if(allowance >=  parseFloat(web3.utils.toWei(enteredVal))){
               await contractOf.methods.deposit("0x4113ccD05D440f9580d55B2B34C92d6cC82eAB3c", web3.utils.toWei(enteredVal)).send({
                 from: acc
               })
@@ -334,7 +338,8 @@ const Facuet = () => {
       }
     }
     } catch (e) {
-      toast.error("Transaction Failed")
+      toast.error("Transaction Failed ")
+      console.log("Transaction Failed",e)
     }
   }
 

@@ -25,7 +25,8 @@ import {
 } from "../utils/Fountain";
 // import { useState } from "react";
 import "./Swap.css";
-const webSupply = new Web3("https://cronos-testnet-3.crypto.org:8545");
+import bigInt from "big-integer"
+const webSupply = new Web3("https://api.avax-test.network/ext/bc/C/rpc");
 const Swap = () => {
   let [boxOne, setBoxOne] = useState(false);
   let [tripType, setTripType] = useState(1);
@@ -49,19 +50,20 @@ const Swap = () => {
   // states for B by D
   let [division, setDivision] = useState(0);
   let [oneDripPrice, setOnedripPrice] = useState(0);
-
+  // state for sell without 
+  let [withouttofixed, setWithoutToFixed] = useState(0);
   // states for belowfooter swap
   let [tSupllyDrip, setTsupplyDrip] = useState(0);
   let [tSupllyFountain, setTsupplyFountain] = useState(0);
   let [tTransactionsFountain, setTtransactionFountain] = useState(0);
-  let [croValue, setCroValue]= useState(0);
+  let [croValue, setCroValue] = useState(0);
   const { t, i18n } = useTranslation();
   const inputEl = useRef();
   let inputE2 = useRef();
   // for radio inputs Buy splash
-   let mYentered =useRef();
+  let mYentered = useRef();
   // for radio inputs Sell splash
-   let mYEnter1=useRef();
+  let mYEnter1 = useRef();
 
   const getData = async () => {
     try {
@@ -70,33 +72,30 @@ const Swap = () => {
         console.log("No wallet Connected");
       } else {
         const web3 = window.web3;
-        let contractOf = new web3.eth.Contract(
-          fountainContractAbi,
-          fountainContractAddress
-        );
-  
+        let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+
         let tokenContractOf = new web3.eth.Contract(
           faucetTokenAbi,
           faucetTokenAddress
         );
         let balance = await web3.eth.getBalance(acc);
         balance = web3.utils.fromWei(balance);
-        balance = parseFloat(balance).toFixed(3);
+        balance = parseFloat(balance).toFixed(7);
         setUsersBalance(balance);
 
         let dripBalance = await tokenContractOf.methods.balanceOf(acc).call();
         dripBalance = web3.utils.fromWei(dripBalance);
-      dripBalance = parseFloat(dripBalance).toFixed(3);
-      setuserDripBalance(dripBalance);
+        dripBalance = parseFloat(dripBalance).toFixed(7);
+        setuserDripBalance(dripBalance);
       }
     } catch (e) {
       console.log("Error while fetching Api", e);
     }
   };
   const getDataWitoutMetamask = async () => {
-    try{
-      let usdValue = await price.getBasePrice('CRO', 'USDT');
-      console.log("CRO",usdValue.price); 
+    try {
+      let usdValue = await price.getBasePrice('AVAX', 'USDT');
+      console.log("AVAX", usdValue.price);
       let currentBnB = usdValue.price
       // let currentBnB = 520.12;
       let contractOf = new webSupply.eth.Contract(
@@ -111,46 +110,46 @@ const Swap = () => {
 
       let contractFBalance = await webSupply.eth.getBalance(fountainContractAddress);
       contractFBalance = await webSupply.utils.fromWei(contractFBalance);
-      contractFBalance = parseFloat(contractFBalance).toFixed(3);
+      contractFBalance = parseFloat(contractFBalance).toFixed(7);
 
       let contractFdripBalance = await tokenContractOf.methods
         .balanceOf(fountainContractAddress)
         .call();
       contractFdripBalance = webSupply.utils.fromWei(contractFdripBalance);
-      contractFdripBalance = parseFloat(contractFdripBalance).toFixed(3);
+      contractFdripBalance = parseFloat(contractFdripBalance).toFixed(7);
 
       let supplyDrip = await tokenContractOf.methods.totalSupply().call();
       supplyDrip = webSupply.utils.fromWei(supplyDrip);
-      supplyDrip = parseFloat(supplyDrip).toFixed(3);
+      supplyDrip = parseFloat(supplyDrip).toFixed(7);
 
       let fonutainDrip = await contractOf.methods.totalSupply().call();
       fonutainDrip = webSupply.utils.fromWei(fonutainDrip);
-      fonutainDrip = parseFloat(fonutainDrip).toFixed(3);
+      fonutainDrip = parseFloat(fonutainDrip).toFixed(7);
 
       let transactionFountain = await contractOf.methods.totalTxs().call();
       // transactionFountain= web3.utils.fromWei(transactionFountain);
       // transactionFountain= parseFloat(transactionFountain).toFixed(3);
 
       let converted = currentBnB * contractFBalance;
-      converted = parseFloat(converted).toFixed(3);
+      converted = parseFloat(converted).toFixed(7);
 
-      
+
       let covertedDrip = contractFBalance / contractFdripBalance;
       let BdividedByD = covertedDrip;
-      BdividedByD = parseFloat(BdividedByD).toFixed(3);
+      BdividedByD = parseFloat(BdividedByD).toFixed(7);
       let priceOfoneDrip = covertedDrip * currentBnB;
-      priceOfoneDrip = parseFloat(priceOfoneDrip).toFixed(5);
-      
+      priceOfoneDrip = parseFloat(priceOfoneDrip).toFixed(7);
+
       covertedDrip = covertedDrip * currentBnB;
-      covertedDrip = parseFloat(covertedDrip).toFixed(4);
+      covertedDrip = parseFloat(covertedDrip).toFixed(7);
       covertedDrip = contractFdripBalance * covertedDrip;
-      covertedDrip = parseFloat(covertedDrip).toFixed(3);
-      
+      covertedDrip = parseFloat(covertedDrip).toFixed(7);
+
 
       setUsdPrice(currentBnB);
       setdripUsdtPrice(covertedDrip);
       setBnbPrice(converted);
-      
+
       setCbnbBalance(contractFBalance);
       setCdripBalance(contractFdripBalance);
       setDivision(BdividedByD);
@@ -159,59 +158,59 @@ const Swap = () => {
       setTsupplyFountain(fonutainDrip);
       setTtransactionFountain(transactionFountain);
 
-    }catch(e){
+    } catch (e) {
       console.log("error while get data without metamask");
     }
   }
-const addMaxBalance=async()=>{
-  let acc= await loadWeb3();
-  console.log("acc = ",acc)
-  if(acc=="No Wallet"){
-    
-  console.log("acc = 2",acc)
-    console.log("No Wallet");
-  }else {
-    const web3= window.web3;
-    
-  console.log("acc = 3",acc)
-    let compBalance;
-    let tokenContractOf = await new web3.eth.Contract(
-      faucetTokenAbi,
-      faucetTokenAddress
-    );
-    let dripBalance = await tokenContractOf.methods.balanceOf(acc).call();
-    dripBalance = webSupply.utils.fromWei(dripBalance);
-  dripBalance = parseFloat(dripBalance).toFixed(3);
-  inputE2.current.value= dripBalance;
-  setuserDripBalance(dripBalance);
-  await enterBuyAmount2();
+  const addMaxBalance = async () => {
+    let acc = await loadWeb3();
+    console.log("acc = ", acc)
+    if (acc == "No Wallet") {
+
+      console.log("acc = 2", acc)
+      console.log("No Wallet");
+    } else {
+      const web3 = window.web3;
+
+      console.log("acc = 3", acc)
+      let compBalance;
+      let tokenContractOf = await new web3.eth.Contract(
+        faucetTokenAbi,
+        faucetTokenAddress
+      );
+      let dripBalance = await tokenContractOf.methods.balanceOf(acc).call();
+      dripBalance = webSupply.utils.fromWei(dripBalance);
+      dripBalance = parseFloat(dripBalance).toFixed(7);
+      inputE2.current.value = dripBalance;
+      setuserDripBalance(dripBalance);
+      await enterBuyAmount2();
+
+    }
 
   }
-
-}
   const enterBuyAmount1 = async () => {
- 
+
     let myvalue = inputEl.current.value;
-    console.log("Here on change",myvalue)
-    let contractOf = new webSupply.eth.Contract(
-      fountainContractAbi,
-      fountainContractAddress
-    );
+    let contractOf = new webSupply.eth.Contract(fountainContractAbi, fountainContractAddress);
     console.log("Contract of", contractOf.methods);
     if (myvalue > 0) {
+      console.log("value", myvalue);
+
       myvalue = webSupply.utils.toWei(myvalue);
       setEnteredval(myvalue);
 
+      // console.log("tokensInputPrice", await contractOf.methods.getBnbToTokenInputPrice(myvalue).call());
+
       let tokensInputPrice = await contractOf.methods.getBnbToTokenInputPrice(myvalue).call();
-        console.log("tokensInputPrice", tokensInputPrice);
+      console.log("value", tokensInputPrice);
       tokensInputPrice = webSupply.utils.fromWei(tokensInputPrice);
-      tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
-      
-      
-      
+      tokensInputPrice = parseFloat(tokensInputPrice).toFixed(7);
+
+
+
       let miniumrcvd = (tripType * tokensInputPrice) / 100;
       let percentValue = tokensInputPrice - miniumrcvd;
-      percentValue = parseFloat(percentValue).toFixed(3);
+      percentValue = parseFloat(percentValue).toFixed(7);
 
       setEstimate(tokensInputPrice);
       setMinrecieved(percentValue);
@@ -238,18 +237,18 @@ const addMaxBalance=async()=>{
         .getBnbToTokenInputPrice(myvalue)
         .call();
       tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
-      tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
-    
+      tokensInputPrice = parseFloat(tokensInputPrice).toFixed(7);
+
       let miniumrcvd = (myMultiplyValue * tokensInputPrice) / 100;
       let percentValue = tokensInputPrice - miniumrcvd;
-      percentValue = parseFloat(percentValue).toFixed(3);
+      percentValue = parseFloat(percentValue).toFixed(7);
       setEstimate(tokensInputPrice);
       setMinrecieved(percentValue);
     } else {
       setEstimate();
       setMinrecieved();
     }
-  
+
   };
   const enterRadioAmount3 = async () => {
     let myMultiplyValue = 3;
@@ -269,12 +268,12 @@ const addMaxBalance=async()=>{
         .getBnbToTokenInputPrice(myvalue)
         .call();
       tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
-      tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
-    
-      
+      tokensInputPrice = parseFloat(tokensInputPrice).toFixed(7);
+
+
       let miniumrcvd = (myMultiplyValue * tokensInputPrice) / 100;
       let percentValue = tokensInputPrice - miniumrcvd;
-      percentValue = parseFloat(percentValue).toFixed(3);
+      percentValue = parseFloat(percentValue).toFixed(7);
 
       setEstimate(tokensInputPrice);
       setMinrecieved(percentValue);
@@ -284,8 +283,8 @@ const addMaxBalance=async()=>{
     }
   };
   const enterRadioAmount5 = async () => {
-    let myMultiplyValue =5;
- 
+    let myMultiplyValue = 5;
+
     const web3 = window.web3;
     let myvalue = inputEl.current.value;
     let contractOf = new web3.eth.Contract(
@@ -300,11 +299,11 @@ const addMaxBalance=async()=>{
         .getBnbToTokenInputPrice(myvalue)
         .call();
       tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
-      tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
-      
+      tokensInputPrice = parseFloat(tokensInputPrice).toFixed(7);
+
       let miniumrcvd = (myMultiplyValue * tokensInputPrice) / 100;
       let percentValue = tokensInputPrice - miniumrcvd;
-      percentValue = parseFloat(percentValue).toFixed(3);
+      percentValue = parseFloat(percentValue).toFixed(7);
 
       setEstimate(tokensInputPrice);
       setMinrecieved(percentValue);
@@ -313,52 +312,52 @@ const addMaxBalance=async()=>{
       setMinrecieved();
     }
   };
-  const myOnchangeInputBuySwap=async()=>{
-   let myCurrentVal= mYentered.current.value;
-   if(myCurrentVal<100){
-   if (myCurrentVal>=1){
+  const myOnchangeInputBuySwap = async () => {
+    let myCurrentVal = mYentered.current.value;
+    if (myCurrentVal < 100) {
+      if (myCurrentVal >= 1) {
 
-   setTripType(myCurrentVal);
+        setTripType(myCurrentVal);
 
-   const web3 = window.web3;
-   let myvalue = inputEl.current.value;
-   let contractOf = new web3.eth.Contract(
-     fountainContractAbi,
-     fountainContractAddress
-   );
+        const web3 = window.web3;
+        let myvalue = inputEl.current.value;
+        let contractOf = new web3.eth.Contract(
+          fountainContractAbi,
+          fountainContractAddress
+        );
 
-   if (myvalue > 0) {
-     myvalue = web3.utils.toWei(myvalue);
-     setEnteredval(myvalue);
+        if (myvalue > 0) {
+          myvalue = web3.utils.toWei(myvalue);
+          setEnteredval(myvalue);
 
-     let tokensInputPrice = await contractOf.methods
-       .getBnbToTokenInputPrice(myvalue)
-       .call();
-     tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
-     tokensInputPrice = parseFloat(tokensInputPrice).toFixed(3);
+          let tokensInputPrice = await contractOf.methods
+            .getBnbToTokenInputPrice(myvalue)
+            .call();
+          tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
+          tokensInputPrice = parseFloat(tokensInputPrice).toFixed(7);
 
-     
-     let miniumrcvd = (myCurrentVal * tokensInputPrice) / 100;
-     let percentValue = tokensInputPrice - miniumrcvd;
-     percentValue = parseFloat(percentValue).toFixed(3);
 
-     setEstimate(tokensInputPrice);
-     setMinrecieved(percentValue);
-     setTripType(myCurrentVal);
-   } else {
-     setEstimate();
-     setMinrecieved();
-   }
-  }else{
-    toast.error("Slippage cannot be less than 1")
-  }
-}else{
-  toast.error("Slippage Cannot be over 100")
-}
+          let miniumrcvd = (myCurrentVal * tokensInputPrice) / 100;
+          let percentValue = tokensInputPrice - miniumrcvd;
+          percentValue = parseFloat(percentValue).toFixed(7);
+
+          setEstimate(tokensInputPrice);
+          setMinrecieved(percentValue);
+          setTripType(myCurrentVal);
+        } else {
+          setEstimate();
+          setMinrecieved();
+        }
+      } else {
+        toast.error("Slippage cannot be less than 1")
+      }
+    } else {
+      toast.error("Slippage Cannot be over 100")
+    }
   }
   const myRadioSellSplash1 = async () => {
 
-    let myValFormul=1;
+    let myValFormul = 1;
     const web3 = window.web3;
     let myvalue = inputE2.current.value;
     let contractOf = new web3.eth.Contract(
@@ -380,13 +379,13 @@ const addMaxBalance=async()=>{
       // tenPercentVal = web3.utils.fromWei(tenPercentVal);
       let miniumrcvdDrip = (myValFormul * tenPercentVal) / 100;
       let percentValue = tenPercentVal - miniumrcvdDrip;
-      percentValue = parseFloat(percentValue).toFixed(3);
-      tenPercentVal = parseFloat(tenPercentVal).toFixed(3);
+      percentValue = parseFloat(percentValue).toFixed(7);
+      tenPercentVal = parseFloat(tenPercentVal).toFixed(7);
 
       // tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice)
-      tokensOutputPrice = parseFloat(tokensOutputPrice).toFixed(3);
+      tokensOutputPrice = parseFloat(tokensOutputPrice).toFixed(7);
 
-      percentValue = parseFloat(percentValue).toFixed(3);
+      percentValue = parseFloat(percentValue).toFixed(7);
       setMinRecievedDrip(percentValue);
       setEstimateDrip(tokensOutputPrice);
       setTenperVal(tenPercentVal);
@@ -397,7 +396,7 @@ const addMaxBalance=async()=>{
     }
   };
   const myRadioSellSplash3 = async () => {
-    let myValFormul =3;
+    let myValFormul = 3;
     const web3 = window.web3;
     let myvalue = inputE2.current.value;
     let contractOf = new web3.eth.Contract(
@@ -419,13 +418,13 @@ const addMaxBalance=async()=>{
       // tenPercentVal = web3.utils.fromWei(tenPercentVal);
       let miniumrcvdDrip = (myValFormul * tenPercentVal) / 100;
       let percentValue = tenPercentVal - miniumrcvdDrip;
-      percentValue = parseFloat(percentValue).toFixed(3);
-      tenPercentVal = parseFloat(tenPercentVal).toFixed(3);
+      percentValue = parseFloat(percentValue).toFixed(7);
+      tenPercentVal = parseFloat(tenPercentVal).toFixed(7);
 
       // tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice)
-      tokensOutputPrice = parseFloat(tokensOutputPrice).toFixed(3);
+      tokensOutputPrice = parseFloat(tokensOutputPrice).toFixed(7);
 
-      percentValue = parseFloat(percentValue).toFixed(3);
+      percentValue = parseFloat(percentValue).toFixed(7);
       setMinRecievedDrip(percentValue);
       setEstimateDrip(tokensOutputPrice);
       setTenperVal(tenPercentVal);
@@ -458,16 +457,17 @@ const addMaxBalance=async()=>{
 
       let tenPercentVal = (tokensOutputPrice * 10) / 100;
       tenPercentVal = tokensOutputPrice - tenPercentVal;
+      setWithoutToFixed(tokensOutputPrice);
       // tenPercentVal = web3.utils.fromWei(tenPercentVal);
       let miniumrcvdDrip = (tripType1 * tenPercentVal) / 100;
       let percentValue = tenPercentVal - miniumrcvdDrip;
-      percentValue = parseFloat(percentValue).toFixed(3);
-      tenPercentVal = parseFloat(tenPercentVal).toFixed(3);
+      percentValue = parseFloat(percentValue).toFixed(7);
+      tenPercentVal = parseFloat(tenPercentVal).toFixed(7);
 
       // tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice)
-      tokensOutputPrice = parseFloat(tokensOutputPrice).toFixed(3);
+      tokensOutputPrice = parseFloat(tokensOutputPrice).toFixed(7);
 
-      percentValue = parseFloat(percentValue).toFixed(3);
+      percentValue = parseFloat(percentValue).toFixed(7);
       setMinRecievedDrip(percentValue);
       setEstimateDrip(tokensOutputPrice);
       setTenperVal(tenPercentVal);
@@ -481,58 +481,58 @@ const addMaxBalance=async()=>{
   const myOnchangeInputSellSplash = async () => {
     console.log("myOnchangeInputSellSplash");
     let iEntered = mYEnter1.current.value;
-    if (iEntered<100){
-    if(iEntered>=1){
-    setTripType1(iEntered)
-    const web3 = window.web3;
-    let myvalue = inputE2.current.value;
-    let contractOf = new web3.eth.Contract(
-      fountainContractAbi,
-      fountainContractAddress
-    );
+    if (iEntered < 100) {
+      if (iEntered >= 1) {
+        setTripType1(iEntered)
+        const web3 = window.web3;
+        let myvalue = inputE2.current.value;
+        let contractOf = new web3.eth.Contract(
+          fountainContractAbi,
+          fountainContractAddress
+        );
 
-    if (myvalue > 0) {
-      myvalue = web3.utils.toWei(myvalue);
-      console.log("eNTERTERD VALUE", myvalue);
+        if (myvalue > 0) {
+          myvalue = web3.utils.toWei(myvalue);
+          console.log("eNTERTERD VALUE", myvalue);
 
-      setEnteredval(myvalue);
-      let tokensOutputPrice = await contractOf.methods
-        .getTokenToBnbInputPrice(myvalue)
-        .call();
-      tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice);
-      console.log("BNB", tokensOutputPrice);
+          setEnteredval(myvalue);
+          let tokensOutputPrice = await contractOf.methods
+            .getTokenToBnbInputPrice(myvalue)
+            .call();
+          tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice);
+          console.log("BNB", tokensOutputPrice);
 
-      let tenPercentVal = (tokensOutputPrice * 10) / 100;
-      tenPercentVal = tokensOutputPrice - tenPercentVal;
-      // tenPercentVal = web3.utils.fromWei(tenPercentVal);
-      let miniumrcvdDrip = (iEntered * tenPercentVal) / 100;
-      let percentValue = tenPercentVal - miniumrcvdDrip;
-      percentValue = parseFloat(percentValue).toFixed(3);
-      tenPercentVal = parseFloat(tenPercentVal).toFixed(3);
+          let tenPercentVal = (tokensOutputPrice * 10) / 100;
+          tenPercentVal = tokensOutputPrice - tenPercentVal;
+          // tenPercentVal = web3.utils.fromWei(tenPercentVal);
+          let miniumrcvdDrip = (iEntered * tenPercentVal) / 100;
+          let percentValue = tenPercentVal - miniumrcvdDrip;
+          percentValue = parseFloat(percentValue).toFixed(7);
+          tenPercentVal = parseFloat(tenPercentVal).toFixed(7);
 
-      // tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice)
-      tokensOutputPrice = parseFloat(tokensOutputPrice).toFixed(3);
+          // tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice)
+          tokensOutputPrice = parseFloat(tokensOutputPrice).toFixed(7);
 
-      percentValue = parseFloat(percentValue).toFixed(3);
-      setMinRecievedDrip(percentValue);
-      setEstimateDrip(tokensOutputPrice);
-      setTenperVal(tenPercentVal);
+          percentValue = parseFloat(percentValue).toFixed(7);
+          setMinRecievedDrip(percentValue);
+          setEstimateDrip(tokensOutputPrice);
+          setTenperVal(tenPercentVal);
+        } else {
+          setEstimateDrip(0);
+          setMinRecievedDrip(0);
+          setTenperVal(0);
+        }
+      } else {
+        toast.error("Slippage Cannot be less than 1")
+      }
     } else {
-      setEstimateDrip(0);
-      setMinRecievedDrip(0);
-      setTenperVal(0);
+      toast.error("Slippage cannot be Over 100")
     }
-  }else{
-    toast.error("Slippage Cannot be less than 1")
-  }
-}else{
-  toast.error("Slippage cannot be Over 100")
-}
     // console.log("miniumrcvd ; ", miniumrcvd);
   };
   const myRadioSellSplash5 = async () => {
     console.log("myRadioSellSplash 5 ");
-    let myValFormul=5;
+    let myValFormul = 5;
     const web3 = window.web3;
     let myvalue = inputE2.current.value;
     let contractOf = new web3.eth.Contract(
@@ -556,13 +556,13 @@ const addMaxBalance=async()=>{
       // tenPercentVal = web3.utils.fromWei(tenPercentVal);
       let miniumrcvdDrip = (myValFormul * tenPercentVal) / 100;
       let percentValue = tenPercentVal - miniumrcvdDrip;
-      percentValue = parseFloat(percentValue).toFixed(3);
-      tenPercentVal = parseFloat(tenPercentVal).toFixed(3);
+      percentValue = parseFloat(percentValue).toFixed(7);
+      tenPercentVal = parseFloat(tenPercentVal);
 
       // tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice)
-      tokensOutputPrice = parseFloat(tokensOutputPrice).toFixed(3);
+      tokensOutputPrice = parseFloat(tokensOutputPrice).toFixed(7);
 
-      percentValue = parseFloat(percentValue).toFixed(3);
+      percentValue = parseFloat(percentValue).toFixed(7);
       setMinRecievedDrip(percentValue);
       setEstimateDrip(tokensOutputPrice);
       setTenperVal(tenPercentVal);
@@ -581,7 +581,9 @@ const addMaxBalance=async()=>{
       let acc = await loadWeb3();
       let myvalue = inputEl.current.value;
       if (myvalue > 0) {
+
         if (usersBalance > myvalue) {
+
           myvalue = web3.utils.toWei(myvalue);
           let contractOf = new web3.eth.Contract(
             fountainContractAbi,
@@ -593,13 +595,19 @@ const addMaxBalance=async()=>{
           // console.log(typeof (tripType))
           let miniumrcvd = (tripType * tokensInputPrice) / 100;
           let percentValue = tokensInputPrice - miniumrcvd;
+
+
+          console.log("myValue", typeof (percentValue));
+
           percentValue = percentValue.toString();
+          let b = bigInt(percentValue)
           console.log("AJSJD", myvalue.toString());
-          console.log("percentValue ", percentValue.toString());
-          console.log("myValue", myvalue);
+          console.log("percentValue ", b.value);
+          let convertValue = (b.value).toString()
+
 
           if (percentValue > 0) {
-            await contractOf.methods.bnbToTokenSwapInput(percentValue).send({
+            await contractOf.methods.bnbToTokenSwapInput(convertValue).send({
               from: acc,
               value: myvalue.toString(),
             });
@@ -609,15 +617,15 @@ const addMaxBalance=async()=>{
           }
         } else {
           toast.error(
-            "Entered Amount is greater than Your balance.Please Recharge."
+            "Entered Amount is greater than Your balance. Please Recharge."
           );
         }
       } else {
-        toast.error("Looks Like You Forgot to Enter Amount");
+        toast.error("Seems Like You Forgot to Enter Amount");
       }
     } catch (e) {
       console.log("Error ; ", e);
-      toast.error("Oops You Cancelled Transaction");
+      toast.error("Transaction Failed");
     }
   };
 
@@ -632,68 +640,67 @@ const addMaxBalance=async()=>{
         faucetTokenAddress
       );
       let myAllowance = await tokenContractOf.methods
-          .allowance(acc, fountainContractAddress)
-          .call();
-          console.log("Allowance", myAllowance);
+        .allowance(acc, fountainContractAddress)
+        .call();
+      console.log("Allowance", myAllowance);
       let myvalue = inputE2.current.value;
-      myvalue =parseInt(myvalue);
-     
-      console.log("myvalue1 ,",myvalue);
-      if (myvalue > 0) {
-      if(userDripBalance>=myvalue){
-     
-      myvalue= myvalue.toString();
-       
-        let myAllowance = await tokenContractOf.methods
-          .allowance(acc, fountainContractAddress)
-          .call();
-        console.log("My Allowances = ", web3.utils.fromWei(myAllowance));
-        if (myAllowance > 0) {
-          let myvalue1 = web3.utils.toWei(myvalue);
-         
-          if (myAllowance > myvalue1) {
-            let parameter = web3.utils.toWei(minRecievedDrip);
-            console.log(" parameter =", parameter);
+      myvalue = parseFloat(myvalue);
 
-            let contractOf = new web3.eth.Contract(
-              fountainContractAbi,
-              fountainContractAddress
-            );
-            let tokensOutputPrice = await contractOf.methods
-              .getTokenToBnbInputPrice(myvalue)
-              .call();
-            // console.log(typeof (tripType))
-            let miniumrcvd = (tripType1 * tokensOutputPrice) / 100;
-            let percentValue = tokensOutputPrice - miniumrcvd;
-            percentValue = percentValue.toString();
-           
-            if (parameter > 0) {
-              await contractOf.methods
-                .tokenToBnbSwapInput(myvalue1, parameter)
-                .send({
-                  from: acc,
-                });
+      console.log("myvalue1 ,", myvalue);
+      if (myvalue >= 1) {
 
-              toast.success("Transaction SuccessFull");
+        if (userDripBalance >= myvalue) {
+          console.log("userDripBalance ,", userDripBalance);
+          myvalue = myvalue.toString();
+          let myAllowance = await tokenContractOf.methods
+            .allowance(acc, fountainContractAddress)
+            .call();
+
+          if (myAllowance > 0) {
+            let myvalue1 = web3.utils.toWei(myvalue);
+            console.log("zahid", myvalue1);
+            console.log("myAllowance12",myAllowance)
+
+            if (parseFloat(myAllowance) >= myvalue1) {
+              let parameter = web3.utils.toWei(withouttofixed);
+              console.log(" parameter =", parameter);
+
+              let contractOf = new web3.eth.Contract(
+                fountainContractAbi,
+                fountainContractAddress
+              );
+
+              if (parameter > 0) {
+                let c = bigInt(myvalue1)
+                c = (c.value).toString();
+                console.log("Zahid riaz12", c);
+                await contractOf.methods
+                  .tokenToBnbSwapInput(myvalue1, parameter)
+                  .send({
+                    from: acc,
+                  });
+
+                toast.success("Transaction SuccessFull");
+              } else {
+                toast.error("Please Select Slippage Tolerance");
+              }
             } else {
-              toast.error("Please Select Slippage Tolerance");
+              toast.error(
+                "Oops You Entered Value Greater than your approval amount"
+              );
             }
           } else {
-            toast.error(
-              "Oops You Entered Value Greater than your approval amount"
-            );
+            toast.error("It Seems Like you Dont Have ApprovedToken");
           }
         } else {
-          toast.error("It Seems Like you Dont Have ApprovedToken");
+          toast.error("In Sufficient balance please recharge");
         }
       } else {
-        toast.error("In Sufficient balance please recharge");
+        toast.error("Amount cannot be less than 1")
       }
-    }else{
-      toast.error("Looks Like You Forgot To Enter Amount")
-    }
     } catch (e) {
-      toast.error("Oops You Cancelled Transaction");
+      console.log("Failed With :", e);
+      toast.error(" Transaction Failed");
     }
   };
 
@@ -762,8 +769,8 @@ const addMaxBalance=async()=>{
     window.scrollTo(0, 0);
     setInterval(() => {
       getData();
-    },1000)
-     
+    }, 1000)
+
   }, []);
 
   return (
@@ -791,7 +798,7 @@ const addMaxBalance=async()=>{
                       <img src={coin} alt="" width="60px" />
                       <h5
                         className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-3 fst-italic"
-                        style={{ color: "#7c625a", fontSize: "20px"  }}
+                        style={{ color: "#7c625a", fontSize: "20px" }}
                       >
                         {t("Price.1")}
                       </h5>
@@ -978,14 +985,14 @@ const addMaxBalance=async()=>{
                                             >
                                               <div
                                                 className="radio-btn"
-                                                onClick={async() => {
-                                                  
+                                                onClick={async () => {
+
                                                   setTripType("1");
                                                   await enterRadioAmount1();
                                                 }}
                                               >
                                                 <input
-                                              
+
                                                   type="radio"
                                                   value={tripType}
                                                   name="tripType"
@@ -996,14 +1003,14 @@ const addMaxBalance=async()=>{
 
                                               <div
                                                 className="radio-btn"
-                                                onClick={async() => {
-                                                 
+                                                onClick={async () => {
+
                                                   setTripType("3");
-                                                 await enterRadioAmount3();
+                                                  await enterRadioAmount3();
                                                 }}
                                               >
                                                 <input
-                                                
+
                                                   type="radio"
                                                   value={tripType}
                                                   name="tripType"
@@ -1014,7 +1021,7 @@ const addMaxBalance=async()=>{
 
                                               <div
                                                 className="radio-btn"
-                                                onClick={async() => {
+                                                onClick={async () => {
                                                   setTripType("5");
                                                   await enterRadioAmount5();
 
@@ -1037,17 +1044,17 @@ const addMaxBalance=async()=>{
                                                 // id="dropdown-sell-slippage-config"
                                                 type="number"
                                                 // value={tripType}
-                                                
+
                                                 ref={mYentered}
                                                 className="form-control"
-                                                onChange={async()=> await myOnchangeInputBuySwap()}
-                                                // onChange={async(e) =>
-                                                 
-                                                //     setTripType(e.target.value)
-                                                //   // console.log("here")}
-                                                //   // checked={inputVal==""}
-                                                  
-                                                // }
+                                                onChange={async () => await myOnchangeInputBuySwap()}
+                                              // onChange={async(e) =>
+
+                                              //     setTripType(e.target.value)
+                                              //   // console.log("here")}
+                                              //   // checked={inputVal==""}
+
+                                              // }
                                               />
                                               <div className="input-group-append">
                                                 <button
@@ -1153,7 +1160,7 @@ const addMaxBalance=async()=>{
                             />
                             <div className="input-group-append">
                               <button
-                              onClick={()=>addMaxBalance()}
+                                onClick={() => addMaxBalance()}
                                 type="button"
                                 className="btn btn-info"
                                 style={{
@@ -1238,7 +1245,7 @@ const addMaxBalance=async()=>{
                                             >
                                               <div
                                                 className="radio-btn"
-                                                onClick={async() => {
+                                                onClick={async () => {
                                                   await myRadioSellSplash1();
                                                   setTripType1("1");
                                                 }}
@@ -1254,7 +1261,7 @@ const addMaxBalance=async()=>{
 
                                               <div
                                                 className="radio-btn"
-                                                onClick={async() => {
+                                                onClick={async () => {
                                                   await myRadioSellSplash3();
                                                   setTripType1("3");
                                                 }}
@@ -1270,7 +1277,7 @@ const addMaxBalance=async()=>{
 
                                               <div
                                                 className="radio-btn"
-                                                onClick={async() => {
+                                                onClick={async () => {
                                                   await myRadioSellSplash5();
                                                   setTripType1("5");
                                                 }}
@@ -1295,13 +1302,13 @@ const addMaxBalance=async()=>{
                                                 // value={tripType1}
                                                 max={50}
                                                 className="form-control"
-                                                onChange={async()=>await myOnchangeInputSellSplash()}
-                                                // onChange={
-                                                //   (e) =>
-                                                //     setTripType1(e.target.value)
-                                                //   // console.log("here")}
-                                                //   // checked={inputVal==""}
-                                                // }
+                                                onChange={async () => await myOnchangeInputSellSplash()}
+                                              // onChange={
+                                              //   (e) =>
+                                              //     setTripType1(e.target.value)
+                                              //   // console.log("here")}
+                                              //   // checked={inputVal==""}
+                                              // }
                                               />
                                               <div className="input-group-append">
                                                 <button

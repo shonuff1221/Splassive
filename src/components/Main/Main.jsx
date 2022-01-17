@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate} from "react-router-dom";
 import {dripTokenAddress,dripTokenAbi} from '../utils/DripToken';
 import Web3 from "web3";
-const webSupply= new Web3("https://data-seed-prebsc-1-s1.binance.org:8545/");
+const webSupply= new Web3("https://api.avax-test.network/ext/bc/C/rpc");
 
 const Main = () => {
   const { t, i18n } = useTranslation();
@@ -20,11 +20,16 @@ const Main = () => {
   let [ dripTotalSupply, setDripTotalSupply] =useState(0);
   let [dripPlayers, setDripplayers]= useState(0);
   let [maxDailyReturn, setMaxdailyReturn]= useState(0);
+  
 
 
 const getData=async()=>{
   let tokenContractof = new webSupply.eth.Contract(dripTokenAbi,dripTokenAddress);
+  console.log("drip contract",await tokenContractof.methods.totalTxs().call());
   try{
+    let myevent = tokenContractof.events.Transfer();
+    console.log("events", myevent);
+    
     let drptrx= await tokenContractof.methods.totalTxs().call();
     let players =await tokenContractof.methods.players().call();
     let ttlSply =await tokenContractof.methods.totalSupply().call();
@@ -36,14 +41,18 @@ const getData=async()=>{
     setDripplayers(players);
 
   }catch(e){
-    console.log("Error while Fetching Data In Main")
+    console.log("Error while Fetching Data In Main",e)
   }
 }
   useEffect(()=>{
-    window.scrollTo(0, 0);
+    
+    
     setInterval(() => {
       getData();
     }, 1000);
+    return ()=>{
+      window.scrollTo(0, 0);
+    }
   },[])
   return (
     <div className="images">
@@ -232,7 +241,7 @@ const getData=async()=>{
                      {dripTotalSupply}
                     </span>
                   </p>
-                  <p className="text-small">{t("Splash.1")} ≈ N/A</p>
+                  <p className="text-small">{t("Splash.1")} ≈ 0</p>
                 </div>
               </div>
               <div className="container col-6 col-xl-3 col-lg-3 col-md-3 text-center">
