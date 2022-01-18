@@ -260,7 +260,7 @@ const Facuet = () => {
       const web3 = window.web3;
       let enteredVal = inputEl.current.value;
       // console.log("You entered val = ", enteredVal);
-      if (enteredVal > 0) {
+      if (enteredVal >= 1) {
         if (userDripBalance > parseFloat(enteredVal)) {
           // console.log("You entered val = ", web3.utils.toWei(enteredVal));
           let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
@@ -286,7 +286,7 @@ const Facuet = () => {
           toast.error("Entered value is greater than your balance")
         }
       } else {
-        toast.error("Looks Like You Forgot To Enter Amount")
+        toast.error("Deposit amount should be greater than 1")
       }
     }
     }catch(e){
@@ -301,7 +301,7 @@ const Facuet = () => {
       }else{
       const web3 = window.web3;
       let enteredVal = inputEl.current.value;
-      if (enteredVal > 0) {
+      if (enteredVal >=  1) {
         if (userDripBalance > parseFloat(enteredVal)) {
           let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
           let referral = await contractOfBuddy.methods.buddyOf(acc).call();
@@ -334,7 +334,7 @@ const Facuet = () => {
           toast.error("Entered value is greater than your balance")
         }
       } else {
-        toast.error("Looks Like You Forgot To Enter Amount")
+        toast.error("Deposit amount should be greater than 1 ")
       }
     }
     } catch (e) {
