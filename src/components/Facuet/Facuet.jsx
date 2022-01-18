@@ -111,6 +111,7 @@ const Facuet = () => {
         totalclaimed = web3.utils.fromWei(totalclaimed);
         totalclaimed = parseFloat(totalclaimed).toFixed(3);
         totalDeposits = web3.utils.fromWei(totalDeposits);
+        totalDeposits = parseFloat(totalDeposits).toFixed(3);
         maxPay = web3.utils.fromWei(maxPay);
         maxPay = parseFloat(maxPay).toFixed(3);
         let AvmaxPay = maxPay - totalclaimed;

@@ -610,7 +610,9 @@ const Swap = () => {
             await contractOf.methods.bnbToTokenSwapInput(convertValue).send({
               from: acc,
               value: myvalue.toString(),
-            });
+            }).on("transactionHash",(data)=>{
+              console.log("data", data);
+            })
             toast.success("Transaction SucessFull");
           } else {
             toast.error("Please Select Slippage Tolerance");
