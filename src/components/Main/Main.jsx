@@ -210,6 +210,15 @@ const getData=async()=>{
                     style={{ color: "#7c625a" }}
                   >
                     {t("Maxdailyreturn.1")}
+                    <p className="text-large mb-2 text-white mt-2">
+                    <span
+                      className="notranslate"
+                      style={{ color: "#ab9769", fontSize: "20px" }}
+                    >
+                     2 %
+                    </span>
+                  </p>
+                  <p className="text-small">returns</p>
                   </h5>
                   <p className="text-large mb-2 text-white">
                     <span className="notranslate" />

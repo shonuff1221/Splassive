@@ -35,7 +35,8 @@ function Reservoir() {
   let [player, setPlayer] = useState(0);
   let [loackedValue, setLoackedValue] = useState(0);
   let [totalTxs, setTotalTxs] = useState(0)
-  let [reward, setReward] = useState(0)
+  let [reward, setReward] = useState(0);
+  let [dividendPool, setDividendPool] =useState(0);
   const getDataWithMetaMask = async () => {
     try {
       let acc = await loadWeb3();
@@ -58,7 +59,7 @@ function Reservoir() {
     try {
       let contract = new webSupply.eth.Contract(reservoirAbi, reservoirAddress);
       let totalDro = await contract.methods.totalSupply().call();
-      totalDro = await webSupply.utils.fromWei(totalDro);
+      totalDro =  webSupply.utils.fromWei(totalDro);
       totalDro = parseFloat(totalDro).toFixed(3);
       // console.log("total drpps",  totalDro);
       let totalDeposit = await contract.methods.totalDeposits().call();
@@ -74,12 +75,17 @@ function Reservoir() {
       // players = await webSupply.utils.fromWei(players);
       // players= parseFloat(players).toFixed(3);
       let loackBalance = await contract.methods.lockedTokenBalance().call();
-      loackBalance = await webSupply.utils.fromWei(loackBalance);
+      loackBalance =  webSupply.utils.fromWei(loackBalance);
       loackBalance = parseFloat(loackBalance).toFixed(3);
       let txs = await contract.methods.totalTxs().call();
       let rew = await contract.methods.dividendBalance().call()
       rew = webSupply.utils.fromWei(rew);
       rew = parseFloat(rew).toFixed(3);
+      let divdPool = await contract.methods.collateralBalance().call();
+      divdPool = webSupply.utils.fromWei(divdPool);
+      divdPool = parseFloat(divdPool).toFixed(3);
+      let displayDividendPool = divdPool / loackBalance;
+      displayDividendPool = parseFloat(displayDividendPool).toFixed(5);
       setTotalDrops(totalDro)
       setStake(totalDeposit)
       setTotalWithDraw(totalDraw);
@@ -88,6 +94,7 @@ function Reservoir() {
       setLoackedValue(loackBalance)
       setTotalTxs(txs)
       setReward(rew);
+      setDividendPool(displayDividendPool)
     } catch (e) {
       console.log("error while get without metamsk data", e);
     }
@@ -206,7 +213,9 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
 
           await contract.methods.reinvest().send({
             from: acc
-          })
+          });
+          toast.success("Transaction Successfull")
+
         } else {
           toast.error("your dividend balance is low")
         }
@@ -235,7 +244,8 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
           toast.error("you are not white listed")
         } else {
           console.log("myDividends list", dividendsOf);
-          await reserContract.methods.withdraw().send({ from: acc })
+          await reserContract.methods.withdraw().send({ from: acc });
+          toast.success("Transaction Successfull")
         }
       }
 
@@ -279,6 +289,8 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
       console.log("error while withdraw", e);
     }
   }
+
+  
   useEffect(() => {
     window.scrollTo(0, 0);
     setInterval(() => {
@@ -354,7 +366,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                         {t("Compounds.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>...</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>0.000</span>
                       </p>
                       <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>{t("Count.1")}</p>
                     </div>
@@ -591,7 +603,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                     {t("Dividend Pool.1")}
                   </h5>
                   <p className="text-large mb-2 text-white">
-                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>... / ...</span>
+                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{dividendPool}</span>
                   </p>
                   <p className="text-small">{t("DROPS.1")} ({t("Splash.1")} / {t("LOCKED.1")})</p>
                 </div>

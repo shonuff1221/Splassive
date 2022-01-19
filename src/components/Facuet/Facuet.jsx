@@ -416,7 +416,24 @@ const Facuet = () => {
     }
 
   }
-
+  const getMaxBal = async () => {
+    try{
+          let acc = await loadWeb3();
+          if(acc == "No Wallet"){
+            toast.error("No wallet Connected")
+          }else{
+            const web3 = window.web3;
+            let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+            let bal = await tokenContractOf.methods.balanceOf(acc).call();
+            bal = await web3.utils.fromWei(bal);
+            bal = parseFloat(bal).toFixed(3)
+            inputEl.current.value= bal;
+            
+          }
+    }catch(e){
+      console.log("error while get max balance", e);
+    }
+  }
 
   const changeViewer = () => {
     setIschange("Viewer");
@@ -618,6 +635,7 @@ const Facuet = () => {
                             <button
                               type="button"
                               className="btn btn-info"
+                              onClick={getMaxBal}
                               style={{
                                 backgroundColor: "#86ad74",
                                 border: "1px solid #86ad74",
