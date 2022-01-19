@@ -73,8 +73,8 @@
     "andteam.":{
         "1": "和团队."
     },
-    "TheofficialtokenoftheSplashNetworkisSplash(CRO)ontheCronosChain(CRO)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "Splash Network 的官方代币是 Cronos 链 (CRO) 上的 Splash (CRO)，它通过稀缺、通缩、抗审查以及建立在强大、真正去中心化的区块链上来获取价值。"
+    "TheofficialtokenoftheSplashNetworkisSplash(AVAX)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "Splash Network 的官方代币是 雪崩 链 (AVAX) 上的 Splash (AVAX)，它通过稀缺、通缩、抗审查以及建立在强大、真正去中心化的区块链上来获取价值。"
     },
     "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheTheWelltab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
         "1": "推荐的 溅 交易交易所是 井 合约，可以直接在平台网站的掉期选项卡下找到，因为它允许我们免除最初 10% 的买入税，并提供最低的价格和最高的流动性，从而减少滑点对于较大的交易"
@@ -91,8 +91,8 @@
     "STATS":{
         "1": "统计数据"
     },
-    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireCROCommunity":{
-        "1": "溅 代币捕获了 溅 Network 的全部价值，并使其可供整个 CRO 社区使用"
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireAVAXCommunity":{
+        "1": "溅 代币捕获了 溅 Network 的全部价值，并使其可供整个 AVAX 社区使用"
     },
     "Players":{
         "1": "球员"
@@ -151,19 +151,19 @@
         "1": "价格"
     }
     ,
-    "CRO/Splash":{
-        "1": "币安/溅溅"
+    "AVAX/Splash":{
+        "1": "AVAX/溅溅"
     }
     ,
-    "CROBalance":{
-        "1": "CRO 余额"
+    "AVAXBalance":{
+        "1": "AVAX 余额"
     }
     ,
     "USDT":{
         "1": "USDT"
     },
-    "CRO":{
-        "1": "比特币"
+    "AVAX":{
+        "1": "AVAX"
     }
     ,
     "SplashBalance":{

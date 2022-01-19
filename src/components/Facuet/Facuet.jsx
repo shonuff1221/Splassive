@@ -571,7 +571,7 @@ const Facuet = () => {
                   <div className="text-left col-lg-5 col-md-12">
                     <div className="priceDiv">
                       <span className="fst-italic" style={{ color: "#7c625a", fontSize: "19px" }}>
-                        {t("Price.1")} {myCal} {t("CRO.1")}/{t("Splash.1")}
+                        {t("Price.1")} {myCal} {t("AVAX.1")}/{t("Splash.1")}
                       </span>{" "}
                     </div>
                   </div>

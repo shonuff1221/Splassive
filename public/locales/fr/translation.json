@@ -73,8 +73,8 @@
     "andteam.":{
         "1": "et équipe."
     },
-    "TheofficialtokenoftheSplashNetworkisSplash(CRO)ontheCronosChain(CRO)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "Le jeton officiel du Splash Network est Splash (CRO) sur la chaîne Cronos (CRO) qui capture de la valeur en étant rare, déflationniste, résistant à la censure et en étant construit sur une blockchain robuste et véritablement décentralisée."
+    "TheofficialtokenoftheSplashNetworkisSplash(AVAX)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "Le jeton officiel du Splash Network est Splash (AVAX) sur la chaîne avalanche (AVAX) qui capture de la valeur en étant rare, déflationniste, résistant à la censure et en étant construit sur une blockchain robuste et véritablement décentralisée."
     },
     "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheTheWelltab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
         "1": "L'échange recommandé pour le trading de Éclaboussure est le contrat Le puits qui peut être trouvé directement sur le site Web des plateformes sous l'onglet KAIVO, car il nous permet de renoncer à la taxe initiale de 10 % sur les achats et fournit les prix les plus bas et la liquidité la plus élevée, ce qui entraîne moins de glissement pour les métiers plus importants."
@@ -91,8 +91,8 @@
     "STATS":{
         "1": "STATISTIQUES"
     },
-    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireCROCommunity":{
-        "1": "Le jeton Éclaboussure capture toute la valeur du réseau Éclaboussure et le met à la disposition de l'ensemble de la communauté CRO"
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireAVAXCommunity":{
+        "1": "Le jeton Éclaboussure capture toute la valeur du réseau Éclaboussure et le met à la disposition de l'ensemble de la communauté AVAX"
     },
     "Players":{
         "1": "Joueuses"
@@ -151,19 +151,19 @@
         "1": "Prix"
     }
     ,
-    "CRO/Splash":{
-        "1": "CRO/Éclaboussure"
+    "AVAX/Splash":{
+        "1": "AVAX/Éclaboussure"
     }
     ,
-    "CROBalance":{
-        "1": "Solde en CRO"
+    "AVAXBalance":{
+        "1": "Solde en AVAX"
     }
     ,
     "USDT":{
         "1": "USDT"
     },
-    "CRO":{
-        "1": "CRO"
+    "AVAX":{
+        "1": "AVAX"
     }
     ,
     "SplashBalance":{

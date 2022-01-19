@@ -74,10 +74,10 @@
         "1": "y equipo."
     },
     "TheofficialtokenoftheSplashNetworkisSplash(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "El token oficial de Splash Network es Splash (CRO) en Cronos Chain (CRO) que captura valor al ser escaso, deflacionario, resistente a la censura y al estar construido sobre una cadena de bloques robusta y verdaderamente descentralizada."
+        "1": "El token oficial de Splash Network es Splash (AVAX) en avalancha Chain (AVAX) que captura valor al ser escaso, deflacionario, resistente a la censura y al estar construido sobre una cadena de bloques robusta y verdaderamente descentralizada."
     },
-    "TheofficialtokenoftheSplashNetworkisSplash(CRO)ontheCronosChain(CRO)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "The official token of the Splash Network is Splash (CRO) on the Cronos Chain (CRO) that captures value by being scarce, deflationary, censorship resistant, and by being built on a robust, truly decentralized blockchain."
+    "TheofficialtokenoftheSplashNetworkisSplash(AVAX)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "The official token of the Splash Network is Splash (AVAX) on the avalancha Chain (AVAX) that captures value by being scarce, deflationary, censorship resistant, and by being built on a robust, truly decentralized blockchain."
     },
     "TRADE":{
         "1": "COMERCIO"
@@ -91,8 +91,8 @@
     "STATS":{
         "1": "ESTADÍSTICAS"
     },
-    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireCROCommunity":{
-        "1": "El token Chapoteo captura todo el valor de Chapoteo Network y lo pone a disposición de toda la comunidad CRO."
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireAVAXCommunity":{
+        "1": "El token Chapoteo captura todo el valor de Chapoteo Network y lo pone a disposición de toda la comunidad AVAX."
     },
     "Players":{
         "1": "Jugadoras"
@@ -151,19 +151,19 @@
         "1": "Precio"
     }
     ,
-    "CRO/Splash":{
-        "1": "CRO / GOTEO"
+    "AVAX/Splash":{
+        "1": "AVAX / GOTEO"
     }
     ,
-    "CROBalance":{
-        "1": "Saldo CRO"
+    "AVAXBalance":{
+        "1": "Saldo AVAX"
     }
     ,
     "USDT":{
         "1": "USDT"
     },
-    "CRO":{
-        "1": "CRO"
+    "AVAX":{
+        "1": "AVAX"
     }
     ,
     "SplashBalance":{

@@ -74,8 +74,8 @@
         "1": "и команда."
     }
     ,
-    "TheofficialtokenoftheSplashNetworkisSplash(CRO)ontheCronosChain(CRO)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "Официальным токеном Splash Network является Splash (CRO) в цепочке Cronos (CRO), который обладает ценностью, поскольку является дефицитным, дефляционным, устойчивым к цензуре и построен на надежной, действительно децентрализованной цепочке блоков."
+    "TheofficialtokenoftheSplashNetworkisSplash(AVAX)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "Официальным токеном Splash Network является Splash (АВАКС) в цепочке Лавина (АВАКС), который обладает ценностью, поскольку является дефицитным, дефляционным, устойчивым к цензуре и построен на надежной, действительно децентрализованной цепочке блоков."
     },
     "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheTheWelltab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
         "1": "Рекомендуемая биржа для торговли Splash - это контракт Колодец, который можно найти прямо на веб-сайте платформы под вкладкой своп, поскольку он позволяет нам отказаться от начального 10% налога на покупки и обеспечивает самые низкие цены и максимальную ликвидность, что приводит к меньшему проскальзыванию. для более крупных сделок."
@@ -93,8 +93,8 @@
     "STATS":{
         "1": "СТАТИСТИКА"
     },
-    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireCROCommunity":{
-        "1": "Токен Всплеск фиксирует всю ценность сети Всплеск и делает ее доступной для всего сообщества CRO."
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireAVAXCommunity":{
+        "1": "Токен Всплеск фиксирует всю ценность сети Всплеск и делает ее доступной для всего сообщества АВАКС."
     },
     "Players":{
         "1": "Игроки"
@@ -153,19 +153,19 @@
         "1": "Цена"
     }
     ,
-    "CRO/Splash":{
-        "1": "CRO / ДРИП"
+    "AVAX/Splash":{
+        "1": "АВАКС / ДРИП"
     }
     ,
-    "CROBalance":{
-        "1": "Баланс CRO"
+    "AVAXBalance":{
+        "1": "Баланс АВАКС"
     }
     ,
     "USDT":{
         "1": "USDT"
     },
-    "CRO":{
-        "1": "CRO"
+    "AVAX":{
+        "1": "АВАКС"
     }
     ,
     "SplashBalance":{

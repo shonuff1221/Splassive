@@ -13,19 +13,16 @@ import Typography from "@mui/material/Typography";
 import Button from "react-bootstrap/Button";
 import Chart from "./Chart";
 import axios from "axios";
-import price from 'crypto-price';
+import price from "crypto-price";
 import { loadWeb3 } from "../api";
-import {
-  faucetTokenAddress,
-  faucetTokenAbi,
-} from "../utils/Faucet";
+import { faucetTokenAddress, faucetTokenAbi } from "../utils/Faucet";
 import {
   fountainContractAddress,
   fountainContractAbi,
 } from "../utils/Fountain";
 // import { useState } from "react";
 import "./Swap.css";
-import bigInt from "big-integer"
+import bigInt from "big-integer";
 const webSupply = new Web3("https://api.avax-test.network/ext/bc/C/rpc");
 const Swap = () => {
   let [boxOne, setBoxOne] = useState(false);
@@ -50,7 +47,7 @@ const Swap = () => {
   // states for B by D
   let [division, setDivision] = useState(0);
   let [oneDripPrice, setOnedripPrice] = useState(0);
-  // state for sell without 
+  // state for sell without
   let [withouttofixed, setWithoutToFixed] = useState(0);
   // states for belowfooter swap
   let [tSupllyDrip, setTsupplyDrip] = useState(0);
@@ -72,7 +69,10 @@ const Swap = () => {
         console.log("No wallet Connected");
       } else {
         const web3 = window.web3;
-        let contractOf = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+        let contractOf = new web3.eth.Contract(
+          fountainContractAbi,
+          fountainContractAddress
+        );
 
         let tokenContractOf = new web3.eth.Contract(
           faucetTokenAbi,
@@ -94,9 +94,9 @@ const Swap = () => {
   };
   const getDataWitoutMetamask = async () => {
     try {
-      let usdValue = await price.getBasePrice('AVAX', 'USDT');
+      let usdValue = await price.getBasePrice("AVAX", "USDT");
       console.log("AVAX", usdValue.price);
-      let currentBnB = usdValue.price
+      let currentBnB = usdValue.price;
       // let currentBnB = 520.12;
       let contractOf = new webSupply.eth.Contract(
         fountainContractAbi,
@@ -108,7 +108,9 @@ const Swap = () => {
         faucetTokenAddress
       );
 
-      let contractFBalance = await webSupply.eth.getBalance(fountainContractAddress);
+      let contractFBalance = await webSupply.eth.getBalance(
+        fountainContractAddress
+      );
       contractFBalance = await webSupply.utils.fromWei(contractFBalance);
       contractFBalance = parseFloat(contractFBalance).toFixed(7);
 
@@ -133,7 +135,6 @@ const Swap = () => {
       let converted = currentBnB * contractFBalance;
       converted = parseFloat(converted).toFixed(7);
 
-
       let covertedDrip = contractFBalance / contractFdripBalance;
       let BdividedByD = covertedDrip;
       BdividedByD = parseFloat(BdividedByD).toFixed(7);
@@ -144,7 +145,6 @@ const Swap = () => {
       covertedDrip = parseFloat(covertedDrip).toFixed(7);
       covertedDrip = contractFdripBalance * covertedDrip;
       covertedDrip = parseFloat(covertedDrip).toFixed(7);
-
 
       setUsdPrice(currentBnB);
       setdripUsdtPrice(covertedDrip);
@@ -157,22 +157,20 @@ const Swap = () => {
       setTsupplyDrip(supplyDrip);
       setTsupplyFountain(fonutainDrip);
       setTtransactionFountain(transactionFountain);
-
     } catch (e) {
       console.log("error while get data without metamask");
     }
-  }
+  };
   const addMaxBalance = async () => {
     let acc = await loadWeb3();
-    console.log("acc = ", acc)
+    console.log("acc = ", acc);
     if (acc == "No Wallet") {
-
-      console.log("acc = 2", acc)
+      console.log("acc = 2", acc);
       console.log("No Wallet");
     } else {
       const web3 = window.web3;
 
-      console.log("acc = 3", acc)
+      console.log("acc = 3", acc);
       let compBalance;
       let tokenContractOf = await new web3.eth.Contract(
         faucetTokenAbi,
@@ -184,14 +182,14 @@ const Swap = () => {
       inputE2.current.value = dripBalance;
       setuserDripBalance(dripBalance);
       await enterBuyAmount2();
-
     }
-
-  }
+  };
   const enterBuyAmount1 = async () => {
-
     let myvalue = inputEl.current.value;
-    let contractOf = new webSupply.eth.Contract(fountainContractAbi, fountainContractAddress);
+    let contractOf = new webSupply.eth.Contract(
+      fountainContractAbi,
+      fountainContractAddress
+    );
     console.log("Contract of", contractOf.methods);
     if (myvalue > 0) {
       console.log("value", myvalue);
@@ -201,12 +199,12 @@ const Swap = () => {
 
       // console.log("tokensInputPrice", await contractOf.methods.getBnbToTokenInputPrice(myvalue).call());
 
-      let tokensInputPrice = await contractOf.methods.getBnbToTokenInputPrice(myvalue).call();
+      let tokensInputPrice = await contractOf.methods
+        .getBnbToTokenInputPrice(myvalue)
+        .call();
       console.log("value", tokensInputPrice);
       tokensInputPrice = webSupply.utils.fromWei(tokensInputPrice);
       tokensInputPrice = parseFloat(tokensInputPrice).toFixed(7);
-
-
 
       let miniumrcvd = (tripType * tokensInputPrice) / 100;
       let percentValue = tokensInputPrice - miniumrcvd;
@@ -248,11 +246,10 @@ const Swap = () => {
       setEstimate();
       setMinrecieved();
     }
-
   };
   const enterRadioAmount3 = async () => {
     let myMultiplyValue = 3;
-    console.log("Radio 3")
+    console.log("Radio 3");
     const web3 = window.web3;
     let myvalue = inputEl.current.value;
     let contractOf = new web3.eth.Contract(
@@ -269,7 +266,6 @@ const Swap = () => {
         .call();
       tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
       tokensInputPrice = parseFloat(tokensInputPrice).toFixed(7);
-
 
       let miniumrcvd = (myMultiplyValue * tokensInputPrice) / 100;
       let percentValue = tokensInputPrice - miniumrcvd;
@@ -316,7 +312,6 @@ const Swap = () => {
     let myCurrentVal = mYentered.current.value;
     if (myCurrentVal < 100) {
       if (myCurrentVal >= 1) {
-
         setTripType(myCurrentVal);
 
         const web3 = window.web3;
@@ -336,7 +331,6 @@ const Swap = () => {
           tokensInputPrice = web3.utils.fromWei(tokensInputPrice);
           tokensInputPrice = parseFloat(tokensInputPrice).toFixed(7);
 
-
           let miniumrcvd = (myCurrentVal * tokensInputPrice) / 100;
           let percentValue = tokensInputPrice - miniumrcvd;
           percentValue = parseFloat(percentValue).toFixed(7);
@@ -349,14 +343,13 @@ const Swap = () => {
           setMinrecieved();
         }
       } else {
-        toast.error("Slippage cannot be less than 1")
+        toast.error("Slippage cannot be less than 1");
       }
     } else {
-      toast.error("Slippage Cannot be over 100")
+      toast.error("Slippage Cannot be over 100");
     }
-  }
+  };
   const myRadioSellSplash1 = async () => {
-
     let myValFormul = 1;
     const web3 = window.web3;
     let myvalue = inputE2.current.value;
@@ -483,7 +476,7 @@ const Swap = () => {
     let iEntered = mYEnter1.current.value;
     if (iEntered < 100) {
       if (iEntered >= 1) {
-        setTripType1(iEntered)
+        setTripType1(iEntered);
         const web3 = window.web3;
         let myvalue = inputE2.current.value;
         let contractOf = new web3.eth.Contract(
@@ -523,10 +516,10 @@ const Swap = () => {
           setTenperVal(0);
         }
       } else {
-        toast.error("Slippage Cannot be less than 1")
+        toast.error("Slippage Cannot be less than 1");
       }
     } else {
-      toast.error("Slippage cannot be Over 100")
+      toast.error("Slippage cannot be Over 100");
     }
     // console.log("miniumrcvd ; ", miniumrcvd);
   };
@@ -581,9 +574,7 @@ const Swap = () => {
       let acc = await loadWeb3();
       let myvalue = inputEl.current.value;
       if (myvalue > 0) {
-
         if (usersBalance > myvalue) {
-
           myvalue = web3.utils.toWei(myvalue);
           let contractOf = new web3.eth.Contract(
             fountainContractAbi,
@@ -596,23 +587,24 @@ const Swap = () => {
           let miniumrcvd = (tripType * tokensInputPrice) / 100;
           let percentValue = tokensInputPrice - miniumrcvd;
 
-
-          console.log("myValue", typeof (percentValue));
+          console.log("myValue", typeof percentValue);
 
           percentValue = percentValue.toString();
-          let b = bigInt(percentValue)
+          let b = bigInt(percentValue);
           console.log("AJSJD", myvalue.toString());
           console.log("percentValue ", b.value);
-          let convertValue = (b.value).toString()
-
+          let convertValue = b.value.toString();
 
           if (percentValue > 0) {
-            await contractOf.methods.bnbToTokenSwapInput(convertValue).send({
-              from: acc,
-              value: myvalue.toString(),
-            }).on("transactionHash",(data)=>{
-              console.log("data", data);
-            })
+            await contractOf.methods
+              .bnbToTokenSwapInput(convertValue)
+              .send({
+                from: acc,
+                value: myvalue.toString(),
+              })
+              .on("transactionHash", (data) => {
+                console.log("data", data);
+              });
             toast.success("Transaction SucessFull");
           } else {
             toast.error("Please Select Slippage Tolerance");
@@ -650,7 +642,6 @@ const Swap = () => {
 
       console.log("myvalue1 ,", myvalue);
       if (myvalue >= 1) {
-
         if (userDripBalance >= myvalue) {
           console.log("userDripBalance ,", userDripBalance);
           myvalue = myvalue.toString();
@@ -661,7 +652,7 @@ const Swap = () => {
           if (myAllowance > 0) {
             let myvalue1 = web3.utils.toWei(myvalue);
             console.log("zahid", myvalue1);
-            console.log("myAllowance12",myAllowance)
+            console.log("myAllowance12", myAllowance);
 
             if (parseFloat(myAllowance) >= myvalue1) {
               let parameter = web3.utils.toWei(withouttofixed);
@@ -673,8 +664,8 @@ const Swap = () => {
               );
 
               if (parameter > 0) {
-                let c = bigInt(myvalue1)
-                c = (c.value).toString();
+                let c = bigInt(myvalue1);
+                c = c.value.toString();
                 console.log("Zahid riaz12", c);
                 await contractOf.methods
                   .tokenToBnbSwapInput(myvalue1, parameter)
@@ -698,7 +689,7 @@ const Swap = () => {
           toast.error("In Sufficient balance please recharge");
         }
       } else {
-        toast.error("Amount cannot be less than 1")
+        toast.error("Amount cannot be less than 1");
       }
     } catch (e) {
       console.log("Failed With :", e);
@@ -771,8 +762,7 @@ const Swap = () => {
     window.scrollTo(0, 0);
     setInterval(() => {
       getData();
-    }, 1000)
-
+    }, 1000);
   }, []);
 
   return (
@@ -810,11 +800,11 @@ const Swap = () => {
                           style={{ color: "#ab9769", fontSize: "20px" }}
                         >
                           {" "}
-                          {t("CRO/Splash.1")} {division}
+                          {t("AVAX/Splash.1")} {division}
                         </span>
                       </p>
                       <p className="text-small fst-italic">
-                        {t("CRO/Splash.1")} ≈ {oneDripPrice} {t("USDT.1")}
+                        {t("AVAX/Splash.1")} ≈ {oneDripPrice} {t("USDT.1")}
                       </p>
                     </div>
                   </div>
@@ -825,7 +815,7 @@ const Swap = () => {
                         className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-3 fst-italic"
                         style={{ color: "#7c625a" }}
                       >
-                        {t("CROBalance.1")}
+                        {t("AVAXBalance.1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
                         <span
@@ -836,7 +826,7 @@ const Swap = () => {
                         </span>
                       </p>
                       <p className="text-small fst-italic">
-                        {t("CRO.1")} ≈{bnbPrice} {t("USDT.1")}
+                        {t("AVAX.1")} ≈{bnbPrice} {t("USDT.1")}
                       </p>
                     </div>
                   </div>
@@ -877,7 +867,10 @@ const Swap = () => {
                     <div className="landing-page">
                       <div className="text-left">
                         <h3>
-                          <p className="notranslate fst-italic" style={{ fontSize: "20px" }}>
+                          <p
+                            className="notranslate fst-italic"
+                            style={{ fontSize: "20px" }}
+                          >
                             {t("BuySplash.1")}
                           </p>
                         </h3>
@@ -893,7 +886,7 @@ const Swap = () => {
                             <div className="col-6 text-right fst-italic">
                               {" "}
                               <p>
-                                {t("CROBalance.1")}
+                                {t("AVAXBalance.1")}
                                 <label className="user-balance text-white fst-italic">
                                   {" "}
                                   {usersBalance}
@@ -906,7 +899,7 @@ const Swap = () => {
                               ref={inputEl}
                               onChange={() => enterBuyAmount1()}
                               type="number"
-                              placeholder="CRO"
+                              placeholder="AVAX"
                               className="form-control"
                               id="__BVID__90"
                             />
@@ -988,13 +981,11 @@ const Swap = () => {
                                               <div
                                                 className="radio-btn"
                                                 onClick={async () => {
-
                                                   setTripType("1");
                                                   await enterRadioAmount1();
                                                 }}
                                               >
                                                 <input
-
                                                   type="radio"
                                                   value={tripType}
                                                   name="tripType"
@@ -1006,13 +997,11 @@ const Swap = () => {
                                               <div
                                                 className="radio-btn"
                                                 onClick={async () => {
-
                                                   setTripType("3");
                                                   await enterRadioAmount3();
                                                 }}
                                               >
                                                 <input
-
                                                   type="radio"
                                                   value={tripType}
                                                   name="tripType"
@@ -1026,7 +1015,6 @@ const Swap = () => {
                                                 onClick={async () => {
                                                   setTripType("5");
                                                   await enterRadioAmount5();
-
                                                 }}
                                               >
                                                 <input
@@ -1049,14 +1037,16 @@ const Swap = () => {
 
                                                 ref={mYentered}
                                                 className="form-control"
-                                                onChange={async () => await myOnchangeInputBuySwap()}
-                                              // onChange={async(e) =>
+                                                onChange={async () =>
+                                                  await myOnchangeInputBuySwap()
+                                                }
+                                                // onChange={async(e) =>
 
-                                              //     setTripType(e.target.value)
-                                              //   // console.log("here")}
-                                              //   // checked={inputVal==""}
+                                                //     setTripType(e.target.value)
+                                                //   // console.log("here")}
+                                                //   // checked={inputVal==""}
 
-                                              // }
+                                                // }
                                               />
                                               <div className="input-group-append">
                                                 <button
@@ -1304,13 +1294,15 @@ const Swap = () => {
                                                 // value={tripType1}
                                                 max={50}
                                                 className="form-control"
-                                                onChange={async () => await myOnchangeInputSellSplash()}
-                                              // onChange={
-                                              //   (e) =>
-                                              //     setTripType1(e.target.value)
-                                              //   // console.log("here")}
-                                              //   // checked={inputVal==""}
-                                              // }
+                                                onChange={async () =>
+                                                  await myOnchangeInputSellSplash()
+                                                }
+                                                // onChange={
+                                                //   (e) =>
+                                                //     setTripType1(e.target.value)
+                                                //   // console.log("here")}
+                                                //   // checked={inputVal==""}
+                                                // }
                                               />
                                               <div className="input-group-append">
                                                 <button
@@ -1340,7 +1332,7 @@ const Swap = () => {
                               <small className="form-text fst-italic">
                                 <p
                                   id="swapp20"
-                                // style={{ lineHeight: "10%" }}
+                                  // style={{ lineHeight: "10%" }}
                                 >
                                   {t("Minimumreceived.1")}:{minRecievedDrip}
                                 </p>
@@ -1348,7 +1340,7 @@ const Swap = () => {
                               <small className="form-text text-left">
                                 <p
                                   id="swapp21"
-                                // style={{ lineHeight: "34%" }}
+                                  // style={{ lineHeight: "34%" }}
                                 >
                                   {t("10%Taxisappliedonsells.1")}
                                 </p>
@@ -1358,7 +1350,7 @@ const Swap = () => {
                               <small className="form-text">
                                 <p
                                   id="swapp2"
-                                // style={{ lineHeight: "100%" }}
+                                  // style={{ lineHeight: "100%" }}
                                 >
                                   {t("Slippagetolerance.1")}: {tripType1}%
                                 </p>
@@ -1439,11 +1431,19 @@ const Swap = () => {
               <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
                 <div className="price-top-part">
                   <img src={van} alt="" className="" width="60px" />
-                  <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 fst-italic" style={{ color: "#7c625a" }}>
+                  <h5
+                    className="mb-0 font-weight-semibold color-theme-1 mb-2 fst-italic"
+                    style={{ color: "#7c625a" }}
+                  >
                     {t("Supply.1")}
                   </h5>
                   <p className="text-large mb-2 text-white fst-italic">
-                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{tSupllyDrip}</span>
+                    <span
+                      className="notranslate"
+                      style={{ color: "#ab9769", fontSize: "20px" }}
+                    >
+                      {tSupllyDrip}
+                    </span>
                   </p>
                   <p className="text-small fst-italic">{t("Splash.1")}</p>
                 </div>
@@ -1456,11 +1456,19 @@ const Swap = () => {
                     className=""
                     style={{ width: "150px", backgroungColor: "white" }}
                   />
-                  <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-2 fst-italic" style={{ color: "#7c625a" }}>
+                  <h5
+                    className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-2 fst-italic"
+                    style={{ color: "#7c625a" }}
+                  >
                     {t("ContractBalance.1")}
                   </h5>
                   <p className="text-large mb-2 text-white fst-italic">
-                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{tSupllyFountain}</span>
+                    <span
+                      className="notranslate"
+                      style={{ color: "#ab9769", fontSize: "20px" }}
+                    >
+                      {tSupllyFountain}
+                    </span>
                   </p>
                   <p className="text-small fst-italic">
                     {t("DROPS.1")} ({t("Splash.1")} / {t("LOCKED.1")})
@@ -1470,11 +1478,19 @@ const Swap = () => {
               <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
                 <div className="price-top-part">
                   <img src={transfer} alt="" width="60px" className="" />
-                  <h5 className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-2" style={{ color: "#7c625a" }}>
+                  <h5
+                    className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-2"
+                    style={{ color: "#7c625a" }}
+                  >
                     {t("Tranactions.1")}
                   </h5>
                   <p className="text-large mb-2 text-white">
-                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{tTransactionsFountain}</span>
+                    <span
+                      className="notranslate"
+                      style={{ color: "#ab9769", fontSize: "20px" }}
+                    >
+                      {tTransactionsFountain}
+                    </span>
                   </p>
                   <p className="text-small">{t("Txs.1")}</p>
                 </div>

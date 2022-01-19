@@ -332,7 +332,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{reward}</span>
                       </p>
-                      <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>{t("CRO.1")}</p>
+                      <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>{t("AVAX.1")}</p>
                     </div>
                   </div>
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
@@ -380,7 +380,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{totalWithDraw}</span>
                       </p>
-                      <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>{t("CRO.1")}</p>
+                      <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>{t("AVAX.1")}</p>
                     </div>
                   </div>
                   <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
@@ -392,7 +392,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                       <p className="text-large mb-2 text-white fst-italic">
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{compundTotal}</span>
                       </p>
-                      <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>{t("CRO.1")}</p>
+                      <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>{t("AVAX.1")}</p>
                     </div>
                   </div>
                 </div>
@@ -437,7 +437,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                         className="d-flex justify-content-end fst-italic"
                         style={{ lineHeight: "10%" }}
                       >
-                        {t("CROBalance.1")}:
+                        {t("AVAXBalance.1")}:
                         <label className="user-balance text-white fst-italic">
                           {userBnbBalance}
                         </label>
@@ -458,7 +458,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                             <p style={{ lineHeight: "20%" }}>
                               {t("Price.1")}:
                               <label className="user-balance text-white fst-italic">
-                                {t("CRO.1")}/{t("Splash.1")}
+                                {t("AVAX.1")}/{t("Splash.1")}
                                 ≈
                                 {bnbDripPrice}
                               </label>
@@ -468,7 +468,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                         <div role="group" className="input-group">
                           <input
                             type="number"
-                            placeholder="CRO"
+                            placeholder="AVAX"
                             className="form-control"
                             id="__BVID__213"
                             ref={buyInput}
@@ -593,7 +593,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                   <p className="text-large mb-2 text-white">
                     <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{reward}</span>
                   </p>
-                  <p className="text-small">{t("CRO.1")}</p>
+                  <p className="text-small">{t("AVAX.1")}</p>
                 </div>
               </div>
               <div className="container col-6 col-xl-4 col-lg-4 col-md-4 mt-3 text-center">
@@ -615,7 +615,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                     {t("ContractBalance.1")}
                   </h5>
                   <p className="text-large mb-2 text-white">
-                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}> {totalDrops} {t("CRO.1")}</span>
+                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}> {totalDrops} {t("AVAX.1")}</span>
                   </p>
                   <p className="text-small">{t("DROPS.1")} ≈{t("USDT.1")}</p>
                 </div>

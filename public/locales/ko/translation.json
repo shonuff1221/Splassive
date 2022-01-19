@@ -73,8 +73,8 @@
     "andteam.":{
         "1": "그리고 팀."
     },
-    "TheofficialtokenoftheSplashNetworkisSplash(CRO)ontheCronosChain(CRO)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "Splash Network의 공식 토큰은 Cronos Chain(CRO)의 Splash(CRO)로, 희소성, 디플레이션, 검열 저항, 강력하고 진정으로 분산된 블록체인을 기반으로 구축되어 가치를 포착합니다."
+    "TheofficialtokenoftheSplashNetworkisSplash(AVAX)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "Splash Network의 공식 토큰은 눈사태 Chain(아백스)의 Splash(아백스)로, 희소성, 디플레이션, 검열 저항, 강력하고 진정으로 분산된 블록체인을 기반으로 구축되어 가치를 포착합니다."
     },
     "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheTheWelltab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
         "1": "튀김 거래에 권장되는 거래소는 플랫폼 웹사이트의 스왑 탭에서 직접 찾을 수 있는 우물 계약입니다. 구매 시 초기 10% 세금을 면제하고 가장 낮은 가격과 가장 높은 유동성을 제공하여 미끄러짐을 줄일 수 있기 때문입니다. 더 큰 거래를 위해."
@@ -91,8 +91,8 @@
     "STATS":{
         "1": "통계"
     },
-    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireCROCommunity":{
-        "1": "튀김 토큰은 튀김 네트워크의 전체 가치를 캡처하고 전체 CRO 커뮤니티에서 사용할 수 있도록 합니다."
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireAVAXCommunity":{
+        "1": "튀김 토큰은 튀김 네트워크의 전체 가치를 캡처하고 전체 아백스 커뮤니티에서 사용할 수 있도록 합니다."
     },
     "Players":{
         "1": "선수"
@@ -151,18 +151,18 @@
         "1": "가격"
     }
     ,
-    "CRO/Splash":{
-        "1": "비앤비/드립"
+    "AVAX/Splash":{
+        "1": "아백스/드립"
     }
     ,
-    "CROBalance":{
-        "1": "CRO 잔액"
+    "AVAXBalance":{
+        "1": "아백스 잔액"
     }
     ,
     "USDT":{
         "1": "USDT"
     },
-    "CRO":{
+    "AVAX":{
         "1": "비앤비"
     }
     ,

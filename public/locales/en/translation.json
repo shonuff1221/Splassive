@@ -73,8 +73,8 @@
     "andteam.":{
         "1": "and team."
     },
-    "TheofficialtokenoftheSplashNetworkisSplash(CRO)ontheCronosChain(CRO)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "The official token of the Splash Network is Splash (CRO) on the Cronos Chain (CRO) that captures value by being scarce, deflationary, censorship resistant, and by being built on a robust, truly decentralized blockchain."
+    "TheofficialtokenoftheSplashNetworkisSplash(AVAX)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "The official token of the Splash Network is Splash (AVAX) on the Avalanche Chain (AVAX) that captures value by being scarce, deflationary, censorship resistant, and by being built on a robust, truly decentralized blockchain."
     },
     "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheTheWelltab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
         "1": "The recommended exchange for trading Splash is the The Well contract which can be found directly on the platforms website under the The Well tab, as it allows us to waive the initial 10% tax on buys and provides the lowest prices and highest liquidity, resulting in less slippage for larger trades."
@@ -91,8 +91,8 @@
     "STATS":{
         "1": "STATS"
     },
-    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireCROCommunity":{
-        "1": "The Splash token captures the entire value of the Splash Network and makes it available to the entire CRO Community"
+    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireAVAXCommunity":{
+        "1": "The Splash token captures the entire value of the Splash Network and makes it available to the entire AVAX Community"
     },
     "Players":{
         "1": "Players"
@@ -151,19 +151,19 @@
         "1": "Price"
     }
     ,
-    "CRO/Splash":{
-        "1": "CRO/Splash"
+    "AVAX/Splash":{
+        "1": "AVAX/Splash"
     }
     ,
-    "CROBalance":{
-        "1": "CRO Balance"
+    "AVAXBalance":{
+        "1": "AVAX Balance"
     }
     ,
     "USDT":{
         "1": "USDT"
     },
-    "CRO":{
-        "1": "CRO"
+    "AVAX":{
+        "1": "AVAX"
     }
     ,
     "SplashBalance":{

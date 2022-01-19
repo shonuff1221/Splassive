@@ -93,7 +93,7 @@ const getData=async()=>{
                 style={{ fontSize: "20px" }}
               >
                 {t(
-                  "TheofficialtokenoftheSplashNetworkisSplash(CRO)ontheCronosChain(CRO)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain..1"
+                  "TheofficialtokenoftheSplashNetworkisSplash(AVAX)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain..1"
                 )}
               </div>
               <br />
@@ -177,7 +177,7 @@ const getData=async()=>{
                   style={{ fontSize: "20px" }}
                 >
                   {t(
-                    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireCROCommunity.1"
+                    "TheSplashtokencapturestheentirevalueoftheSplashNetworkandmakesitavailabletotheentireAVAXCommunity.1"
                   )}
                   !
                 </p>
