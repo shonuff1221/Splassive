@@ -12,6 +12,7 @@ import "./Facuet.css";
 import { useTranslation } from "react-i18next";
 import { loadWeb3 } from "../api";
 import { useNavigate, Link } from "react-router-dom";
+import axios from 'axios'
 import price from 'crypto-price';
 import Web3 from "web3";
 const webSupply= new Web3("https://api.avax-test.network/ext/bc/C/rpc");
@@ -19,6 +20,7 @@ const webSupply= new Web3("https://api.avax-test.network/ext/bc/C/rpc");
 
 const Facuet = () => {
   let navigate = useNavigate();
+  let buddySearch= useRef()
   let [isChange, setIschange] = useState("Viewer");
   let [availabe, setAvailable] = useState(0);
   let [myDeposited, setMyDeposited] = useState(0);
@@ -55,7 +57,7 @@ const Facuet = () => {
   const inputEl = useRef();
   const buddy = useRef();
   let addressInput = useRef();
-
+  let [storeRefarl, setStoreRefral]= useState([])
   const getData = async () => {
     
     let acc = await loadWeb3();
@@ -345,14 +347,36 @@ const Facuet = () => {
   }
 
   const updatemyBuddy = async () => {
+    try{
     let acc = await loadWeb3();
-    let enteredVal = buddy.current.value;
-    // console.log("Your Buddy: ", enteredVal)
-    const web3 = window.web3;
-    let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
-    await contractOfBuddy.methods.updateBuddy(enteredVal).send({
-      from: acc
-    })
+    if(acc == "No Wallet"){
+      toast.error("No Wallet Connected");
+    }else{
+      if(buddy.current.value <= 0){
+        toast.error("Please enter buddy refral")
+      }else{
+        let enteredVal = buddy.current.value;
+        // console.log("Your Buddy: ", enteredVal)
+        const web3 = window.web3;
+        let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
+        await contractOfBuddy.methods.updateBuddy(enteredVal).send({
+          from: acc
+        })
+        let data={
+          ownerRefral: acc,
+          userRefral: enteredVal
+      }
+        // let formData = new FormData();
+        // formData.append("ownerRefral", acc)
+        // formData.append("userRefral", enteredVal)
+        await axios.post("http://localhost:5005/api/users/takeRefral", data);
+        toast.success("Buddy updated")
+      }
+    }
+  }catch(e){
+    toast.error("Buddy rejected")
+    console.log("error while update buddy", e);
+  }
   }
   const myClaim = async () => {
 
@@ -432,6 +456,39 @@ const Facuet = () => {
           }
     }catch(e){
       console.log("error while get max balance", e);
+    }
+  }
+  const getUserAddress = async () => {
+    try{
+      let acc = await loadWeb3();
+      if(acc == "No Wallet"){
+        toast.error("No Wallet Connected");
+      }else{
+        buddySearch.current.value = acc;
+      }
+
+    }catch(e){
+      console.log("error while get user address", e);
+    }
+  }
+ 
+  const getRefrals = async () =>{
+    try{
+        if(buddySearch.current.value <= 0){ 
+          toast.error("Enter Referral Address")
+        }else{
+         let  data ={
+          ownerRefral:buddySearch.current.value
+         }
+            let res = await axios.post("http://localhost:5005/api/users/getRefral", data);
+            if(res.data.length){
+              setStoreRefral(res.data[0].refrals);
+            }else{
+              toast.error("No Referral Found")
+            }
+        }
+    }catch(e){
+      console.log("error while get refrals", e);
     }
   }
 
@@ -1012,9 +1069,9 @@ const Facuet = () => {
                           aria-labelledby="__BVID__242___BV_tab_button__"
                         >
                           {isChange == "Viewer" ? (
-                            <div id="Viewerpart">
+                            <div className="row" id="Viewerpart">
+                                <div className="col-md-6" id="buddy-input">
                               <form className>
-                                <div id="buddy-input">
                                   <fieldset
                                     className="form-group"
                                     id="__BVID__216"
@@ -1030,20 +1087,22 @@ const Facuet = () => {
                                         </p>
                                       </legend>
                                     </h3>
-                                    <div>
+                                    <div className="">
                                       <input
                                         type="text"
                                         placeholder="Address"
                                         className="form-control"
                                         id="__BVID__217"
+                                        ref={buddySearch}
                                       />
                                     </div>
                                   </fieldset>
-                                  <div className="d-flex justify-content-end">
+                                  <div className="d-flex justify-content-start">
                                     <button
                                       style={{ backgroundColor: "#86ad74", color: "white" }}
                                       type="button"
                                       className="btn fst-italic me-2"
+                                      onClick={getUserAddress}
                                     >
                                       {t("Usemyaddress.1")}
                                     </button>
@@ -1051,19 +1110,33 @@ const Facuet = () => {
                                       style={{ backgroundColor: "#86ad74", color: "white", border: "1px solid #86ad74" }}
                                       type="button"
                                       className="btn fst-italic"
+                                      onClick={getRefrals} 
                                     >
                                       {t("Viewall.1")}
                                     </button>
-                                  </div>
-                                </div>
-                              </form>
-                              <button
+                                    <button
                                 style={{ backgroundColor: "#7c625a", color: "white", border: "1px solid #7c625a" }}
                                 type="button"
-                                className="btn fst-italic"
+                                className="btn fst-italic ml-3"
+                                onClick={getRefrals}
                               >
                                 {t("Show.1")}
                               </button>
+                                  </div>
+                              </form>
+                                </div>
+                              <div className="col-md-5 col-12 ml-md-auto mt-md-1 mt-3" style={{backgroundColor: "#86ad74", overflowY: "scroll", height: "170px", dispaly: "flex", justifyContent: "center"}}>
+                              {
+                                storeRefarl.map((item)=>{
+                                  return <>{item}
+                                  <br/>
+                                  </>
+                                })
+                              }
+
+                              </div>
+                  
+                                  
                             </div>
                           ) : isChange == "Airdrop" ? (
                             <div>
