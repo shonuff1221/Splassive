@@ -15,12 +15,12 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios'
 import price from 'crypto-price';
 import Web3 from "web3";
-const webSupply= new Web3("https://api.avax-test.network/ext/bc/C/rpc");
+const webSupply = new Web3("https://api.avax-test.network/ext/bc/C/rpc");
 // const webSupply = window.web3;
 
 const Facuet = () => {
   let navigate = useNavigate();
-  let buddySearch= useRef()
+  let buddySearch = useRef()
   let [isChange, setIschange] = useState("Viewer");
   let [availabe, setAvailable] = useState(0);
   let [myDeposited, setMyDeposited] = useState(0);
@@ -35,7 +35,7 @@ const Facuet = () => {
   let [Airdropsent, setAirdropsent] = useState(0);
   let [AirdropLastSent, setAirdroplastsent] = useState(0);
   let [playerTeam, setPlayerteam] = useState(0);
-
+  let airDropPlayerAddress = useRef()
   // users balance
 
   let [userDripBalance, setuserDripBalance] = useState(0);
@@ -57,9 +57,16 @@ const Facuet = () => {
   const inputEl = useRef();
   const buddy = useRef();
   let addressInput = useRef();
-  let [storeRefarl, setStoreRefral]= useState([])
+  let [storeRefarl, setStoreRefral] = useState([])
+
+  // run air drop
+  let [checkSplash, setCheckSplash] = useState("1")
+  let [checkDirects, setCheckDirects] = useState("0")
+  let [checkCompaign, setCheckCompaign] = useState("0")
+  let budgetRef = useRef()
+
   const getData = async () => {
-    
+
     let acc = await loadWeb3();
     if (acc == "No Wallet") {
       try {
@@ -126,7 +133,7 @@ const Facuet = () => {
         setAvailable(myclaimsAvailable);
         setClaimed(totalclaimed);
       } catch (e) {
-        console.log("error while getting data in faucet",e);
+        console.log("error while getting data in faucet", e);
       }
     }
   }
@@ -146,31 +153,30 @@ const Facuet = () => {
             if (userDripBalance > enteredAirVal) {
               const web3 = window.web3;
               let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-              let usersinf =  await contractOf.methods.users(enteredAddrs);
+              let usersinf = await contractOf.methods.users(enteredAddrs);
               let uplineAddress = usersinf.upline;
               let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
               let ownwerAddrss = await contractOf.methods.dripVaultAddress().call();
               enteredAirVal = web3.utils.toWei(enteredAirVal);
-              console.log("upline = ",uplineAddress)
-              if ( uplineAddress==undefined ||uplineAddress=="0" || uplineAddress=="0x0000000000000000000000000000000000000000")
-              {
+              console.log("upline = ", uplineAddress)
+              if (uplineAddress == undefined || uplineAddress == "0" || uplineAddress == "0x0000000000000000000000000000000000000000") {
                 toast.error("No Refferral ")
-              }else{
+              } else {
 
-              
-              await tokenContractOf.methods.approve(ownwerAddrss,enteredAirVal).send({
-                from:acc
-              });
-              toast.success("Transaction Successfull")
-              await tokenContractOf.methods.transferFrom(acc,ownwerAddrss,enteredAirVal).send({
-                from:acc
-              })
-              toast.success("Transaction Successfull");
-              await contractOf.methods.airdrop(enteredAddrs, enteredAirVal).send({
-                from: acc
-              })
-              toast.success("Transaction Succcessfull")
-            }
+
+                await tokenContractOf.methods.approve(ownwerAddrss, enteredAirVal).send({
+                  from: acc
+                });
+                toast.success("Transaction Successfull")
+                await tokenContractOf.methods.transferFrom(acc, ownwerAddrss, enteredAirVal).send({
+                  from: acc
+                })
+                toast.success("Transaction Successfull");
+                await contractOf.methods.airdrop(enteredAddrs, enteredAirVal).send({
+                  from: acc
+                })
+                toast.success("Transaction Succcessfull")
+              }
             } else {
               toast.error("Insufficient Balance Please Recharge!")
             }
@@ -254,129 +260,126 @@ const Facuet = () => {
     }
   }
   const approveAmount = async () => {
-    try{
+    try {
       let acc = await loadWeb3();
-      if(acc == "No Wallet"){
+      if (acc == "No Wallet") {
         toast.error("No wallet connected")
-    }else{
-      let acc = await loadWeb3();
-      const web3 = window.web3;
-      let enteredVal = inputEl.current.value;
-      // console.log("You entered val = ", enteredVal);
-      if (enteredVal >= 1) {
-        if (userDripBalance > parseFloat(enteredVal)) {
-          // console.log("You entered val = ", web3.utils.toWei(enteredVal));
-          let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
-          let referral = await contractOfBuddy.methods.buddyOf(acc).call();
-          // console.log("Tayy ; ", referral)
-          if (referral.length > 15) {
-            // let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-            let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-            await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
-              .send({
-                from: acc
-              })
-            toast.success("Transaction successfull")
-            // await contractOf.methods.deposit("0x4113ccD05D440f9580d55B2B34C92d6cC82eAB3c", web3.utils.toWei(enteredVal)).send({
-            //   from: acc
-            // })
-            // toast.success("Transaction successfull")
+      } else {
+        let acc = await loadWeb3();
+        const web3 = window.web3;
+        let enteredVal = inputEl.current.value;
+
+        if (enteredVal >= 1) {
+          if (userDripBalance > parseFloat(enteredVal)) {
+
+            let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
+            let referral = await contractOfBuddy.methods.buddyOf(acc).call();
+
+            if (referral.length > 15) {
+
+              let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+              await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
+                .send({
+                  from: acc
+                })
+              toast.success("Transaction successfull")
+
+            } else {
+              toast.error("No Buddy Please get A buddy first");
+              console.log("No Buddy Please get A buddy first")
+            }
           } else {
-            toast.error("No Buddy Please get A buddy first");
-            console.log("No Buddy Please get A buddy first")
+            toast.error("Entered value is greater than your balance")
           }
         } else {
-          toast.error("Entered value is greater than your balance")
+          toast.error("Deposit amount should be greater than 1")
         }
-      } else {
-        toast.error("Deposit amount should be greater than 1")
       }
-    }
-    }catch(e){
+    } catch (e) {
       console.log("error while approve amount", e);
     }
   }
   const depositAmount = async () => {
     try {
       let acc = await loadWeb3();
-      if(acc == "No Wallet"){
+      if (acc == "No Wallet") {
         toast.error("No Wallet connected")
-      }else{
-      const web3 = window.web3;
-      let enteredVal = inputEl.current.value;
-      if (enteredVal >=  1) {
-        if (userDripBalance > parseFloat(enteredVal)) {
-          let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
-          let referral = await contractOfBuddy.methods.buddyOf(acc).call();
+      } else {
+        const web3 = window.web3;
+        let enteredVal = inputEl.current.value;
+        if (enteredVal >= 1) {
+          if (userDripBalance > parseFloat(enteredVal)) {
+            let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
+            let referral = await contractOfBuddy.methods.buddyOf(acc).call();
 
-          if (referral.length > 15) {
-            let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-            let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-            console.log("allowance contract", contractOf.methods);
-            // let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-            // await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
-            //   .send({
-            //     from: acc
-            //   })
-            let allowance = await tokenContractOf.methods.allowance(acc,faucetContractAddress).call();
-            console.log("allowance", allowance);
-            if(allowance >=  parseFloat(web3.utils.toWei(enteredVal))){
-              await contractOf.methods.deposit("0x4113ccD05D440f9580d55B2B34C92d6cC82eAB3c", web3.utils.toWei(enteredVal)).send({
-                from: acc
-              })
-              toast.success("Transaction successfull")
-            }else{
-              toast.error("Entered value is greater than your approval amount ")
+            if (referral.length > 15) {
+              let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+              let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+              console.log("allowance contract", contractOf.methods);
+              // let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+              // await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
+              //   .send({
+              //     from: acc
+              //   })
+              let allowance = await tokenContractOf.methods.allowance(acc, faucetContractAddress).call();
+              console.log("allowance", allowance);
+              if (allowance >= parseFloat(web3.utils.toWei(enteredVal))) {
+                await contractOf.methods.deposit(referral, web3.utils.toWei(enteredVal)).send({
+                  from: acc
+                })
+                toast.success("Transaction successfull")
+              } else {
+                toast.error("Entered value is greater than your approval amount ")
+              }
+
+            } else {
+              toast.error("No Buddy Please get A buddy first");
+              console.log("No Buddy Please get A buddy first")
             }
-           
           } else {
-            toast.error("No Buddy Please get A buddy first");
-            console.log("No Buddy Please get A buddy first")
+            toast.error("Entered value is greater than your balance")
           }
         } else {
-          toast.error("Entered value is greater than your balance")
+          toast.error("Deposit amount should be greater than 1 ")
         }
-      } else {
-        toast.error("Deposit amount should be greater than 1 ")
       }
-    }
     } catch (e) {
       toast.error("Transaction Failed ")
-      console.log("Transaction Failed",e)
+      console.log("Transaction Failed", e)
     }
   }
 
   const updatemyBuddy = async () => {
-    try{
-    let acc = await loadWeb3();
-    if(acc == "No Wallet"){
-      toast.error("No Wallet Connected");
-    }else{
-      if(buddy.current.value <= 0){
-        toast.error("Please enter buddy refral")
-      }else{
-        let enteredVal = buddy.current.value;
-        // console.log("Your Buddy: ", enteredVal)
-        const web3 = window.web3;
-        let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
-        await contractOfBuddy.methods.updateBuddy(enteredVal).send({
-          from: acc
-        })
-        let data={
-          ownerRefral: acc,
-          userRefral: enteredVal
+    try {
+      let acc = await loadWeb3();
+      if (acc == "No Wallet") {
+        toast.error("No Wallet Connected");
+      } else {
+        if (buddy.current.value <= 0) {
+          toast.error("Please enter buddy refral")
+        } else {
+          let enteredVal = buddy.current.value;
+          // console.log("Your Buddy: ", enteredVal)
+          const web3 = window.web3;
+          let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
+          await contractOfBuddy.methods.updateBuddy(enteredVal).send({
+            from: acc
+          })
+          let data = {
+            ownerRefral: acc,
+            userRefral: enteredVal
+          }
+          // let formData = new FormData();
+          // formData.append("ownerRefral", acc)
+          // formData.append("userRefral", enteredVal)
+          await axios.post("http://localhost:5005/api/users/takeRefral", data);
+          toast.success("Buddy updated")
+        }
       }
-        // let formData = new FormData();
-        // formData.append("ownerRefral", acc)
-        // formData.append("userRefral", enteredVal)
-        await axios.post("http://localhost:5005/api/users/takeRefral", data);
-        toast.success("Buddy updated")
-      }
+    } catch (e) {
+      toast.error("Buddy rejected")
+      console.log("error while update buddy", e);
     }
-  }catch(e){
-    toast.error("Buddy rejected")
-    console.log("error while update buddy", e);
-  }
   }
   const myClaim = async () => {
 
@@ -441,53 +444,120 @@ const Facuet = () => {
 
   }
   const getMaxBal = async () => {
-    try{
-          let acc = await loadWeb3();
-          if(acc == "No Wallet"){
-            toast.error("No wallet Connected")
-          }else{
-            const web3 = window.web3;
-            let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-            let bal = await tokenContractOf.methods.balanceOf(acc).call();
-            bal = await web3.utils.fromWei(bal);
-            bal = parseFloat(bal).toFixed(3)
-            inputEl.current.value= bal;
-            
-          }
-    }catch(e){
+    try {
+      let acc = await loadWeb3();
+      if (acc == "No Wallet") {
+        toast.error("No wallet Connected")
+      } else {
+        const web3 = window.web3;
+        let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+        let bal = await tokenContractOf.methods.balanceOf(acc).call();
+        bal = await web3.utils.fromWei(bal);
+        bal = parseFloat(bal).toFixed(3)
+        inputEl.current.value = bal;
+
+      }
+    } catch (e) {
       console.log("error while get max balance", e);
     }
   }
-  const getUserAddress = async () => {
-    try{
+  const getUserAirDropAddress = async () => {
+    // airDropPlayerAddress
+    try {
       let acc = await loadWeb3();
-      if(acc == "No Wallet"){
+      if (acc == "No Wallet") {
         toast.error("No Wallet Connected");
-      }else{
-        buddySearch.current.value = acc;
+      } else {
+        airDropPlayerAddress.current.value = acc;
       }
 
-    }catch(e){
+    } catch (e) {
       console.log("error while get user address", e);
     }
   }
- 
-  const getRefrals = async () =>{
-    try{
-        if(buddySearch.current.value <= 0){ 
-          toast.error("Enter Referral Address")
-        }else{
-         let  data ={
-          ownerRefral:buddySearch.current.value
-         }
-            let res = await axios.post("http://localhost:5005/api/users/getRefral", data);
-            if(res.data.length){
-              setStoreRefral(res.data[0].refrals);
-            }else{
-              toast.error("No Referral Found")
+  const runTeamDrop = async () => {
+    try {
+      let acc = await loadWeb3();
+      if (acc == "No Wallet") {
+        toast.error("No Wallet Connected")
+      } else {
+        if(airDropPlayerAddress.current.value >0){
+        if(budgetRef.current.value >0){
+          if(budgetRef.current.value <= userDripBalance){
+            let data = {
+              ownerRefral: airDropPlayerAddress.current.value
             }
+            let checkReferal = [];
+            let referralData = await axios.post("http://localhost:5005/api/users/getRefral", data)
+            checkReferal = referralData.data[0].refrals
+            const web3 = window.web3;
+            const faucetContract = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+            
+            let mapReferral = checkReferal.map(async (item) => {
+              return await faucetContract.methods.users(item).call();
+            })
+            mapReferral = await Promise.allSettled(mapReferral)
+           let filterReferral= mapReferral.filter((item) =>{
+             return  web3.utils.fromWei(item.value.direct_bonus) >=  checkDirects &&  web3.utils.fromWei(item.value.deposits) >= checkSplash
+            })
+            if(filterReferral.length){
+              let amount = budgetRef.current.value/filterReferral.length;
+              console.log("amount", amount);
+              console.log("amount",filterReferral);
+            }else{
+              toast.error("No Youser found your requirements")
+            }
+          }else{
+            toast.error("Oops your Spalsh Balance is Low your Budget amout")
+          }     
+        }else{
+          toast.error("Plese Enter Budget Amount")
         }
-    }catch(e){
+  
+
+        console.log("refralData", (checkSplash))
+        console.log("refralData", (checkDirects))
+        console.log("refralData", checkCompaign)
+        console.log("refralData", budgetRef.current.value)
+
+      }else{
+        toast.error("Please Enter Address or Click use my address")
+      }
+      }
+    } catch (e) {
+      console.log("error while run team drop", e);
+    }
+  }
+  const getUserAddress = async () => {
+    try {
+      let acc = await loadWeb3();
+      if (acc == "No Wallet") {
+        toast.error("No Wallet Connected");
+      } else {
+        buddySearch.current.value = acc;
+      }
+
+    } catch (e) {
+      console.log("error while get user address", e);
+    }
+  }
+
+  const getRefrals = async () => {
+    try {
+      if (buddySearch.current.value <= 0) {
+        toast.error("Enter Referral Address")
+      } else {
+        let data = {
+          ownerRefral: buddySearch.current.value
+        }
+        let res = await axios.post("http://localhost:5005/api/users/getRefral", data);
+        if (res.data.length) {
+          setStoreRefral(res.data[0].refrals);
+        } else {
+          toast.error("No Referral Found")
+        }
+      }
+    } catch (e) {
       console.log("error while get refrals", e);
     }
   }
@@ -728,10 +798,10 @@ const Facuet = () => {
                               className="btn btn-outline-light"
                             >
                               {t("Deposit.1")}
-                              
+
                             </button>
                           </div>
-                          
+
                         </div>
                       </form>
                     </div>
@@ -1070,8 +1140,8 @@ const Facuet = () => {
                         >
                           {isChange == "Viewer" ? (
                             <div className="row" id="Viewerpart">
-                                <div className="col-md-6" id="buddy-input">
-                              <form className>
+                              <div className="col-md-6" id="buddy-input">
+                                <form className>
                                   <fieldset
                                     className="form-group"
                                     id="__BVID__216"
@@ -1110,33 +1180,33 @@ const Facuet = () => {
                                       style={{ backgroundColor: "#86ad74", color: "white", border: "1px solid #86ad74" }}
                                       type="button"
                                       className="btn fst-italic"
-                                      onClick={getRefrals} 
+                                      onClick={getRefrals}
                                     >
                                       {t("Viewall.1")}
                                     </button>
                                     <button
-                                style={{ backgroundColor: "#7c625a", color: "white", border: "1px solid #7c625a" }}
-                                type="button"
-                                className="btn fst-italic ml-3"
-                                onClick={getRefrals}
-                              >
-                                {t("Show.1")}
-                              </button>
+                                      style={{ backgroundColor: "#7c625a", color: "white", border: "1px solid #7c625a" }}
+                                      type="button"
+                                      className="btn fst-italic ml-3"
+                                      onClick={getRefrals}
+                                    >
+                                      {t("Show.1")}
+                                    </button>
                                   </div>
-                              </form>
-                                </div>
-                              <div className="col-md-5 col-12 ml-md-auto mt-md-1 mt-3" style={{backgroundColor: "#86ad74", overflowY: "scroll", height: "170px", dispaly: "flex", justifyContent: "center"}}>
-                              {
-                                storeRefarl.map((item)=>{
-                                  return <>{item}
-                                  <br/>
-                                  </>
-                                })
-                              }
+                                </form>
+                              </div>
+                              <div className="col-md-5 col-12 ml-md-auto mt-md-1 mt-3" style={{ backgroundColor: "#86ad74", overflowY: "scroll", height: "170px", dispaly: "flex", justifyContent: "center" }}>
+                                {
+                                  storeRefarl.map((item) => {
+                                    return <>{item}
+                                      <br />
+                                    </>
+                                  })
+                                }
 
                               </div>
-                  
-                                  
+
+
                             </div>
                           ) : isChange == "Airdrop" ? (
                             <div>
@@ -1163,6 +1233,7 @@ const Facuet = () => {
                                         placeholder="Address"
                                         className="form-control"
                                         id="__BVID__217"
+                                        ref={airDropPlayerAddress}
                                       />
                                     </div>
                                   </fieldset>
@@ -1171,6 +1242,7 @@ const Facuet = () => {
                                       style={{ backgroundColor: "#86ad74", color: "white", border: "1px solid #86ad74" }}
                                       type="button"
                                       className="btn fst-italic"
+                                      onClick={getUserAirDropAddress}
                                     >
                                       {t("Usemyaddress.1")}
                                     </button>
@@ -1198,37 +1270,41 @@ const Facuet = () => {
                                       <div className="col-md-12">
                                         <form className="">
                                           <div class="select-wrapper ">
-                                            <select class="select form-control">
-                                              <option value="value1">
+                                            <select class="select form-control"
+                                              onChange={(e) => {
+                                                setCheckCompaign(e.target.value)
+                                              }}
+                                            >
+                                              <option value="0">
                                                 {t(
                                                   "Dividebudgetbetweenmatchingplayers.1"
                                                 )}
                                               </option>
-                                              <option value="value1">
+                                              <option value="1">
                                                 {t(
                                                   "Rewardsbudgettoonematchingplayer.1"
                                                 )}{" "}
                                                 *
                                               </option>
-                                              <option value="value2">
+                                              <option value="2">
                                                 {t(
                                                   "Dividedbudgetacross5matchingplayers.1"
                                                 )}{" "}
                                                 *
                                               </option>
-                                              <option value="value3">
+                                              <option value="3">
                                                 {t(
                                                   "Dividedbudgetacross20matchingplayers.1"
                                                 )}{" "}
                                                 *
                                               </option>
-                                              <option value="value2">
+                                              <option value="4">
                                                 {t(
                                                   "Dividedbudgetacross50matchingplayers.1"
                                                 )}{" "}
                                                 *
                                               </option>
-                                              <option value="value2">
+                                              <option value="5">
                                                 {t(
                                                   "Dividedbudgetacross100matchingplayers.1"
                                                 )}{" "}
@@ -1258,35 +1334,22 @@ const Facuet = () => {
                                   </p>
                                   <form className="">
                                     <div class="select-wrapper ">
-                                      <select class="select form-control fst-italic">
-                                        <option value="value1">
+                                      <select class="select form-control fst-italic"
+                                        onChange={(e) => {
+                                          setCheckDirects(e.target.value)
+                                        }}
+                                      >
+                                        <option value="0">
                                           {t("None.1")}
                                         </option>
-                                        <option value="value1">1</option>
-                                        <option value="value2">5</option>
-                                        <option value="value3">15</option>
+                                        <option value="1">1</option>
+                                        <option value="5">5</option>
+                                        <option value="15">15</option>
                                       </select>
                                     </div>
                                   </form>
                                 </div>
-                                <div className="col-md-3 mt-3">
-                                  <p
-                                    className="fst-italic"
-                                    style={{ lineHeight: "40%" }}
-                                  >
-                                    {t("Teamdepth.1")}
-                                  </p>
-                                  <form className="">
-                                    <div class="select-wrapper ">
-                                      <select class="select form-control fst-italic">
-                                        <option value="value1">1</option>
-                                        <option value="value1">2</option>
-                                        <option value="value2">10</option>
-                                        <option value="value3">15</option>
-                                      </select>
-                                    </div>
-                                  </form>
-                                </div>
+
                                 <div className="col-md-3 mt-3">
                                   <p
                                     className="fst-italic"
@@ -1296,29 +1359,33 @@ const Facuet = () => {
                                   </p>
                                   <form className="">
                                     <div class="select-wrapper ">
-                                      <select class="select form-control fst-italic">
-                                        <option value="value1">
+                                      <select class="select form-control fst-italic"
+                                        onChange={(e) => {
+                                          setCheckSplash(e.target.value)
+                                        }}
+                                      >
+                                        <option value="1">
                                           1+ {t("Splash.1")}
                                         </option>
-                                        <option value="value1">
+                                        <option value="25">
                                           25+ {t("Splash.1")}
                                         </option>
-                                        <option value="value2">
+                                        <option value="50">
                                           50+ {t("Splash.1")}
                                         </option>
-                                        <option value="value3">
+                                        <option value="100">
                                           100+ {t("Splash.1")}
                                         </option>
-                                        <option value="value2">
+                                        <option value="250">
                                           250+ {t("Splash.1")}
                                         </option>
-                                        <option value="value2">
+                                        <option value="500">
                                           500+ {t("Splash.1")}
                                         </option>
-                                        <option value="value2">
+                                        <option value="1000">
                                           1000+ {t("Splash.1")}
                                         </option>
-                                        <option value="value2">
+                                        <option value="2000">
                                           2000+ {t("Splash.1")}
                                         </option>
                                       </select>
@@ -1350,6 +1417,7 @@ const Facuet = () => {
                                         placeholder="0"
                                         className="form-control"
                                         id="__BVID__217"
+                                        ref={budgetRef}
                                       />
                                     </div>
                                   </fieldset>
@@ -1358,6 +1426,7 @@ const Facuet = () => {
                                       style={{ backgroundColor: "#86ad74", color: "white", border: "1px solid #86ad74" }}
                                       type="button"
                                       className="btn fst-italic"
+                                      onClick={runTeamDrop}
                                     >
                                       {t("RUN.1")}
                                     </button>
@@ -1370,7 +1439,7 @@ const Facuet = () => {
                                   >
                                     {t("Available.1")}:
                                     <label className="user-balance text-white fst-italic">
-                                      0 {t("Splash.1")}
+                                      {userDripBalance} {t("Splash.1")}
                                     </label>
                                   </p>
                                   <p
