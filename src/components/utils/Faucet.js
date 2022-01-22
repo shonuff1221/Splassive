@@ -1,4 +1,4 @@
-export const faucetContractAddress = "0xbF78f12ca7f6bDA92b8b4DaFD69f3c1e2Bb9819A";
+export const faucetContractAddress = "0xC97eF38f57f664DaeBdca08D57697aacB21b08B9";
 export const faucetContractAbi = [{
 	"anonymous": false,
 	"inputs": [{
@@ -353,6 +353,10 @@ export const faucetContractAbi = [{
 			"internalType": "uint256",
 			"name": "ref_claim_pos",
 			"type": "uint256"
+		}, {
+			"internalType": "address",
+			"name": "entered_address",
+			"type": "address"
 		}],
 		"internalType": "struct Faucet.User[]",
 		"name": "newUserData",
@@ -1108,6 +1112,10 @@ export const faucetContractAbi = [{
 		"internalType": "uint256",
 		"name": "ref_claim_pos",
 		"type": "uint256"
+	}, {
+		"internalType": "address",
+		"name": "entered_address",
+		"type": "address"
 	}],
 	"stateMutability": "view",
 	"type": "function"

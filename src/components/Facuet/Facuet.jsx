@@ -63,6 +63,9 @@ const Facuet = () => {
   let [checkSplash, setCheckSplash] = useState("1")
   let [checkDirects, setCheckDirects] = useState("0")
   let [checkCompaign, setCheckCompaign] = useState("0")
+  let [showCompaign, setShowCompaign]=useState([
+    {address:"",amount:""}
+  ]);
   let budgetRef = useRef()
 
   const getData = async () => {
@@ -500,15 +503,37 @@ const Facuet = () => {
             })
             console.log("mapReferral", mapReferral);
             mapReferral = await Promise.allSettled(mapReferral)
-            console.log("mapReferral", mapReferral);
-
-           let filterReferral= mapReferral.filter((item) =>{
-             return  web3.utils.fromWei(item.value.direct_bonus) >=  checkDirects &&  web3.utils.fromWei(item.value.deposits) >= checkSplash
+            
+            let filterReferral= mapReferral.filter((item) =>{
+              return  web3.utils.fromWei(item.value.direct_bonus) >=  checkDirects &&  web3.utils.fromWei(item.value.deposits) >= checkSplash
             })
+            console.log("showCompaign", filterReferral);
             if(filterReferral.length){
-              let amount = budgetRef.current.value/filterReferral.length;
-              console.log("amount", amount);
-              console.log("amount",filterReferral);
+              if(checkCompaign == 0){
+                filterReferral.slice(0, filterReferral.length).for((item)=>{
+                  let amount = budgetRef.current.value/filterReferral.length;
+                  setShowCompaign([
+                    {
+                      address:item.value.entered_address,
+                      amount:amount
+                    }
+                  ])
+                })
+                console.log("showCompaign", showCompaign);
+              }else{
+
+                filterReferral.slice(0, checkCompaign).map((item)=>{
+
+                  let amount = budgetRef.current.value/checkCompaign;
+                  setShowCompaign([
+                    {
+                      address:item.value.entered_address,
+                      amount:amount
+                    }
+                  ])
+                })
+                console.log("showCompaign", showCompaign);
+              }
             }else{
               toast.error("No Youser found your requirements")
             }
@@ -1291,25 +1316,25 @@ const Facuet = () => {
                                                 )}{" "}
                                                 *
                                               </option>
-                                              <option value="2">
+                                              <option value="5">
                                                 {t(
                                                   "Dividedbudgetacross5matchingplayers.1"
                                                 )}{" "}
                                                 *
                                               </option>
-                                              <option value="3">
+                                              <option value="20">
                                                 {t(
                                                   "Dividedbudgetacross20matchingplayers.1"
                                                 )}{" "}
                                                 *
                                               </option>
-                                              <option value="4">
+                                              <option value="50">
                                                 {t(
                                                   "Dividedbudgetacross50matchingplayers.1"
                                                 )}{" "}
                                                 *
                                               </option>
-                                              <option value="5">
+                                              <option value="100">
                                                 {t(
                                                   "Dividedbudgetacross100matchingplayers.1"
                                                 )}{" "}
