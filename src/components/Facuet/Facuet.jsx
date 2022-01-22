@@ -63,11 +63,12 @@ const Facuet = () => {
   let [checkSplash, setCheckSplash] = useState("1")
   let [checkDirects, setCheckDirects] = useState("0")
   let [checkCompaign, setCheckCompaign] = useState("0")
-  let [showCompaign, setShowCompaign]=useState([
-    {address:"",amount:""}
-  ]);
+  let [showCompaign, setShowCompaign] = useState([]);
   let budgetRef = useRef()
-
+  let [numberOfReciept, setNumberOfReciept] = useState(0);
+  let [estimatePerPerson, setEstimatePerPerson] = useState(0)
+  let [sendEstimateAmount, setSendEstimateAmount] = useState(0)
+  let [sendAddress, setSendAddress] = useState([]);
   const getData = async () => {
 
     let acc = await loadWeb3();
@@ -478,86 +479,257 @@ const Facuet = () => {
       console.log("error while get user address", e);
     }
   }
+  // run team air drop
   const runTeamDrop = async () => {
+    setNumberOfReciept(0)
+    setEstimatePerPerson(0)
+    setSendEstimateAmount(0);
+    setSendAddress([])
+    setShowCompaign([])
     try {
       let acc = await loadWeb3();
       if (acc == "No Wallet") {
         toast.error("No Wallet Connected")
       } else {
-        if(airDropPlayerAddress.current.value >0){
-        if(budgetRef.current.value >0){
-          if(budgetRef.current.value <= userDripBalance){
-            let data = {
-              ownerRefral: airDropPlayerAddress.current.value
-            }
-            let checkReferal = [];
-            let referralData = await axios.post("http://localhost:5005/api/users/getRefral", data)
-            checkReferal = referralData.data[0].refrals
-            console.log("mapReferral", checkReferal);
-
-            const web3 = window.web3;
-            const faucetContract = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-            
-            let mapReferral = checkReferal.map(async (item) => {
-              return await faucetContract.methods.users(item).call();
-            })
-            console.log("mapReferral", mapReferral);
-            mapReferral = await Promise.allSettled(mapReferral)
-            
-            let filterReferral= mapReferral.filter((item) =>{
-              return  web3.utils.fromWei(item.value.direct_bonus) >=  checkDirects &&  web3.utils.fromWei(item.value.deposits) >= checkSplash
-            })
-            console.log("showCompaign", filterReferral);
-            if(filterReferral.length){
-              if(checkCompaign == 0){
-                filterReferral.slice(0, filterReferral.length).for((item)=>{
-                  let amount = budgetRef.current.value/filterReferral.length;
-                  setShowCompaign([
-                    {
-                      address:item.value.entered_address,
-                      amount:amount
-                    }
-                  ])
-                })
-                console.log("showCompaign", showCompaign);
-              }else{
-
-                filterReferral.slice(0, checkCompaign).map((item)=>{
-
-                  let amount = budgetRef.current.value/checkCompaign;
-                  setShowCompaign([
-                    {
-                      address:item.value.entered_address,
-                      amount:amount
-                    }
-                  ])
-                })
-                console.log("showCompaign", showCompaign);
+        if (airDropPlayerAddress.current.value > 0) {
+          if (budgetRef.current.value > 0) {
+            if (budgetRef.current.value <= userDripBalance) {
+              let data = {
+                ownerRefral: airDropPlayerAddress.current.value
               }
-            }else{
-              toast.error("No Youser found your requirements")
+              let checkReferal = [];
+              let referralData = await axios.post("http://localhost:5005/api/users/getRefral", data)
+              checkReferal = referralData.data[0].refrals
+              if (referralData.data.length) {
+                const web3 = window.web3;
+                const faucetContract = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+
+                let mapReferral = checkReferal.map(async (item) => {
+                  return await faucetContract.methods.users(item).call();
+                })
+                console.log("mapReferral", mapReferral);
+                mapReferral = await Promise.allSettled(mapReferral)
+
+                let filterReferral = mapReferral.filter((item) => {
+                  return( web3.utils.fromWei(item.value.direct_bonus) >= checkDirects
+                   && web3.utils.fromWei(item.value.deposits) >= checkSplash)
+                   && item.value.deposits.upline != "0x0000000000000000000000000000000000000000"
+                })
+                console.log("showCompaign", filterReferral);
+                if (filterReferral.length) {
+                  if (checkCompaign == 0) {
+                    setNumberOfReciept(filterReferral.length)
+                    let dataAdd = []
+                    let sAdd = []
+                    let amount = budgetRef.current.value / filterReferral.length;
+                    setEstimatePerPerson(parseFloat(amount).toFixed(2))
+                    setSendEstimateAmount(amount)
+                    filterReferral.slice(0, filterReferral.length).forEach((item) => {
+                      sAdd.push(item.value.entered_address)
+                      dataAdd.push({
+                        address: item.value.entered_address,
+                        amount: amount
+                      })
+                    })
+                    setSendAddress(sAdd)
+                    setShowCompaign(dataAdd)
+                    console.log("showCompaign", dataAdd);
+                  } else if (checkCompaign == 1) {
+
+                    let dataAdd = []
+                    let sAdd = []
+                    let amount = budgetRef.current.value;
+                    setEstimatePerPerson(parseFloat(amount).toFixed(2))
+                    setSendEstimateAmount(amount)
+                    filterReferral.slice(0, 1).forEach((item) => {
+                      sAdd.push(item.value.entered_address)
+                      dataAdd.push({
+                        address: item.value.entered_address,
+                        amount: amount
+                      })
+                    })
+                    setNumberOfReciept(sAdd.length)
+                    setSendAddress(sAdd)
+                    setShowCompaign(dataAdd)
+                    console.log("showCompaign", showCompaign);
+                  } else if (checkCompaign == 5) {
+                    if (filterReferral.length < 5) {
+                      toast.error("your Referrel below your compaign")
+                    } else {
+                      let dataAdd = []
+                      let sAdd = []
+                      let amount = budgetRef.current.value / 5;
+                      setEstimatePerPerson(parseFloat(amount).toFixed(2))
+                      setSendEstimateAmount(amount)
+                      filterReferral.slice(0, 5).forEach((item) => {
+                        sAdd.push(item.value.entered_address)
+                        dataAdd.push({
+                          address: item.value.entered_address,
+                          amount: amount
+                        })
+                      })
+                      setNumberOfReciept(sAdd.length)
+                      setSendAddress(sAdd)
+                      setShowCompaign(dataAdd)
+                    }
+                  } else if (checkCompaign == 20) {
+                    if (filterReferral.length < 20) {
+                      toast.error("your Referrel below your compaign")
+                    } else {
+                      let dataAdd = []
+                      let sAdd = []
+                      let amount = budgetRef.current.value / 5;
+                      setEstimatePerPerson(parseFloat(amount).toFixed(2))
+                      setSendEstimateAmount(amount)
+                      filterReferral.slice(0, 5).forEach((item) => {
+                        sAdd.push(item.value.entered_address)
+                        dataAdd.push({
+                          address: item.value.entered_address,
+                          amount: amount
+                        })
+                      })
+                      setNumberOfReciept(sAdd.length)
+                      setSendAddress(sAdd)
+                      setShowCompaign(dataAdd)
+                    }
+                  } else if (checkCompaign == 50) {
+                    if (filterReferral.length < 50) {
+                      toast.error("your Referrel below your compaign")
+                    } else {
+                      let dataAdd = []
+                      let sAdd = []
+                      let amount = budgetRef.current.value / 5;
+                      setEstimatePerPerson(parseFloat(amount).toFixed(2))
+                      setSendEstimateAmount(amount)
+                      filterReferral.slice(0, 5).forEach((item) => {
+                        sAdd.push(item.value.entered_address)
+                        dataAdd.push({
+                          address: item.value.entered_address,
+                          amount: amount
+                        })
+                      })
+                      setNumberOfReciept(sAdd.length)
+                      setSendAddress(sAdd)
+                      setShowCompaign(dataAdd)
+                    }
+                  } else {
+                    if (filterReferral.length < 100) {
+                      toast.error("your Referrel below your compaign")
+                    } else {
+                      let dataAdd = []
+                      let sAdd = []
+                      let amount = budgetRef.current.value / 5;
+                      setEstimatePerPerson(parseFloat(amount).toFixed(2))
+                      setSendEstimateAmount(amount)
+                      filterReferral.slice(0, 5).forEach((item) => {
+                        sAdd.push(item.value.entered_address)
+                        dataAdd.push({
+                          address: item.value.entered_address,
+                          amount: amount
+                        })
+                      })
+                      setNumberOfReciept(sAdd.length)
+                      setSendAddress(sAdd)
+                      setShowCompaign(dataAdd)
+                    }
+
+                  }
+                } else {
+                  setNumberOfReciept(0)
+                  setEstimatePerPerson(0)
+                  setSendEstimateAmount(0)
+                  setSendAddress([])
+                  setShowCompaign([])
+                  toast.error("No Youser found your requirements")
+                }
+
+              } else {
+                toast.error("no refral found")
+              }
+
+
+            } else {
+              toast.error("Oops your Spalsh Balance is Low your Budget amout")
             }
-          }else{
-            toast.error("Oops your Spalsh Balance is Low your Budget amout")
-          }     
-        }else{
-          toast.error("Plese Enter Budget Amount")
+          } else {
+            toast.error("Plese Enter Budget Amount")
+          }
+
+        } else {
+          toast.error("Please Enter Address or Click use my address")
         }
-  
-
-        console.log("refralData", (checkSplash))
-        console.log("refralData", (checkDirects))
-        console.log("refralData", checkCompaign)
-        console.log("refralData", budgetRef.current.value)
-
-      }else{
-        toast.error("Please Enter Address or Click use my address")
-      }
       }
     } catch (e) {
       console.log("error while run team drop", e);
     }
   }
+  const aproveafterRunAmount = async () => {
+    try {
+      let acc = await loadWeb3();
+      if(acc == "No Wallet"){
+        toast.error("No Wallet Connected")
+      }else{
+        if(budgetRef.current.value >0 ){
+          if(sendAddress.length){
+            console.log("test", sendAddress.length);
+            console.log("test",sendEstimateAmount);  
+            const web3 = window.web3;
+            let splashContract =new  web3.eth.Contract(faucetTokenAbi,faucetTokenAddress);
+            let value = web3.utils.toWei(budgetRef.current.value)
+              await splashContract.methods.approve(faucetContractAddress,value).send({from:acc})
+              
+           
+          }else{
+            toast.error("No sender found")
+          }
+
+          }else{
+          toast.error("Enter Amount Please")
+        }
+        
+          
+        }
+    } catch (e) {
+      console.log("error while aprove amount to addresses");
+    }
+  }
+  const sendAmount = async ()=> {
+    try{
+      let acc = await loadWeb3();
+      if(acc == "No Wallet"){
+        toast.error("No Wallet Connected")
+      }else{
+        if(budgetRef.current.value >0 ){
+          if(sendAddress.length){
+            const web3 = window.web3
+            let splashContract =new  web3.eth.Contract(faucetTokenAbi,faucetTokenAddress);
+            let allowance = await splashContract.methods.allowance(acc, faucetContractAddress).call();
+            console.log("test",allowance);
+            let all = web3.utils.fromWei(allowance);
+            console.log("test",all);
+            if(budgetRef.current.value <= all){
+              let facutContract =new  web3.eth.Contract(faucetContractAbi,faucetContractAddress);
+              let tosendEstimateAmount = sendEstimateAmount.toString()
+              console.log("test", typeof(tosendEstimateAmount));
+              tosendEstimateAmount=web3.utils.toWei(sendEstimateAmount.toString())
+              await facutContract.methods.MultiSendairdrop(sendAddress, tosendEstimateAmount).send({from:acc})
+            
+              console.log("test", sendAddress);
+            }else{
+              toast.error("Oops your approve balance is low")
+            }
+          }else{
+            toast.error("No sender found")
+          }
+        }else{
+          toast.error("Oops your approve balance is low")
+        }
+      }
+    }catch(e){
+      console.log("error while send amount to addresses", e);
+    }
+  }
+  console.log("showCompaign", sendAddress);
   const getUserAddress = async () => {
     try {
       let acc = await loadWeb3();
@@ -1478,7 +1650,7 @@ const Facuet = () => {
                                   >
                                     {t("Numberofrecipients.1")}:
                                     <label className="user-balance text-white fst-italic">
-                                      0
+                                      {numberOfReciept}
                                     </label>
                                   </p>
                                   <p
@@ -1487,7 +1659,7 @@ const Facuet = () => {
                                   >
                                     {t("EstimatedSplashperperson.1")}:
                                     <label className="user-balance text-white fst-italic">
-                                      NAN
+                                      {estimatePerPerson}
                                     </label>
                                   </p>
                                   <div
@@ -1497,7 +1669,16 @@ const Facuet = () => {
                                     <button
                                       style={{ backgroundColor: "#86ad74", color: "white", border: "1px solid #86ad74" }}
                                       type="button"
+                                      className="btn fst-italic me-2"
+                                      onClick={aproveafterRunAmount}
+                                    >
+                                      {t("Approve.1")}{" "}
+                                    </button>
+                                    <button
+                                      style={{ backgroundColor: "#86ad74", color: "white", border: "1px solid #86ad74" }}
+                                      type="button"
                                       className="btn fst-italic "
+                                      onClick={sendAmount}
                                     >
                                       {t("SEND.1")}{" "}
                                     </button>
@@ -1508,22 +1689,40 @@ const Facuet = () => {
                               <div className="row">
                                 <div className="col-md-5">
                                   <h3>
-                                    <legend
+                                    {/* <legend
                                       tabIndex={-1}
                                       className="bv-no-focus-ring col-form-label pt-1 fst-italic"
                                       id="__BVID__216__BV_label_"
+                                    > */}
+                                    <p
+                                      style={{
+                                        lineHeight: "40%",
+                                        fontSize: "20px",
+                                      }}
                                     >
-                                      <p
-                                        style={{
-                                          lineHeight: "40%",
-                                          fontSize: "20px",
-                                        }}
-                                      >
-                                        {t("CampaignConsole.1")}
-                                      </p>
-                                    </legend>
+                                      {t("CampaignConsole.1")}
+                                    </p>
+                                    {/* </legend> */}
                                   </h3>
-                                  <textarea value={0}></textarea>
+                                  <div
+                                    readonly="yes"
+                                    className="textarea mt-2 text-center"
+                                  >
+                                    {
+                                      showCompaign.map((item) => {
+                                        return (
+                                          <table >
+                                            <tr>
+                                              <td>{item.address.substring(0, 12) + "....." + item.address.substring(item.address.length - 12)}</td>
+                                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                              <td>{parseFloat(item.amount).toFixed(2)}</td>
+                                            </tr>
+                                          </table>
+                                        )
+                                      })
+                                    }
+
+                                  </div>
                                 </div>
                                 <div className="col-md-7">
                                   <h3>
@@ -1543,7 +1742,7 @@ const Facuet = () => {
                                     </legend>
                                   </h3>
                                   <div className="row ">
-                                    <div className="col-lg-2 mt-2 fst-italic">
+                                    <div className="col-lg-3 mt-2 fst-italic">
                                       <p
                                         style={{
                                           lineHeight: "40%",

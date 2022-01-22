@@ -1,4 +1,4 @@
-export const faucetContractAddress = "0xC97eF38f57f664DaeBdca08D57697aacB21b08B9";
+export const faucetContractAddress = "0x5AfF0e05b962e208F95899f39973945333a0f9Fe";
 export const faucetContractAbi = [{
 	"anonymous": false,
 	"inputs": [{
@@ -306,6 +306,20 @@ export const faucetContractAbi = [{
 		"type": "uint256"
 	}],
 	"stateMutability": "view",
+	"type": "function"
+}, {
+	"inputs": [{
+		"internalType": "address[]",
+		"name": "_to",
+		"type": "address[]"
+	}, {
+		"internalType": "uint256",
+		"name": "_amount",
+		"type": "uint256"
+	}],
+	"name": "MultiSendairdrop",
+	"outputs": [],
+	"stateMutability": "nonpayable",
 	"type": "function"
 }, {
 	"inputs": [{
