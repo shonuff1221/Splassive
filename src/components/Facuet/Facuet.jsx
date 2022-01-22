@@ -490,13 +490,18 @@ const Facuet = () => {
             let checkReferal = [];
             let referralData = await axios.post("http://localhost:5005/api/users/getRefral", data)
             checkReferal = referralData.data[0].refrals
+            console.log("mapReferral", checkReferal);
+
             const web3 = window.web3;
             const faucetContract = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
             
             let mapReferral = checkReferal.map(async (item) => {
               return await faucetContract.methods.users(item).call();
             })
+            console.log("mapReferral", mapReferral);
             mapReferral = await Promise.allSettled(mapReferral)
+            console.log("mapReferral", mapReferral);
+
            let filterReferral= mapReferral.filter((item) =>{
              return  web3.utils.fromWei(item.value.direct_bonus) >=  checkDirects &&  web3.utils.fromWei(item.value.deposits) >= checkSplash
             })
