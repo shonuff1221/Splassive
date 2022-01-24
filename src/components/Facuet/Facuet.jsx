@@ -274,7 +274,7 @@ const Facuet = () => {
         let enteredVal = inputEl.current.value;
 
         if (enteredVal >= 1) {
-          if (userDripBalance > parseFloat(enteredVal)) {
+          if (userDripBalance >= parseFloat(enteredVal)) {
 
             let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
             let referral = await contractOfBuddy.methods.buddyOf(acc).call();
@@ -319,19 +319,34 @@ const Facuet = () => {
             if (referral.length > 15) {
               let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
               let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-              console.log("allowance contract", contractOf.methods);
-              // let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-              // await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
-              //   .send({
-              //     from: acc
-              //   })
+
+                let trHash=""
               let allowance = await tokenContractOf.methods.allowance(acc, faucetContractAddress).call();
               console.log("allowance", allowance);
               if (allowance >= parseFloat(web3.utils.toWei(enteredVal))) {
                 await contractOf.methods.deposit(referral, web3.utils.toWei(enteredVal)).send({
                   from: acc
+                }).on("transactionHash",async(hash)=>{
+                  trHash = hash;
+                  console.log("hash", hash);
                 })
-                toast.success("Transaction successfull")
+                let data = {
+                  hash:trHash
+                }
+                let res = await axios.post("http://localhost:5005/api/users/getTransactionHash",data);
+                console.log("hash",res.data);
+                console.log("hash",res.data.result);
+
+                if(res.data.result){
+                  let postData= {
+                    toAddress :faucetContractAddress,
+                    fromAddress : acc,
+                    id:acc,
+                    amount:enteredVal
+                  }
+                  await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
+                }
+                toast.success("Transaction successfull");
               } else {
                 toast.error("Entered value is greater than your approval amount ")
               }
@@ -373,9 +388,6 @@ const Facuet = () => {
             ownerRefral: acc,
             userRefral: enteredVal
           }
-          // let formData = new FormData();
-          // formData.append("ownerRefral", acc)
-          // formData.append("userRefral", enteredVal)
           await axios.post("http://localhost:5005/api/users/takeRefral", data);
           toast.success("Buddy updated")
         }
@@ -395,11 +407,27 @@ const Facuet = () => {
         // console.log("Reward", availabe)
         if (availabe > 0) {
           const web3 = window.web3;
-          // if( /.)
+          let trHash = ""
           let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
           await contractOf.methods.claim().send({
             from: acc
+          }).on("transactionHash",async(hash)=>{
+            trHash = hash;
+            console.log("hash", hash);
           })
+          let data = {
+            hash:trHash
+          }
+          let res = await axios.post("http://localhost:5005/api/users/getTransactionHash",data);
+          if(res.data.result){
+            let postData= {
+              toAddress :acc,
+              fromAddress : faucetContractAddress,
+              id:acc,
+              amount:availabe
+            }
+            await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
+          }
           toast.success("Transaction successfull")
         } else {
           toast.error("No Claims Available")
@@ -511,9 +539,12 @@ const Facuet = () => {
                 mapReferral = await Promise.allSettled(mapReferral)
 
                 let filterReferral = mapReferral.filter((item) => {
+                  console.log("upline", checkSplash);
+                  console.log("upline", web3.utils.fromWei(item.value.deposits));
+
                   return( web3.utils.fromWei(item.value.direct_bonus) >= checkDirects
                    && web3.utils.fromWei(item.value.deposits) >= checkSplash)
-                   && item.value.deposits.upline != "0x0000000000000000000000000000000000000000"
+                   && item.value.upline !== "0x0000000000000000000000000000000000000000"
                 })
                 console.log("showCompaign", filterReferral);
                 if (filterReferral.length) {

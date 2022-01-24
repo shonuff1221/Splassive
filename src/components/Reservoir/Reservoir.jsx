@@ -11,11 +11,13 @@ import dummy from "../../images/dollar.png";
 import transfer from "../../images/transfer.png";
 import { useTranslation } from "react-i18next";
 import { toast } from 'react-toastify';
+import axios from "axios";
 import { loadWeb3 } from "../api";
 import { faucetContractAddress, faucetContractAbi } from "../utils/Faucet";
 import { fountainContractAbi, fountainContractAddress } from '../utils/Fountain';
 import { dripTokenAbi, dripTokenAddress } from '../utils/DripToken';
 import { reservoirAbi, reservoirAddress } from '../utils/Reservoir';
+
 import './Reservuior.css'
 import Web3 from "web3";
 const webSupply = new Web3("https://api.avax-test.network/ext/bc/C/rpc");
@@ -170,17 +172,31 @@ function Reservoir() {
         let convertbal = web3.utils.fromWei(bal)
         convertbal = parseFloat(convertbal)
         let userValue = buyInput.current.value;
-console.log("reser bal", userValue);
-console.log("reser bal",convertbal);
-console.log("reser bal", userValue <= convertbal);
 if(buyInput.current.value != "" && buyInput.current.value != undefined){
   if(buyInput.current.value > 0.01){
     if(userValue <= convertbal){
+      let trHash = ""
       let contract = new web3.eth.Contract(reservoirAbi, reservoirAddress);
       await contract.methods.buy().send({
         from: acc,
         value: web3.utils.toWei(buyInput.current.value)
       })
+      .on("transactionHash",(hash)=>{
+        trHash = hash;
+      })
+      let data = {
+        hash:trHash
+      }
+      let res = await axios.post("http://localhost:5005/api/users/getTransactionHash",data);
+      if(res.data.result){
+        let postData= {
+          toAddress :reservoirAddress,
+          fromAddress : acc,
+          id:acc,
+          amount:buyInput.current.value
+        }
+        await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
+      }
       toast.success("Transaction Successed")
     }else{
       toast.error("fund insufficient");
@@ -243,8 +259,10 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
         } else if (isWhiteList == false) {
           toast.error("you are not white listed")
         } else {
-          console.log("myDividends list", dividendsOf);
-          await reserContract.methods.withdraw().send({ from: acc });
+     
+          await reserContract.methods.withdraw().send(
+            { from: acc })
+            
           toast.success("Transaction Successfull")
         }
       }
@@ -274,8 +292,27 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
         } else if (balance <= 0) {
           toast.error("insufficient Balance")
         } else if (withdrawInput.current.value <= balance) {
+          let trHash = ""
           let val = web3.utils.toWei(withdrawInput.current.value);
-          await reserContract.methods.sell(val).send({ from: acc });
+          await reserContract.methods.sell(val).send(
+            { from: acc }
+            )
+            .on("transactionHash",(hash)=>{
+              trHash = hash;
+            })
+            let data = {
+              hash:trHash
+            }
+            let res = await axios.post("http://localhost:5005/api/users/getTransactionHash",data);
+            if(res.data.result){
+              let postData= {
+                toAddress :reservoirAddress,
+                fromAddress : acc,
+                id:acc,
+                amount:withdrawInput.current.value
+              }
+              await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
+            }
           toast.success("Withdraw Successed")
         } else {
           toast.error("insufficient funds")

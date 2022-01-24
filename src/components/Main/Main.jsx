@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./Main.css";
 import I from "../../images/logo4.png";
 import user from "../../images/user.png";
@@ -6,54 +6,74 @@ import curve from "../../images/curve.png";
 import van from "../../images/van.png";
 import transfer from "../../images/transfer.png";
 import { useTranslation } from "react-i18next";
-import { useNavigate} from "react-router-dom";
-import {dripTokenAddress,dripTokenAbi} from '../utils/DripToken';
+import { useNavigate } from "react-router-dom";
+import axios from 'axios'
+import { dripTokenAddress, dripTokenAbi } from '../utils/DripToken';
+import { loadWeb3 } from "../api"
 import Web3 from "web3";
-const webSupply= new Web3("https://api.avax-test.network/ext/bc/C/rpc");
+const webSupply = new Web3("https://api.avax-test.network/ext/bc/C/rpc");
 
 const Main = () => {
   const { t, i18n } = useTranslation();
   const tradeNvigate = useNavigate();
   const stakeNavigate = useNavigate();
   const farmNavigate = useNavigate();
-  let [dripTransaction,setDriptransaction ]=useState(0);
-  let [ dripTotalSupply, setDripTotalSupply] =useState(0);
-  let [dripPlayers, setDripplayers]= useState(0);
-  let [maxDailyReturn, setMaxdailyReturn]= useState(0);
-  
+  let [dripTransaction, setDriptransaction] = useState(0);
+  let [dripTotalSupply, setDripTotalSupply] = useState(0);
+  let [dripPlayers, setDripplayers] = useState(0);
+  let [maxDailyReturn, setMaxdailyReturn] = useState(0);
+  let [eventDetail, setEventDetail] = useState([])
 
 
-const getData=async()=>{
-  let tokenContractof = new webSupply.eth.Contract(dripTokenAbi,dripTokenAddress);
-  console.log("drip contract",await tokenContractof.methods.totalTxs().call());
-  try{
-    let myevent = tokenContractof.events.Transfer();
-    console.log("events", myevent);
-    
-    let drptrx= await tokenContractof.methods.totalTxs().call();
-    let players =await tokenContractof.methods.players().call();
-    let ttlSply =await tokenContractof.methods.totalSupply().call();
-    ttlSply = webSupply.utils.fromWei(ttlSply);
-    ttlSply= parseFloat(ttlSply).toFixed(3);
-    console.log("TRDX", players);
-    setDriptransaction(drptrx);
-    setDripTotalSupply(ttlSply);
-    setDripplayers(players);
 
-  }catch(e){
-    console.log("Error while Fetching Data In Main",e)
+  const getData = async () => {
+    let tokenContractof = new webSupply.eth.Contract(dripTokenAbi, dripTokenAddress);
+    console.log("drip contract", await tokenContractof.methods.totalTxs().call());
+    try {
+      let myevent = tokenContractof.events.Transfer();
+      console.log("events", myevent);
+
+      let drptrx = await tokenContractof.methods.totalTxs().call();
+      let players = await tokenContractof.methods.players().call();
+      let ttlSply = await tokenContractof.methods.totalSupply().call();
+      ttlSply = webSupply.utils.fromWei(ttlSply);
+      ttlSply = parseFloat(ttlSply).toFixed(3);
+      console.log("TRDX", players);
+      setDriptransaction(drptrx);
+      setDripTotalSupply(ttlSply);
+      setDripplayers(players);
+
+    } catch (e) {
+      console.log("Error while Fetching Data In Main", e)
+    }
   }
-}
-  useEffect(()=>{
-    
-    
+  const getEventDetail = async () => {
+    try {
+      let acc = await loadWeb3();
+      if (acc == "No Wallet") {
+        setEventDetail([])
+      } else {
+        let data = {
+          address: acc
+        }
+        let res = await axios.post("http://localhost:5005/api/users/getTransactionDetail", data)
+        setEventDetail(res.data)
+        console.log("event responce", res.data);
+
+      }
+    } catch (e) {
+      console.log("error while get events", e);
+    }
+  }
+  useEffect(() => {
     setInterval(() => {
       getData();
+      getEventDetail()
     }, 1000);
-    return ()=>{
+    return () => {
       window.scrollTo(0, 0);
     }
-  },[])
+  }, [])
   return (
     <div className="images">
       <div className="router-view">
@@ -80,9 +100,9 @@ const getData=async()=>{
                 {t("SplashNetworkisthelatestprojectdevelopedby.1")}{" "}
                 {t("SplassiveTeam.1")}.
                 {/* <a style={{ color: "#7c625a" }} href=""> */}
-                  
+
                 {/* </a> */}
-                
+
                 {/* <a style={{ color: "#7c625a" }} href="">
                   {t("BB.1")}
                 </a>{" "}
@@ -114,43 +134,43 @@ const getData=async()=>{
                       className
                       style={{ textDecoration: "none" }}
                     > */}
-                      <button
-                        style={{ color: "#7c625a", fontSize: "20px" }}
-                        type="button"
-                        className="btn btn-outline-light btn-block m-3"
-                        onClick={()=>tradeNvigate("/swap")}
-                      >
-                        <b>{t("TRADE.1")}</b>
-                      </button>
+                    <button
+                      style={{ color: "#7c625a", fontSize: "20px" }}
+                      type="button"
+                      className="btn btn-outline-light btn-block m-3"
+                      onClick={() => tradeNvigate("/swap")}
+                    >
+                      <b>{t("TRADE.1")}</b>
+                    </button>
                     {/* </a> */}
-                  
-                      <button
-                        style={{
-                          color: "#7c625a",
-                          fontSize: "20px",
-                          textDecoration: "none",
-                        }}
-                        type="button"
-                        className="btn btn-outline-light btn-block m-3"
-                        onClick={()=>stakeNavigate("/facuet")}
-                      >
-                        <b>{t("STAKE.1")}</b>
-                      </button>
-                   
-                    
-                      <button
-                        style={{
-                          color: "#7c625a",
-                          fontSize: "20px",
-                          textDecoration: "none",
-                        }}
-                        type="button "
-                        className="btn btn-outline-light btn-block m-3"
-                       onClick={()=>farmNavigate("/reservoir")}
-                      >
-                        <b>{t("LIQUIDITYFARM.1")}</b>
-                      </button>
-                   
+
+                    <button
+                      style={{
+                        color: "#7c625a",
+                        fontSize: "20px",
+                        textDecoration: "none",
+                      }}
+                      type="button"
+                      className="btn btn-outline-light btn-block m-3"
+                      onClick={() => stakeNavigate("/facuet")}
+                    >
+                      <b>{t("STAKE.1")}</b>
+                    </button>
+
+
+                    <button
+                      style={{
+                        color: "#7c625a",
+                        fontSize: "20px",
+                        textDecoration: "none",
+                      }}
+                      type="button "
+                      className="btn btn-outline-light btn-block m-3"
+                      onClick={() => farmNavigate("/reservoir")}
+                    >
+                      <b>{t("LIQUIDITYFARM.1")}</b>
+                    </button>
+
                     {/* <a href="http://pearl.survey4earn.com/frontend/assets/road_map.pdf" className target="_blank"><button type="button" className="btn btn-outline-light btn-block">Road Map</button></a>
                   <img src={I}/>
                   <a href="http://pearl.survey4earn.com/frontend/assets/Liquidity.pdf" className target="_blank"><button type="button" className="btn btn-outline-light btn-block">Liquidity</button></a> */}
@@ -158,7 +178,7 @@ const getData=async()=>{
                 </div>
                 <div
                   className="col-xl-4 col-lg-4 col-md-4 mb-5 pt-4 mt-5"
-                  // style={{ display: "flex", justifyContent: "center" }}
+                // style={{ display: "flex", justifyContent: "center" }}
                 >
                   <img src={I} className="mainimages" />
                 </div>
@@ -211,20 +231,20 @@ const getData=async()=>{
                   >
                     {t("Maxdailyreturn.1")}
                     <p className="text-large mb-2 text-white mt-2">
-                    <span
-                      className="notranslate"
-                      style={{ color: "#ab9769", fontSize: "20px" }}
-                    >
-                     2 %
-                    </span>
-                  </p>
-                  <p className="text-small">returns</p>
+                      <span
+                        className="notranslate"
+                        style={{ color: "#ab9769", fontSize: "20px" }}
+                      >
+                        2 %
+                      </span>
+                    </p>
+                    <p className="text-small">returns</p>
                   </h5>
                   <p className="text-large mb-2 text-white">
                     <span className="notranslate" />
                   </p>
                   <p className="text-small"  >
-                     {/* <span
+                    {/* <span
                       className="notranslate"
                       style={{ color: "#ab9769", fontSize: "20px" }}
                     >
@@ -247,7 +267,7 @@ const getData=async()=>{
                       className="notranslate"
                       style={{ color: "#ab9769", fontSize: "20px" }}
                     >
-                     {dripTotalSupply}
+                      {dripTotalSupply}
                     </span>
                   </p>
                   <p className="text-small">{t("Splash.1")} ≈ 0</p>
@@ -267,7 +287,7 @@ const getData=async()=>{
                       className="notranslate"
                       style={{ color: "#ab9769", fontSize: "20px" }}
                     >
-                    {dripTransaction} 
+                      {dripTransaction}
                     </span>
                   </p>
                   <p className="text-small ">{t("count.1")}</p>
@@ -316,33 +336,48 @@ const getData=async()=>{
                         <div
                           role="tabpanel"
                           aria-hidden="false"
-                          className="tab-pane active card-body"
+                          className="tab-pane active card-body "
+
                           id="__BVID__242"
                           aria-labelledby="__BVID__242___BV_tab_button__"
                         >
                           <p className="card-text"></p>
                           <div className="row">
-                            <div className="col-12 list">
-                              <div
-                                className="card d-flex flex-row mb-3"
-                                style={{
-                                  backgroundColor: "#86ad74",
-                                  color: "#dacc79",
-                                  border: "2px solid #4e2e4b",
-                                }}
-                              >
-                                <div className="d-flex flex-grow-1 min-width-zero">
-                                  <div className="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
-                                    <p className="w-20 w-xs-100">
-                                      {t("From.1")}
-                                    </p>
-                                    <p className="w-20 w-xs-100">{t("To.1")}</p>
-                                    <span className="mb-1 w-15 w-xs-100">
-                                      {t("Amount.1")}
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
+                            <div className="col-12 list" >
+                              {
+                                eventDetail.slice(0,5).map((item) => {
+                                  return (
+                                    <div
+                                      className="card d-flex flex-row mb-3"
+                                      style={{
+                                        backgroundColor: "#86ad74",
+                                        color: "#dacc79",
+                                        border: "2px solid #4e2e4b",
+                                      }}
+                                    >
+                                      <div className="d-flex flex-grow-1 min-width-zero">
+                                        <div className="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+                                          <p className="w-20 w-xs-100">
+                                            {t("From.1")}&nbsp;{item.fromAddress}
+                                          </p>
+                                          <p className="w-20 w-xs-100">{t("To.1")}
+                                            &nbsp;
+                                            {item.toAddress}
+                                          </p>
+                                          <span className="mb-1 w-15 w-xs-100">
+                                            {t("Amount.1")}
+                                            &nbsp;
+                                            {item.amount}
+                                          </span>
+
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  )
+                                })
+                              }
+
                             </div>
                           </div>
                           <p />

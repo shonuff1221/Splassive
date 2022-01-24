@@ -567,12 +567,14 @@ const Swap = () => {
     // console.log("miniumrcvd ; ", miniumrcvd);
   };
   const swapBnbtoToken = async () => {
-    console.log("ASD");
+    
     await enterBuyAmount1();
     try {
       const web3 = window.web3;
       let acc = await loadWeb3();
-      let myvalue = inputEl.current.value;
+      if(acc == "No Wallet"){
+        toast.error("No Wallet Connected")
+      }else {let myvalue = inputEl.current.value;
       if (myvalue > 0) {
         if (usersBalance > myvalue) {
           myvalue = web3.utils.toWei(myvalue);
@@ -596,15 +598,30 @@ const Swap = () => {
           let convertValue = b.value.toString();
 
           if (percentValue > 0) {
+            let trHash = ""
             await contractOf.methods
               .bnbToTokenSwapInput(convertValue)
               .send({
                 from: acc,
                 value: myvalue.toString(),
               })
-              .on("transactionHash", (data) => {
-                console.log("data", data);
-              });
+              .on("transactionHash",async(hash)=>{
+                trHash = hash;
+                console.log("hash", hash);
+              })
+              let data = {
+                hash:trHash
+              }
+              let res = await axios.post("http://localhost:5005/api/users/getTransactionHash",data);
+              if(res.data.result){
+                let postData= {
+                  toAddress :fountainContractAddress,
+                  fromAddress : acc,
+                  id:acc,
+                  amount:inputEl.current.value.toString()
+                }
+                await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
+              }
             toast.success("Transaction SucessFull");
           } else {
             toast.error("Please Select Slippage Tolerance");
@@ -616,7 +633,7 @@ const Swap = () => {
         }
       } else {
         toast.error("Seems Like You Forgot to Enter Amount");
-      }
+      }}
     } catch (e) {
       console.log("Error ; ", e);
       toast.error("Transaction Failed");
@@ -640,10 +657,10 @@ const Swap = () => {
       let myvalue = inputE2.current.value;
       myvalue = parseFloat(myvalue);
 
-      console.log("myvalue1 ,", myvalue);
+
       if (myvalue >= 1) {
         if (userDripBalance >= myvalue) {
-          console.log("userDripBalance ,", userDripBalance);
+          ;
           myvalue = myvalue.toString();
           let myAllowance = await tokenContractOf.methods
             .allowance(acc, fountainContractAddress)
@@ -651,8 +668,7 @@ const Swap = () => {
 
           if (myAllowance > 0) {
             let myvalue1 = web3.utils.toWei(myvalue);
-            console.log("zahid", myvalue1);
-            console.log("myAllowance12", myAllowance);
+            
 
             if (parseFloat(myAllowance) >= myvalue1) {
               let parameter = web3.utils.toWei(withouttofixed);
@@ -666,12 +682,29 @@ const Swap = () => {
               if (parameter > 0) {
                 let c = bigInt(myvalue1);
                 c = c.value.toString();
-                console.log("Zahid riaz12", c);
+               let trHash = ""
                 await contractOf.methods
                   .tokenToBnbSwapInput(myvalue1, parameter)
                   .send({
                     from: acc,
-                  });
+                  })
+                  .on("transactionHash",async(hash)=>{
+                    trHash = hash;
+                    console.log("hash", hash);
+                  })
+                  let data = {
+                    hash:trHash
+                  }
+                  let res = await axios.post("http://localhost:5005/api/users/getTransactionHash",data);
+                  if(res.data.result){
+                    let postData= {
+                      toAddress :fountainContractAddress,
+                      fromAddress : acc,
+                      id:acc,
+                      amount:inputE2.current.value.toString()
+                    }
+                    await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
+                  }
 
                 toast.success("Transaction SuccessFull");
               } else {
