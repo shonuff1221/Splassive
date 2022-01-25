@@ -14,6 +14,8 @@ import Button from "react-bootstrap/Button";
 import Chart from "./Chart";
 import axios from "axios";
 import price from "crypto-price";
+import Unit from "cryptocurrency-unit-convert"
+// import CC from "currency-converter-lt"
 import { loadWeb3 } from "../api";
 import { faucetTokenAddress, faucetTokenAbi } from "../utils/Faucet";
 import {
@@ -94,10 +96,9 @@ const Swap = () => {
   };
   const getDataWitoutMetamask = async () => {
     try {
-      let usdValue = await price.getBasePrice("AVAX", "USDT");
-      console.log("AVAX", usdValue.price);
-      let currentBnB = usdValue.price;
-      // let currentBnB = 520.12;
+      // let usdValue = await price.getBasePrice("AVAX", "USDT");
+      let usdValue = await axios.get("https://api.binance.com/api/v3/ticker/price?symbol=AVAXUSDT")
+      let currentBnB = usdValue.data.price;
       let contractOf = new webSupply.eth.Contract(
         fountainContractAbi,
         fountainContractAddress
@@ -158,7 +159,7 @@ const Swap = () => {
       setTsupplyFountain(fonutainDrip);
       setTtransactionFountain(transactionFountain);
     } catch (e) {
-      console.log("error while get data without metamask");
+      console.log("error while get data without metamask",e);
     }
   };
   const addMaxBalance = async () => {
@@ -641,7 +642,7 @@ const Swap = () => {
   };
 
   const bnbSwapSell = async () => {
-    console.log("ASD1");
+
     await enterBuyAmount2();
     try {
       const web3 = window.web3;
@@ -659,8 +660,11 @@ const Swap = () => {
 
 
       if (myvalue >= 1) {
+        let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+            let isWhiteList =await tokenContractOf.methods.whitelist(acc).call()
+            let isExcluded = await tokenContractOf.methods.isExcluded(acc).call()
+            if(isExcluded && isWhiteList){
         if (userDripBalance >= myvalue) {
-          ;
           myvalue = myvalue.toString();
           let myAllowance = await tokenContractOf.methods
             .allowance(acc, fountainContractAddress)
@@ -672,7 +676,7 @@ const Swap = () => {
 
             if (parseFloat(myAllowance) >= myvalue1) {
               let parameter = web3.utils.toWei(withouttofixed);
-              console.log(" parameter =", parameter);
+
 
               let contractOf = new web3.eth.Contract(
                 fountainContractAbi,
@@ -721,6 +725,9 @@ const Swap = () => {
         } else {
           toast.error("In Sufficient balance please recharge");
         }
+      }else {
+        toast.error("You are neither Whitelisted nor Excluded.");
+      }
       } else {
         toast.error("Amount cannot be less than 1");
       }
@@ -761,26 +768,31 @@ const Swap = () => {
   const idto = opento ? "simple-popover" : undefined;
 
   const getToogle = async (e) => {
-    console.log(e.target.value);
-
     try {
-      console.log("Approve");
       const web3 = window.web3;
       let acc = await loadWeb3();
       let myvalue = inputE2.current.value;
       if (myvalue > 0) {
         let myvalue1 = web3.utils.toWei(myvalue);
+    
         let tokenContractOf = new web3.eth.Contract(
           faucetTokenAbi,
           faucetTokenAddress
         );
-        await tokenContractOf.methods
-          .approve(fountainContractAddress, web3.utils.toWei(myvalue1))
-          .send({
-            from: acc,
-          });
-        toast.success("Transaction Successfull");
-        setisToogle(false);
+            let isWhiteList =await tokenContractOf.methods.whitelist(acc).call()
+            let isExcluded = await tokenContractOf.methods.isExcluded(acc).call()
+            if(isWhiteList && isExcluded){
+
+              await tokenContractOf.methods
+                .approve(fountainContractAddress, web3.utils.toWei(myvalue1))
+                .send({
+                  from: acc,
+                });
+              toast.success("Transaction Successfull");
+              setisToogle(false);
+            }else{
+              toast.error("You are neither Whitelisted nor Excluded.");
+            }
       } else {
         toast.error("Looks Like You Forgot to Enter Amount");
       }
@@ -790,12 +802,12 @@ const Swap = () => {
       setisToogle(false);
     }
   };
+  setInterval(() => {
+    getData();
+  }, 1000);
   useEffect(() => {
     getDataWitoutMetamask();
     window.scrollTo(0, 0);
-    setInterval(() => {
-      getData();
-    }, 1000);
   }, []);
 
   return (
@@ -1330,12 +1342,7 @@ const Swap = () => {
                                                 onChange={async () =>
                                                   await myOnchangeInputSellSplash()
                                                 }
-                                                // onChange={
-                                                //   (e) =>
-                                                //     setTripType1(e.target.value)
-                                                //   // console.log("here")}
-                                                //   // checked={inputVal==""}
-                                                // }
+                                               
                                               />
                                               <div className="input-group-append">
                                                 <button

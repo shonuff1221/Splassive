@@ -35,6 +35,7 @@ const Facuet = () => {
   let [Airdropsent, setAirdropsent] = useState(0);
   let [AirdropLastSent, setAirdroplastsent] = useState(0);
   let [playerTeam, setPlayerteam] = useState(0);
+  let [showPlayer, setShowPlayer] = useState(0)
   let airDropPlayerAddress = useRef()
   // users balance
 
@@ -96,6 +97,7 @@ const Facuet = () => {
 
         let userInfoTotal = await contractOf.methods.userInfoTotals(acc).call();
         let totalDeposits = userInfoTotal.total_deposits;
+        let team = userInfoTotal.referrals
         let Uinfo = await contractOf.methods.userInfo(acc).call();
         let totalclaimed = Uinfo.payouts;
         let payOutOf = await contractOf.methods.payoutOf(acc).call();
@@ -131,7 +133,7 @@ const Facuet = () => {
         netPay = web3.utils.fromWei(netPay);
         netPay = parseFloat(netPay).toFixed(6)
         // console.log("team = ", AvmaxPay);
-
+        setShowPlayer(team)
         setMyDeposited(totalDeposits);
         setMaxPayout(maxPay);
         setAvailable(myclaimsAvailable);
@@ -157,25 +159,24 @@ const Facuet = () => {
             if (userDripBalance > enteredAirVal) {
               const web3 = window.web3;
               let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-              let usersinf = await contractOf.methods.users(enteredAddrs);
+              let usersinf = await contractOf.methods.users(enteredAddrs).call();
               let uplineAddress = usersinf.upline;
               let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
               let ownwerAddrss = await contractOf.methods.dripVaultAddress().call();
               enteredAirVal = web3.utils.toWei(enteredAirVal);
-              console.log("upline = ", uplineAddress)
-              if (uplineAddress == undefined || uplineAddress == "0" || uplineAddress == "0x0000000000000000000000000000000000000000") {
+              if ( uplineAddress == "0x0000000000000000000000000000000000000000") {
                 toast.error("No Refferral ")
               } else {
 
 
-                await tokenContractOf.methods.approve(ownwerAddrss, enteredAirVal).send({
+                await tokenContractOf.methods.approve(faucetContractAddress, enteredAirVal).send({
                   from: acc
                 });
                 toast.success("Transaction Successfull")
-                await tokenContractOf.methods.transferFrom(acc, ownwerAddrss, enteredAirVal).send({
-                  from: acc
-                })
-                toast.success("Transaction Successfull");
+                // await tokenContractOf.methods.transferFrom(acc, ownwerAddrss, enteredAirVal).send({
+                //   from: acc
+                // })
+                // toast.success("Transaction Successfull");
                 await contractOf.methods.airdrop(enteredAddrs, enteredAirVal).send({
                   from: acc
                 })
@@ -215,8 +216,6 @@ const Facuet = () => {
 
         let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
         let referral = await contractOfBuddy.methods.buddyOf(acc).call();
-
-
         setLastCheckin(myLastCheckIn);
         setManger(myManager);
         setBenificiary(myBenificiary);
@@ -233,13 +232,16 @@ const Facuet = () => {
   //Player Info
   const goPlayerinfo = async () => {
     let enteredAddress = addressInput.current.value;
-    console.log("Here in player info get :", enteredAddress)
+
     try {
       const web3 = window.web3;
       let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
       let userInfoTotal = await contractOf.methods.userInfoTotals(enteredAddress).call();
       let playeruserInfo = await contractOf.methods.userInfo(enteredAddress).call();
-      let myDirect = playeruserInfo.direct_bonus;
+
+      let myDirect = playeruserInfo.direct_bonus
+      myDirect = web3.utils.fromWei(myDirect);
+      myDirect = parseFloat(myDirect).toFixed(3)
       let nedeposit = userInfoTotal.total_deposits;
       let myrefferals = userInfoTotal.referrals;
       nedeposit = web3.utils.fromWei(nedeposit);
@@ -278,8 +280,10 @@ const Facuet = () => {
 
             let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
             let referral = await contractOfBuddy.methods.buddyOf(acc).call();
-
-            if (referral.length > 15) {
+            let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+            let isWhiteList =await tokenContractOf.methods.whitelist(acc).call()
+            let isExcluded = await tokenContractOf.methods.isExcluded(acc).call()
+            if (referral.length > 15 && isWhiteList && isExcluded ) {
 
               let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
               await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
@@ -289,8 +293,8 @@ const Facuet = () => {
               toast.success("Transaction successfull")
 
             } else {
-              toast.error("No Buddy Please get A buddy first");
-              console.log("No Buddy Please get A buddy first")
+              toast.error("You are neither Whitelisted nor Excluded, nor have a Buddy.");
+             
             }
           } else {
             toast.error("Entered value is greater than your balance")
@@ -315,8 +319,11 @@ const Facuet = () => {
           if (userDripBalance > parseFloat(enteredVal)) {
             let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
             let referral = await contractOfBuddy.methods.buddyOf(acc).call();
+            let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+            let isWhiteList =await tokenContractOf.methods.whitelist(acc).call()
+            let isExcluded = await tokenContractOf.methods.isExcluded(acc).call()
 
-            if (referral.length > 15) {
+            if (referral.length > 15 && isWhiteList && isExcluded) {
               let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
               let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
 
@@ -352,7 +359,7 @@ const Facuet = () => {
               }
 
             } else {
-              toast.error("No Buddy Please get A buddy first");
+              toast.error("You are neither Whitelisted nor Excluded, nor have a Buddy.");
               console.log("No Buddy Please get A buddy first")
             }
           } else {
@@ -378,7 +385,7 @@ const Facuet = () => {
           toast.error("Please enter buddy refral")
         } else {
           let enteredVal = buddy.current.value;
-          // console.log("Your Buddy: ", enteredVal)
+        
           const web3 = window.web3;
           let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
           await contractOfBuddy.methods.updateBuddy(enteredVal).send({
@@ -404,7 +411,6 @@ const Facuet = () => {
       if (acc == "No Wallet") {
         toast.error("No Wallet Connected!")
       } else {
-        // console.log("Reward", availabe)
         if (availabe > 0) {
           const web3 = window.web3;
           let trHash = ""
@@ -413,7 +419,6 @@ const Facuet = () => {
             from: acc
           }).on("transactionHash",async(hash)=>{
             trHash = hash;
-            console.log("hash", hash);
           })
           let data = {
             hash:trHash
@@ -521,14 +526,17 @@ const Facuet = () => {
       } else {
         if (airDropPlayerAddress.current.value > 0) {
           if (budgetRef.current.value > 0) {
-            if (budgetRef.current.value <= userDripBalance) {
+            console.log("userDripBalance", typeof(userDripBalance));
+            console.log("userDripBalance", typeof(budgetRef.current.value));
+
+            if (parseFloat(userDripBalance) >= parseFloat(budgetRef.current.value)  ) {
               let data = {
                 ownerRefral: airDropPlayerAddress.current.value
               }
               let checkReferal = [];
               let referralData = await axios.post("http://localhost:5005/api/users/getRefral", data)
-              checkReferal = referralData.data[0].refrals
               if (referralData.data.length) {
+                checkReferal = referralData.data[0].refrals
                 const web3 = window.web3;
                 const faucetContract = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
 
@@ -539,8 +547,7 @@ const Facuet = () => {
                 mapReferral = await Promise.allSettled(mapReferral)
 
                 let filterReferral = mapReferral.filter((item) => {
-                  console.log("upline", checkSplash);
-                  console.log("upline", web3.utils.fromWei(item.value.deposits));
+            
 
                   return( web3.utils.fromWei(item.value.direct_bonus) >= checkDirects
                    && web3.utils.fromWei(item.value.deposits) >= checkSplash)
@@ -905,7 +912,7 @@ const Facuet = () => {
                         {t("Team.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{team}</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{showPlayer}</span>
                       </p>
                       <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>
                         {t("Players.1")} ({t("Direct.1")} / {t("Total.1")})
@@ -1007,7 +1014,7 @@ const Facuet = () => {
                           </div>
                           <small className="form-text text-left fst-italic">
                             <p style={{ fontSize: "13px" }}>
-                              {t("Aminimumof1Pearlrequiredfordeposits.1")}*
+                              {t("Aminimumof1Splashrequiredfordeposits.1")}*
                             </p>
                           </small>
                           <small className="form-text text-left">

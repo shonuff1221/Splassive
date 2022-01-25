@@ -31,7 +31,7 @@ const Main = () => {
     console.log("drip contract", await tokenContractof.methods.totalTxs().call());
     try {
       let myevent = tokenContractof.events.Transfer();
-      console.log("events", myevent);
+      console.log("events", myevent.arguments[0]);
 
       let drptrx = await tokenContractof.methods.totalTxs().call();
       let players = await tokenContractof.methods.players().call();
