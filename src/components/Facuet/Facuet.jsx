@@ -171,7 +171,7 @@ const Facuet = () => {
                 await tokenContractOf.methods.approve(faucetContractAddress, enteredAirVal).send({
                   from: acc
                 });
-                toast.success("Transaction Successfull")
+                toast.success("Transaction Confirm")
 
                 await contractOf.methods.airdrop(enteredAddrs, enteredAirVal).send({
                   from: acc
@@ -281,7 +281,7 @@ const Facuet = () => {
                 .send({
                   from: acc
                 })
-              toast.success("Transaction successfull")
+              toast.success("Transaction Confirm")
 
             } else {
               toast.error("You are neither Whitelisted nor Excluded, nor have a Buddy.");
@@ -295,6 +295,7 @@ const Facuet = () => {
         }
       }
     } catch (e) {
+      toast.success("Transaction failed")
       console.log("error while approve amount", e);
     }
   }
@@ -341,7 +342,7 @@ const Facuet = () => {
                   }
                   await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
                 }
-                toast.success("Transaction successfull");
+                toast.success("Transaction Confirm");
               } else {
                 toast.error("Entered value is greater than your approval amount ")
               }
@@ -421,7 +422,7 @@ const Facuet = () => {
             }
             await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
           }
-          toast.success("Transaction successfull")
+          toast.success("Transaction Confirm")
         } else {
           toast.error("No Claims Available")
         }
@@ -683,7 +684,7 @@ const Facuet = () => {
         toast.error("No Wallet Connected")
       }else{
         if(budgetRef.current.value >0 ){
-          if(parseFloat(availabe)>=parseFloat(budgetRef.current.value)){
+          if(parseFloat(userDripBalance)>=parseFloat(budgetRef.current.value)){
 
           
           if(sendAddress.length){
@@ -703,6 +704,7 @@ const Facuet = () => {
   
         }
     } catch (e) {
+      toast.error("Transaction failed")
       console.log("error while aprove amount to addresses");
     }
   }
@@ -739,6 +741,7 @@ const Facuet = () => {
         }
       }
     }catch(e){
+      toast.error("Transaction failed")
       console.log("error while send amount to addresses", e);
     }
   }
@@ -759,6 +762,7 @@ const Facuet = () => {
     try {
       if (buddySearch.current.value <= 0) {
         toast.error("Enter Referral Address")
+        setStoreRefral([])
       } else {
         let data = {
           ownerRefral: buddySearch.current.value
@@ -767,6 +771,7 @@ const Facuet = () => {
         if (res.data.length) {
           setStoreRefral(res.data[0].refrals);
         } else {
+          setStoreRefral([])
           toast.error("No Referral Found")
         }
       }
@@ -1143,7 +1148,7 @@ const Facuet = () => {
                           <button
                             onClick={() => updatemyBuddy()}
                             type="button"
-                            className="btn btn-outline-light"
+                            className="btn btn-outline-light Supportbutton"
                           >
                             {t("Update.1")}
                           </button>
@@ -1153,7 +1158,7 @@ const Facuet = () => {
                           <button
                             onClick={() => getOwnerReferral()}
                             type="button"
-                            className="btn btn-outline-light"
+                            className="btn btn-outline-light Supportbutton"
                           >
                             {t("SupportMarketingandDevelopment.1")}
                           </button>
@@ -1380,11 +1385,11 @@ const Facuet = () => {
                                       />
                                     </div>
                                   </fieldset>
-                                  <div className="d-flex justify-content-start">
+                                  <div className="d-flex flex-md-row flex-column justify-content-start">
                                     <button
                                       style={{ backgroundColor: "#86ad74", color: "white" }}
                                       type="button"
-                                      className="btn fst-italic me-2"
+                                      className="btn fst-italic me-md-2 mt-2"
                                       onClick={getUserAddress}
                                     >
                                       {t("Usemyaddress.1")}
@@ -1392,19 +1397,21 @@ const Facuet = () => {
                                     <button
                                       style={{ backgroundColor: "#86ad74", color: "white", border: "1px solid #86ad74" }}
                                       type="button"
-                                      className="btn fst-italic"
+                                      className="btn fst-italic mt-2"
                                       onClick={getRefrals}
                                     >
                                       {t("Viewall.1")}
                                     </button>
+                                    
                                     <button
                                       style={{ backgroundColor: "#7c625a", color: "white", border: "1px solid #7c625a" }}
                                       type="button"
-                                      className="btn fst-italic ml-3"
+                                      className="btn fst-italic ml-md-3 mt-2"
                                       onClick={getRefrals}
                                     >
                                       {t("Show.1")}
                                     </button>
+                                  
                                   </div>
                                 </form>
                               </div>

@@ -18,3 +18,11 @@
 textarea:active {
   cursor: no-drop;
 }
+.Supportbutton{
+  font-size: 20px;
+}
+@media(max-width: 770px){
+  .Supportbutton{
+    font-size: 13px;
+  }
+}

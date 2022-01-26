@@ -595,7 +595,7 @@ const Swap = () => {
       if(acc == "No Wallet"){
         toast.error("No Wallet Connected")
       }else {let myvalue = inputEl.current.value;
-      if (myvalue > 0) {
+      if (parseFloat(myvalue) > 0) {
         if (usersBalance > myvalue) {
           myvalue = web3.utils.toWei(myvalue);
           let contractOf = new web3.eth.Contract(
@@ -720,7 +720,7 @@ const Swap = () => {
                     await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
                   }
 
-                toast.success("Transaction SuccessFull");
+                toast.success("Transaction Confirmed");
               } else {
                 toast.error("Please Select Slippage Tolerance");
               }
@@ -798,7 +798,7 @@ const Swap = () => {
                 .send({
                   from: acc,
                 });
-              toast.success("Transaction Successfull");
+              toast.success("Transaction Confirmed");
               setisToogle(false);
             }else{
               toast.error("You are neither Whitelisted nor Excluded.");
@@ -1472,7 +1472,7 @@ const Swap = () => {
                   ...
                 </p>
               </div>
-              <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
+              <div className="container col-12 col-xl-4 col-lg-4 col-md-4 text-center">
                 <div className="price-top-part">
                   <img src={van} alt="" className="" width="60px" />
                   <h5
@@ -1492,21 +1492,18 @@ const Swap = () => {
                   <p className="text-small fst-italic">{t("Splash.1")}</p>
                 </div>
               </div>
-              <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
+              <div className="container col-12 col-xl-4 col-lg-4 col-md-4 text-center">
                 <div className="price-top-part">
-                  <img
-                    src={contact}
-                    alt=""
-                    className=""
-                    style={{ width: "150px", backgroungColor: "white" }}
+                  <img src={contact} alt="" className=""
+                  style={{ width: "130px", backgroungColor: "white"}} 
                   />
                   <h5
-                    className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-2 fst-italic"
+                    className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-2"
                     style={{ color: "#7c625a" }}
                   >
                     {t("ContractBalance.1")}
                   </h5>
-                  <p className="text-large mb-2 text-white fst-italic">
+                  <p className="text-large mb-2 text-white">
                     <span
                       className="notranslate"
                       style={{ color: "#ab9769", fontSize: "20px" }}
@@ -1514,12 +1511,10 @@ const Swap = () => {
                       {tSupllyFountain}
                     </span>
                   </p>
-                  <p className="text-small fst-italic">
-                    {t("DROPS.1")} ({t("Splash.1")} / {t("LOCKED.1")})
-                  </p>
+                  <p className="text-small"> {t("DROPS.1")} ({t("Splash.1")} / {t("LOCKED.1")})</p>
                 </div>
               </div>
-              <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
+              <div className="container col-12 col-xl-4 col-lg-4 col-md-4 text-center">
                 <div className="price-top-part">
                   <img src={transfer} alt="" width="60px" className="" />
                   <h5

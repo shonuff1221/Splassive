@@ -52,12 +52,12 @@ background-color: #86ad74;
     flex-direction: column;
     /* justify-content: center; */
   }
-  /* .mainimages{
+  .mainimages{
     width: 330px;
-  } */
+  }
 }
 @media(max-width: 480px){
-  /* .mainimages{
-    width: 240px;
-  } */
+  .mainimages{
+    width: 220px;
+  }
 }
