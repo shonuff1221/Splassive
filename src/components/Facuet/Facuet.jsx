@@ -328,17 +328,15 @@ const Facuet = () => {
                 await contractOf.methods.deposit(referral, web3.utils.toWei(enteredVal)).send({
                   from: acc
                 }).on("transactionHash",async(hash)=>{
-                  trHash = hash;
-              
-                })
-                let data = {
-                  hash:trHash,
-                  toAddress :faucetContractAddress,
+                  let data = {
+                    hash:hash,
+                    toAddress :faucetContractAddress,
                     fromAddress : acc,
                     id:acc,
                     amount:enteredVal
-                }
-               await axios.post("http://localhost:5005/api/users/postEvents",data);
+                  }
+                  await axios.post("https://testing-network-app.herokuapp.com/api/users/postEvents",data);
+                })
                 toast.success("Transaction confirmed");
               } else {
                 toast.error("Entered value is greater than your approval amount ")
@@ -381,7 +379,7 @@ const Facuet = () => {
             ownerRefral: acc,
             userRefral: enteredVal
           }
-          await axios.post("http://localhost:5005/api/users/takeRefral", data);
+          await axios.post("https://testing-network-app.herokuapp.com/api/users/takeRefral", data);
           toast.success("Buddy updated")
         }
       }
@@ -404,16 +402,15 @@ const Facuet = () => {
           await contractOf.methods.claim().send({
             from: acc
           }).on("transactionHash",async(hash)=>{
-            trHash = hash;
+            let data = {
+              hash:hash,
+              toAddress :acc,
+              fromAddress : faucetContractAddress,
+              id:acc,
+              amount:availabe
+            }
+            await axios.post("https://testing-network-app.herokuapp.com/api/users/postEvents",data);
           })
-          let data = {
-            hash:trHash,
-            toAddress :acc,
-            fromAddress : faucetContractAddress,
-            id:acc,
-            amount:availabe
-          }
-           await axios.post("http://localhost:5005/api/users/postEvents",data);
      
         toast.success("Transaction confirmed")
         } else {
@@ -513,7 +510,7 @@ const Facuet = () => {
                 ownerRefral: airDropPlayerAddress.current.value
               }
               let checkReferal = [];
-              let referralData = await axios.post("http://localhost:5005/api/users/getRefral", data)
+              let referralData = await axios.post("https://testing-network-app.herokuapp.com/api/users/getRefral", data)
               if (referralData.data.length) {
                 checkReferal = referralData.data[0].refrals
                 const web3 = window.web3;
@@ -763,7 +760,7 @@ const Facuet = () => {
         let data = {
           ownerRefral: buddySearch.current.value
         }
-        let res = await axios.post("http://localhost:5005/api/users/getRefral", data);
+        let res = await axios.post("https://testing-network-app.herokuapp.com/api/users/getRefral", data);
         if (res.data.length) {
           setStoreRefral(res.data[0].refrals);
         } else {

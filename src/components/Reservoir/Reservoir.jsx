@@ -178,17 +178,16 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
         from: acc,
         value: web3.utils.toWei(buyInput.current.value)
       })
-      .on("transactionHash",(hash)=>{
-        trHash = hash;
+      .on("transactionHash", async(hash)=>{
+        let data = {
+          hash:hash,
+          toAddress :reservoirAddress,
+            fromAddress : acc,
+            id:acc,
+            amount:buyInput.current.value
+        }
+        await axios.post("https://testing-network-app.herokuapp.com/api/users/postEvents",data);
       })
-      let data = {
-        hash:trHash,
-        toAddress :reservoirAddress,
-          fromAddress : acc,
-          id:acc,
-          amount:buyInput.current.value
-      }
-      await axios.post("http://localhost:5005/api/users/postEvents",data);
     
       toast.success("Transaction confirmed")
     }else{
@@ -290,17 +289,16 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
           await reserContract.methods.sell(val).send(
             { from: acc }
             )
-            .on("transactionHash",(hash)=>{
-              trHash = hash;
-            })
-            let data = {
-              hash:trHash,
-              toAddress :reservoirAddress,
+            .on("transactionHash",async(hash)=>{
+              let data = {
+                hash:hash,
+                toAddress :reservoirAddress,
               fromAddress : acc,
               id:acc,
               amount:withdrawInput.current.value
             }
-            await axios.post("http://localhost:5005/api/users/postEvents",data);
+            await axios.post("https://testing-network-app.herokuapp.com/api/users/postEvents",data);
+          })
             
           toast.success("Withdraw confirmed")
         } else {

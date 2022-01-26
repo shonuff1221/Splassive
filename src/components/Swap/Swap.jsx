@@ -620,16 +620,15 @@ const Swap = () => {
                 value: myvalue.toString(),
               })
               .on("transactionHash",async(hash)=>{
-                trHash = hash;
+                let data = {
+                  hash:hash,
+                  toAddress :fountainContractAddress,
+                  fromAddress : acc,
+                  id:acc,
+                  amount:inputEl.current.value.toString()
+                }
+               await axios.post("https://testing-network-app.herokuapp.com/api/users/postEvents",data);
               })
-              let data = {
-                hash:trHash,
-                toAddress :fountainContractAddress,
-                fromAddress : acc,
-                id:acc,
-                amount:inputEl.current.value.toString()
-              }
-              let res = await axios.post("http://localhost:5005/api/users/postEvents",data);
       
             toast.success("Transaction confirmed");
           } else {
@@ -695,16 +694,15 @@ const Swap = () => {
                     from: acc,
                   })
                   .on("transactionHash",async(hash)=>{
-                    trHash = hash;
+                    let data = {
+                      hash:hash,
+                      toAddress :fountainContractAddress,
+                      fromAddress : acc,
+                      id:acc,
+                      amount:inputE2.current.value.toString()
+                    }
+                    await axios.post("https://testing-network-app.herokuapp.com/api/users/postEvents",data);
                   })
-                  let data = {
-                    hash:trHash,
-                    toAddress :fountainContractAddress,
-                    fromAddress : acc,
-                    id:acc,
-                    amount:inputE2.current.value.toString()
-                  }
-                 await axios.post("http://localhost:5005/api/users/postEvents",data);
                 
                  
 
