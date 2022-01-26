@@ -267,7 +267,7 @@ const Facuet = () => {
         let enteredVal = inputEl.current.value;
 
         if (enteredVal >= 1) {
-          if (userDripBalance >= parseFloat(enteredVal)) {
+          if (parseFloat(userDripBalance) >= parseFloat(enteredVal)) {
 
             let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
             let referral = await contractOfBuddy.methods.buddyOf(acc).call();
@@ -308,7 +308,7 @@ const Facuet = () => {
         const web3 = window.web3;
         let enteredVal = inputEl.current.value;
         if (enteredVal >= 1) {
-          if (userDripBalance > parseFloat(enteredVal)) {
+          if (parseFloat(userDripBalance) > parseFloat(enteredVal)) {
             let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
             let referral = await contractOfBuddy.methods.buddyOf(acc).call();
             let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
@@ -692,7 +692,8 @@ const Facuet = () => {
             let splashContract =new  web3.eth.Contract(faucetTokenAbi,faucetTokenAddress);
             let value = web3.utils.toWei(budgetRef.current.value)
               await splashContract.methods.approve(faucetContractAddress,value).send({from:acc})
-          }else{
+              to
+            }else{
             toast.error("No recipient found")
           }
         }else{
@@ -1067,7 +1068,7 @@ const Facuet = () => {
                     >
                       <b>{currentWaveStarter}</b>
                     </span>
-                    <p className=" fst-italic" style={{ fontSize: "18px" }}>
+                    {/* <p className=" fst-italic" style={{ fontSize: "18px" }}>
                       {t("Manager.1")}
                     </p>
                     <span
@@ -1079,8 +1080,8 @@ const Facuet = () => {
                       }}
                     >
                       <b>{manager}</b>
-                    </span>
-                    <p className=" fst-italic" style={{ fontSize: "18px" }}>
+                    </span> */}
+                    {/* <p className=" fst-italic" style={{ fontSize: "18px" }}>
                       {t("Beneficiary.1")}
                     </p>
                     <span
@@ -1091,8 +1092,8 @@ const Facuet = () => {
                         lineHeight: "30%",
                       }}
                     >
-                      <b>{benificiary}</b>
-                    </span>
+                      <b>{benificiary}</b> */}
+                    {/* </span> */}
                     <p className=" fst-italic" style={{ fontSize: "18px" }}>
                       {t("LastCheckin.1")}
                     </p>
@@ -1106,7 +1107,7 @@ const Facuet = () => {
                     >
                       <b>{lastCheckin}</b>
                     </span>
-                    <p className=" fst-italic" style={{ fontSize: "18px" }}>
+                    {/* <p className=" fst-italic" style={{ fontSize: "18px" }}>
                       {t("InactivityThreshold.1")}
                     </p>
                     <span
@@ -1118,7 +1119,7 @@ const Facuet = () => {
                       }}
                     >
                       <b>{inActiveThreshols}</b>
-                    </span>
+                    </span> */}
                     {/* </p> */}
                     <form className>
                       <div id="buddy-input">

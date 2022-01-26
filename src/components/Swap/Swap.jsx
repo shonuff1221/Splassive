@@ -596,7 +596,7 @@ const Swap = () => {
         toast.error("No Wallet Connected")
       }else {let myvalue = inputEl.current.value;
       if (parseFloat(myvalue) > 0) {
-        if (usersBalance > myvalue) {
+        if (parseFloat(usersBalance) > parseFloat(myvalue)) {
           myvalue = web3.utils.toWei(myvalue);
           let contractOf = new web3.eth.Contract(
             fountainContractAbi,
@@ -675,7 +675,7 @@ const Swap = () => {
             let isWhiteList =await tokenContractOf.methods.whitelist(acc).call()
             let isExcluded = await tokenContractOf.methods.isExcluded(acc).call()
             if(isExcluded && isWhiteList){
-        if (userDripBalance >= myvalue) {
+        if (parseFloat(userDripBalance) >= myvalue) {
           myvalue = myvalue.toString();
           let myAllowance = await tokenContractOf.methods
             .allowance(acc, fountainContractAddress)
@@ -683,9 +683,10 @@ const Swap = () => {
 
           if (myAllowance > 0) {
             let myvalue1 = web3.utils.toWei(myvalue);
-            
 
-            if (parseFloat(myAllowance) >= myvalue1) {
+            if (parseFloat(myAllowance) >= parseFloat(myvalue1)) {
+          
+
               let parameter = web3.utils.toWei(withouttofixed);
 
 
