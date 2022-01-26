@@ -59,7 +59,7 @@ const Main = () => {
   }
   setInterval(() => {
     getEventDetail()
-  },5000)
+  },10000)
   useEffect(() => {
     setInterval(() => {
       getData();
