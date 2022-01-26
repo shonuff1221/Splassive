@@ -182,18 +182,14 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
         trHash = hash;
       })
       let data = {
-        hash:trHash
-      }
-      let res = await axios.post("http://localhost:5005/api/users/getTransactionHash",data);
-      if(res.data.result){
-        let postData= {
-          toAddress :reservoirAddress,
+        hash:trHash,
+        toAddress :reservoirAddress,
           fromAddress : acc,
           id:acc,
           amount:buyInput.current.value
-        }
-        await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
       }
+      await axios.post("http://localhost:5005/api/users/postEvents",data);
+    
       toast.success("Transaction confirmed")
     }else{
       toast.error("Insufficient balance");
@@ -298,18 +294,14 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
               trHash = hash;
             })
             let data = {
-              hash:trHash
+              hash:trHash,
+              toAddress :reservoirAddress,
+              fromAddress : acc,
+              id:acc,
+              amount:withdrawInput.current.value
             }
-            let res = await axios.post("http://localhost:5005/api/users/getTransactionHash",data);
-            if(res.data.result){
-              let postData= {
-                toAddress :reservoirAddress,
-                fromAddress : acc,
-                id:acc,
-                amount:withdrawInput.current.value
-              }
-              await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
-            }
+            await axios.post("http://localhost:5005/api/users/postEvents",data);
+            
           toast.success("Withdraw confirmed")
         } else {
           toast.error("Insufficient balance")

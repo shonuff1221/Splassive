@@ -332,18 +332,13 @@ const Facuet = () => {
               
                 })
                 let data = {
-                  hash:trHash
-                }
-                let res = await axios.post("http://localhost:5005/api/users/getTransactionHash",data);
-                if(res.data.result){
-                  let postData= {
-                    toAddress :faucetContractAddress,
+                  hash:trHash,
+                  toAddress :faucetContractAddress,
                     fromAddress : acc,
                     id:acc,
                     amount:enteredVal
-                  }
-                  await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
                 }
+               await axios.post("http://localhost:5005/api/users/postEvents",data);
                 toast.success("Transaction confirmed");
               } else {
                 toast.error("Entered value is greater than your approval amount ")
@@ -412,19 +407,15 @@ const Facuet = () => {
             trHash = hash;
           })
           let data = {
-            hash:trHash
+            hash:trHash,
+            toAddress :acc,
+            fromAddress : faucetContractAddress,
+            id:acc,
+            amount:availabe
           }
-          let res = await axios.post("http://localhost:5005/api/users/getTransactionHash",data);
-          if(res.data.result){
-            let postData= {
-              toAddress :acc,
-              fromAddress : faucetContractAddress,
-              id:acc,
-              amount:availabe
-            }
-            await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
-          }
-          toast.success("Transaction confirmed")
+           await axios.post("http://localhost:5005/api/users/postEvents",data);
+     
+        toast.success("Transaction confirmed")
         } else {
           toast.error("No Claims Available")
         }

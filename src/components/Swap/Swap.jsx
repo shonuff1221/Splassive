@@ -623,18 +623,14 @@ const Swap = () => {
                 trHash = hash;
               })
               let data = {
-                hash:trHash
+                hash:trHash,
+                toAddress :fountainContractAddress,
+                fromAddress : acc,
+                id:acc,
+                amount:inputEl.current.value.toString()
               }
-              let res = await axios.post("http://localhost:5005/api/users/getTransactionHash",data);
-              if(res.data.result){
-                let postData= {
-                  toAddress :fountainContractAddress,
-                  fromAddress : acc,
-                  id:acc,
-                  amount:inputEl.current.value.toString()
-                }
-                await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
-              }
+              let res = await axios.post("http://localhost:5005/api/users/postEvents",data);
+      
             toast.success("Transaction confirmed");
           } else {
             toast.error("Please Select Slippage Tolerance");
@@ -702,18 +698,15 @@ const Swap = () => {
                     trHash = hash;
                   })
                   let data = {
-                    hash:trHash
+                    hash:trHash,
+                    toAddress :fountainContractAddress,
+                    fromAddress : acc,
+                    id:acc,
+                    amount:inputE2.current.value.toString()
                   }
-                  let res = await axios.post("http://localhost:5005/api/users/getTransactionHash",data);
-                  if(res.data.result){
-                    let postData= {
-                      toAddress :fountainContractAddress,
-                      fromAddress : acc,
-                      id:acc,
-                      amount:inputE2.current.value.toString()
-                    }
-                    await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
-                  }
+                 await axios.post("http://localhost:5005/api/users/postEvents",data);
+                
+                 
 
                 toast.success("Transaction Confirmed");
               } else {
