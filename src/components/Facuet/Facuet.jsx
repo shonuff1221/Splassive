@@ -87,14 +87,14 @@ const Facuet = () => {
       }
 
     } else {
-
-
       try {
 
         const web3 = window.web3;
         let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
         let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-
+        let contractInfo = await contractOf.methods.contractInfo().call();
+        let myTeam = contractInfo._total_users;
+        setTeam(myTeam);
         let userInfoTotal = await contractOf.methods.userInfoTotals(acc).call();
         let totalDeposits = userInfoTotal.total_deposits;
         let team = userInfoTotal.referrals
@@ -132,7 +132,6 @@ const Facuet = () => {
         let AvmaxPay = maxPay - totalclaimed;
         netPay = web3.utils.fromWei(netPay);
         netPay = parseFloat(netPay).toFixed(6)
-        // console.log("team = ", AvmaxPay);
         setShowPlayer(team)
         setMyDeposited(totalDeposits);
         setMaxPayout(maxPay);
@@ -145,13 +144,13 @@ const Facuet = () => {
   }
   //Direct AirDrop
   const directAirDrop = async () => {
+    try {
     let acc = await loadWeb3();
     if (acc == "No Wallet") {
       toast.error("No Wallet Connected")
     }
     else {
 
-      try {
         let enteredAirVal = airAmount.current.value;
         let enteredAddrs = airAddress.current.value;
         if (enteredAirVal > 0) {
@@ -173,10 +172,7 @@ const Facuet = () => {
                   from: acc
                 });
                 toast.success("Transaction Successfull")
-                // await tokenContractOf.methods.transferFrom(acc, ownwerAddrss, enteredAirVal).send({
-                //   from: acc
-                // })
-                // toast.success("Transaction Successfull");
+
                 await contractOf.methods.airdrop(enteredAddrs, enteredAirVal).send({
                   from: acc
                 })
@@ -191,11 +187,11 @@ const Facuet = () => {
         } else {
           toast.error("Looks like you forgot to enter Splash Amount")
         }
-      } catch (e) {
-        console.log("Error :", e)
       }
+      
+    } catch (e) {
+      console.log("Error :", e)
     }
-
   }
   // Custody
 
@@ -203,7 +199,6 @@ const Facuet = () => {
     let acc = await loadWeb3();
     if (acc == "No Wallet") {
       console.log("Not Connected")
-
     }
     else {
       try {
@@ -234,32 +229,28 @@ const Facuet = () => {
     let enteredAddress = addressInput.current.value;
 
     try {
-      const web3 = window.web3;
-      let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+      let contractOf = new webSupply.eth.Contract(faucetContractAbi, faucetContractAddress);
       let userInfoTotal = await contractOf.methods.userInfoTotals(enteredAddress).call();
       let playeruserInfo = await contractOf.methods.userInfo(enteredAddress).call();
 
       let myDirect = playeruserInfo.direct_bonus
-      myDirect = web3.utils.fromWei(myDirect);
+      myDirect = webSupply.utils.fromWei(myDirect);
       myDirect = parseFloat(myDirect).toFixed(3)
       let nedeposit = userInfoTotal.total_deposits;
       let myrefferals = userInfoTotal.referrals;
-      nedeposit = web3.utils.fromWei(nedeposit);
+      nedeposit = webSupply.utils.fromWei(nedeposit);
       nedeposit = parseFloat(nedeposit).toFixed(3)
       let aidropsent = userInfoTotal.airdrops_received;
-      aidropsent = web3.utils.fromWei(aidropsent);
+      aidropsent = webSupply.utils.fromWei(aidropsent);
       aidropsent = parseFloat(aidropsent).toFixed(3);
       let airlstdrp = userInfoTotal.airdrops_total;
-      airlstdrp = web3.utils.fromWei(airlstdrp);
+      airlstdrp = webSupply.utils.fromWei(airlstdrp);
       airlstdrp = parseFloat(airlstdrp).toFixed(3);
       setnetDeposit(nedeposit);
       setAirdropsent(aidropsent);
       setAirdroplastsent(airlstdrp);
       setPlayerteam(myrefferals);
       setdirect(myDirect);
-
-
-
     } catch (e) {
       toast.error("Can't Fetch User's Information at the moment please try again later.")
       console.log("error", e)
@@ -335,15 +326,12 @@ const Facuet = () => {
                   from: acc
                 }).on("transactionHash",async(hash)=>{
                   trHash = hash;
-                  console.log("hash", hash);
+              
                 })
                 let data = {
                   hash:trHash
                 }
                 let res = await axios.post("http://localhost:5005/api/users/getTransactionHash",data);
-                console.log("hash",res.data);
-                console.log("hash",res.data.result);
-
                 if(res.data.result){
                   let postData= {
                     toAddress :faucetContractAddress,
@@ -360,7 +348,7 @@ const Facuet = () => {
 
             } else {
               toast.error("You are neither Whitelisted nor Excluded, nor have a Buddy.");
-              console.log("No Buddy Please get A buddy first")
+              
             }
           } else {
             toast.error("Entered value is greater than your balance")
@@ -446,10 +434,8 @@ const Facuet = () => {
   }
   const getOwnerReferral = async () => {
     try {
-      const web3 = window.web3;
-      let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+      let contractOf = new webSupply.eth.Contract(faucetContractAbi, faucetContractAddress);
       let ownwerAddrss = await contractOf.methods.dripVaultAddress().call();
-      // console.log("Owner Address :", ownwerAddrss);
       buddy.current.value = ownwerAddrss;
     } catch (e) {
       console.log("Error :", e)
@@ -526,9 +512,6 @@ const Facuet = () => {
       } else {
         if (airDropPlayerAddress.current.value > 0) {
           if (budgetRef.current.value > 0) {
-            console.log("userDripBalance", typeof(userDripBalance));
-            console.log("userDripBalance", typeof(budgetRef.current.value));
-
             if (parseFloat(userDripBalance) >= parseFloat(budgetRef.current.value)  ) {
               let data = {
                 ownerRefral: airDropPlayerAddress.current.value
@@ -543,17 +526,12 @@ const Facuet = () => {
                 let mapReferral = checkReferal.map(async (item) => {
                   return await faucetContract.methods.users(item).call();
                 })
-                console.log("mapReferral", mapReferral);
                 mapReferral = await Promise.allSettled(mapReferral)
-
                 let filterReferral = mapReferral.filter((item) => {
-            
-
                   return( web3.utils.fromWei(item.value.direct_bonus) >= checkDirects
                    && web3.utils.fromWei(item.value.deposits) >= checkSplash)
                    && item.value.upline !== "0x0000000000000000000000000000000000000000"
                 })
-                console.log("showCompaign", filterReferral);
                 if (filterReferral.length) {
                   if (checkCompaign == 0) {
                     setNumberOfReciept(filterReferral.length)
@@ -571,9 +549,7 @@ const Facuet = () => {
                     })
                     setSendAddress(sAdd)
                     setShowCompaign(dataAdd)
-                    console.log("showCompaign", dataAdd);
                   } else if (checkCompaign == 1) {
-
                     let dataAdd = []
                     let sAdd = []
                     let amount = budgetRef.current.value;
@@ -589,10 +565,9 @@ const Facuet = () => {
                     setNumberOfReciept(sAdd.length)
                     setSendAddress(sAdd)
                     setShowCompaign(dataAdd)
-                    console.log("showCompaign", showCompaign);
                   } else if (checkCompaign == 5) {
                     if (filterReferral.length < 5) {
-                      toast.error("your Referrel below your compaign")
+                      toast.error("Your Referrals are less than the selected compaign")
                     } else {
                       let dataAdd = []
                       let sAdd = []
@@ -612,7 +587,7 @@ const Facuet = () => {
                     }
                   } else if (checkCompaign == 20) {
                     if (filterReferral.length < 20) {
-                      toast.error("your Referrel below your compaign")
+                      toast.error("Your Referrals are less than the selected compaign")
                     } else {
                       let dataAdd = []
                       let sAdd = []
@@ -632,7 +607,7 @@ const Facuet = () => {
                     }
                   } else if (checkCompaign == 50) {
                     if (filterReferral.length < 50) {
-                      toast.error("your Referrel below your compaign")
+                      toast.error("Your Referrals are less than the selected compaign")
                     } else {
                       let dataAdd = []
                       let sAdd = []
@@ -652,7 +627,7 @@ const Facuet = () => {
                     }
                   } else {
                     if (filterReferral.length < 100) {
-                      toast.error("your Referrel below your compaign")
+                      toast.error("Your Referrals are less than the selected compaign")
                     } else {
                       let dataAdd = []
                       let sAdd = []
@@ -678,23 +653,23 @@ const Facuet = () => {
                   setSendEstimateAmount(0)
                   setSendAddress([])
                   setShowCompaign([])
-                  toast.error("No Youser found your requirements")
+                  toast.error("No users found")
                 }
 
               } else {
-                toast.error("no refral found")
+                toast.error("You have not got any referral")
               }
 
 
             } else {
-              toast.error("Oops your Spalsh Balance is Low your Budget amout")
+              toast.error("Oops insufficient Spash balance")
             }
           } else {
-            toast.error("Plese Enter Budget Amount")
+            toast.error("Looks like you forgot to enter Budget amount")
           }
 
         } else {
-          toast.error("Please Enter Address or Click use my address")
+          toast.error("Please enter address or click use my address")
         }
       }
     } catch (e) {
@@ -708,24 +683,24 @@ const Facuet = () => {
         toast.error("No Wallet Connected")
       }else{
         if(budgetRef.current.value >0 ){
+          if(parseFloat(availabe)>=parseFloat(budgetRef.current.value)){
+
+          
           if(sendAddress.length){
-            console.log("test", sendAddress.length);
-            console.log("test",sendEstimateAmount);  
             const web3 = window.web3;
             let splashContract =new  web3.eth.Contract(faucetTokenAbi,faucetTokenAddress);
             let value = web3.utils.toWei(budgetRef.current.value)
               await splashContract.methods.approve(faucetContractAddress,value).send({from:acc})
-              
-           
           }else{
-            toast.error("No sender found")
+            toast.error("No recipient found")
           }
-
-          }else{
-          toast.error("Enter Amount Please")
+        }else{
+          toast.error("Entered amount is greater than your balance")
         }
-        
-          
+          }else{
+          toast.error("Looks like you forgot to enter amount")
+        }
+  
         }
     } catch (e) {
       console.log("error while aprove amount to addresses");
@@ -742,32 +717,31 @@ const Facuet = () => {
             const web3 = window.web3
             let splashContract =new  web3.eth.Contract(faucetTokenAbi,faucetTokenAddress);
             let allowance = await splashContract.methods.allowance(acc, faucetContractAddress).call();
-            console.log("test",allowance);
+            
             let all = web3.utils.fromWei(allowance);
-            console.log("test",all);
+           
             if(budgetRef.current.value <= all){
               let facutContract =new  web3.eth.Contract(faucetContractAbi,faucetContractAddress);
               let tosendEstimateAmount = sendEstimateAmount.toString()
-              console.log("test", typeof(tosendEstimateAmount));
+              
               tosendEstimateAmount=web3.utils.toWei(sendEstimateAmount.toString())
               await facutContract.methods.MultiSendairdrop(sendAddress, tosendEstimateAmount).send({from:acc})
             
-              console.log("test", sendAddress);
+              
             }else{
-              toast.error("Oops your approve balance is low")
+              toast.error("The entered amount is greater than your approval amount")
             }
           }else{
-            toast.error("No sender found")
+            toast.error("No recipient found")
           }
         }else{
-          toast.error("Oops your approve balance is low")
+          toast.error("Looks like you forgot to enter the fields")
         }
       }
     }catch(e){
       console.log("error while send amount to addresses", e);
     }
   }
-  console.log("showCompaign", sendAddress);
   const getUserAddress = async () => {
     try {
       let acc = await loadWeb3();
@@ -776,7 +750,6 @@ const Facuet = () => {
       } else {
         buddySearch.current.value = acc;
       }
-
     } catch (e) {
       console.log("error while get user address", e);
     }

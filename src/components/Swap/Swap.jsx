@@ -15,7 +15,6 @@ import Chart from "./Chart";
 import axios from "axios";
 import price from "crypto-price";
 import Unit from "cryptocurrency-unit-convert"
-// import CC from "currency-converter-lt"
 import { loadWeb3 } from "../api";
 import { faucetTokenAddress, faucetTokenAbi } from "../utils/Faucet";
 import {
@@ -71,11 +70,6 @@ const Swap = () => {
         console.log("No wallet Connected");
       } else {
         const web3 = window.web3;
-        let contractOf = new web3.eth.Contract(
-          fountainContractAbi,
-          fountainContractAddress
-        );
-
         let tokenContractOf = new web3.eth.Contract(
           faucetTokenAbi,
           faucetTokenAddress
@@ -112,7 +106,7 @@ const Swap = () => {
       let contractFBalance = await webSupply.eth.getBalance(
         fountainContractAddress
       );
-      contractFBalance = await webSupply.utils.fromWei(contractFBalance);
+      contractFBalance = webSupply.utils.fromWei(contractFBalance);
       contractFBalance = parseFloat(contractFBalance).toFixed(7);
 
       let contractFdripBalance = await tokenContractOf.methods
@@ -130,8 +124,6 @@ const Swap = () => {
       fonutainDrip = parseFloat(fonutainDrip).toFixed(7);
 
       let transactionFountain = await contractOf.methods.totalTxs().call();
-      // transactionFountain= web3.utils.fromWei(transactionFountain);
-      // transactionFountain= parseFloat(transactionFountain).toFixed(3);
 
       let converted = currentBnB * contractFBalance;
       converted = parseFloat(converted).toFixed(7);
@@ -163,16 +155,13 @@ const Swap = () => {
     }
   };
   const addMaxBalance = async () => {
+    try{
     let acc = await loadWeb3();
-    console.log("acc = ", acc);
+
     if (acc == "No Wallet") {
-      console.log("acc = 2", acc);
-      console.log("No Wallet");
+      toast.error("No Wallet Connected")
     } else {
       const web3 = window.web3;
-
-      console.log("acc = 3", acc);
-      let compBalance;
       let tokenContractOf = await new web3.eth.Contract(
         faucetTokenAbi,
         faucetTokenAddress
@@ -184,26 +173,27 @@ const Swap = () => {
       setuserDripBalance(dripBalance);
       await enterBuyAmount2();
     }
+  }catch(e){
+    console.log("error while get max balance",e);
+  }
   };
   const enterBuyAmount1 = async () => {
+    try{
     let myvalue = inputEl.current.value;
     let contractOf = new webSupply.eth.Contract(
       fountainContractAbi,
       fountainContractAddress
     );
-    console.log("Contract of", contractOf.methods);
     if (myvalue > 0) {
-      console.log("value", myvalue);
-
       myvalue = webSupply.utils.toWei(myvalue);
       setEnteredval(myvalue);
 
-      // console.log("tokensInputPrice", await contractOf.methods.getBnbToTokenInputPrice(myvalue).call());
+      
 
       let tokensInputPrice = await contractOf.methods
         .getBnbToTokenInputPrice(myvalue)
         .call();
-      console.log("value", tokensInputPrice);
+     
       tokensInputPrice = webSupply.utils.fromWei(tokensInputPrice);
       tokensInputPrice = parseFloat(tokensInputPrice).toFixed(7);
 
@@ -217,8 +207,13 @@ const Swap = () => {
       setEstimate();
       setMinrecieved();
     }
+  }catch(e){
+    console.log("error while getting data against entered amount",e);
+  }
   };
   const enterRadioAmount1 = async () => {
+    try{
+
     let myMultiplyValue = 1;
     let myvalue = inputEl.current.value;
 
@@ -247,10 +242,15 @@ const Swap = () => {
       setEstimate();
       setMinrecieved();
     }
+  }catch(e){
+    console.log("Error while Getting data against selected radio button",e)
+  }
   };
   const enterRadioAmount3 = async () => {
+    try{
+
+ 
     let myMultiplyValue = 3;
-    console.log("Radio 3");
     const web3 = window.web3;
     let myvalue = inputEl.current.value;
     let contractOf = new web3.eth.Contract(
@@ -278,8 +278,12 @@ const Swap = () => {
       setEstimate();
       setMinrecieved();
     }
+  }catch(e){
+    console.log("Error while getting amount against selected radio button",e);
+  }
   };
   const enterRadioAmount5 = async () => {
+    try{
     let myMultiplyValue = 5;
 
     const web3 = window.web3;
@@ -308,8 +312,15 @@ const Swap = () => {
       setEstimate();
       setMinrecieved();
     }
+  }catch(e){
+    console.log("Error while getting amount against selected radio button",e);
+  }
   };
   const myOnchangeInputBuySwap = async () => {
+    try
+    {
+
+    
     let myCurrentVal = mYentered.current.value;
     if (myCurrentVal < 100) {
       if (myCurrentVal >= 1) {
@@ -349,8 +360,12 @@ const Swap = () => {
     } else {
       toast.error("Slippage Cannot be over 100");
     }
+  }catch(e){
+    console.log("Error while getting values against entered amount" );
+  }
   };
   const myRadioSellSplash1 = async () => {
+    try{
     let myValFormul = 1;
     const web3 = window.web3;
     let myvalue = inputE2.current.value;
@@ -388,8 +403,12 @@ const Swap = () => {
       setMinRecievedDrip(0);
       setTenperVal(0);
     }
+  }catch(e){
+    console.log("Error while getting amount against selected radio button",e);
+  }
   };
   const myRadioSellSplash3 = async () => {
+   try{
     let myValFormul = 3;
     const web3 = window.web3;
     let myvalue = inputE2.current.value;
@@ -427,10 +446,12 @@ const Swap = () => {
       setMinRecievedDrip(0);
       setTenperVal(0);
     }
-    // console.log("miniumrcvd ; ", miniumrcvd);
+  }catch(e){
+    console.log("Error while getting amount against selected radio button",e);
+  }
   };
   const enterBuyAmount2 = async () => {
-    console.log("funk to");
+    try{
     const web3 = window.web3;
     let myvalue = inputE2.current.value;
     let contractOf = new web3.eth.Contract(
@@ -440,14 +461,12 @@ const Swap = () => {
 
     if (myvalue > 0) {
       myvalue = web3.utils.toWei(myvalue);
-      console.log("eNTERTERD VALUE", myvalue);
 
       setEnteredval(myvalue);
       let tokensOutputPrice = await contractOf.methods
         .getTokenToBnbInputPrice(myvalue)
         .call();
       tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice);
-      console.log("BNB", tokensOutputPrice);
 
       let tenPercentVal = (tokensOutputPrice * 10) / 100;
       tenPercentVal = tokensOutputPrice - tenPercentVal;
@@ -470,10 +489,12 @@ const Swap = () => {
       setMinRecievedDrip(0);
       setTenperVal(0);
     }
-    // console.log("miniumrcvd ; ", miniumrcvd);
+  }catch(e){
+    console.log("Error while getting values against entered amoount",e);
+  }
   };
   const myOnchangeInputSellSplash = async () => {
-    console.log("myOnchangeInputSellSplash");
+   try{
     let iEntered = mYEnter1.current.value;
     if (iEntered < 100) {
       if (iEntered >= 1) {
@@ -487,14 +508,12 @@ const Swap = () => {
 
         if (myvalue > 0) {
           myvalue = web3.utils.toWei(myvalue);
-          console.log("eNTERTERD VALUE", myvalue);
 
           setEnteredval(myvalue);
           let tokensOutputPrice = await contractOf.methods
             .getTokenToBnbInputPrice(myvalue)
             .call();
           tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice);
-          console.log("BNB", tokensOutputPrice);
 
           let tenPercentVal = (tokensOutputPrice * 10) / 100;
           tenPercentVal = tokensOutputPrice - tenPercentVal;
@@ -522,10 +541,13 @@ const Swap = () => {
     } else {
       toast.error("Slippage cannot be Over 100");
     }
-    // console.log("miniumrcvd ; ", miniumrcvd);
+  }catch(e){
+    console.log("Error while getting values against entered amount",e);
+  }
   };
   const myRadioSellSplash5 = async () => {
-    console.log("myRadioSellSplash 5 ");
+
+    try{
     let myValFormul = 5;
     const web3 = window.web3;
     let myvalue = inputE2.current.value;
@@ -536,24 +558,20 @@ const Swap = () => {
 
     if (myvalue > 0) {
       myvalue = web3.utils.toWei(myvalue);
-      console.log("eNTERTERD VALUE", myvalue);
 
       setEnteredval(myvalue);
       let tokensOutputPrice = await contractOf.methods
         .getTokenToBnbInputPrice(myvalue)
         .call();
       tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice);
-      console.log("BNB", tokensOutputPrice);
 
       let tenPercentVal = (tokensOutputPrice * 10) / 100;
       tenPercentVal = tokensOutputPrice - tenPercentVal;
-      // tenPercentVal = web3.utils.fromWei(tenPercentVal);
+
       let miniumrcvdDrip = (myValFormul * tenPercentVal) / 100;
       let percentValue = tenPercentVal - miniumrcvdDrip;
       percentValue = parseFloat(percentValue).toFixed(7);
       tenPercentVal = parseFloat(tenPercentVal);
-
-      // tokensOutputPrice = web3.utils.fromWei(tokensOutputPrice)
       tokensOutputPrice = parseFloat(tokensOutputPrice).toFixed(7);
 
       percentValue = parseFloat(percentValue).toFixed(7);
@@ -565,10 +583,11 @@ const Swap = () => {
       setMinRecievedDrip(0);
       setTenperVal(0);
     }
-    // console.log("miniumrcvd ; ", miniumrcvd);
+  }catch(e){
+      console.log("Error while getting amount against selected radio button",e);
+    }
   };
   const swapBnbtoToken = async () => {
-    
     await enterBuyAmount1();
     try {
       const web3 = window.web3;
@@ -586,16 +605,10 @@ const Swap = () => {
           let tokensInputPrice = await contractOf.methods
             .getBnbToTokenInputPrice(myvalue)
             .call();
-          // console.log(typeof (tripType))
           let miniumrcvd = (tripType * tokensInputPrice) / 100;
           let percentValue = tokensInputPrice - miniumrcvd;
-
-          console.log("myValue", typeof percentValue);
-
           percentValue = percentValue.toString();
           let b = bigInt(percentValue);
-          console.log("AJSJD", myvalue.toString());
-          console.log("percentValue ", b.value);
           let convertValue = b.value.toString();
 
           if (percentValue > 0) {
@@ -608,7 +621,6 @@ const Swap = () => {
               })
               .on("transactionHash",async(hash)=>{
                 trHash = hash;
-                console.log("hash", hash);
               })
               let data = {
                 hash:trHash
@@ -654,7 +666,6 @@ const Swap = () => {
       let myAllowance = await tokenContractOf.methods
         .allowance(acc, fountainContractAddress)
         .call();
-      console.log("Allowance", myAllowance);
       let myvalue = inputE2.current.value;
       myvalue = parseFloat(myvalue);
 
@@ -694,7 +705,6 @@ const Swap = () => {
                   })
                   .on("transactionHash",async(hash)=>{
                     trHash = hash;
-                    console.log("hash", hash);
                   })
                   let data = {
                     hash:trHash
@@ -1085,13 +1095,7 @@ const Swap = () => {
                                                 onChange={async () =>
                                                   await myOnchangeInputBuySwap()
                                                 }
-                                                // onChange={async(e) =>
-
-                                                //     setTripType(e.target.value)
-                                                //   // console.log("here")}
-                                                //   // checked={inputVal==""}
-
-                                                // }
+                                            
                                               />
                                               <div className="input-group-append">
                                                 <button

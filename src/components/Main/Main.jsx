@@ -27,22 +27,16 @@ const Main = () => {
 
 
   const getData = async () => {
-    let tokenContractof = new webSupply.eth.Contract(dripTokenAbi, dripTokenAddress);
-    console.log("drip contract", await tokenContractof.methods.totalTxs().call());
+    let tokenContractof = new webSupply.eth.Contract(dripTokenAbi, dripTokenAddress); 
     try {
-      let myevent = tokenContractof.events.Transfer();
-      console.log("events", myevent.arguments[0]);
-
       let drptrx = await tokenContractof.methods.totalTxs().call();
       let players = await tokenContractof.methods.players().call();
       let ttlSply = await tokenContractof.methods.totalSupply().call();
       ttlSply = webSupply.utils.fromWei(ttlSply);
       ttlSply = parseFloat(ttlSply).toFixed(3);
-      console.log("TRDX", players);
       setDriptransaction(drptrx);
       setDripTotalSupply(ttlSply);
       setDripplayers(players);
-
     } catch (e) {
       console.log("Error while Fetching Data In Main", e)
     }
@@ -58,8 +52,6 @@ const Main = () => {
         }
         let res = await axios.post("http://localhost:5005/api/users/getTransactionDetail", data)
         setEventDetail(res.data)
-        console.log("event responce", res.data);
-
       }
     } catch (e) {
       console.log("error while get events", e);

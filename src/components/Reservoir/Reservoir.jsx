@@ -63,19 +63,16 @@ function Reservoir() {
       let totalDro = await contract.methods.totalSupply().call();
       totalDro =  webSupply.utils.fromWei(totalDro);
       totalDro = parseFloat(totalDro).toFixed(3);
-      // console.log("total drpps",  totalDro);
       let totalDeposit = await contract.methods.totalDeposits().call();
-      totalDeposit = await webSupply.utils.fromWei(totalDeposit);
+      totalDeposit =  webSupply.utils.fromWei(totalDeposit);
       totalDeposit = parseFloat(totalDeposit).toFixed(3);
       let totalDraw = await contract.methods.totalWithdrawn().call();
-      totalDraw = await webSupply.utils.fromWei(totalDraw);
+      totalDraw =  webSupply.utils.fromWei(totalDraw);
       totalDraw = parseFloat(totalDraw).toFixed(3);
       let cmpdTotal = await contract.methods.myDividends().call();
-      cmpdTotal = await webSupply.utils.fromWei(cmpdTotal);
+      cmpdTotal =  webSupply.utils.fromWei(cmpdTotal);
       cmpdTotal = parseFloat(cmpdTotal).toFixed(3);
       let players = await contract.methods.players().call();
-      // players = await webSupply.utils.fromWei(players);
-      // players= parseFloat(players).toFixed(3);
       let loackBalance = await contract.methods.lockedTokenBalance().call();
       loackBalance =  webSupply.utils.fromWei(loackBalance);
       loackBalance = parseFloat(loackBalance).toFixed(3);
@@ -165,7 +162,7 @@ function Reservoir() {
     try {
       let acc = await loadWeb3();
       if (acc == "No Wallet") {
-        toast.error("no wallet")
+        toast.error("No Wallet Connected")
       } else {
         const web3 = window.web3;
         let bal = await web3.eth.getBalance(acc);
@@ -197,22 +194,22 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
         }
         await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
       }
-      toast.success("Transaction Successed")
+      toast.success("Transaction confirmed")
     }else{
-      toast.error("fund insufficient");
+      toast.error("Insufficient balance");
     }
   }else{
-    toast.error("Entered Value is below then min 0.01")
+    toast.error("Amount cannot be less than 0.01")
     
   }
 }else{
-  toast.error("Please Enter any Value")
+  toast.error("Looks like you forgot to enter amount")
 }
       }
 
     } catch (e) {
       console.log("error while buy function", e);
-      toast.error("Transaction Rejected")
+      toast.error("Transaction Failed")
     }
 
   }
@@ -220,7 +217,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
     try {
       let acc = await loadWeb3();
       if (acc == "No Wallet") {
-        console.log("No Wallet Connected")
+        toast.error("No Wallet Connected")
       } else {
         const web3 = window.web3;
         let contract = new web3.eth.Contract(reservoirAbi, reservoirAddress);
@@ -230,10 +227,10 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
           await contract.methods.reinvest().send({
             from: acc
           });
-          toast.success("Transaction Successfull")
+          toast.success("Transaction confirmed")
 
         } else {
-          toast.error("your dividend balance is low")
+          toast.error("Insufficient dividend balance")
         }
       }
     } catch (e) {
@@ -244,7 +241,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
     try {
       let acc = await loadWeb3();
       if (acc == "No Wallet") {
-        console.log("No Wallet Connected")
+        toast.error("No Wallet Connected")
       } else {
         const web3 = window.web3;
         let reserContract = new web3.eth.Contract(reservoirAbi, reservoirAddress);
@@ -255,20 +252,20 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
         let myDividends = await reserContract.methods.myDividends().call();
         myDividends = web3.utils.fromWei(myDividends)
         if (dividendsOf <= 0) {
-          toast.error("you have zero dividends")
+          toast.error("Dividends cannot be zero")
         } else if (isWhiteList == false) {
-          toast.error("you are not white listed")
+          toast.error("You are not white listed")
         } else {
      
           await reserContract.methods.withdraw().send(
             { from: acc })
             
-          toast.success("Transaction Successfull")
+          toast.success("Transaction confirmed")
         }
       }
 
     } catch (e) {
-      toast.error("Claim Rejected")
+      toast.error("Transaction failed")
       console.log("error while claim", e);
     }
   }
@@ -277,7 +274,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
       let acc = await loadWeb3();
 
       if (acc == "No Wallet") {
-        console.log("No Wallet Connected")
+        toast.error("No Wallet Connected")
       } else {
         const web3 = window.web3;
        
@@ -285,12 +282,12 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
         let balance = await reserContract.methods.balanceOf(acc).call();
         balance = web3.utils.fromWei(balance);
         if (withdrawInput.current.value == "") {
-          toast.error("Enter value please");
+          toast.error("Withdrawal amount field cannot be empty");
         }
         else if (withdrawInput.current.value <= 0) {
-          toast.error("Kindly Enter greater than 0")
+          toast.error("Withdrawal amount must be greater than 0")
         } else if (balance <= 0) {
-          toast.error("insufficient Balance")
+          toast.error("Insufficient Balance")
         } else if (withdrawInput.current.value <= balance) {
           let trHash = ""
           let val = web3.utils.toWei(withdrawInput.current.value);
@@ -313,16 +310,16 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
               }
               await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
             }
-          toast.success("Withdraw Successed")
+          toast.success("Withdraw confirmed")
         } else {
-          toast.error("insufficient funds")
+          toast.error("Insufficient balance")
         }
 
 
       }
 
     } catch (e) {
-      toast.error("Withdraw Rejected")
+      toast.error("Transaction Failed")
       console.log("error while withdraw", e);
     }
   }
