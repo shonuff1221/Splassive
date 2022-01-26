@@ -635,7 +635,7 @@ const Swap = () => {
                 }
                 await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
               }
-            toast.success("Transaction SucessFull");
+            toast.success("Transaction confirmed");
           } else {
             toast.error("Please Select Slippage Tolerance");
           }
@@ -659,13 +659,7 @@ const Swap = () => {
     try {
       const web3 = window.web3;
       let acc = await loadWeb3();
-      let tokenContractOf = new web3.eth.Contract(
-        faucetTokenAbi,
-        faucetTokenAddress
-      );
-      let myAllowance = await tokenContractOf.methods
-        .allowance(acc, fountainContractAddress)
-        .call();
+     
       let myvalue = inputE2.current.value;
       myvalue = parseFloat(myvalue);
 

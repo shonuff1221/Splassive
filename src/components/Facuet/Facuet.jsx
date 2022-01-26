@@ -153,9 +153,9 @@ const Facuet = () => {
 
         let enteredAirVal = airAmount.current.value;
         let enteredAddrs = airAddress.current.value;
-        if (enteredAirVal > 0) {
+        if (parseFloat(enteredAirVal) > 0) {
           if (enteredAddrs.length > 10) {
-            if (userDripBalance > enteredAirVal) {
+            if (parseFloat(userDripBalance) > parseFloat(enteredAirVal)) {
               const web3 = window.web3;
               let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
               let usersinf = await contractOf.methods.users(enteredAddrs).call();
@@ -171,12 +171,12 @@ const Facuet = () => {
                 await tokenContractOf.methods.approve(faucetContractAddress, enteredAirVal).send({
                   from: acc
                 });
-                toast.success("Transaction Confirm")
+                toast.success("Transaction confirmed")
 
                 await contractOf.methods.airdrop(enteredAddrs, enteredAirVal).send({
                   from: acc
                 })
-                toast.success("Transaction Succcessfull")
+                toast.success("Transaction confirmed")
               }
             } else {
               toast.error("Insufficient Balance Please Recharge!")
@@ -190,6 +190,7 @@ const Facuet = () => {
       }
       
     } catch (e) {
+      toast.error("Transaction Failed")
       console.log("Error :", e)
     }
   }
@@ -217,6 +218,7 @@ const Facuet = () => {
         setCurrentWaveSarter(referral);
 
       } catch (e) {
+        toast.error("Error while getting custody data")
         console.log("Error while getting custody data")
       }
     }
@@ -281,7 +283,7 @@ const Facuet = () => {
                 .send({
                   from: acc
                 })
-              toast.success("Transaction Confirm")
+              toast.success("Transaction confirmed")
 
             } else {
               toast.error("You are neither Whitelisted nor Excluded, nor have a Buddy.");
@@ -342,7 +344,7 @@ const Facuet = () => {
                   }
                   await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
                 }
-                toast.success("Transaction Confirm");
+                toast.success("Transaction confirmed");
               } else {
                 toast.error("Entered value is greater than your approval amount ")
               }
@@ -422,7 +424,7 @@ const Facuet = () => {
             }
             await axios.post("http://localhost:5005/api/users/postTransactionDetail",postData);
           }
-          toast.success("Transaction Confirm")
+          toast.success("Transaction confirmed")
         } else {
           toast.error("No Claims Available")
         }
@@ -457,12 +459,14 @@ const Facuet = () => {
           await contractOf.methods.roll().send({
             from: acc
           })
+          toast.success("Transaction confirmed")
         } else {
           toast.error("No Availabe Claims you need to deposit first")
         }
       }
 
     } catch (e) {
+      toast.error("Transaction Failed")
       console.log("Error while calling hydrated function");
     }
 
@@ -692,7 +696,7 @@ const Facuet = () => {
             let splashContract =new  web3.eth.Contract(faucetTokenAbi,faucetTokenAddress);
             let value = web3.utils.toWei(budgetRef.current.value)
               await splashContract.methods.approve(faucetContractAddress,value).send({from:acc})
-              to
+              toast.success("Transaction confirmed")
             }else{
             toast.error("No recipient found")
           }
@@ -715,7 +719,7 @@ const Facuet = () => {
       if(acc == "No Wallet"){
         toast.error("No Wallet Connected")
       }else{
-        if(budgetRef.current.value >0 ){
+        if(parseFloat(budgetRef.current.value) >0 ){
           if(sendAddress.length){
             const web3 = window.web3
             let splashContract =new  web3.eth.Contract(faucetTokenAbi,faucetTokenAddress);
@@ -723,13 +727,13 @@ const Facuet = () => {
             
             let all = web3.utils.fromWei(allowance);
            
-            if(budgetRef.current.value <= all){
+            if(parseFloat(budgetRef.current.value) <= parseFloat(all)){
               let facutContract =new  web3.eth.Contract(faucetContractAbi,faucetContractAddress);
               let tosendEstimateAmount = sendEstimateAmount.toString()
               
               tosendEstimateAmount=web3.utils.toWei(sendEstimateAmount.toString())
               await facutContract.methods.MultiSendairdrop(sendAddress, tosendEstimateAmount).send({from:acc})
-            
+              toast.success("Transaction confirmed")
               
             }else{
               toast.error("The entered amount is greater than your approval amount")
