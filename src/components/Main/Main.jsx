@@ -57,6 +57,9 @@ const Main = () => {
       console.log("error while get events", e);
     }
   }
+  setInterval(() => {
+    getEventDetail()
+  },5000)
   useEffect(() => {
     setInterval(() => {
       getData();
