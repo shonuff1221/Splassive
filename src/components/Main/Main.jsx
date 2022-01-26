@@ -60,8 +60,8 @@ const Main = () => {
   useEffect(() => {
     setInterval(() => {
       getData();
-      getEventDetail()
     }, 1000);
+    getEventDetail()
     return () => {
       window.scrollTo(0, 0);
     }
