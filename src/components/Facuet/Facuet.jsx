@@ -18,7 +18,7 @@ import Web3 from "web3";
 const webSupply = new Web3("https://api.avax-test.network/ext/bc/C/rpc");
 // const webSupply = window.web3;
 
-const Facuet = () => {
+const Facuet = ({oneTokenPrice}) => {
   let navigate = useNavigate();
   let buddySearch = useRef()
   let [isChange, setIschange] = useState("Viewer");
@@ -37,6 +37,10 @@ const Facuet = () => {
   let [playerTeam, setPlayerteam] = useState(0);
   let [showPlayer, setShowPlayer] = useState(0)
   let airDropPlayerAddress = useRef()
+
+  let [avalibleUSDT, setAvaliableUSDT]=useState(0)
+  let [depositUSDT, setDepositUSDT]=useState(0)
+
   // users balance
 
   let [userDripBalance, setuserDripBalance] = useState(0);
@@ -134,14 +138,23 @@ const Facuet = () => {
         netPay = parseFloat(netPay).toFixed(6)
         setShowPlayer(team)
         setMyDeposited(totalDeposits);
+        let depoUsdt = totalDeposits * oneTokenPrice;
+        depoUsdt = parseFloat(depoUsdt).toFixed(3)
+        setDepositUSDT(depoUsdt)
         setMaxPayout(maxPay);
         setAvailable(myclaimsAvailable);
+        let avalUsdt = myclaimsAvailable * oneTokenPrice;
+      
+        avalUsdt = parseFloat(avalUsdt).toFixed(3)
+        
+        setAvaliableUSDT(avalUsdt)
         setClaimed(totalclaimed);
       } catch (e) {
         console.log("error while getting data in faucet", e);
       }
     }
   }
+  
   //Direct AirDrop
   const directAirDrop = async () => {
     try {
@@ -314,10 +327,9 @@ const Facuet = () => {
             let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
             let referral = await contractOfBuddy.methods.buddyOf(acc).call();
             let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-            let isWhiteList =await tokenContractOf.methods.whitelist(acc).call()
-            let isExcluded = await tokenContractOf.methods.isExcluded(acc).call()
+            
 
-            if (referral.length > 15 && isWhiteList && isExcluded) {
+            if (referral.length > 15) {
               let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
               let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
 
@@ -343,7 +355,7 @@ const Facuet = () => {
               }
 
             } else {
-              toast.error("You are neither Whitelisted nor Excluded, nor have a Buddy.");
+              toast.error("You have no Buddy.");
               
             }
           } else {
@@ -820,7 +832,7 @@ const Facuet = () => {
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{availabe}</span>
                       </p>
                       <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>
-                        {t("Splash.1")} ≈ ... {t("USDT.1")}
+                        {avalibleUSDT} {t("USDT.1")}
                       </p>
                     </div>
                   </div>
@@ -834,7 +846,7 @@ const Facuet = () => {
                         <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{myDeposited}</span>
                       </p>
                       <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>
-                        {t("Splash.1")} ≈ ... {t("USDT.1")}
+                        {depositUSDT} {t("USDT.1")}
                       </p>
                     </div>
                   </div>
@@ -909,7 +921,7 @@ const Facuet = () => {
                   <div className="text-left col-lg-5 col-md-12">
                     <div className="priceDiv">
                       <span className="fst-italic" style={{ color: "#7c625a", fontSize: "19px" }}>
-                        {t("Price.1")} {myCal} {t("AVAX.1")}/{t("Splash.1")}
+                        {t("Price.1")} {oneTokenPrice} {t("AVAX.1")}/{t("Splash.1")}
                       </span>{" "}
                     </div>
                   </div>
@@ -1906,7 +1918,7 @@ const Facuet = () => {
                 <p id="referral" />
                 <p className="text-white fst-italic" style={{ fontSize: "20px" }}>
                   {t(
-                    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet.1"
+                    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughtheTheShorecontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet.1"
                   )}
                   : 1-2, 2-3, 3-5, 4-8, 5-13, 6-21, 7-34, 8-55, 9-89, 10-144,
                   11-233, 12-377, 13-610, 14-987, 15-1597

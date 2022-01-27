@@ -5,8 +5,8 @@
     "THETAP":{
         "1": "THE TAP"
     },
-    "RESERVOIR":{
-        "1": "RESERVOIR"
+    "THESHORE":{
+        "1": "THE SHORE"
     },
     "Whitepaper":{
         "1": "Whitepaper"
@@ -73,8 +73,8 @@
     "andteam.":{
         "1": "and team."
     },
-    "TheofficialtokenoftheSplashNetworkisSplash(AVAX)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "The official token of the Splash Network is Splash (AVAX) on the Avalanche Chain (AVAX) that captures value by being scarce, deflationary, censorship resistant, and by being built on a robust, truly decentralized blockchain."
+    "TheofficialtokenoftheSplashNetworkisSplash(SPLASH)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "The official token of the Splash Network is Splash (SPLASH) on the Avalanche Chain (AVAX) that captures value by being scarce, deflationary, censorship resistant, and by being built on a robust, truly decentralized blockchain."
     },
     "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheTheWelltab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
         "1": "The recommended exchange for trading Splash is the The Well contract which can be found directly on the platforms website under the The Well tab, as it allows us to waive the initial 10% tax on buys and provides the lowest prices and highest liquidity, resulting in less slippage for larger trades."
@@ -526,8 +526,8 @@
         "1": "Players can participate by purchasing Splash from the platform's The WELL page, joining another user’s Splash team (1 Splash minimum requirement) Depositing Splash to the The Tap contract earns a consistent 2% daily return of their Splash (360% maximum payout) passively. Players can also compound their earnings through regular deposits, rolling rewards as well as team based referrals. Unlike many other platforms promising a consistent daily % return, The Tap's contract cannot drain and will ALWAYS be able to provide the Splash that has been rewarded. Splash rewards come from a 10% tax on all Splash transactions excluding buys from the platform's The WELL page."
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet":{
-        "1": "If there is ever a situation where the tax pool is not enough to pay Splash rewards new Splash will be minted to ensure rewards are paid out. Given the game theory behind the Splash network, the probability that the system will need to mint new Splash to pay rewards is extremely low. Since Splash deposited into The Tap are sent to a burn address and Splash is constantly being locked in the liquidity pool through the reservoir contract, Splash is the only deflationary daily ROI platform. The best strategy for Splash is to focus on real world adoption by building out your team through direct referrals, as you will receive bonus rewards from referrals on their deposits and downline bonuses from players they refer based on the amount of Splash DAO held in your wallet"
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughtheTheShorecontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet":{
+        "1": "If there is ever a situation where the tax pool is not enough to pay Splash rewards new Splash will be minted to ensure rewards are paid out. Given the game theory behind the Splash network, the probability that the system will need to mint new Splash to pay rewards is extremely low. Since Splash deposited into The Tap are sent to a burn address and Splash is constantly being locked in the liquidity pool through the The Shore contract, Splash is the only deflationary daily ROI platform. The best strategy for Splash is to focus on real world adoption by building out your team through direct referrals, as you will receive bonus rewards from referrals on their deposits and downline bonuses from players they refer based on the amount of Splash DAO held in your wallet"
     }
     ,
 
@@ -568,8 +568,8 @@
     }
 
     ,
-    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash":{
-        "1": "Reservoir is The Splash Network’s solution for players that want benefit from non-inflationary yield farming through adding liquidity to Splash"
+    "TheShoreisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash":{
+        "1": "The Shore is The Splash Network’s solution for players that want benefit from non-inflationary yield farming through adding liquidity to Splash"
     }
     ,
     "COMPOUND":{
@@ -599,8 +599,8 @@
     "DropBalance":{
         "1": "Drop Balance"
     },
-    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers":{
-        "1": "Reservoir is The Splash Network’s solution for players that want benefit from non-inflationary yield farming through adding liquidity to Splash. Here are the numbers"
+    "TheShoreisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers":{
+        "1": "The Shore is The Splash Network’s solution for players that want benefit from non-inflationary yield farming through adding liquidity to Splash. Here are the numbers"
     }
     ,
     "UserCount":{

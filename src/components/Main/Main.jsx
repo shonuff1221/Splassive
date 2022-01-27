@@ -108,7 +108,7 @@ const Main = () => {
                 style={{ fontSize: "20px" }}
               >
                 {t(
-                  "TheofficialtokenoftheSplashNetworkisSplash(AVAX)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain..1"
+                  "TheofficialtokenoftheSplashNetworkisSplash(SPLASH)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain..1"
                 )}
               </div>
               <br />

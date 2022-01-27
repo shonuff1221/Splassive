@@ -86,23 +86,23 @@ class ChartOne extends React.PureComponent {
           <ValueAxis />
 
           <AreaSeries
-            name="App Store"
+            // name="App Store"
             valueField="appStore"
             argumentField="month"
             seriesComponent={Area}
           />
           <AreaSeries
-            name="Google Play"
+            // name="Google Play"
             valueField="googlePlay"
             argumentField="month"
             seriesComponent={Area}
           />
           <Animation />
-          <Legend
+          {/* <Legend
             position="bottom"
             rootComponent={Root}
             labelComponent={Label}
-          />
+          /> */}
         </Chart>
       </Paper>
     );

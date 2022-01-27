@@ -5,8 +5,8 @@
     "THETAP":{
         "1": "水龙头"
     },
-    "RESERVOIR":{
-        "1": "水库"
+    "THESHORE":{
+        "1": "有噪音"
     },
     "Whitepaper":{
         "1": "白皮书"
@@ -73,8 +73,8 @@
     "andteam.":{
         "1": "和团队."
     },
-    "TheofficialtokenoftheSplashNetworkisSplash(AVAX)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "Splash Network 的官方代币是 雪崩 链 (AVAX) 上的 Splash (AVAX)，它通过稀缺、通缩、抗审查以及建立在强大、真正去中心化的区块链上来获取价值。"
+    "TheofficialtokenoftheSplashNetworkisSplash(SPLASH)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "Splash Network 的官方代币是 雪崩 链 (溅) 上的 Splash (AVAX)，它通过稀缺、通缩、抗审查以及建立在强大、真正去中心化的区块链上来获取价值。"
     },
     "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheTheWelltab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
         "1": "推荐的 溅 交易交易所是 井 合约，可以直接在平台网站的掉期选项卡下找到，因为它允许我们免除最初 10% 的买入税，并提供最低的价格和最高的流动性，从而减少滑点对于较大的交易"
@@ -526,7 +526,7 @@
         "1": "玩家可以通过从平台的 井 页面购买 溅 来参与，加入另一个用户的 溅 团队（最低要求 1 溅） 将 溅 存入水龙头合约可以被动地获得持续 2% 的每日 溅 回报（365% 最高支出）。玩家还可以通过定期存款、滚动奖励以及基于团队的推荐来增加收入。与许多其他承诺每日百分比回报一致的平台不同，水龙头 的合约不会耗尽，并且始终能够提供已获得奖励的 溅。 溅 奖励来自对所有 溅 交易征收 10% 的税，不包括从平台的 井 页面购买。"
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet":{
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughtheTheShorecontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet":{
         "1": "如果出现税收池不足以支付 溅 奖励的情况，将铸造新的 溅 以确保支付奖励。鉴于 溅 网络背后的博弈论，系统需要铸造新的 溅 来支付奖励的概率极低。由于存入 水龙头 的 溅 被发送到一个销毁地址，并且 溅 通过水库合约不断被锁定在流动性池中，因此 溅 是唯一的通货紧缩每日 ROI 平台。 溅 的最佳策略是通过直接推荐来建立您的团队，从而专注于现实世界的采用，因为您将从推荐的存款中获得奖金奖励，并根据您钱包中持有的 飞溅DAO 数量从他们推荐的玩家那里获得下线奖金"
     }
     ,
@@ -568,8 +568,8 @@
     }
 
     ,
-    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash":{
-        "1": "Reservoir 是 The 溅 Network 的解决方案，适用于希望通过向 溅 增加流动性而从非通胀高产农业中获益的玩家"
+    "TheShoreisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash":{
+        "1": "有噪音 是 The 溅 Network 的解决方案，适用于希望通过向 溅 增加流动性而从非通胀高产农业中获益的玩家"
     }
     ,
     "COMPOUND":{
@@ -599,8 +599,8 @@
     "DropBalance":{
         "1": "掉落余额"
     },
-    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers":{
-        "1": "Reservoir 是 The 溅 Network 的解决方案，适用于希望通过向 溅 增加流动性而从非通胀高产农业中获益的玩家。这是数字"
+    "TheShoreisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers":{
+        "1": "有噪音 是 The 溅 Network 的解决方案，适用于希望通过向 溅 增加流动性而从非通胀高产农业中获益的玩家。这是数字"
     }
     ,
     "UserCount":{

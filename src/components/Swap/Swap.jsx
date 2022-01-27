@@ -3,6 +3,7 @@ import coin from "../../images/coin.png";
 import balance from "../../images/iconWhite (1).png";
 import Web3 from "web3";
 import drops from "../../images/coinwhite.png";
+import avax from '../../images/avax.png'
 import { ToastContainer, toast } from "react-toastify";
 import van from "../../images/van.png";
 import contact from "../../images/contact (2).png";
@@ -25,7 +26,7 @@ import {
 import "./Swap.css";
 import bigInt from "big-integer";
 const webSupply = new Web3("https://api.avax-test.network/ext/bc/C/rpc");
-const Swap = () => {
+const Swap = ({setOneTokenPrice}) => {
   let [boxOne, setBoxOne] = useState(false);
   let [tripType, setTripType] = useState(1);
   let [tripType1, setTripType1] = useState(1);
@@ -147,6 +148,7 @@ const Swap = () => {
       setCdripBalance(contractFdripBalance);
       setDivision(BdividedByD);
       setOnedripPrice(priceOfoneDrip);
+      setOneTokenPrice(priceOfoneDrip)
       setTsupplyDrip(supplyDrip);
       setTsupplyFountain(fonutainDrip);
       setTtransactionFountain(transactionFountain);
@@ -772,9 +774,8 @@ const Swap = () => {
           faucetTokenAbi,
           faucetTokenAddress
         );
-            let isWhiteList =await tokenContractOf.methods.whitelist(acc).call()
-            let isExcluded = await tokenContractOf.methods.isExcluded(acc).call()
-            if(isWhiteList && isExcluded){
+            
+           
 
               await tokenContractOf.methods
                 .approve(fountainContractAddress, web3.utils.toWei(myvalue1))
@@ -783,9 +784,7 @@ const Swap = () => {
                 });
               toast.success("Transaction Confirmed");
               setisToogle(false);
-            }else{
-              toast.error("You are neither Whitelisted nor Excluded.");
-            }
+            
       } else {
         toast.error("Looks Like You Forgot to Enter Amount");
       }
@@ -848,7 +847,7 @@ const Swap = () => {
                   </div>
                   <div className="container col-md-3 col-sm-12 text-center">
                     <div className="price-top-part">
-                      <img src={drops} alt="" width="70px" />
+                      <img src={avax} alt="" width="70px" />
                       <h5
                         className="mb-0 font-weight-semibold color-theme-1 mb-2 mt-3 fst-italic"
                         style={{ color: "#7c625a" }}

@@ -5,8 +5,8 @@
     "THETAP":{
         "1": "LE ROBINET"
     },
-    "RESERVOIR":{
-        "1": "RÉSERVOIR"
+    "THESHORE":{
+        "1": "Il y avait des bruits"
     },
     "Whitepaper":{
         "1": "Papier blanc"
@@ -73,8 +73,8 @@
     "andteam.":{
         "1": "et équipe."
     },
-    "TheofficialtokenoftheSplashNetworkisSplash(AVAX)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "Le jeton officiel du Splash Network est Splash (AVAX) sur la chaîne avalanche (AVAX) qui capture de la valeur en étant rare, déflationniste, résistant à la censure et en étant construit sur une blockchain robuste et véritablement décentralisée."
+    "TheofficialtokenoftheSplashNetworkisSplash(SPLASH)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "Le jeton officiel du Splash Network est Splash (SPLASH) sur la chaîne avalanche (AVAX) qui capture de la valeur en étant rare, déflationniste, résistant à la censure et en étant construit sur une blockchain robuste et véritablement décentralisée."
     },
     "TherecommendedexchangefortradingSplashistheTheWellcontractwhichcanbefounddirectlyontheplatformswebsiteundertheTheWelltab,asitallowsustowaivetheinitial10%taxonbuysandprovidesthelowestpricesandhighestliquidity,resultinginlessslippageforlargertrades.":{
         "1": "L'échange recommandé pour le trading de Éclaboussure est le contrat Le puits qui peut être trouvé directement sur le site Web des plateformes sous l'onglet KAIVO, car il nous permet de renoncer à la taxe initiale de 10 % sur les achats et fournit les prix les plus bas et la liquidité la plus élevée, ce qui entraîne moins de glissement pour les métiers plus importants."
@@ -526,7 +526,7 @@
         "1": "Les joueurs peuvent participer en achetant le Éclaboussure à partir de la page KAIVO de la plate-forme, en rejoignant 2'équipe Éclaboussure d'un autre utilisateur (exigence minimale de 1 Éclaboussure). Les joueurs peuvent également augmenter leurs gains grâce à des dépôts réguliers, des récompenses glissantes ainsi que des références basées sur l'équipe. Contrairement à de nombreuses autres plates-formes promettant un pourcentage de rendement quotidien constant, le contrat de Le robinet ne peut pas s'écouler et sera TOUJOURS en mesure de fournir le Éclaboussure qui a été récompensé. Les récompenses Éclaboussure proviennent d'une taxe de 10 % sur toutes les transactions Éclaboussure, à l'exclusion des achats effectués sur la page KAIVO de la plate-forme."
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet":{
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughtheTheShorecontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet":{
         "1": "Si jamais il y a une situation où le pool fiscal n'est pas suffisant pour payer les récompenses du RRD, un nouveau RRD sera créé pour garantir le paiement des récompenses. Compte tenu de la théorie des jeux derrière le réseau Éclaboussure, la probabilité que le système ait besoin de créer un nouveau Éclaboussure pour payer les récompenses est extrêmement faible. Étant donné que les Éclaboussure déposés dans Le robinet sont envoyés à une adresse de brûlage et que les Éclaboussure sont constamment bloqués dans le pool de liquidités via le contrat de réservoir, Éclaboussure est la seule plate-forme déflationniste de retour sur investissement quotidien. La meilleure stratégie pour Éclaboussure est de se concentrer sur l'adoption dans le monde réel en construisant votre équipe grâce à des références directes, car vous recevrez des récompenses bonus des références sur leurs dépôts et des bonus de descendance des joueurs qu'ils réfèrent en fonction du montant de Éclaboussure DAO détenu dans votre portefeuille."
     }
     ,
@@ -568,8 +568,8 @@
     }
 
     ,
-    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash":{
-        "1": "Reservoir est la solution de The Éclaboussure Network pour les joueurs qui souhaitent bénéficier d'une agriculture à rendement non inflationniste en ajoutant des liquidités à Éclaboussure"
+    "TheShoreisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash":{
+        "1": "The Shore est la solution de The Éclaboussure Network pour les joueurs qui souhaitent bénéficier d'une agriculture à rendement non inflationniste en ajoutant des liquidités à Éclaboussure"
     }
     ,
     "COMPOUND":{
@@ -599,8 +599,8 @@
     "DropBalance":{
         "1": "Baisser le solde"
     },
-    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers":{
-        "1": "Reservoir est la solution du réseau Éclaboussure pour les joueurs qui souhaitent bénéficier d'une agriculture à rendement non inflationniste en ajoutant des liquidités au Éclaboussure. voici les chiffres"
+    "TheShoreisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers":{
+        "1": "The Shore est la solution du réseau Éclaboussure pour les joueurs qui souhaitent bénéficier d'une agriculture à rendement non inflationniste en ajoutant des liquidités au Éclaboussure. voici les chiffres"
     }
     ,
     "UserCount":{

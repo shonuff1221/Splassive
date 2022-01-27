@@ -100,7 +100,7 @@ connectWallet();
                 </Link>
                 <Link to="/reservoir" style={{ textDecoration: "none" }}>
                   <Nav.Link href="#reservoir" className=" mx-1" id="navbartext">
-                  {t('RESERVOIR.1')}
+                  {t('THESHORE.1')}
                   </Nav.Link>
                 </Link>
               </Nav>

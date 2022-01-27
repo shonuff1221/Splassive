@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import $ from "jquery";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,6 +18,8 @@ import Home from "./Home";
 import { useTranslation } from "react-i18next";
 function App() {
   const { t, i18n } = useTranslation();
+  let [oneTokenPrice, setOneTokenPrice]=useState(0);
+
   useEffect(() => {
 
     $(document).ready(function () {
@@ -34,8 +36,12 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Main />} />
-          <Route exact path="/swap" element={<Swap />} />
-          <Route exact path="/facuet" element={<Facuet />} />
+          <Route exact path="/swap" element={<Swap 
+          setOneTokenPrice={setOneTokenPrice}
+          />} />
+          <Route exact path="/facuet" element={<Facuet
+          oneTokenPrice={oneTokenPrice}
+          />} />
           <Route exact path="/reservoir" element={<Reservoir />} />
         </Routes>
         <Footer />

@@ -5,8 +5,8 @@
     "THETAP":{
         "1": "EL GRIFO"
     },
-    "RESERVOIR":{
-        "1": "RESERVORIO"
+    "THESHORE":{
+        "1": "hubo ruidos"
     },
     "Whitepaper":{
         "1": "Papel blanco"
@@ -73,8 +73,8 @@
     "andteam.":{
         "1": "y equipo."
     },
-    "TheofficialtokenoftheSplashNetworkisSplash(BEP-20)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
-        "1": "El token oficial de Splash Network es Splash (AVAX) en avalancha Chain (AVAX) que captura valor al ser escaso, deflacionario, resistente a la censura y al estar construido sobre una cadena de bloques robusta y verdaderamente descentralizada."
+    "TheofficialtokenoftheSplashNetworkisSplash(SPLASH)ontheBinanceSmartblockchain(BSC)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
+        "1": "El token oficial de Splash Network es Splash (SPLASH) en avalancha Chain (AVAX) que captura valor al ser escaso, deflacionario, resistente a la censura y al estar construido sobre una cadena de bloques robusta y verdaderamente descentralizada."
     },
     "TheofficialtokenoftheSplashNetworkisSplash(AVAX)ontheAvalancheChain(AVAX)thatcapturesvaluebybeingscarce,deflationary,censorshipresistant,andbybeingbuiltonarobust,trulydecentralizedblockchain.":{
         "1": "The official token of the Splash Network is Splash (AVAX) on the avalancha Chain (AVAX) that captures value by being scarce, deflationary, censorship resistant, and by being built on a robust, truly decentralized blockchain."
@@ -526,7 +526,7 @@
         "1": "Los jugadores pueden participar comprando Chapoteo desde la página EL POZO de la plataforma, uniéndose al equipo de Chapoteo de otro usuario (requisito mínimo de 1 Chapoteo) Al depositar Chapoteo en el contrato de El grifo, se obtiene un retorno diario constante del 2% de su Chapoteo (pago máximo del 365%) de forma pasiva. Los jugadores también pueden acumular sus ganancias a través de depósitos regulares, recompensas continuas y referencias basadas en equipos. A diferencia de muchas otras plataformas que prometen un% de retorno diario constante, el contrato de El grifo no se puede agotar y SIEMPRE podrá proporcionar el Chapoteo que ha sido recompensado. Las recompensas de Chapoteo provienen de un impuesto del 10% en todas las transacciones de Chapoteo, excluidas las compras de la página EL POZO de la plataforma."
     }
     ,
-    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughthereservoircontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet":{
+    "IfthereiseverasituationwherethetaxpoolisnotenoughtopaySplashrewardsnewSplashwillbemintedtoensurerewardsarepaidout.GiventhegametheorybehindtheSplashnetwork,theprobabilitythatthesystemwillneedtomintnewSplashtopayrewardsisextremelylow.SinceSplashdepositedintoTheTaparesenttoaburnaddressandSplashisconstantlybeinglockedintheliquiditypoolthroughtheTheShorecontract,SplashistheonlydeflationarydailyROIplatform.ThebeststrategyforSplashistofocusonrealworldadoptionbybuildingoutyourteamthroughdirectreferrals,asyouwillreceivebonusrewardsfromreferralsontheirdepositsanddownlinebonusesfromplayerstheyreferbasedontheamountofSplashDAOheldinyourwallet":{
         "1": "Si alguna vez hay una situación en la que el fondo de impuestos no es suficiente para pagar las recompensas de Chapoteo, se acuñará un nuevo Chapoteo para garantizar que se paguen las recompensas. Dada la teoría del juego detrás de la red Chapoteo, la probabilidad de que el sistema necesite acuñar un nuevo Chapoteo para pagar recompensas es extremadamente baja. Dado que los Chapoteo depositados en El grifo se envían a una dirección de grabación y Chapoteo se bloquea constantemente en el fondo de liquidez a través del contrato de depósito, Chapoteo es la única plataforma de ROI diaria deflacionaria. La mejor estrategia para Chapoteo es enfocarse en la adopción del mundo real mediante la construcción de su equipo a través de referencias directas, ya que recibirá recompensas de bonificación de las referencias en sus depósitos y bonificaciones de línea descendente de los jugadores que refieren según la cantidad de salpicadura dao que tiene en su billetera."
     }
     ,
@@ -568,8 +568,8 @@
     }
 
     ,
-    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash":{
-        "1": "Reservoir es la solución de la red Chapoteo para los jugadores que desean beneficiarse de la agricultura de rendimiento no inflacionario mediante la adición de liquidez a Chapoteo"
+    "TheShoreisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash":{
+        "1": "The Shore es la solución de la red Chapoteo para los jugadores que desean beneficiarse de la agricultura de rendimiento no inflacionario mediante la adición de liquidez a Chapoteo"
     }
     ,
     "COMPOUND":{
@@ -599,8 +599,8 @@
     "DropBalance":{
         "1": "Saldo de caída"
     },
-    "ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers":{
-        "1": "Reservoir es la solución de la red Chapoteo para los jugadores que desean beneficiarse de la agricultura de rendimiento no inflacionario mediante la adición de liquidez a Chapoteo. Aquí están los números"
+    "TheShoreisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers":{
+        "1": "The Shore es la solución de la red Chapoteo para los jugadores que desean beneficiarse de la agricultura de rendimiento no inflacionario mediante la adición de liquidez a Chapoteo. Aquí están los números"
     }
     ,
     "UserCount":{

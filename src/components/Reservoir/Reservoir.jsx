@@ -338,7 +338,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                     <div className="row ">
                       <div className="col">
                         <span className="luck-title notranslate">
-                          {t("RESERVOIR.1")}
+                          {t("THESHORE.1")}
                         </span>
                       </div>
                     </div>
@@ -422,7 +422,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                 </div>
                 <p className="col-12 white mb-3 text-justify fst-italic text-white" style={{ fontSize: "20px" }}>
                   {" "}
-                  {t("ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash.1")}
+                  {t("TheShoreisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnon-inflationaryyieldfarmingthroughaddingliquiditytoSplash.1")}
                 </p>
                 <p className="col-12 white mb-3"></p>
                 <div>
@@ -581,7 +581,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
               <div className="container col-10 text-center">
                 <h1>{t("Stats.1")}</h1>
                 <p className="text-white mb-4" style={{ fontSize: "20px" }}>
-                  {t("ReservoirisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers.1")}...
+                  {t("TheShoreisTheSplashNetwork’ssolutionforplayersthatwantbenefitfromnoninflationaryyieldfarmingthroughaddingliquiditytoSplash.Herearethenumbers.1")}...
                 </p>
               </div>
               <div className="container col-6 col-xl-4 col-lg-4 col-md-4 text-center">
