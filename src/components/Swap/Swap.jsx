@@ -661,9 +661,8 @@ const Swap = () => {
 
       if (myvalue >= 1) {
         let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-            let isWhiteList =await tokenContractOf.methods.whitelist(acc).call()
-            let isExcluded = await tokenContractOf.methods.isExcluded(acc).call()
-            if(isExcluded && isWhiteList){
+          
+           
         if (parseFloat(userDripBalance) >= myvalue) {
           myvalue = myvalue.toString();
           let myAllowance = await tokenContractOf.methods
@@ -721,9 +720,7 @@ const Swap = () => {
         } else {
           toast.error("In Sufficient balance please recharge");
         }
-      }else {
-        toast.error("You are neither Whitelisted nor Excluded.");
-      }
+      
       } else {
         toast.error("Amount cannot be less than 1");
       }

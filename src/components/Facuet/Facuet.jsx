@@ -276,7 +276,7 @@ const Facuet = () => {
             let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
             let isWhiteList =await tokenContractOf.methods.whitelist(acc).call()
             let isExcluded = await tokenContractOf.methods.isExcluded(acc).call()
-            if (referral.length > 15 && isWhiteList && isExcluded ) {
+            if (referral.length > 15  ) {
 
               let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
               await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
@@ -286,7 +286,7 @@ const Facuet = () => {
               toast.success("Transaction confirmed")
 
             } else {
-              toast.error("You are neither Whitelisted nor Excluded, nor have a Buddy.");
+              toast.error("You have no Buddy.");
              
             }
           } else {
