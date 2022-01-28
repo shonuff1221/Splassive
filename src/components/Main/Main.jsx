@@ -353,11 +353,11 @@ const Main = () => {
                                       <div className="d-flex flex-grow-1 min-width-zero">
                                         <div className="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
                                           <p className="w-20 w-xs-100">
-                                            {t("From.1")}&nbsp;{item.fromAddress.substring(0,4)}
+                                            {t("From.1")}&nbsp;{item.fromAddress.substring(0,9)+"..."+item.fromAddress.substring(item.fromAddress.length - 9)}
                                           </p>
                                           <p className="w-20 w-xs-100">{t("To.1")}
                                             &nbsp;
-                                            {item.toAddress}
+                                            {item.toAddress.substring(0,9)+"..."+item.toAddress.substring(item.toAddress.length - 9)}
                                           </p>
                                           <span className="mb-1 w-15 w-xs-100">
                                             {t("Amount.1")}
