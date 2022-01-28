@@ -353,7 +353,7 @@ const Main = () => {
                                       <div className="d-flex flex-grow-1 min-width-zero">
                                         <div className="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
                                           <p className="w-20 w-xs-100">
-                                            {t("From.1")}&nbsp;{item.fromAddress}
+                                            {t("From.1")}&nbsp;{item.fromAddress.substring(0,4)}
                                           </p>
                                           <p className="w-20 w-xs-100">{t("To.1")}
                                             &nbsp;

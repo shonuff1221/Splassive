@@ -231,7 +231,6 @@ const Facuet = ({oneTokenPrice}) => {
         setCurrentWaveSarter(referral);
 
       } catch (e) {
-        toast.error("Error while getting custody data")
         console.log("Error while getting custody data")
       }
     }
@@ -310,7 +309,7 @@ const Facuet = ({oneTokenPrice}) => {
         }
       }
     } catch (e) {
-      toast.success("Transaction failed")
+      toast.error("Transaction failed")
       console.log("error while approve amount", e);
     }
   }
