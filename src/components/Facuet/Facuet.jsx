@@ -246,7 +246,7 @@ const Facuet = ({oneTokenPrice}) => {
       let contractOf = new webSupply.eth.Contract(faucetContractAbi, faucetContractAddress);
       let userInfoTotal = await contractOf.methods.userInfoTotals(enteredAddress).call();
       let playeruserInfo = await contractOf.methods.userInfo(enteredAddress).call();
-
+      let totalUsers = await contractOf.methods.total_users().call()
       let myDirect = playeruserInfo.direct_bonus
       myDirect = webSupply.utils.fromWei(myDirect);
       myDirect = parseFloat(myDirect).toFixed(3)
@@ -263,8 +263,8 @@ const Facuet = ({oneTokenPrice}) => {
       setnetDeposit(nedeposit);
       setAirdropsent(aidropsent);
       setAirdroplastsent(airlstdrp);
-      setPlayerteam(myrefferals);
-      setdirect(myDirect);
+      setPlayerteam(totalUsers);
+      setdirect(myrefferals);
     } catch (e) {
       toast.error("Can't Fetch User's Information at the moment please try again later.")
       console.log("error", e)
