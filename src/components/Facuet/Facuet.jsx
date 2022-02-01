@@ -638,7 +638,7 @@ const Facuet = ({oneTokenPrice}) => {
                       let amount = budgetRef.current.value / 5;
                       setEstimatePerPerson(parseFloat(amount).toFixed(2))
                       setSendEstimateAmount(amount)
-                      filterReferral.slice(0, 5).forEach((item) => {
+                      filterReferral.slice(0,5).forEach((item) => {
                         sAdd.push(item.value.entered_address)
                         dataAdd.push({
                           address: item.value.entered_address,
