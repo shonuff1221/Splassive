@@ -376,22 +376,35 @@ const Facuet = ({oneTokenPrice}) => {
       if (acc == "No Wallet") {
         toast.error("No Wallet Connected");
       } else {
+ 
         if (buddy.current.value <= 0) {
           toast.error("Please enter buddy refral")
         } else {
-          let enteredVal = buddy.current.value;
-        
           const web3 = window.web3;
-          let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
-          await contractOfBuddy.methods.updateBuddy(enteredVal).send({
-            from: acc
-          })
-          let data = {
-            ownerRefral: acc,
-            userRefral: enteredVal
-          }
-          await axios.post("https://testing-network-app.herokuapp.com/api/users/takeRefral", data);
-          toast.success("Buddy updated")
+          let enteredVal = buddy.current.value;
+          let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
+          let userInfoTotal = await contractOf.methods.userInfoTotals(enteredVal).call();
+          let nedeposit = userInfoTotal.total_deposits;
+          nedeposit = webSupply.utils.fromWei(nedeposit);
+          nedeposit = parseFloat(nedeposit)
+          if(nedeposit <= 0){
+            toast.error("No Directs avaliable")
+          }else{
+            if(enteredVal == acc){
+              toast.error("Same address not accepted")
+            }else{
+              let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
+              await contractOfBuddy.methods.updateBuddy(enteredVal).send({
+                from: acc
+              })
+              let data = {
+                ownerRefral: acc,
+                userRefral: enteredVal
+              }
+              await axios.post("https://testing-network-app.herokuapp.com/api/users/takeRefral", data);
+              toast.success("Buddy updated")
+            }
+        }
         }
       }
     } catch (e) {
@@ -598,7 +611,7 @@ const Facuet = ({oneTokenPrice}) => {
                       let amount = budgetRef.current.value / 5;
                       setEstimatePerPerson(parseFloat(amount).toFixed(2))
                       setSendEstimateAmount(amount)
-                      filterReferral.slice(0, 5).forEach((item) => {
+                      filterReferral.slice(0, 20).forEach((item) => {
                         sAdd.push(item.value.entered_address)
                         dataAdd.push({
                           address: item.value.entered_address,
@@ -618,7 +631,7 @@ const Facuet = ({oneTokenPrice}) => {
                       let amount = budgetRef.current.value / 5;
                       setEstimatePerPerson(parseFloat(amount).toFixed(2))
                       setSendEstimateAmount(amount)
-                      filterReferral.slice(0, 5).forEach((item) => {
+                      filterReferral.slice(0, 50).forEach((item) => {
                         sAdd.push(item.value.entered_address)
                         dataAdd.push({
                           address: item.value.entered_address,
@@ -638,7 +651,7 @@ const Facuet = ({oneTokenPrice}) => {
                       let amount = budgetRef.current.value / 5;
                       setEstimatePerPerson(parseFloat(amount).toFixed(2))
                       setSendEstimateAmount(amount)
-                      filterReferral.slice(0,5).forEach((item) => {
+                      filterReferral.slice(0,100).forEach((item) => {
                         sAdd.push(item.value.entered_address)
                         dataAdd.push({
                           address: item.value.entered_address,
