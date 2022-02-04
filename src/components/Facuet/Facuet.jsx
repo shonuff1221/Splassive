@@ -535,7 +535,7 @@ const Facuet = ({oneTokenPrice}) => {
               let checkReferal = [];
               let referralData = await axios.post("https://splash-test-app.herokuapp.com/api/users/getTreeRef", data)
               if (referralData.data.length) {
-                checkReferal = referralData.data[0].refrals
+                checkReferal = referralData.data
                 const web3 = window.web3;
                 const faucetContract = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
 
@@ -776,6 +776,7 @@ const Facuet = ({oneTokenPrice}) => {
 
   const getRefrals = async () => {
     try {
+      setStoreRefral([])
       if (buddySearch.current.value <= 0) {
         toast.error("Enter Referral Address")
         setStoreRefral([])
@@ -785,7 +786,8 @@ const Facuet = ({oneTokenPrice}) => {
         }
         let res = await axios.post("https://splash-test-app.herokuapp.com/api/users/getTreeRef", data);
         if (res.data.length) {
-          setStoreRefral(res.data[0].refrals);
+          // console.log("responce",res.data)
+          setStoreRefral(res.data);
         } else {
           setStoreRefral([])
           toast.error("No Referral Found")
