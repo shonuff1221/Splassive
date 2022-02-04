@@ -1,55 +1,59 @@
-export const buddySystemAddress = "0x6320DBF6BEf21321767c6165045FB5370429b369";
+export const buddySystemAddress = "0x4432648CFb4028bE71F585595FDfb3dF1EC72bDb";
 export const buddySystemAbi = [{
-    "constant": false,
-    "inputs": [{
-        "name": "buddy",
-        "type": "address"
-    }],
-    "name": "updateBuddy",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": true,
     "inputs": [],
-    "name": "myBuddy",
-    "outputs": [{
-        "name": "",
-        "type": "address"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [{
-        "name": "player",
-        "type": "address"
-    }],
-    "name": "buddyOf",
-    "outputs": [{
-        "name": "",
-        "type": "address"
-    }],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "payable": true,
-    "stateMutability": "payable",
-    "type": "fallback"
+    "stateMutability": "nonpayable",
+    "type": "constructor"
 }, {
     "anonymous": false,
     "inputs": [{
         "indexed": true,
+        "internalType": "address",
         "name": "player",
         "type": "address"
     }, {
         "indexed": true,
+        "internalType": "address",
         "name": "buddy",
         "type": "address"
     }],
     "name": "onUpdateBuddy",
     "type": "event"
+}, {
+    "inputs": [{
+        "internalType": "address",
+        "name": "player",
+        "type": "address"
+    }],
+    "name": "buddyOf",
+    "outputs": [{
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+    }],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [{
+        "internalType": "address",
+        "name": "player",
+        "type": "address"
+    }],
+    "name": "buddyOft",
+    "outputs": [{
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+    }],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [{
+        "internalType": "address",
+        "name": "buddy",
+        "type": "address"
+    }],
+    "name": "updateBuddy",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
 }]
