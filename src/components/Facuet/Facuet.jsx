@@ -607,7 +607,7 @@ const Facuet = ({oneTokenPrice}) => {
                     } else {
                       let dataAdd = []
                       let sAdd = []
-                      let amount = budgetRef.current.value / 5;
+                      let amount = budgetRef.current.value / 20;
                       setEstimatePerPerson(parseFloat(amount).toFixed(2))
                       setSendEstimateAmount(amount)
                       filterReferral.slice(0, 20).forEach((item) => {
@@ -627,7 +627,7 @@ const Facuet = ({oneTokenPrice}) => {
                     } else {
                       let dataAdd = []
                       let sAdd = []
-                      let amount = budgetRef.current.value / 5;
+                      let amount = budgetRef.current.value / 50;
                       setEstimatePerPerson(parseFloat(amount).toFixed(2))
                       setSendEstimateAmount(amount)
                       filterReferral.slice(0, 50).forEach((item) => {
@@ -647,7 +647,7 @@ const Facuet = ({oneTokenPrice}) => {
                     } else {
                       let dataAdd = []
                       let sAdd = []
-                      let amount = budgetRef.current.value / 5;
+                      let amount = budgetRef.current.value / 100;
                       setEstimatePerPerson(parseFloat(amount).toFixed(2))
                       setSendEstimateAmount(amount)
                       filterReferral.slice(0,100).forEach((item) => {
