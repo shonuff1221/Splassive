@@ -1,4 +1,4 @@
-export const faucetContractAddress = "0x5AfF0e05b962e208F95899f39973945333a0f9Fe";
+export const faucetContractAddress = "0xdf783060cAc5E6b6A5Ef4F69812506e5B695DC59";
 export const faucetContractAbi = [{
 	"anonymous": false,
 	"inputs": [{

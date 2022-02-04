@@ -170,8 +170,8 @@ const Swap = ({setOneTokenPrice}) => {
       );
       let dripBalance = await tokenContractOf.methods.balanceOf(acc).call();
       dripBalance = webSupply.utils.fromWei(dripBalance);
-      dripBalance = parseFloat(dripBalance).toFixed(7);
       inputE2.current.value = dripBalance;
+      dripBalance = parseFloat(dripBalance).toFixed(7);
       setuserDripBalance(dripBalance);
       await enterBuyAmount2();
     }
@@ -670,7 +670,6 @@ const Swap = ({setOneTokenPrice}) => {
           let myAllowance = await tokenContractOf.methods
             .allowance(acc, fountainContractAddress)
             .call();
-
           if (myAllowance > 0) {
             let myvalue1 = web3.utils.toWei(myvalue);
 

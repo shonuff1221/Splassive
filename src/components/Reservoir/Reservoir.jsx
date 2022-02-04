@@ -34,6 +34,7 @@ function Reservoir() {
   let [stake, setStake] = useState(0);
   let [totalWithDraw, setTotalWithDraw] = useState(0);
   let [compundTotal, setCompoundTotal] = useState(0);
+  let [compund, setCompound]=useState(0);
   let [player, setPlayer] = useState(0);
   let [loackedValue, setLoackedValue] = useState(0);
   let [totalTxs, setTotalTxs] = useState(0)
@@ -48,9 +49,17 @@ function Reservoir() {
         const web3 = window.web3;
         let contractOf = new web3.eth.Contract(reservoirAbi, reservoirAddress);
         let userRew = await contractOf.methods.dividendsOf(acc).call();
+        let stat = await contractOf.methods.statsOf(acc).call();
         userRew = web3.utils.fromWei(userRew);
-        userRew = parseFloat(userRew).toFixed(3);
+        userRew = parseFloat(userRew).toFixed(7);
+        let draw = web3.utils.fromWei(stat[1])
+         draw = parseFloat(draw).toFixed(3)
+         let totalCom = web3.utils.fromWei(stat[13])
+         totalCom = parseFloat(totalCom).toFixed(3)
         setUserReward(userRew)
+        setCompound(stat[14])
+        setTotalWithDraw(draw);
+        setCompoundTotal(totalCom);
       }
     } catch (e) {
       console.log("get data in ", e);
@@ -66,12 +75,6 @@ function Reservoir() {
       let totalDeposit = await contract.methods.totalDeposits().call();
       totalDeposit =  webSupply.utils.fromWei(totalDeposit);
       totalDeposit = parseFloat(totalDeposit).toFixed(3);
-      let totalDraw = await contract.methods.totalWithdrawn().call();
-      totalDraw =  webSupply.utils.fromWei(totalDraw);
-      totalDraw = parseFloat(totalDraw).toFixed(3);
-      let cmpdTotal = await contract.methods.myDividends().call();
-      cmpdTotal =  webSupply.utils.fromWei(cmpdTotal);
-      cmpdTotal = parseFloat(cmpdTotal).toFixed(3);
       let players = await contract.methods.players().call();
       let loackBalance = await contract.methods.lockedTokenBalance().call();
       loackBalance =  webSupply.utils.fromWei(loackBalance);
@@ -85,10 +88,10 @@ function Reservoir() {
       divdPool = parseFloat(divdPool).toFixed(3);
       let displayDividendPool = divdPool / loackBalance;
       displayDividendPool = parseFloat(displayDividendPool).toFixed(5);
-      setTotalDrops(totalDro)
+      setTotalDrops(totalDeposit)
       setStake(totalDeposit)
-      setTotalWithDraw(totalDraw);
-      setCompoundTotal(cmpdTotal);
+
+    
       setPlayer(players);
       setLoackedValue(loackBalance)
       setTotalTxs(txs)
@@ -219,9 +222,10 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
         let val = await contract.methods.dividendsOf(acc).call()
         if (val > 0) {
 
-          await contract.methods.reinvest().send({
+          let comp =await contract.methods.reinvest().send({
             from: acc
           });
+
           toast.success("Transaction confirmed")
 
         } else {
@@ -354,7 +358,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                         {t("Rewards.1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{reward}</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{userReward}</span>
                       </p>
                       <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>{t("AVAX.1")}</p>
                     </div>
@@ -390,7 +394,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                         {t("Compounds.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>0.000</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{compund}</span>
                       </p>
                       <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>{t("Count.1")}</p>
                     </div>

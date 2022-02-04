@@ -36,6 +36,7 @@ const Facuet = ({oneTokenPrice}) => {
   let [AirdropLastSent, setAirdroplastsent] = useState(0);
   let [playerTeam, setPlayerteam] = useState(0);
   let [showPlayer, setShowPlayer] = useState(0)
+  let [showTotalUser, setShowTotalUser]=useState()
   let airDropPlayerAddress = useRef()
 
   let [avalibleUSDT, setAvaliableUSDT]=useState(0)
@@ -96,6 +97,8 @@ const Facuet = ({oneTokenPrice}) => {
         const web3 = window.web3;
         let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
         let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+        let totalUsers = await contractOf.methods.total_users().call()
+        setShowTotalUser(totalUsers)
         let contractInfo = await contractOf.methods.contractInfo().call();
         let myTeam = contractInfo._total_users;
         setTeam(myTeam);
@@ -243,6 +246,10 @@ const Facuet = ({oneTokenPrice}) => {
     let enteredAddress = addressInput.current.value;
 
     try {
+      let data = {
+        referee: enteredAddress
+      }
+      let res = await axios.post("https://splash-test-app.herokuapp.com/api/users/getTreeRef", data);
       let contractOf = new webSupply.eth.Contract(faucetContractAbi, faucetContractAddress);
       let userInfoTotal = await contractOf.methods.userInfoTotals(enteredAddress).call();
       let playeruserInfo = await contractOf.methods.userInfo(enteredAddress).call();
@@ -263,7 +270,7 @@ const Facuet = ({oneTokenPrice}) => {
       setnetDeposit(nedeposit);
       setAirdropsent(aidropsent);
       setAirdroplastsent(airlstdrp);
-      setPlayerteam(totalUsers);
+      setPlayerteam(res.data.length);
       setdirect(myrefferals);
     } catch (e) {
       toast.error("Can't Fetch User's Information at the moment please try again later.")
@@ -326,9 +333,8 @@ const Facuet = ({oneTokenPrice}) => {
             let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
             let referral = await contractOfBuddy.methods.buddyOf(acc).call();
             let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-            
 
-            if (referral.length > 15) {
+            if (referral != "0x0000000000000000000000000000000000000000") {
               let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
               let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
 
@@ -398,7 +404,7 @@ const Facuet = ({oneTokenPrice}) => {
                 from: acc
               })
               let data = {
-                referee: enteredVal
+                referee: acc
               }
               await axios.post("https://splash-test-app.herokuapp.com/api/users/treeReferral", data);
               toast.success("Buddy updated")
@@ -492,7 +498,7 @@ const Facuet = ({oneTokenPrice}) => {
         let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
         let bal = await tokenContractOf.methods.balanceOf(acc).call();
         bal = await web3.utils.fromWei(bal);
-        bal = parseFloat(bal).toFixed(3)
+        // bal = parseFloat(bal).toFixed(3)
         inputEl.current.value = bal;
 
       }
@@ -907,7 +913,7 @@ const Facuet = ({oneTokenPrice}) => {
                         {t("Team.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{showPlayer}</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{showPlayer} / {showTotalUser}</span>
                       </p>
                       <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>
                         {t("Players.1")} ({t("Direct.1")} / {t("Total.1")})
@@ -1263,7 +1269,7 @@ const Facuet = ({oneTokenPrice}) => {
                           className="fst-italic"
                           style={{ fontSize: "16px" }}
                         >
-                          {playerTeam}
+                        {+direct + +playerTeam}
                         </span>
                       </div>
                     </div>

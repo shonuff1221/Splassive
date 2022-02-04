@@ -1,4 +1,4 @@
-export const buddySystemAddress = "0x4432648CFb4028bE71F585595FDfb3dF1EC72bDb";
+export const buddySystemAddress = "0xf42C505AEb535FaC8C76b64dB0534CAd095ACE75";
 export const buddySystemAbi = [{
     "inputs": [],
     "stateMutability": "nonpayable",
