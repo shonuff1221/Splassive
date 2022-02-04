@@ -186,7 +186,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
             id:acc,
             amount:buyInput.current.value
         }
-        await axios.post("https://testing-network-app.herokuapp.com/api/users/postEvents",data);
+        await axios.post("https://splash-test-app.herokuapp.com/api/users/postEvents",data);
       })
     
       toast.success("Transaction confirmed")
@@ -297,7 +297,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
               id:acc,
               amount:withdrawInput.current.value
             }
-            await axios.post("https://testing-network-app.herokuapp.com/api/users/postEvents",data);
+            await axios.post("https://splash-test-app.herokuapp.com/api/users/postEvents",data);
           })
             
           toast.success("Withdraw confirmed")

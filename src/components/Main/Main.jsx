@@ -50,7 +50,7 @@ const Main = () => {
         let data = {
           address: acc
         }
-        let res = await axios.post("https://testing-network-app.herokuapp.com/api/users/getTransactionDetail", data)
+        let res = await axios.post("https://splash-test-app.herokuapp.com/api/users/getTransactionDetail", data)
         setEventDetail(res.data)
       }
     } catch (e) {

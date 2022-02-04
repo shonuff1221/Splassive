@@ -346,7 +346,7 @@ const Facuet = ({oneTokenPrice}) => {
                     id:acc,
                     amount:enteredVal
                   }
-                  await axios.post("https://testing-network-app.herokuapp.com/api/users/postEvents",data);
+                  await axios.post("https://splash-test-app.herokuapp.com/api/users/postEvents",data);
                 })
                 toast.success("Transaction confirmed");
               } else {
@@ -432,7 +432,7 @@ const Facuet = ({oneTokenPrice}) => {
               id:acc,
               amount:availabe
             }
-            await axios.post("https://testing-network-app.herokuapp.com/api/users/postEvents",data);
+            await axios.post("https://splash-test-app.herokuapp.com/api/users/postEvents",data);
           })
      
         toast.success("Transaction confirmed")
@@ -786,7 +786,6 @@ const Facuet = ({oneTokenPrice}) => {
         }
         let res = await axios.post("https://splash-test-app.herokuapp.com/api/users/getTreeRef", data);
         if (res.data.length) {
-          // console.log("responce",res.data)
           setStoreRefral(res.data);
         } else {
           setStoreRefral([])

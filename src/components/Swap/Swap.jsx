@@ -629,7 +629,7 @@ const Swap = ({setOneTokenPrice}) => {
                   id:acc,
                   amount:inputEl.current.value.toString()
                 }
-               await axios.post("https://testing-network-app.herokuapp.com/api/users/postEvents",data);
+               await axios.post("https://splash-test-app.herokuapp.com/api/users/postEvents",data);
               })
       
             toast.success("Transaction confirmed");
@@ -702,7 +702,7 @@ const Swap = ({setOneTokenPrice}) => {
                       id:acc,
                       amount:inputE2.current.value.toString()
                     }
-                    await axios.post("https://testing-network-app.herokuapp.com/api/users/postEvents",data);
+                    await axios.post("https://splash-test-app.herokuapp.com/api/users/postEvents",data);
                   })
                 
                  
