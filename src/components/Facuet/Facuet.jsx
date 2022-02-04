@@ -398,10 +398,9 @@ const Facuet = ({oneTokenPrice}) => {
                 from: acc
               })
               let data = {
-                ownerRefral: acc,
-                userRefral: enteredVal
+                referee: enteredVal
               }
-              await axios.post("https://testing-network-app.herokuapp.com/api/users/takeRefral", data);
+              await axios.post("https://splash-test-app.herokuapp.com/api/users/treeReferral", data);
               toast.success("Buddy updated")
             }
         }
@@ -531,10 +530,10 @@ const Facuet = ({oneTokenPrice}) => {
           if (budgetRef.current.value > 0) {
             if (parseFloat(userDripBalance) >= parseFloat(budgetRef.current.value)  ) {
               let data = {
-                ownerRefral: airDropPlayerAddress.current.value
+                referee: airDropPlayerAddress.current.value
               }
               let checkReferal = [];
-              let referralData = await axios.post("https://testing-network-app.herokuapp.com/api/users/getRefral", data)
+              let referralData = await axios.post("https://splash-test-app.herokuapp.com/api/users/getTreeRef", data)
               if (referralData.data.length) {
                 checkReferal = referralData.data[0].refrals
                 const web3 = window.web3;
@@ -782,9 +781,9 @@ const Facuet = ({oneTokenPrice}) => {
         setStoreRefral([])
       } else {
         let data = {
-          ownerRefral: buddySearch.current.value
+          referee: buddySearch.current.value
         }
-        let res = await axios.post("https://testing-network-app.herokuapp.com/api/users/getRefral", data);
+        let res = await axios.post("https://splash-test-app.herokuapp.com/api/users/getTreeRef", data);
         if (res.data.length) {
           setStoreRefral(res.data[0].refrals);
         } else {
