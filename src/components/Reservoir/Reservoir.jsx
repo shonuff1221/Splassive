@@ -248,19 +248,19 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
         let isWhiteList = await fountainContract.methods.whitelist(acc).call();
         let dividendsOf = await reserContract.methods.dividendsOf(acc).call();
         dividendsOf = web3.utils.fromWei(dividendsOf)
+        console.log("dividendsOf", dividendsOf);
         let myDividends = await reserContract.methods.myDividends().call();
         myDividends = web3.utils.fromWei(myDividends)
+        
         if (dividendsOf <= 0) {
           toast.error("Dividends cannot be zero")
-        } else if (isWhiteList == false) {
-          toast.error("You are not white listed")
         } else {
      
           await reserContract.methods.withdraw().send(
             { from: acc })
             
-          toast.success("Transaction confirmed")
-        }
+          toast.success("Transaction confirmed")}
+        
       }
 
     } catch (e) {

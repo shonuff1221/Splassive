@@ -36,7 +36,7 @@ const Facuet = ({oneTokenPrice}) => {
   let [AirdropLastSent, setAirdroplastsent] = useState(0);
   let [playerTeam, setPlayerteam] = useState(0);
   let [showPlayer, setShowPlayer] = useState(0)
-  let [showTotalUser, setShowTotalUser]=useState()
+  let [showTotalUser, setShowTotalUser]=useState(0)
   let airDropPlayerAddress = useRef()
 
   let [avalibleUSDT, setAvaliableUSDT]=useState(0)
@@ -81,11 +81,11 @@ const Facuet = ({oneTokenPrice}) => {
     if (acc == "No Wallet") {
       try {
 
-        let contractOf = new webSupply.eth.Contract(faucetContractAbi, faucetContractAddress);
-        let tokenContractOf = new webSupply.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-        let contractInfo = await contractOf.methods.contractInfo().call();
-        let myTeam = contractInfo._total_users;
-        setTeam(myTeam);
+        // let contractOf = new webSupply.eth.Contract(faucetContractAbi, faucetContractAddress);
+        // let tokenContractOf = new webSupply.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+        // let contractInfo = await contractOf.methods.contractInfo().call();
+        // let myTeam = contractInfo._total_users;
+        // setTeam(myTeam);
 
       } catch (e) {
         console.log("Error while getting data with out meta mask in faucet");
@@ -99,6 +99,7 @@ const Facuet = ({oneTokenPrice}) => {
         let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
         let totalUsers = await contractOf.methods.total_users().call()
         setShowTotalUser(totalUsers)
+        console.log("totalUsers", totalUsers)
         let contractInfo = await contractOf.methods.contractInfo().call();
         let myTeam = contractInfo._total_users;
         setTeam(myTeam);
