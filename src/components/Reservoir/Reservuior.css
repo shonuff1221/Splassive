@@ -9,3 +9,17 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+/* .user-balance{
+  font-size: 17px;
+}
+@media(max-width: 770px){
+  .user-balance{
+    font-size: 10px;
+  }
+} */
+.user2{
+  display: flex;
+   flex-direction: row;
+   /* text-align: right; */
+   justify-content: end;
+}

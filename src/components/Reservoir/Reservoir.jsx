@@ -481,16 +481,17 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                               <p style={{ lineHeight: "20%" }}>{t("Amount.1")}</p>
                             </label>
                           </div>
-                          <div className="col-6 text-right fst-italic">
+                          <div className="col-6 text-right fst-italic user2">
                             {" "}
-                            <p style={{ lineHeight: "20%" }}>
+                            <p >
                               {t("Price.1")}:
-                              <label className="user-balance text-white fst-italic">
+                              </p>
+                              <p className="user-balance text-white fst-italic">
                                 {t("AVAX.1")}/{t("Splash.1")}
                                 ≈
                                 {bnbDripPrice}
-                              </label>
-                            </p>
+                              </p>
+                              
                           </div>
                         </div>
                         <div role="group" className="input-group">
@@ -536,19 +537,20 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                       <form>
                         <div className="form-group">
                           <div className="row">
-                            <div className="col-6 text-left">
+                            <div className="col-4 text-left">
                               <label className="text-white fst-italic">
                                 <p style={{ lineHeight: "20%" }}>{t("Amount.1")}</p>
                               </label>
                             </div>
-                            <div className="col-6 text-right fst-italic">
+                            <div className="col-8 text-right fst-italic user2">
                               {" "}
-                              <p style={{ lineHeight: "20%" }}>
+                              <p>
                                 {t("DropBalance.1")}:
-                                <label className="user-balance text-white fst-italic">
+                                </p>
+                                <p className="user-balance text-white fst-italic">
                                   {userDropBalance}
-                                </label>
-                              </p>
+                                </p>
+                              
                             </div>
                           </div>
                           <div role="group" className="input-group">

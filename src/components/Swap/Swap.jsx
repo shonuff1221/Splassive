@@ -914,20 +914,21 @@ const Swap = ({setOneTokenPrice}) => {
                       <form>
                         <div className="form-group">
                           <div className="row">
-                            <div className="col-6 text-left fst-italic">
+                            <div className="col-3 text-left fst-italic">
                               <label>
                                 <p>{t("Amount.1")}</p>
                               </label>
                             </div>
-                            <div className="col-6 text-right fst-italic">
+                            <div className="col-9 text-right fst-italic user2">
                               {" "}
                               <p>
-                                {t("AVAXBalance.1")}
-                                <label className="user-balance text-white fst-italic">
+                                {t("AVAXBalance.1")}:
+                                </p>
+                                <p className="user-balance text-white fst-italic">
                                   {" "}
                                   {usersBalance}
-                                </label>
-                              </p>
+                                </p>
+                             
                             </div>
                           </div>
                           <div role="group" className="input-group">
