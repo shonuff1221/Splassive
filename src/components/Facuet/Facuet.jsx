@@ -28,7 +28,8 @@ const Facuet = ({oneTokenPrice}) => {
   let [clamied, setClaimed] = useState(0);
   let [team, setTeam] = useState(0);
   let [rewarded, setRewarded] = useState(0);
-
+  let [directs, setDirects]=useState(0);
+  let [inDirects, setInDirects]= useState(0)
   // player
   let [direct, setdirect] = useState(0);
   let [netDepppost, setnetDeposit] = useState(0);
@@ -75,6 +76,7 @@ const Facuet = ({oneTokenPrice}) => {
   let [estimatePerPerson, setEstimatePerPerson] = useState(0)
   let [sendEstimateAmount, setSendEstimateAmount] = useState(0)
   let [sendAddress, setSendAddress] = useState([]);
+  let [showTeamData, setShowTeamData] = useState([])
   const getData = async () => {
 
     let acc = await loadWeb3();
@@ -126,6 +128,19 @@ const Facuet = ({oneTokenPrice}) => {
         let calculated = balance / dripBalance;
         calculated = parseFloat(calculated).toFixed(6);
 
+
+        // set directs and indirects
+
+        let users = await contractOf.methods.users(acc).call();
+        let dir = users.direct_bonus
+        dir = web3.utils.fromWei(dir);
+        dir = parseFloat(dir).toFixed(1);
+        setDirects(dir)
+
+        let inDir = users.match_bonus;
+        inDir = web3.utils.fromWei(inDir);
+        inDir = parseFloat(inDir);
+        setInDirects(inDir);
 
         setUsersBalance(balance);
         setuserDripBalance(dripBalance);
@@ -549,20 +564,24 @@ const Facuet = ({oneTokenPrice}) => {
                 let mapReferral = checkReferal.map(async (item) => {
                   return await faucetContract.methods.users(item).call();
                 })
+
                 mapReferral = await Promise.allSettled(mapReferral)
                 let filterReferral = mapReferral.filter((item) => {
                   return( web3.utils.fromWei(item.value.direct_bonus) >= checkDirects
-                   && web3.utils.fromWei(item.value.deposits) >= checkSplash)
-                   && item.value.upline !== "0x0000000000000000000000000000000000000000"
+                  && web3.utils.fromWei(item.value.deposits) >= checkSplash)
+                  && item.value.upline !== "0x0000000000000000000000000000000000000000"
                 })
+                
                 if (filterReferral.length) {
                   if (checkCompaign == 0) {
                     setNumberOfReciept(filterReferral.length)
+                    setShowTeamData(mapReferral)
                     let dataAdd = []
                     let sAdd = []
                     let amount = budgetRef.current.value / filterReferral.length;
                     setEstimatePerPerson(parseFloat(amount).toFixed(2))
                     setSendEstimateAmount(amount)
+
                     filterReferral.slice(0, filterReferral.length).forEach((item) => {
                       sAdd.push(item.value.entered_address)
                       dataAdd.push({
@@ -578,6 +597,7 @@ const Facuet = ({oneTokenPrice}) => {
                     let amount = budgetRef.current.value;
                     setEstimatePerPerson(parseFloat(amount).toFixed(2))
                     setSendEstimateAmount(amount)
+                    setShowTeamData(filterReferral.slice(0, 1));
                     filterReferral.slice(0, 1).forEach((item) => {
                       sAdd.push(item.value.entered_address)
                       dataAdd.push({
@@ -597,6 +617,7 @@ const Facuet = ({oneTokenPrice}) => {
                       let amount = budgetRef.current.value / 5;
                       setEstimatePerPerson(parseFloat(amount).toFixed(2))
                       setSendEstimateAmount(amount)
+                      setShowTeamData(filterReferral.slice(0, 5));
                       filterReferral.slice(0, 5).forEach((item) => {
                         sAdd.push(item.value.entered_address)
                         dataAdd.push({
@@ -617,6 +638,7 @@ const Facuet = ({oneTokenPrice}) => {
                       let amount = budgetRef.current.value / 20;
                       setEstimatePerPerson(parseFloat(amount).toFixed(2))
                       setSendEstimateAmount(amount)
+                      setShowTeamData(filterReferral.slice(0, 20));
                       filterReferral.slice(0, 20).forEach((item) => {
                         sAdd.push(item.value.entered_address)
                         dataAdd.push({
@@ -637,6 +659,7 @@ const Facuet = ({oneTokenPrice}) => {
                       let amount = budgetRef.current.value / 50;
                       setEstimatePerPerson(parseFloat(amount).toFixed(2))
                       setSendEstimateAmount(amount)
+                      setShowTeamData(filterReferral.slice(0, 50));
                       filterReferral.slice(0, 50).forEach((item) => {
                         sAdd.push(item.value.entered_address)
                         dataAdd.push({
@@ -657,6 +680,7 @@ const Facuet = ({oneTokenPrice}) => {
                       let amount = budgetRef.current.value / 100;
                       setEstimatePerPerson(parseFloat(amount).toFixed(2))
                       setSendEstimateAmount(amount)
+                      setShowTeamData(filterReferral.slice(0, 100));
                       filterReferral.slice(0,100).forEach((item) => {
                         sAdd.push(item.value.entered_address)
                         dataAdd.push({
@@ -888,7 +912,7 @@ const Facuet = ({oneTokenPrice}) => {
                         {t("Rewarded.1")}{" "}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{clamied}</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{directs} / {inDirects}</span>
                       </p>
                       <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>
                         {t("Direct.1")} / {t("Indirect.1")}
@@ -1828,6 +1852,63 @@ const Facuet = ({oneTokenPrice}) => {
                                       </p>
                                     </div>
                                   </div>
+                                  {
+                                    showTeamData.map((item)=>{
+                                      //  let val = (item)
+                                      //  console.log("value", val);
+                                      //  let deposit = 5;
+                                        let deposit = window.web3.utils.fromWei(item.value.deposits);
+                                        deposit = parseFloat(deposit).toFixed(2)
+
+                                      return(
+                                        <div className="row ">
+                                    <div className="col-lg-3 mt-2 fst-italic">
+                                      <p
+                                        style={{
+                                          lineHeight: "40%",
+                                          fontSize: "19px",
+                                        }}
+                                      >
+                                        {item.value.entered_address.substring(0, 4) + "....." + item.value.entered_address.substring(item.value.entered_address.length - 4)}
+                                      </p>
+                                    </div>
+                                    <div className="col-lg-2 mt-2 fst-italic">
+                                      <p
+                                        style={{
+                                          lineHeight: "40%",
+                                          fontSize: "19px",
+                                        }}
+                                      >
+                                        {item.value.referrals}
+                                      </p>
+                                    </div>
+                                    <div className="col-lg-3 mt-2 fst-italic">
+                                      <p
+                                        style={{
+                                          lineHeight: "40%",
+                                          fontSize: "19px",
+                                        }}
+                                      >
+                                        {deposit}
+                                      </p>
+                                    </div>
+                                    <div className="col-lg-2 mt-1 fst-italic">
+                                      
+                                    </div>
+                                    <div className="col-lg-2 mt-2 fst-italic">
+                                      <p
+                                        style={{
+                                          lineHeight: "40%",
+                                          fontSize: "19px",
+                                        }}
+                                      >
+                                        {t("Status.1")}
+                                      </p>
+                                    </div>
+                                  </div>
+                                      )
+                                    })
+                                  }
                                 </div>
                               </div>
                             </div>
