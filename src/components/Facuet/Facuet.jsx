@@ -1867,7 +1867,6 @@ const Facuet = ({ oneTokenPrice }) => {
                                     </legend>
                                   </h3>
                                   <div className="row ">
-<<<<<<< Updated upstream
                                     <div className=" col-md-10 my-custom-scrollbar">
 
                                       <Table >
@@ -1898,88 +1897,6 @@ const Facuet = ({ oneTokenPrice }) => {
 
                                       </Table>
 
-=======
-                                    
-                                    <div className="col-lg-3 mt-2 fst-italic">
-                                      <p
-                                        style={{
-                                          lineHeight: "40%",
-                                          fontSize: "19px",
-                                        }}
-                                      >
-                                        {t("Address.1")}
-                                      </p>
-                                    </div>
-                                    <div className="col-lg-2 mt-2 fst-italic">
-                                      <p
-                                        style={{
-                                          lineHeight: "40%",
-                                          fontSize: "19px",
-                                        }}
-                                      >
-                                        {t("Directs.1")}
-                                      </p>
-                                    </div>
-                                    <div className="col-lg-3 mt-2 fst-italic">
-                                      <p
-                                        style={{
-                                          lineHeight: "40%",
-                                          fontSize: "19px",
-                                        }}
-                                      >
-                                        {t("Deposits.1")}
-                                      </p>
-                                    </div>
-                                    <div className="col-lg-2 mt-2 fst-italic">
-                                      <p
-                                        style={{
-                                          lineHeight: "40%",
-                                          fontSize: "19px",
-                                        }}
-                                      >
-                                        {t("Status.1")}
-                                      </p>
-                                    </div>
-                                  </div>
-                                  
-                                  {
-                                    showTeamData.map((item)=>{
-                                    
-                                        let deposit = window.web3.utils.fromWei(item.value.deposits);
-                                        deposit = parseFloat(deposit).toFixed(2)
-
-                                      return(
-                                        <div className="row ">
-                                    <div className="col-lg-3 mt-2 fst-italic">
-                                      <p
-                                        style={{
-                                          lineHeight: "40%",
-                                          fontSize: "19px",
-                                        }}
-                                      >
-                                        {item.value.entered_address.substring(0, 4) + "....." + item.value.entered_address.substring(item.value.entered_address.length - 4)}
-                                      </p>
-                                    </div>
-                                    <div className="col-lg-2 mt-2 fst-italic">
-                                      <p
-                                        style={{
-                                          lineHeight: "40%",
-                                          fontSize: "19px",
-                                        }}
-                                      >
-                                        {item.value.referrals}
-                                      </p>
-                                    </div>
-                                    <div className="col-lg-3 mt-2 fst-italic">
-                                      <p
-                                        style={{
-                                          lineHeight: "40%",
-                                          fontSize: "19px",
-                                        }}
-                                      >
-                                        {deposit}
-                                      </p>
->>>>>>> Stashed changes
                                     </div>
 
                                     <div className="col-lg-2 my-custom-scrollbar">
