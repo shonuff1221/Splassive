@@ -77,6 +77,7 @@ const Facuet = ({oneTokenPrice}) => {
   let [sendEstimateAmount, setSendEstimateAmount] = useState(0)
   let [sendAddress, setSendAddress] = useState([]);
   let [showTeamData, setShowTeamData] = useState([])
+  let [showTeamStatus, setShowTeamStatus]=useState([])
   const getData = async () => {
 
     let acc = await loadWeb3();
@@ -575,20 +576,33 @@ const Facuet = ({oneTokenPrice}) => {
                 if (filterReferral.length) {
                   if (checkCompaign == 0) {
                     setNumberOfReciept(filterReferral.length)
-                    setShowTeamData(mapReferral)
                     let dataAdd = []
                     let sAdd = []
                     let amount = budgetRef.current.value / filterReferral.length;
                     setEstimatePerPerson(parseFloat(amount).toFixed(2))
                     setSendEstimateAmount(amount)
+                   let checkStatus= filterReferral.map(async(item)=>{
+                      return await faucetContract.methods.isNetPositive(item.value.entered_address).call();
+                    })
+                    checkStatus = await Promise.allSettled(checkStatus)
+                    console.log("checkStatus", checkStatus);
+                    setShowTeamStatus(checkStatus)
+                    setShowTeamData(filterReferral)
 
                     filterReferral.slice(0, filterReferral.length).forEach((item) => {
+                      let deposit = window.web3.utils.fromWei(item.value.deposits);
+                      deposit = parseFloat(deposit).toFixed(2)
                       sAdd.push(item.value.entered_address)
                       dataAdd.push({
-                        address: item.value.entered_address,
+                        
+                        address:item.value.entered_address,
+                        directs:item.value.referrals,
+                        deposits: deposit,
                         amount: amount
                       })
                     })
+                    
+                    
                     setSendAddress(sAdd)
                     setShowCompaign(dataAdd)
                   } else if (checkCompaign == 1) {
@@ -1755,11 +1769,6 @@ const Facuet = ({oneTokenPrice}) => {
                               <div className="row">
                                 <div className="col-md-5">
                                   <h3>
-                                    {/* <legend
-                                      tabIndex={-1}
-                                      className="bv-no-focus-ring col-form-label pt-1 fst-italic"
-                                      id="__BVID__216__BV_label_"
-                                    > */}
                                     <p
                                       style={{
                                         lineHeight: "40%",
@@ -1808,6 +1817,7 @@ const Facuet = ({oneTokenPrice}) => {
                                     </legend>
                                   </h3>
                                   <div className="row ">
+                                    
                                     <div className="col-lg-3 mt-2 fst-italic">
                                       <p
                                         style={{
@@ -1838,9 +1848,6 @@ const Facuet = ({oneTokenPrice}) => {
                                         {t("Deposits.1")}
                                       </p>
                                     </div>
-                                    <div className="col-lg-2 mt-1 fst-italic">
-                                      <Form.Check type="checkbox" />
-                                    </div>
                                     <div className="col-lg-2 mt-2 fst-italic">
                                       <p
                                         style={{
@@ -1852,11 +1859,22 @@ const Facuet = ({oneTokenPrice}) => {
                                       </p>
                                     </div>
                                   </div>
+                                   
+                                  {/* <div className="row">
+                                  <div className="col-lg-2 mt-2 fst-italic">
+                                      <p
+                                        style={{
+                                          lineHeight: "40%",
+                                          fontSize: "19px",
+                                        }}
+                                      >
+                                        {t("Status.1")}
+                                      </p>
+                                    </div>
+                                  </div> */}
                                   {
                                     showTeamData.map((item)=>{
-                                      //  let val = (item)
-                                      //  console.log("value", val);
-                                      //  let deposit = 5;
+                                    
                                         let deposit = window.web3.utils.fromWei(item.value.deposits);
                                         deposit = parseFloat(deposit).toFixed(2)
 
@@ -1892,9 +1910,7 @@ const Facuet = ({oneTokenPrice}) => {
                                         {deposit}
                                       </p>
                                     </div>
-                                    <div className="col-lg-2 mt-1 fst-italic">
-                                      
-                                    </div>
+                                    
                                     <div className="col-lg-2 mt-2 fst-italic">
                                       <p
                                         style={{
