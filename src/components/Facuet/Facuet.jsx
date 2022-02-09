@@ -15,10 +15,11 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios'
 import price from 'crypto-price';
 import Web3 from "web3";
+import Table from 'react-bootstrap/Table'
 const webSupply = new Web3("https://api.avax-test.network/ext/bc/C/rpc");
 // const webSupply = window.web3;
 
-const Facuet = ({oneTokenPrice}) => {
+const Facuet = ({ oneTokenPrice }) => {
   let navigate = useNavigate();
   let buddySearch = useRef()
   let [isChange, setIschange] = useState("Viewer");
@@ -28,8 +29,8 @@ const Facuet = ({oneTokenPrice}) => {
   let [clamied, setClaimed] = useState(0);
   let [team, setTeam] = useState(0);
   let [rewarded, setRewarded] = useState(0);
-  let [directs, setDirects]=useState(0);
-  let [inDirects, setInDirects]= useState(0)
+  let [directs, setDirects] = useState(0);
+  let [inDirects, setInDirects] = useState(0)
   // player
   let [direct, setdirect] = useState(0);
   let [netDepppost, setnetDeposit] = useState(0);
@@ -37,11 +38,11 @@ const Facuet = ({oneTokenPrice}) => {
   let [AirdropLastSent, setAirdroplastsent] = useState(0);
   let [playerTeam, setPlayerteam] = useState(0);
   let [showPlayer, setShowPlayer] = useState(0)
-  let [showTotalUser, setShowTotalUser]=useState(0)
+  let [showTotalUser, setShowTotalUser] = useState(0)
   let airDropPlayerAddress = useRef()
 
-  let [avalibleUSDT, setAvaliableUSDT]=useState(0)
-  let [depositUSDT, setDepositUSDT]=useState(0)
+  let [avalibleUSDT, setAvaliableUSDT] = useState(0)
+  let [depositUSDT, setDepositUSDT] = useState(0)
 
   // users balance
 
@@ -77,7 +78,7 @@ const Facuet = ({oneTokenPrice}) => {
   let [sendEstimateAmount, setSendEstimateAmount] = useState(0)
   let [sendAddress, setSendAddress] = useState([]);
   let [showTeamData, setShowTeamData] = useState([])
-  let [showTeamStatus, setShowTeamStatus]=useState([])
+  let [showTeamStatus, setShowTeamStatus] = useState([])
   const getData = async () => {
 
     let acc = await loadWeb3();
@@ -164,9 +165,9 @@ const Facuet = ({oneTokenPrice}) => {
         setMaxPayout(maxPay);
         setAvailable(myclaimsAvailable);
         let avalUsdt = myclaimsAvailable * oneTokenPrice;
-      
+
         avalUsdt = parseFloat(avalUsdt).toFixed(3)
-        
+
         setAvaliableUSDT(avalUsdt)
         setClaimed(totalclaimed);
       } catch (e) {
@@ -174,15 +175,15 @@ const Facuet = ({oneTokenPrice}) => {
       }
     }
   }
-  
+
   //Direct AirDrop
   const directAirDrop = async () => {
     try {
-    let acc = await loadWeb3();
-    if (acc == "No Wallet") {
-      toast.error("No Wallet Connected")
-    }
-    else {
+      let acc = await loadWeb3();
+      if (acc == "No Wallet") {
+        toast.error("No Wallet Connected")
+      }
+      else {
 
         let enteredAirVal = airAmount.current.value;
         let enteredAddrs = airAddress.current.value;
@@ -196,7 +197,7 @@ const Facuet = ({oneTokenPrice}) => {
               let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
               let ownwerAddrss = await contractOf.methods.dripVaultAddress().call();
               enteredAirVal = web3.utils.toWei(enteredAirVal);
-              if ( uplineAddress == "0x0000000000000000000000000000000000000000") {
+              if (uplineAddress == "0x0000000000000000000000000000000000000000") {
                 toast.error("No Refferral ")
               } else {
 
@@ -221,7 +222,7 @@ const Facuet = ({oneTokenPrice}) => {
           toast.error("Looks like you forgot to enter Splash Amount")
         }
       }
-      
+
     } catch (e) {
       toast.error("Transaction Failed")
       console.log("Error :", e)
@@ -310,9 +311,9 @@ const Facuet = ({oneTokenPrice}) => {
             let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
             let referral = await contractOfBuddy.methods.buddyOf(acc).call();
             let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-            let isWhiteList =await tokenContractOf.methods.whitelist(acc).call()
+            let isWhiteList = await tokenContractOf.methods.whitelist(acc).call()
             let isExcluded = await tokenContractOf.methods.isExcluded(acc).call()
-            if (referral.length > 15  ) {
+            if (referral.length > 15) {
 
               let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
               await tokenContractOf.methods.approve(faucetContractAddress, web3.utils.toWei(enteredVal))
@@ -323,7 +324,7 @@ const Facuet = ({oneTokenPrice}) => {
 
             } else {
               toast.error("You have no Buddy.");
-             
+
             }
           } else {
             toast.error("Entered value is greater than your balance")
@@ -355,21 +356,21 @@ const Facuet = ({oneTokenPrice}) => {
               let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
               let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
 
-                let trHash=""
+              let trHash = ""
               let allowance = await tokenContractOf.methods.allowance(acc, faucetContractAddress).call();
               console.log("allowance", allowance);
               if (allowance >= parseFloat(web3.utils.toWei(enteredVal))) {
                 await contractOf.methods.deposit(referral, web3.utils.toWei(enteredVal)).send({
                   from: acc
-                }).on("transactionHash",async(hash)=>{
+                }).on("transactionHash", async (hash) => {
                   let data = {
-                    hash:hash,
-                    toAddress :faucetContractAddress,
-                    fromAddress : acc,
-                    id:acc,
-                    amount:enteredVal
+                    hash: hash,
+                    toAddress: faucetContractAddress,
+                    fromAddress: acc,
+                    id: acc,
+                    amount: enteredVal
                   }
-                  await axios.post("https://splash-test-app.herokuapp.com/api/users/postEvents",data);
+                  await axios.post("https://splash-test-app.herokuapp.com/api/users/postEvents", data);
                 })
                 toast.success("Transaction confirmed");
               } else {
@@ -378,7 +379,7 @@ const Facuet = ({oneTokenPrice}) => {
 
             } else {
               toast.error("You have no Buddy.");
-              
+
             }
           } else {
             toast.error("Entered value is greater than your balance")
@@ -399,7 +400,7 @@ const Facuet = ({oneTokenPrice}) => {
       if (acc == "No Wallet") {
         toast.error("No Wallet Connected");
       } else {
- 
+
         if (buddy.current.value <= 0) {
           toast.error("Please enter buddy refral")
         } else {
@@ -410,12 +411,12 @@ const Facuet = ({oneTokenPrice}) => {
           let nedeposit = userInfoTotal.total_deposits;
           nedeposit = webSupply.utils.fromWei(nedeposit);
           nedeposit = parseFloat(nedeposit)
-          if(nedeposit <= 0){
+          if (nedeposit <= 0) {
             toast.error("No Directs avaliable")
-          }else{
-            if(enteredVal == acc){
+          } else {
+            if (enteredVal == acc) {
               toast.error("Same address not accepted")
-            }else{
+            } else {
               let contractOfBuddy = new web3.eth.Contract(buddySystemAbi, buddySystemAddress);
               await contractOfBuddy.methods.updateBuddy(enteredVal).send({
                 from: acc
@@ -426,7 +427,7 @@ const Facuet = ({oneTokenPrice}) => {
               await axios.post("https://splash-test-app.herokuapp.com/api/users/treeReferral", data);
               toast.success("Buddy updated")
             }
-        }
+          }
         }
       }
     } catch (e) {
@@ -447,18 +448,18 @@ const Facuet = ({oneTokenPrice}) => {
           let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
           await contractOf.methods.claim().send({
             from: acc
-          }).on("transactionHash",async(hash)=>{
+          }).on("transactionHash", async (hash) => {
             let data = {
-              hash:hash,
-              toAddress :acc,
-              fromAddress : faucetContractAddress,
-              id:acc,
-              amount:availabe
+              hash: hash,
+              toAddress: acc,
+              fromAddress: faucetContractAddress,
+              id: acc,
+              amount: availabe
             }
-            await axios.post("https://splash-test-app.herokuapp.com/api/users/postEvents",data);
+            await axios.post("https://splash-test-app.herokuapp.com/api/users/postEvents", data);
           })
-     
-        toast.success("Transaction confirmed")
+
+          toast.success("Transaction confirmed")
         } else {
           toast.error("No Claims Available")
         }
@@ -551,7 +552,7 @@ const Facuet = ({oneTokenPrice}) => {
       } else {
         if (airDropPlayerAddress.current.value > 0) {
           if (budgetRef.current.value > 0) {
-            if (parseFloat(userDripBalance) >= parseFloat(budgetRef.current.value)  ) {
+            if (parseFloat(userDripBalance) >= parseFloat(budgetRef.current.value)) {
               let data = {
                 referee: airDropPlayerAddress.current.value
               }
@@ -568,11 +569,11 @@ const Facuet = ({oneTokenPrice}) => {
 
                 mapReferral = await Promise.allSettled(mapReferral)
                 let filterReferral = mapReferral.filter((item) => {
-                  return( web3.utils.fromWei(item.value.direct_bonus) >= checkDirects
-                  && web3.utils.fromWei(item.value.deposits) >= checkSplash)
-                  && item.value.upline !== "0x0000000000000000000000000000000000000000"
+                  return (web3.utils.fromWei(item.value.direct_bonus) >= checkDirects
+                    && web3.utils.fromWei(item.value.deposits) >= checkSplash)
+                    && item.value.upline !== "0x0000000000000000000000000000000000000000"
                 })
-                
+
                 if (filterReferral.length) {
                   if (checkCompaign == 0) {
                     setNumberOfReciept(filterReferral.length)
@@ -581,7 +582,7 @@ const Facuet = ({oneTokenPrice}) => {
                     let amount = budgetRef.current.value / filterReferral.length;
                     setEstimatePerPerson(parseFloat(amount).toFixed(2))
                     setSendEstimateAmount(amount)
-                   let checkStatus= filterReferral.map(async(item)=>{
+                    let checkStatus = filterReferral.map(async (item) => {
                       return await faucetContract.methods.isNetPositive(item.value.entered_address).call();
                     })
                     checkStatus = await Promise.allSettled(checkStatus)
@@ -594,15 +595,15 @@ const Facuet = ({oneTokenPrice}) => {
                       deposit = parseFloat(deposit).toFixed(2)
                       sAdd.push(item.value.entered_address)
                       dataAdd.push({
-                        
-                        address:item.value.entered_address,
-                        directs:item.value.referrals,
+
+                        address: item.value.entered_address,
+                        directs: item.value.referrals,
                         deposits: deposit,
                         amount: amount
                       })
                     })
-                    
-                    
+
+
                     setSendAddress(sAdd)
                     setShowCompaign(dataAdd)
                   } else if (checkCompaign == 1) {
@@ -695,7 +696,7 @@ const Facuet = ({oneTokenPrice}) => {
                       setEstimatePerPerson(parseFloat(amount).toFixed(2))
                       setSendEstimateAmount(amount)
                       setShowTeamData(filterReferral.slice(0, 100));
-                      filterReferral.slice(0,100).forEach((item) => {
+                      filterReferral.slice(0, 100).forEach((item) => {
                         sAdd.push(item.value.entered_address)
                         dataAdd.push({
                           address: item.value.entered_address,
@@ -740,68 +741,68 @@ const Facuet = ({oneTokenPrice}) => {
   const aproveafterRunAmount = async () => {
     try {
       let acc = await loadWeb3();
-      if(acc == "No Wallet"){
+      if (acc == "No Wallet") {
         toast.error("No Wallet Connected")
-      }else{
-        if(budgetRef.current.value >0 ){
-          if(parseFloat(userDripBalance)>=parseFloat(budgetRef.current.value)){
+      } else {
+        if (budgetRef.current.value > 0) {
+          if (parseFloat(userDripBalance) >= parseFloat(budgetRef.current.value)) {
 
-          
-          if(sendAddress.length){
-            const web3 = window.web3;
-            let splashContract =new  web3.eth.Contract(faucetTokenAbi,faucetTokenAddress);
-            let value = web3.utils.toWei(budgetRef.current.value)
-              await splashContract.methods.approve(faucetContractAddress,value).send({from:acc})
+
+            if (sendAddress.length) {
+              const web3 = window.web3;
+              let splashContract = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+              let value = web3.utils.toWei(budgetRef.current.value)
+              await splashContract.methods.approve(faucetContractAddress, value).send({ from: acc })
               toast.success("Transaction confirmed")
-            }else{
-            toast.error("No recipient found")
+            } else {
+              toast.error("No recipient found")
+            }
+          } else {
+            toast.error("Entered amount is greater than your balance")
           }
-        }else{
-          toast.error("Entered amount is greater than your balance")
-        }
-          }else{
+        } else {
           toast.error("Looks like you forgot to enter amount")
         }
-  
-        }
+
+      }
     } catch (e) {
       toast.error("Transaction failed")
       console.log("error while aprove amount to addresses");
     }
   }
-  const sendAmount = async ()=> {
-    try{
+  const sendAmount = async () => {
+    try {
       let acc = await loadWeb3();
-      if(acc == "No Wallet"){
+      if (acc == "No Wallet") {
         toast.error("No Wallet Connected")
-      }else{
-        if(parseFloat(budgetRef.current.value) >0 ){
-          if(sendAddress.length){
+      } else {
+        if (parseFloat(budgetRef.current.value) > 0) {
+          if (sendAddress.length) {
             const web3 = window.web3
-            let splashContract =new  web3.eth.Contract(faucetTokenAbi,faucetTokenAddress);
+            let splashContract = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
             let allowance = await splashContract.methods.allowance(acc, faucetContractAddress).call();
-            
+
             let all = web3.utils.fromWei(allowance);
-           
-            if(parseFloat(budgetRef.current.value) <= parseFloat(all)){
-              let facutContract =new  web3.eth.Contract(faucetContractAbi,faucetContractAddress);
+
+            if (parseFloat(budgetRef.current.value) <= parseFloat(all)) {
+              let facutContract = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
               let tosendEstimateAmount = sendEstimateAmount.toString()
-              
-              tosendEstimateAmount=web3.utils.toWei(sendEstimateAmount.toString())
-              await facutContract.methods.MultiSendairdrop(sendAddress, tosendEstimateAmount).send({from:acc})
+
+              tosendEstimateAmount = web3.utils.toWei(sendEstimateAmount.toString())
+              await facutContract.methods.MultiSendairdrop(sendAddress, tosendEstimateAmount).send({ from: acc })
               toast.success("Transaction confirmed")
-              
-            }else{
+
+            } else {
               toast.error("The entered amount is greater than your approval amount")
             }
-          }else{
+          } else {
             toast.error("No recipient found")
           }
-        }else{
+        } else {
           toast.error("Looks like you forgot to enter the fields")
         }
       }
-    }catch(e){
+    } catch (e) {
       toast.error("Transaction failed")
       console.log("error while send amount to addresses", e);
     }
@@ -1308,7 +1309,7 @@ const Facuet = ({oneTokenPrice}) => {
                           className="fst-italic"
                           style={{ fontSize: "16px" }}
                         >
-                        {+direct + +playerTeam}
+                          {+direct + +playerTeam}
                         </span>
                       </div>
                     </div>
@@ -1464,7 +1465,7 @@ const Facuet = ({oneTokenPrice}) => {
                                     >
                                       {t("Viewall.1")}
                                     </button>
-                                    
+
                                     <button
                                       style={{ backgroundColor: "#7c625a", color: "white", border: "1px solid #7c625a" }}
                                       type="button"
@@ -1473,7 +1474,7 @@ const Facuet = ({oneTokenPrice}) => {
                                     >
                                       {t("Show.1")}
                                     </button>
-                                  
+
                                   </div>
                                 </form>
                               </div>
@@ -1817,8 +1818,101 @@ const Facuet = ({oneTokenPrice}) => {
                                     </legend>
                                   </h3>
                                   <div className="row ">
-                                    
-                                    <div className="col-lg-3 mt-2 fst-italic">
+                                    <div className=" col-md-10 my-custom-scrollbar">
+
+                                      <Table>
+                                        <thead>
+                                          <tr>
+                                            <th><p style={{ lineHeight: "40%", fontSize: "19px", }}>{t("Address.1")}</p></th>
+                                            <th><p style={{ lineHeight: "40%", fontSize: "19px", }}>{t("Directs.1")}</p></th>
+                                            <th><p style={{ lineHeight: "40%", fontSize: "19px", }}>{t("Deposits.1")}</p></th>
+                                          </tr>
+                                        </thead>
+
+                                        <tbody>
+                                          <tr>
+                                            <td>Otto</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Otto</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Otto</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Otto</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Otto</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Otto</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Otto</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Otto</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Otto</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Otto</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Otto</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr> <tr>
+                                            <td>Otto</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                          </tr>
+                                          
+                                          {/* {showTeamData.map((item)=>{
+                                        let deposit = window.web3.utils.fromWei(item.value.deposits);
+                                        deposit = parseFloat(deposit).toFixed(2)
+
+                                      return( <div>
+                                          <tr>
+                                            <td><p style={{lineHeight: "40%",fontSize: "19px",}}>{item.value.entered_address.substring(0, 4) + "....." + item.value.entered_address.substring(item.value.entered_address.length - 4)}</p></td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                            </tr>
+                                      </div>
+                                      )
+                                    })
+                                  } */}
+                                        </tbody>
+
+
+
+                                      </Table>
+
+                                    </div>
+
+                                    {/* <div className="col-lg-3 mt-2 fst-italic">
                                       <p
                                         style={{
                                           lineHeight: "40%",
@@ -1827,8 +1921,8 @@ const Facuet = ({oneTokenPrice}) => {
                                       >
                                         {t("Address.1")}
                                       </p>
-                                    </div>
-                                    <div className="col-lg-2 mt-2 fst-italic">
+                                    </div> */}
+                                    {/* <div className="col-lg-2 mt-2 fst-italic">
                                       <p
                                         style={{
                                           lineHeight: "40%",
@@ -1837,8 +1931,8 @@ const Facuet = ({oneTokenPrice}) => {
                                       >
                                         {t("Directs.1")}
                                       </p>
-                                    </div>
-                                    <div className="col-lg-3 mt-2 fst-italic">
+                                    </div> */}
+                                    {/* <div className="col-lg-3 mt-2 fst-italic">
                                       <p
                                         style={{
                                           lineHeight: "40%",
@@ -1847,19 +1941,66 @@ const Facuet = ({oneTokenPrice}) => {
                                       >
                                         {t("Deposits.1")}
                                       </p>
-                                    </div>
-                                    <div className="col-lg-2 mt-2 fst-italic">
-                                      <p
+                                    </div> */}
+                                    <div className="col-lg-2 my-custom-scrollbar">
+                                      <Table>
+                                        <thead>
+                                          <tr>
+                                            <th><p style={{lineHeight: "40%",fontSize: "19px",}}>{t("Status.1")}</p></th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <td>Status</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Mark</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Mark</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Mark</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Mark</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Mark</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Mark</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Mark</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Mark</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Mark</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Mark</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Mark</td>
+                                          </tr>
+
+                                        </tbody>
+                                      </Table>
+                                      {/* <p
                                         style={{
                                           lineHeight: "40%",
                                           fontSize: "19px",
                                         }}
                                       >
                                         {t("Status.1")}
-                                      </p>
+                                      </p> */}
                                     </div>
                                   </div>
-                                   
+
+
                                   {/* <div className="row">
                                   <div className="col-lg-2 mt-2 fst-italic">
                                       <p
@@ -1873,14 +2014,14 @@ const Facuet = ({oneTokenPrice}) => {
                                     </div>
                                   </div> */}
                                   {
-                                    showTeamData.map((item)=>{
-                                    
-                                        let deposit = window.web3.utils.fromWei(item.value.deposits);
-                                        deposit = parseFloat(deposit).toFixed(2)
+                                    showTeamData.map((item) => {
 
-                                      return(
+                                      let deposit = window.web3.utils.fromWei(item.value.deposits);
+                                      deposit = parseFloat(deposit).toFixed(2)
+
+                                      return (
                                         <div className="row ">
-                                    <div className="col-lg-3 mt-2 fst-italic">
+                                          {/* <div className="col-lg-3 mt-2 fst-italic">
                                       <p
                                         style={{
                                           lineHeight: "40%",
@@ -1909,19 +2050,19 @@ const Facuet = ({oneTokenPrice}) => {
                                       >
                                         {deposit}
                                       </p>
-                                    </div>
-                                    
-                                    <div className="col-lg-2 mt-2 fst-italic">
-                                      <p
-                                        style={{
-                                          lineHeight: "40%",
-                                          fontSize: "19px",
-                                        }}
-                                      >
-                                        {t("Status.1")}
-                                      </p>
-                                    </div>
-                                  </div>
+                                    </div> */}
+
+                                          <div className="col-lg-2 mt-2 fst-italic">
+                                            <p
+                                              style={{
+                                                lineHeight: "40%",
+                                                fontSize: "19px",
+                                              }}
+                                            >
+                                              {t("Status.1")}
+                                            </p>
+                                          </div>
+                                        </div>
                                       )
                                     })
                                   }
