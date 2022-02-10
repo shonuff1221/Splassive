@@ -645,18 +645,18 @@ const Facuet = ({ oneTokenPrice }) => {
                       })
                       checkStatus = await Promise.allSettled(checkStatus)
                       setShowTeamStatus(checkStatus)
-                  
+
                       filterReferral.slice(0, 5).forEach((item) => {
                         let deposit = window.web3.utils.fromWei(item.value.deposits);
-                      deposit = parseFloat(deposit).toFixed(2)
-                      sAdd.push(item.value.entered_address)
-                      dataAdd.push({
+                        deposit = parseFloat(deposit).toFixed(2)
+                        sAdd.push(item.value.entered_address)
+                        dataAdd.push({
 
-                        address: item.value.entered_address,
-                        directs: item.value.referrals,
-                        deposits: deposit,
-                        amount: amount
-                      })
+                          address: item.value.entered_address,
+                          directs: item.value.referrals,
+                          deposits: deposit,
+                          amount: amount
+                        })
                       })
                       setNumberOfReciept(sAdd.length)
                       setSendAddress(sAdd)
@@ -676,18 +676,18 @@ const Facuet = ({ oneTokenPrice }) => {
                       })
                       checkStatus = await Promise.allSettled(checkStatus)
                       setShowTeamStatus(checkStatus)
-                      
+
                       filterReferral.slice(0, 20).forEach((item) => {
                         let deposit = window.web3.utils.fromWei(item.value.deposits);
-                      deposit = parseFloat(deposit).toFixed(2)
-                      sAdd.push(item.value.entered_address)
-                      dataAdd.push({
+                        deposit = parseFloat(deposit).toFixed(2)
+                        sAdd.push(item.value.entered_address)
+                        dataAdd.push({
 
-                        address: item.value.entered_address,
-                        directs: item.value.referrals,
-                        deposits: deposit,
-                        amount: amount
-                      })
+                          address: item.value.entered_address,
+                          directs: item.value.referrals,
+                          deposits: deposit,
+                          amount: amount
+                        })
                       })
                       setNumberOfReciept(sAdd.length)
                       setSendAddress(sAdd)
@@ -707,18 +707,18 @@ const Facuet = ({ oneTokenPrice }) => {
                       })
                       checkStatus = await Promise.allSettled(checkStatus)
                       setShowTeamStatus(checkStatus)
-                      
+
                       filterReferral.slice(0, 50).forEach((item) => {
                         let deposit = window.web3.utils.fromWei(item.value.deposits);
-                      deposit = parseFloat(deposit).toFixed(2)
-                      sAdd.push(item.value.entered_address)
-                      dataAdd.push({
+                        deposit = parseFloat(deposit).toFixed(2)
+                        sAdd.push(item.value.entered_address)
+                        dataAdd.push({
 
-                        address: item.value.entered_address,
-                        directs: item.value.referrals,
-                        deposits: deposit,
-                        amount: amount
-                      })
+                          address: item.value.entered_address,
+                          directs: item.value.referrals,
+                          deposits: deposit,
+                          amount: amount
+                        })
                       })
                       setNumberOfReciept(sAdd.length)
                       setSendAddress(sAdd)
@@ -740,15 +740,15 @@ const Facuet = ({ oneTokenPrice }) => {
                       setShowTeamStatus(checkStatus)
                       filterReferral.slice(0, 100).forEach((item) => {
                         let deposit = window.web3.utils.fromWei(item.value.deposits);
-                      deposit = parseFloat(deposit).toFixed(2)
-                      sAdd.push(item.value.entered_address)
-                      dataAdd.push({
+                        deposit = parseFloat(deposit).toFixed(2)
+                        sAdd.push(item.value.entered_address)
+                        dataAdd.push({
 
-                        address: item.value.entered_address,
-                        directs: item.value.referrals,
-                        deposits: deposit,
-                        amount: amount
-                      })
+                          address: item.value.entered_address,
+                          directs: item.value.referrals,
+                          deposits: deposit,
+                          amount: amount
+                        })
                       })
                       setNumberOfReciept(sAdd.length)
                       setSendAddress(sAdd)
@@ -1866,65 +1866,59 @@ const Facuet = ({ oneTokenPrice }) => {
                                       </p>
                                     </legend>
                                   </h3>
-                                  <div className="row ">
-                                    <div className=" col-md-10 my-custom-scrollbar">
+                                  <div className="row my-custom-scrollbar" responsive="sm">
+                                    <div className="col-10">
 
-                                      <Table >
+                                      <Table className="table table-borderless">
                                         <thead>
                                           <tr>
-                                            <th><p style={{ lineHeight: "40%", fontSize: "19px", }}>{t("Address.1")}</p></th>
-                                            <th><p style={{ lineHeight: "40%", fontSize: "19px", }}>{t("Directs.1")}</p></th>
-                                            <th><p style={{ lineHeight: "40%", fontSize: "19px", }}>{t("Deposits.1")}</p></th>
+                                            <th><p className="fatchtable">{t("Address.1")}</p></th>
+                                            <th><p className="fatchtable">{t("Directs.1")}</p></th>
+                                            <th><p className="fatchtable">{t("Deposits.1")}</p></th>
                                           </tr>
                                         </thead>
 
                                         <tbody>
                                           {
-                                            showCompaign.map((item)=>{
-                                              return (
-                                                  <tr>
-                                            <th><p style={{ lineHeight: "40%", fontSize: "19px", }}>{item.address.substring(0, 4) + "..." + item.address.substring(item.address.length - 4)}</p></th>
-                                            <th><p style={{ lineHeight: "40%", fontSize: "19px", }}>{item.directs}</p></th>
-                                            <th><p style={{ lineHeight: "40%", fontSize: "19px", }}>{item.deposits}</p></th>
-                                          </tr>
-                                              )
-                                            })
-                                          }
-                                          </tbody>
-                                      
-
-
-
-                                      </Table>
-
-                                    </div>
-
-                                    <div className="col-lg-2 my-custom-scrollbar">
-                                      <Table>
-                                        <thead>
-                                          <tr>
-                                            <th><p style={{lineHeight: "40%",fontSize: "19px",}}>{t("Status.1")}</p></th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          {
-                                            showTeamStatus.map((item)=>{
+                                            showCompaign.map((item) => {
                                               return (
                                                 <tr>
-                                                  
-                                                  <th><p style={{lineHeight: "40%",fontSize: "16px",}}>{item.value === true ? "Activated" : "DeActivated"}</p></th>
-                                                  
+                                                  <th><p className="fatchtable">{item.address.substring(0, 3) + "..." + item.address.substring(item.address.length - 3)}</p></th>
+                                                  <th><p className="fatchtable">{item.directs}</p></th>
+                                                  <th><p className="fatchtable">{item.deposits}</p></th>
                                                 </tr>
                                               )
                                             })
                                           }
-                                 
+                                        </tbody>
+                                      </Table>
+                                    </div>
+                                    <div className="col-2 statuscss ">
+                                      <Table className="table table-borderless">
+                                        <thead>
+                                          <tr>
+                                            <th><p className="fatchtable">{t("Status.1")}</p></th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          {
+                                            showTeamStatus.map((item) => {
+                                              return (
+                                                <tr>
+
+                                                  <th><p className="fatchtable">{item.value === true ? "Activate" : "InActivate"}</p></th>
+
+                                                </tr>
+                                              )
+                                            })
+                                          }
+
 
                                         </tbody>
                                       </Table>
 
                                     </div>
-                                  </div> 
+                                  </div>
                                 </div>
                               </div>
                             </div>
