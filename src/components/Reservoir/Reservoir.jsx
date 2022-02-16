@@ -55,9 +55,9 @@ function Reservoir() {
         userRew = web3.utils.fromWei(userRew);
         userRew = parseFloat(userRew).toFixed(11);
         let draw = web3.utils.fromWei(stat[1])
-         draw = parseFloat(draw).toFixed(3)
+         draw = parseFloat(draw).toFixed(7)
          let totalCom = web3.utils.fromWei(stat[13])
-         totalCom = parseFloat(totalCom).toFixed(3)
+         totalCom = parseFloat(totalCom).toFixed(7)
         setUserReward(userRew)
         setCompound(stat[14])
         setTotalWithDraw(draw);
