@@ -48,10 +48,12 @@ function Reservoir() {
       } else {
         const web3 = window.web3;
         let contractOf = new web3.eth.Contract(reservoirAbi, reservoirAddress);
+        let fountainContract = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
         let userRew = await contractOf.methods.dividendsOf(acc).call();
+        userRew=  await fountainContract.methods.getTokenToBnbInputPrice(userRew).call()
         let stat = await contractOf.methods.statsOf(acc).call();
         userRew = web3.utils.fromWei(userRew);
-        userRew = parseFloat(userRew).toFixed(7);
+        userRew = parseFloat(userRew).toFixed(11);
         let draw = web3.utils.fromWei(stat[1])
          draw = parseFloat(draw).toFixed(3)
          let totalCom = web3.utils.fromWei(stat[13])
@@ -244,13 +246,8 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
       } else {
         const web3 = window.web3;
         let reserContract = new web3.eth.Contract(reservoirAbi, reservoirAddress);
-        let fountainContract = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
-        let isWhiteList = await fountainContract.methods.whitelist(acc).call();
         let dividendsOf = await reserContract.methods.dividendsOf(acc).call();
         dividendsOf = web3.utils.fromWei(dividendsOf)
-        console.log("dividendsOf", dividendsOf);
-        let myDividends = await reserContract.methods.myDividends().call();
-        myDividends = web3.utils.fromWei(myDividends)
         
         if (dividendsOf <= 0) {
           toast.error("Dividends cannot be zero")
