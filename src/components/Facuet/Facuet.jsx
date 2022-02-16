@@ -101,15 +101,17 @@ const Facuet = ({ oneTokenPrice }) => {
         const web3 = window.web3;
         let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
         let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-        let totalUsers = await contractOf.methods.total_users().call()
-        setShowTotalUser(totalUsers)
-        console.log("totalUsers", totalUsers)
+        
         let contractInfo = await contractOf.methods.contractInfo().call();
         let myTeam = contractInfo._total_users;
         setTeam(myTeam);
         let userInfoTotal = await contractOf.methods.userInfoTotals(acc).call();
         let totalDeposits = userInfoTotal.total_deposits;
         let team = userInfoTotal.referrals
+        if(team > 0){
+          let totalUsers = await contractOf.methods.total_users().call()
+          setShowTotalUser(totalUsers)
+        }
         let Uinfo = await contractOf.methods.userInfo(acc).call();
         let totalclaimed = Uinfo.payouts;
         let payOutOf = await contractOf.methods.payoutOf(acc).call();
