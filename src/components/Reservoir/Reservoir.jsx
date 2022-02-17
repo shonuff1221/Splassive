@@ -40,6 +40,7 @@ function Reservoir() {
   let [totalTxs, setTotalTxs] = useState(0)
   let [reward, setReward] = useState(0);
   let [dividendPool, setDividendPool] =useState(0);
+  let [contractBal, setContractBal]=useState(0)
   const getDataWithMetaMask = async () => {
     try {
       let acc = await loadWeb3();
@@ -51,9 +52,9 @@ function Reservoir() {
         let fountainContract = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
         let bal = await fountainContract.methods.balanceOf(acc).call()
         bal= web3.utils.fromWei(bal);
+        bal = parseFloat(bal).toFixed(5)
         let userRew = await contractOf.methods.dividendsOf(acc).call();
-        console.log("user", userRew);
-        userRew=  await fountainContract.methods.calculateLiquidityToBnb(userRew).call()
+        userRew=  await contractOf.methods.calculateLiquidityToBnb(userRew).call()
         let stat = await contractOf.methods.statsOf(acc).call();
         userRew = web3.utils.fromWei(userRew);
         userRew = parseFloat(userRew).toFixed(11);
@@ -92,9 +93,11 @@ function Reservoir() {
       let displayDividendPool = divdPool / loackBalance;
       displayDividendPool = parseFloat(displayDividendPool).toFixed(5);
       
-      
+      let conBal =await window.web3.eth.getBalance(reservoirAddress)
+      conBal = window.web3.utils.fromWei(conBal);
+      conBal = parseFloat(conBal).toFixed(7)
 
-    
+      setContractBal(conBal)
       setPlayer(players);
       setLoackedValue(loackBalance)
       setTotalTxs(txs)
@@ -129,8 +132,9 @@ function Reservoir() {
         setUserDropBalance(0);
       } else {
         const web3 = window.web3;
+        let fountainContract = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
         let contract = new web3.eth.Contract(reservoirAbi, reservoirAddress);
-        let userDrop = await contract.methods.balanceOf(acc).call();
+        let userDrop = await fountainContract.methods.balanceOf(acc).call();
         let convertuserDrop = await web3.utils.fromWei(userDrop);
         convertuserDrop = parseFloat(convertuserDrop).toFixed(3)
         setUserDropBalance(convertuserDrop)
@@ -356,7 +360,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                         {t("Rewards.1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>lll{userReward}</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{userReward}</span>
                       </p>
                       <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>{t("AVAX.1")}</p>
                     </div>
@@ -502,9 +506,6 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                           />
                         </div>
 
-                        <small className="form-text text-left">
-                          <p style={{ fontSize: "12px" }}>{t("Estimated.1")}: {t("DROPS.1")}</p>
-                        </small>
                       </div>
                       <div className="row justify-content-end">
                         <div className="col-12 text-left">
@@ -643,7 +644,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                     {t("ContractBalance.1")}
                   </h5>
                   <p className="text-large mb-2 text-white">
-                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}> {totalDrops} {t("AVAX.1")}</span>
+                    <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}> {contractBal} {t("AVAX.1")}</span>
                   </p>
                   <p className="text-small">{t("DROPS.1")} ≈{t("USDT.1")}</p>
                 </div>

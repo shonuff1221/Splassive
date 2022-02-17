@@ -1908,7 +1908,7 @@ const Facuet = ({ oneTokenPrice }) => {
                                               return (
                                                 <tr>
 
-                                                  <th><p className="fatchtable">{item.value === true ? "Activate" : "InActivate"}</p></th>
+                                                  <th><p className="fatchtable">{item.value === true ? "Active" : "InActive"}</p></th>
 
                                                 </tr>
                                               )
