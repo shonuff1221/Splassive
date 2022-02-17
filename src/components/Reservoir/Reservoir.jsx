@@ -52,7 +52,8 @@ function Reservoir() {
         let bal = await fountainContract.methods.balanceOf(acc).call()
         bal= web3.utils.fromWei(bal);
         let userRew = await contractOf.methods.dividendsOf(acc).call();
-        userRew=  await fountainContract.methods.getTokenToBnbInputPrice(userRew).call()
+        console.log("user", userRew);
+        userRew=  await fountainContract.methods.calculateLiquidityToBnb(userRew).call()
         let stat = await contractOf.methods.statsOf(acc).call();
         userRew = web3.utils.fromWei(userRew);
         userRew = parseFloat(userRew).toFixed(11);
@@ -355,7 +356,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                         {t("Rewards.1")}
                       </h5>
                       <p className="text-large mb-2 text-white fst-italic">
-                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>{userReward}</span>
+                        <span className="notranslate" style={{ color: "#ab9769", fontSize: "20px" }}>lll{userReward}</span>
                       </p>
                       <p className="text-small fst-italic" style={{ backgroundColor: "#4e2e4b" }}>{t("AVAX.1")}</p>
                     </div>
