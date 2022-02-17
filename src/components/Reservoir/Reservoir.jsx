@@ -49,6 +49,8 @@ function Reservoir() {
         const web3 = window.web3;
         let contractOf = new web3.eth.Contract(reservoirAbi, reservoirAddress);
         let fountainContract = new web3.eth.Contract(fountainContractAbi, fountainContractAddress);
+        let bal = await fountainContract.methods.balanceOf(acc).call()
+        bal= web3.utils.fromWei(bal);
         let userRew = await contractOf.methods.dividendsOf(acc).call();
         userRew=  await fountainContract.methods.getTokenToBnbInputPrice(userRew).call()
         let stat = await contractOf.methods.statsOf(acc).call();
@@ -58,10 +60,14 @@ function Reservoir() {
          draw = parseFloat(draw).toFixed(7)
          let totalCom = web3.utils.fromWei(stat[13])
          totalCom = parseFloat(totalCom).toFixed(7)
+         let stk = web3.utils.fromWei(stat[0]);
+         stk = parseFloat(stk).toFixed(3)
         setUserReward(userRew)
         setCompound(stat[14])
         setTotalWithDraw(draw);
         setCompoundTotal(totalCom);
+        setStake(stk)
+        setTotalDrops(bal)
       }
     } catch (e) {
       console.log("get data in ", e);
@@ -71,12 +77,6 @@ function Reservoir() {
   const getDataWithoutMetaMask = async () => {
     try {
       let contract = new webSupply.eth.Contract(reservoirAbi, reservoirAddress);
-      let totalDro = await contract.methods.totalSupply().call();
-      totalDro =  webSupply.utils.fromWei(totalDro);
-      totalDro = parseFloat(totalDro).toFixed(3);
-      let totalDeposit = await contract.methods.totalDeposits().call();
-      totalDeposit =  webSupply.utils.fromWei(totalDeposit);
-      totalDeposit = parseFloat(totalDeposit).toFixed(3);
       let players = await contract.methods.players().call();
       let loackBalance = await contract.methods.lockedTokenBalance().call();
       loackBalance =  webSupply.utils.fromWei(loackBalance);
@@ -90,8 +90,8 @@ function Reservoir() {
       divdPool = parseFloat(divdPool).toFixed(3);
       let displayDividendPool = divdPool / loackBalance;
       displayDividendPool = parseFloat(displayDividendPool).toFixed(5);
-      setTotalDrops(totalDeposit)
-      setStake(totalDeposit)
+      
+      
 
     
       setPlayer(players);
