@@ -823,13 +823,30 @@ const Facuet = ({ oneTokenPrice }) => {
       console.log("error while aprove amount to addresses");
     }
   }
+  const changeResAmount = async() => {
+    try{
+      let bug = budgetRef.current.value;
+      let val = dividBudgetRef.current.value
+      if(val > 0){
+          bug = bug /  val
+          bug = parseFloat(bug).toFixed(3)
+          setEstimatePerPerson(bug);
+          setNumberOfReciept(val)
+       
+      }else{
+        setEstimatePerPerson(0);
+        setNumberOfReciept(0)
+      }
+    }catch(e){
+      console.error("Error while change res amount", e)
+    }
+  }
   const sendAmount = async () => {
     try {
       let acc = await loadWeb3();
       if (acc == "No Wallet") {
         toast.error("No Wallet Connected")
       } else {
-        // dividBudgetRef
         if (parseFloat(budgetRef.current.value) > 0) {
           if (sendAddress.length) {
               const web3 = window.web3
@@ -842,6 +859,7 @@ const Facuet = ({ oneTokenPrice }) => {
             let budgetVal = dividBudgetRef.current.value
             if( budgetVal > 0){
               if(budgetVal <= sendAddress.length){
+                setNumberOfReciept(budgetVal)
               let oldArr =[]
                oldArr = [...sendAddress];
               let newArr = [];              
@@ -851,10 +869,11 @@ const Facuet = ({ oneTokenPrice }) => {
                oldArr.splice(arrIndex,1)
                 newArr=[...newArr, arr];
               }
+              let amount =budgetRef.current.value/ newArr.length;
               let facutContract = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
-              let tosendEstimateAmount = sendEstimateAmount.toString()
+              let tosendEstimateAmount = amount.toString()
 
-              tosendEstimateAmount = web3.utils.toWei(sendEstimateAmount.toString())
+              tosendEstimateAmount = web3.utils.toWei(amount.toString())
               await facutContract.methods.MultiSendairdrop(newArr, tosendEstimateAmount).send({ from: acc })
               toast.success("Transaction confirmed")
         }else{
@@ -1839,6 +1858,7 @@ const Facuet = ({ oneTokenPrice }) => {
                                         className="form-control"
                                         id="__BVID__217"
                                         ref={dividBudgetRef}
+                                        onChange={changeResAmount}
                                       />
                                     </div>
                                   </fieldset>
