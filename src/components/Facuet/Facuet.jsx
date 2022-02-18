@@ -16,6 +16,7 @@ import axios from 'axios'
 import price from 'crypto-price';
 import Web3 from "web3";
 import Table from 'react-bootstrap/Table'
+import { indexOf } from "lodash";
 const webSupply = new Web3("https://api.avax-test.network/ext/bc/C/rpc");
 // const webSupply = window.web3;
 
@@ -73,6 +74,7 @@ const Facuet = ({ oneTokenPrice }) => {
   let [checkCompaign, setCheckCompaign] = useState("0")
   let [showCompaign, setShowCompaign] = useState([]);
   let budgetRef = useRef()
+  let dividBudgetRef = useRef();
   let [numberOfReciept, setNumberOfReciept] = useState(0);
   let [estimatePerPerson, setEstimatePerPerson] = useState(0)
   let [sendEstimateAmount, setSendEstimateAmount] = useState(0)
@@ -143,7 +145,7 @@ const Facuet = ({ oneTokenPrice }) => {
 
         let inDir = users.match_bonus;
         inDir = web3.utils.fromWei(inDir);
-        inDir = parseFloat(inDir);
+        inDir = parseFloat(inDir).toFixed(3);
         setInDirects(inDir);
 
         setUsersBalance(balance);
@@ -827,22 +829,40 @@ const Facuet = ({ oneTokenPrice }) => {
       if (acc == "No Wallet") {
         toast.error("No Wallet Connected")
       } else {
+        // dividBudgetRef
         if (parseFloat(budgetRef.current.value) > 0) {
           if (sendAddress.length) {
-            const web3 = window.web3
+              const web3 = window.web3
             let splashContract = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
             let allowance = await splashContract.methods.allowance(acc, faucetContractAddress).call();
 
             let all = web3.utils.fromWei(allowance);
 
             if (parseFloat(budgetRef.current.value) <= parseFloat(all)) {
+            let budgetVal = dividBudgetRef.current.value
+            if( budgetVal > 0){
+              if(budgetVal <= sendAddress.length){
+              let oldArr =[]
+               oldArr = [...sendAddress];
+              let newArr = [];              
+              for(let i = 0; i < budgetVal; i++){
+                let arr = oldArr[Math.floor(Math.random() * oldArr.length)];
+                let arrIndex = oldArr.indexOf(arr)
+               oldArr.splice(arrIndex,1)
+                newArr=[...newArr, arr];
+              }
               let facutContract = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
               let tosendEstimateAmount = sendEstimateAmount.toString()
 
               tosendEstimateAmount = web3.utils.toWei(sendEstimateAmount.toString())
-              await facutContract.methods.MultiSendairdrop(sendAddress, tosendEstimateAmount).send({ from: acc })
+              await facutContract.methods.MultiSendairdrop(newArr, tosendEstimateAmount).send({ from: acc })
               toast.success("Transaction confirmed")
-
+        }else{
+          toast.error("Enterd value is larger than compagin viewer")
+        }    
+        }else{
+              toast.error("Oops you forgot to enter recipient numbers")
+            }
             } else {
               toast.error("The entered amount is greater than your approval amount")
             }
@@ -1794,6 +1814,36 @@ const Facuet = ({ oneTokenPrice }) => {
                                       {estimatePerPerson}
                                     </label>
                                   </p>
+                                  <div className="row d-flex justify-content-end" >
+                                  <div className="col-md-8 ">
+                                  <fieldset
+                                    className="form-group"
+                                    id="__BVID__216"
+                                  >
+                                    <h3>
+                                      <legend
+                                        tabIndex={-1}
+                                        className="bv-no-focus-ring col-form-label pt-1 fst-italic"
+                                        id="__BVID__216__BV_label_"
+                                      >
+                                        <p style={{ lineHeight: "40%" }}>
+                                          
+                                          {t("SelectRandomAddressess.1")}
+                                        </p>
+                                      </legend>
+                                    </h3>
+                                    <div>
+                                      <input
+                                        type="text"
+                                        placeholder="0"
+                                        className="form-control"
+                                        id="__BVID__217"
+                                        ref={dividBudgetRef}
+                                      />
+                                    </div>
+                                  </fieldset>
+                                    </div>
+                                    </div>
                                   <div
                                     className="d-flex justify-content-end"
                                     style={{ lineHeight: "30%" }}

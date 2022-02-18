@@ -85,6 +85,9 @@
     "STAKE":{
         "1": "APOSTAR"
     },
+    "SelectRandomAddressess":{
+        "1":"Seleccionar direcciones aleatorias"
+    },
     "LIQUIDITYFARM":{
         "1": "GRANJA DE LIQUIDEZ"
     },
