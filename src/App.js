@@ -10,6 +10,8 @@ import Navbar from "./components/Navbar/Navbar";
 import Main from "./components/Main/Main";
 import Swap from "./components/Swap/Swap";
 import Facuet from "./components/Facuet/Facuet";
+import WhitePaper from "./components/whitePaper/WhitePaper";
+import Tutorial from "./components/tutorail/Tutorial";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Reservoir from "./components/Reservoir/Reservoir";
 import WaterWave from "react-water-wave";
@@ -43,6 +45,8 @@ function App() {
           oneTokenPrice={oneTokenPrice}
           />} />
           <Route exact path="/reservoir" element={<Reservoir />} />
+          <Route exact path="/whitepaper" element={<WhitePaper/>}  />
+          <Route exact path="/tutorial" element={<Tutorial/>} />
         </Routes>
         <Footer />
       </BrowserRouter>

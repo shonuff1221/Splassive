@@ -1,0 +1,8 @@
+.WhitePaperMain{
+background-color: #86ad74;
+text-align: center;
+}
+.document{
+    display: flex;
+    justify-content: center;
+}

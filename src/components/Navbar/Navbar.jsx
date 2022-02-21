@@ -105,9 +105,11 @@ connectWallet();
                 </Link>
               </Nav>
               <Nav className="me-3">
+                <Link to="/whitepaper" style={{ textDecoration: "none" }}>
                 <Nav.Link href="#deets" id="navbartext">
                 {t('Whitepaper.1')}
                 </Nav.Link>
+                </Link>
                 <Nav.Link
                   eventKey={5}
                   href="#memes"
@@ -116,9 +118,11 @@ connectWallet();
                 >
                    {t('SplashDAO.1')}
                 </Nav.Link>
+                <Link to="/tutorial" style={{ textDecoration: "none" }}>
                 <Nav.Link href="#Tutorial" id="navbartext">
                 {t('Tutorial.1')}
                 </Nav.Link>
+                </Link>
                 {/* <MdLanguage/> */}
                 <NavDropdown title="Lang" id="collasible-nav-dropdown">
                   <NavDropdown.Item href="" onClick={() => handleClick("en")}>
