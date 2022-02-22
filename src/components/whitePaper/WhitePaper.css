@@ -3,6 +3,23 @@ background-color: #86ad74;
 text-align: center;
 }
 .document{
+    /* border: 2px solid red; */
     display: flex;
     justify-content: center;
+    width: 100%;
+}
+.pdf{
+    width: 100px !important;
+}
+@media(max-width:600px) {
+    .pdf{
+        width: 20%;
+    }
+    .document{
+        /* border: 2px solid red; */
+        display: flex;
+        justify-content: center;
+        width: 0%;
+        /* margin-left: 266px; */
+    }
 }

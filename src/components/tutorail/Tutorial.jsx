@@ -4,9 +4,15 @@ import tutorial from '../../images/tutorial.mp4'
 import './Tutorail.css'
 function Tutorial() {
   return (
-    <div className='tut-main' >
-        <div>
+    <div className='tut-main fluid-container' >
+        <div className='row'>
+          <div className='col-md-12'>
+            <div className="video">
+
         <ReactPlayer url={tutorial} controls={true} />
+            </div>
+
+          </div>
         </div>
     </div>
   )

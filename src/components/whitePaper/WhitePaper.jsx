@@ -24,15 +24,17 @@ function WhitePaper() {
         }
     }
   return (
-    <div className='WhitePaperMain' >
+    <div className='WhitePaperMain fluid-container' >
+      <div className='row d-flex justify-content-center'>
+        <div className='col-sm-10 col-11'>
              <AiFillCaretLeft onClick={increasePage} className={ pageNumber >= 2 ? "text-dark fs-1" : "text-secondary fs-1" } /> 
       <span className="fs-5">
         Page {pageNumber} of {numPages}
       </span>
        <AiFillCaretRight onClick={decreasePage} className={ pageNumber < numPages ? "text-dark fs-1" : "text-secondary fs-1" }/> 
-      <div className="document">
-<Document file="splassive_whitepaper.pdf" onLoadSuccess={onDocumentLoadSuccess} >
-        <Page pageNumber={pageNumber} />
+      <div className="document " >
+<Document file="splassive_whitepaper.pdf" onLoadSuccess={onDocumentLoadSuccess} className="pdf" >
+        <Page pageNumber={pageNumber}  style={{border:"2px solid red"}} />
       </Document>
       </div>
        <AiFillCaretLeft onClick={increasePage} className={ pageNumber >= 2 ? "text-dark fs-1" : "text-secondary fs-1" } /> 
@@ -40,7 +42,8 @@ function WhitePaper() {
         Page {pageNumber} of {numPages}
       </span>
        <AiFillCaretRight onClick={decreasePage} className={ pageNumber < numPages ? "text-dark fs-1" : "text-secondary fs-1" }/> 
-
+       </div>
+       </div>
     </div>
   )
 }
