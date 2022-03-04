@@ -48,7 +48,7 @@
         "1": "WalletConnect로 스캔하여 연결"
     },
 
-    
+
 
 
 
@@ -172,12 +172,12 @@
     "SplashBalance":{
         "1": "드립 잔액"
     }
-    
+
     ,
     "BuySplash":{
         "1": "드립 구매"
     }
-    
+
     ,
     "Slippagetolerance":{
         "1": "미끄럼 공차"
@@ -198,7 +198,7 @@
     "SELLSplash":{
         "1": "드립 판매"
     }
-    
+
     ,
     "Max":{
         "1": "최대"
@@ -247,7 +247,7 @@
     "Tranactions":{
         "1": "업무"
     }
-    
+
     ,
     "Txs":{
         "1": "Txs"
@@ -623,6 +623,70 @@
     },
     "JoinusTwiter":{
         "1": "참여하는 트위터"
-    }
+    },
 
+
+    "BuySplash":{
+        "1": "스플래시 구매"
+    }
+    ,
+    "SplassivePresaleDetails":{
+        "1": "Splassive 사전 판매 세부 정보"
+    }
+    ,
+    "WalletMustbewhitelist":{
+        "1": "지갑은 화이트리스트여야 합니다."
+    }
+    ,
+    "PresalePrice0.00605AVAX":{
+        "1": "사전 판매 가격 0.00605 AVAX"
+    }
+    ,
+    "ListingPrice0.03025AVAX":{
+        "1": "정가 0.03025 AVAX"
+    }
+    ,
+    "Max5AVAXperWallet":{
+        "1": "지갑당 최대 5개의 AVAX"
+    }
+    ,
+    "PresaleContractBalance":{
+        "1": "사전 판매 계약 잔액"
+    }
+    ,
+    "ContractBalance":{
+        "1": "계약 잔액"
+    }
+    ,
+    "HARDCAP650AVAX":{
+        "1": "하드캡 650 AVAX"
+    }
+    ,
+    "SOFTCAP360AVAX":{
+        "1": "소프트캡 360 AVAX"
+    }
+    ,
+    "PreSale":{
+        "1": "사전 판매"
+    }
+    ,
+    "EstimatereceivedSplash":{
+        "1": "받은 스플래시 예상"
+    }
+    ,
+    "BUYAVAX":{
+        "1": "AVAX 구매"
+    }
+    ,
+    "ADMINPANEL":{
+        "1": "관리자 패널"
+    }
+    ,
+    "AddAddressToWhiteList":{
+        "1": "화이트리스트에 주소 추가"
+    }
+    ,
+    "RemoveAddressFromWhitelist":{
+        "1": "화이트리스트에서 주소 제거"
+    }
 }

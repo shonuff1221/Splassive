@@ -48,7 +48,7 @@
         "1": "Escanee con WalletConnect para conectarse"
     },
 
-    
+
 
 
 
@@ -172,12 +172,12 @@
     "SplashBalance":{
         "1": "Saldo de Chapoteo"
     }
-    
+
     ,
     "BuySplash":{
         "1": "Comprar Chapoteo"
     }
-    
+
     ,
     "Slippagetolerance":{
         "1": "Tolerancia al deslizamiento"
@@ -198,7 +198,7 @@
     "SELLSplash":{
         "1": "VENDER GOTEO"
     }
-    
+
     ,
     "Max":{
         "1": "Max"
@@ -247,7 +247,7 @@
     "Tranactions":{
         "1": "Actas"
     }
-    
+
     ,
     "Txs":{
         "1": "Txs"
@@ -623,6 +623,77 @@
     },
     "JoinusTwiter":{
         "1": "Únete a nosotras Twitter"
+    },
+
+
+
+
+
+
+
+    "BuySplash":{
+        "1": "Comprar chapoteo"
     }
+    ,
+    "SplassivePresaleDetails":{
+        "1": "Splassive Presale Details"
+    }
+    ,
+    "WalletMustbewhitelist":{
+        "1": "Detalles de preventa de Splassive"
+    }
+    ,
+    "PresalePrice0.00605AVAX":{
+        "1": "Precio de Preventa 0.00605 AVAX"
+    }
+    ,
+    "ListingPrice0.03025AVAX":{
+        "1": "Precio de lista 0.03025 AVAX"
+    }
+    ,
+    "Max5AVAXperWallet":{
+        "1": "Máx. 5 AVAX por billetera"
+    }
+    ,
+    "PresaleContractBalance":{
+        "1": "Saldo del contrato de preventa"
+    }
+    ,
+    "ContractBalance":{
+        "1": "Saldo del contrato"
+    }
+    ,
+    "HARDCAP650AVAX":{
+        "1": "TAPÓN DURO 650 AVAX"
+    }
+    ,
+    "SOFTCAP360AVAX":{
+        "1": "GORRA SUAVE 360 AVAX"
+    }
+    ,
+    "PreSale":{
+        "1": "Preventa"
+    }
+    ,
+    "EstimatereceivedSplash":{
+        "1": "Presupuesto recibido Splash"
+    }
+    ,
+    "BUYAVAX":{
+        "1": "COMPRAR AVAX"
+    }
+    ,
+    "ADMINPANEL":{
+        "1": "PANEL DE ADMINISTRADOR"
+    }
+    ,
+    "AddAddressToWhiteList":{
+        "1": "Agregar dirección a la lista blanca"
+    }
+    ,
+    "RemoveAddressFromWhitelist":{
+        "1": "Eliminar dirección de la lista blanca"
+    }
+
 
 }

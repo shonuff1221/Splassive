@@ -86,23 +86,19 @@ class ChartOne extends React.PureComponent {
           <ValueAxis />
 
           <AreaSeries
-            // name="App Store"
+
             valueField="appStore"
             argumentField="month"
             seriesComponent={Area}
           />
           <AreaSeries
-            // name="Google Play"
+
             valueField="googlePlay"
             argumentField="month"
             seriesComponent={Area}
           />
           <Animation />
-          {/* <Legend
-            position="bottom"
-            rootComponent={Root}
-            labelComponent={Label}
-          /> */}
+          
         </Chart>
       </Paper>
     );
@@ -110,61 +106,3 @@ class ChartOne extends React.PureComponent {
 }
 
 export default withStyles(demoStyles, { name: "ChartOne" })(ChartOne);
-// import {
-//   Chart as ChartJS,
-//   CategoryScale,
-//   LinearScale,
-//   PointElement,
-//   LineElement,
-//   Title,
-//   Tooltip,
-//   Legend,
-// } from "chart.js";
-// import { Line } from "react-chartjs-2";
-// import faker from "faker";
-
-// ChartJS.register(
-//   CategoryScale,
-//   LinearScale,
-//   PointElement,
-//   LineElement,
-//   Title,
-//   Tooltip,
-//   Legend
-// );
-// export const options = {
-//   responsive: true,
-//   plugins: {
-//     legend: {
-
-//     },
-//     title: {
-//       display: true,
-//       text: "Chart.js Line Chart",
-//     },
-//   },
-// };
-
-// const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-// export const data = {
-//   labels,
-//   datasets: [
-//     {
-//       label: "Dataset 1",
-//       data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-//       borderColor: "rgb(252, 252, 252)",
-//       backgroundColor: "rgba(255, 99, 132, 0.5)",
-//     },
-
-//   ],
-// };
-// function Chart() {
-//   return (
-//     <div className="container" style={{backgroundColor: "#45a8f7"}}>
-//       <Line options={options} data={data} />
-//     </div>
-//   );
-// }
-
-// export default Chart;

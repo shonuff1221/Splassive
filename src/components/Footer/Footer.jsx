@@ -44,7 +44,7 @@ const Footer = () => {
                   className="footer-link"
                 >
                   <FaTelegramPlane size={30}/>
-                  {/* <img src="/images/telegram.png" className="footer-telegram" /> */}
+
                   {t("JoinusonTelegram.1")}
                 </a>
               </p>
@@ -55,9 +55,8 @@ const Footer = () => {
                   href="https://twitter.com/splassive_com"
                   className="footer-link"
                 >
-                  
+
                   <FaTwitter size={30}/>
-                  {/* <img src="/images/twitter.png" className="footer-telegram" /> */}
                   {t("JoinusTwiter.1")}
                 </a>
               </p>

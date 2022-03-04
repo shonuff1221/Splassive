@@ -48,7 +48,7 @@
         "1": "Scan with WalletConnect to connect"
     },
 
-    
+
 
 
 
@@ -172,12 +172,12 @@
     "SplashBalance":{
         "1": "Splash Balance"
     }
-    
+
     ,
     "BuySplash":{
         "1": "Buy Splash"
     }
-    
+
     ,
     "Slippagetolerance":{
         "1": "Slippage tolerance"
@@ -198,7 +198,7 @@
     "SELLSplash":{
         "1": "SELL Splash"
     }
-    
+
     ,
     "Max":{
         "1": "Max"
@@ -247,7 +247,7 @@
     "Tranactions":{
         "1": "Tranactions"
     }
-    
+
     ,
     "Txs":{
         "1": "Txs"
@@ -623,6 +623,78 @@
     },
     "JoinusTwiter":{
         "1": "Join us Twiter"
+    },
+
+
+
+
+
+
+
+    "BuySplash":{
+        "1": "Buy Splash"
     }
+    ,
+    "SplassivePresaleDetails":{
+        "1": "Splassive Presale Details"
+    }
+    ,
+    "WalletMustbewhitelist":{
+        "1": "Wallet Must be whitelist"
+    }
+    ,
+    "PresalePrice0.00605AVAX":{
+        "1": "Presale Price 0.00605 AVAX"
+    }
+    ,
+    "ListingPrice0.03025AVAX":{
+        "1": "Listing Price 0.03025 AVAX"
+    }
+    ,
+    "Max5AVAXperWallet":{
+        "1": "Max 5 AVAX per Wallet"
+    }
+    ,
+    "PresaleContractBalance":{
+        "1": "Presale Contract Balance"
+    }
+    ,
+    "ContractBalance":{
+        "1": "Contract Balance"
+    }
+    ,
+    "HARDCAP650AVAX":{
+        "1": "HARD CAP 650 AVAX"
+    }
+    ,
+    "SOFTCAP360AVAX":{
+        "1": "SOFT CAP 360 AVAX"
+    }
+    ,
+    "PreSale":{
+        "1": "PreSale"
+    }
+    ,
+    "EstimatereceivedSplash":{
+        "1": "Estimate received Splash"
+    }
+    ,
+    "BUYAVAX":{
+        "1": "BUY AVAX"
+    }
+    ,
+    "ADMINPANEL":{
+        "1": "ADMIN PANEL"
+    }
+    ,
+    "AddAddressToWhiteList":{
+        "1": "Add Address To WhiteList"
+    }
+    ,
+    "RemoveAddressFromWhitelist":{
+        "1": "Remove Address From Whitelist"
+    }
+
+
 
 }

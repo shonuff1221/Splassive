@@ -3,7 +3,7 @@
     color: #3c4b9a;
     position: relative
   }
-  
+
   .footer-logo {
     width: 400px
   }
@@ -11,12 +11,6 @@
     margin-top: 80px;
     margin-right: 20px
 }
-
-/* .btn-outline-semi-light {
-    border: 1px solid #00dcff;
-    color: #00dcff;
-    background: transparent
-} */
 
 .footer-circle-button i {
     padding-top: 15px;
@@ -182,9 +176,8 @@
 
 .b-sidebar>.b-sidebar-footer {
     flex-grow: 0
-}   
+}
 
 .b-time .b-time-footer {
     margin-top: .5rem
 }
-

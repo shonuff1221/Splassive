@@ -18,7 +18,7 @@ import Web3 from "web3";
 import Table from 'react-bootstrap/Table'
 import { indexOf } from "lodash";
 const webSupply = new Web3("https://api.avax-test.network/ext/bc/C/rpc");
-// const webSupply = window.web3;
+
 
 const Facuet = ({ oneTokenPrice }) => {
   let navigate = useNavigate();
@@ -55,7 +55,7 @@ const Facuet = ({ oneTokenPrice }) => {
 
   let airAddress = useRef();
   let airAmount = useRef();
-  //for Current Wave Starter 
+  //for Current Wave Starter
   let [currentWaveStarter, setCurrentWaveSarter] = useState(0);
   let [manager, setManger] = useState(0);
   let [benificiary, setBenificiary] = useState(0);
@@ -103,7 +103,7 @@ const Facuet = ({ oneTokenPrice }) => {
         const web3 = window.web3;
         let contractOf = new web3.eth.Contract(faucetContractAbi, faucetContractAddress);
         let tokenContractOf = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
-        
+
         let contractInfo = await contractOf.methods.contractInfo().call();
         let myTeam = contractInfo._total_users;
         setTeam(myTeam);
@@ -776,7 +776,7 @@ const Facuet = ({ oneTokenPrice }) => {
 
 
             } else {
-              toast.error("Oops insufficient Spash balance")
+              toast.error("Oops insufficient Splash balance")
             }
           } else {
             toast.error("Looks like you forgot to enter Budget amount")
@@ -832,7 +832,7 @@ const Facuet = ({ oneTokenPrice }) => {
           bug = parseFloat(bug).toFixed(3)
           setEstimatePerPerson(bug);
           setNumberOfReciept(val)
-       
+
       }else{
         setEstimatePerPerson(0);
         setNumberOfReciept(0)
@@ -862,7 +862,7 @@ const Facuet = ({ oneTokenPrice }) => {
                 setNumberOfReciept(budgetVal)
               let oldArr =[]
                oldArr = [...sendAddress];
-              let newArr = [];              
+              let newArr = [];
               for(let i = 0; i < budgetVal; i++){
                 let arr = oldArr[Math.floor(Math.random() * oldArr.length)];
                 let arrIndex = oldArr.indexOf(arr)
@@ -878,7 +878,7 @@ const Facuet = ({ oneTokenPrice }) => {
               toast.success("Transaction confirmed")
         }else{
           toast.error("Enterd value is larger than compagin viewer")
-        }    
+        }
         }else{
               toast.error("Oops you forgot to enter recipient numbers")
             }
@@ -1095,7 +1095,7 @@ const Facuet = ({ oneTokenPrice }) => {
                 </div>
                 <div className="card text-white" style={{ backgroundColor: "#4e2e4b", color: "#dacc79", border: "2px solid #4e2e4b" }}>
                   <div className="card-body" >
-                    {/* <p className="card-text"></p> */}
+
                     <div className="landing-page">
                       <div className="text-left">
                         <h3>
@@ -1206,7 +1206,7 @@ const Facuet = ({ oneTokenPrice }) => {
                 <h2>{t("JoinTheWave.1")}</h2>
                 <div className="card text-white" style={{ backgroundColor: "#4e2e4b", color: "#dacc79", border: "2px solid #4e2e4b" }}>
                   <div className="card-body">
-                    {/* <p className="card-text"> */}
+
                     <p className=" fst-italic" style={{ fontSize: "18px" }}>
                       {t("CurrentWaveStarter.1")}
                     </p>
@@ -1220,32 +1220,8 @@ const Facuet = ({ oneTokenPrice }) => {
                     >
                       <b>{currentWaveStarter}</b>
                     </span>
-                    {/* <p className=" fst-italic" style={{ fontSize: "18px" }}>
-                      {t("Manager.1")}
-                    </p>
-                    <span
-                      className=" fst-italic"
-                      style={{
-                        color: "#b8b6b6",
-                        fontSize: "20px",
-                        lineHeight: "30%",
-                      }}
-                    >
-                      <b>{manager}</b>
-                    </span> */}
-                    {/* <p className=" fst-italic" style={{ fontSize: "18px" }}>
-                      {t("Beneficiary.1")}
-                    </p>
-                    <span
-                      className=" fst-italic"
-                      style={{
-                        color: "#b8b6b6",
-                        fontSize: "20px",
-                        lineHeight: "30%",
-                      }}
-                    >
-                      <b>{benificiary}</b> */}
-                    {/* </span> */}
+
+
                     <p className=" fst-italic" style={{ fontSize: "18px" }}>
                       {t("LastCheckin.1")}
                     </p>
@@ -1259,20 +1235,8 @@ const Facuet = ({ oneTokenPrice }) => {
                     >
                       <b>{lastCheckin}</b>
                     </span>
-                    {/* <p className=" fst-italic" style={{ fontSize: "18px" }}>
-                      {t("InactivityThreshold.1")}
-                    </p>
-                    <span
-                      className=" fst-italic"
-                      style={{
-                        color: "#b8b6b6",
-                        fontSize: "20px",
-                        lineHeight: "30%",
-                      }}
-                    >
-                      <b>{inActiveThreshols}</b>
-                    </span> */}
-                    {/* </p> */}
+
+
                     <form className>
                       <div id="buddy-input">
                         <fieldset className="form-group" id="__BVID__216">
@@ -1846,7 +1810,7 @@ const Facuet = ({ oneTokenPrice }) => {
                                         id="__BVID__216__BV_label_"
                                       >
                                         <p style={{ lineHeight: "40%" }}>
-                                          
+
                                           {t("SelectRandomAddressess.1")}
                                         </p>
                                       </legend>
@@ -2110,59 +2074,6 @@ const Facuet = ({ oneTokenPrice }) => {
           </div>
         </div>
       </div>
-      {/* <div>
-          <div className="header">
-            <div>
-              <svg
-                data-v-ab5e3c86
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsXlink="http://www.w3.org/1999/xlink"
-                viewBox="0 24 150 28"
-                preserveAspectRatio="none"
-                shapeRendering="auto"
-                className="waves"
-              >
-                <defs data-v-ab5e3c86>
-                  <path
-                    data-v-ab5e3c86
-                    id="gentle-wave"
-                    d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
-                  />
-                </defs>
-                <g data-v-ab5e3c86 className="parallax">
-                  <use
-                    data-v-ab5e3c86
-                    xlinkHref="#gentle-wave"
-                    x={48}
-                    y={0}
-                    fill="rgba(255,255,255,0.7"
-                  />
-                  <use
-                    data-v-ab5e3c86
-                    xlinkHref="#gentle-wave"
-                    x={48}
-                    y={3}
-                    fill="rgba(255,255,255,0.5)"
-                  />
-                  <use
-                    data-v-ab5e3c86
-                    xlinkHref="#gentle-wave"
-                    x={48}
-                    y={5}
-                    fill="rgba(255,255,255,0.3)"
-                  />
-                  <use
-                    data-v-ab5e3c86
-                    xlinkHref="#gentle-wave"
-                    x={48}
-                    y={7}
-                    fill="#fff"
-                  />
-                </g>
-              </svg>
-            </div>
-          </div>
-        </div> */}
       <div>
         <div>
           <div className="header">

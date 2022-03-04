@@ -10,22 +10,22 @@
 @media(max-width: 1100px){
     #swapp20{
         line-height: 40%;
-    } 
+    }
     #swapp21{
         line-height: 80%;
-    } 
+    }
     #swapp23{
         line-height: 70%;
-        /* color: #aaf189; */
-    } 
+       
+    }
 }
 @media(max-width: 770px){
     #swapp20{
         line-height: 100%;
-    } 
+    }
     #swapp21{
         line-height: 100%;
-    } 
+    }
     #swapp23{
         line-height: 100%;
     }

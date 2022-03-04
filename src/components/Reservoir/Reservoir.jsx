@@ -41,6 +41,8 @@ function Reservoir() {
   let [reward, setReward] = useState(0);
   let [dividendPool, setDividendPool] =useState(0);
   let [contractBal, setContractBal]=useState(0)
+
+  
   const getDataWithMetaMask = async () => {
     try {
       let acc = await loadWeb3();
@@ -92,7 +94,7 @@ function Reservoir() {
       divdPool = parseFloat(divdPool).toFixed(3);
       let displayDividendPool = divdPool / loackBalance;
       displayDividendPool = parseFloat(displayDividendPool).toFixed(5);
-      
+
       let conBal =await window.web3.eth.getBalance(reservoirAddress)
       conBal = window.web3.utils.fromWei(conBal);
       conBal = parseFloat(conBal).toFixed(7)
@@ -198,14 +200,14 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
         }
         await axios.post("https://splash-test-app.herokuapp.com/api/users/postEvents",data);
       })
-    
+
       toast.success("Transaction confirmed")
     }else{
       toast.error("Insufficient balance");
     }
   }else{
     toast.error("Amount cannot be less than 0.01")
-    
+
   }
 }else{
   toast.error("Looks like you forgot to enter amount")
@@ -253,16 +255,16 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
         let reserContract = new web3.eth.Contract(reservoirAbi, reservoirAddress);
         let dividendsOf = await reserContract.methods.dividendsOf(acc).call();
         dividendsOf = web3.utils.fromWei(dividendsOf)
-        
+
         if (dividendsOf <= 0) {
           toast.error("Dividends cannot be zero")
         } else {
-     
+
           await reserContract.methods.withdraw().send(
             { from: acc })
-            
+
           toast.success("Transaction confirmed")}
-        
+
       }
 
     } catch (e) {
@@ -278,7 +280,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
         toast.error("No Wallet Connected")
       } else {
         const web3 = window.web3;
-       
+
         let reserContract = new web3.eth.Contract(reservoirAbi, reservoirAddress)
         let balance = await reserContract.methods.balanceOf(acc).call();
         balance = web3.utils.fromWei(balance);
@@ -305,7 +307,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
             }
             await axios.post("https://splash-test-app.herokuapp.com/api/users/postEvents",data);
           })
-            
+
           toast.success("Withdraw confirmed")
         } else {
           toast.error("Insufficient balance")
@@ -320,7 +322,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
     }
   }
 
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
     setInterval(() => {
@@ -455,14 +457,14 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
               <div className="container col-12 col-xl-6 col-lg-6 col-md-6 mb-4">
                 <div className="card mb-2 text-white" style={{ backgroundColor: "#4e2e4b", color: "#dacc79", border: "2px solid #4e2e4b" }}>
                   <div className="card-body">
-                    {/* <div className="landing-page"> */}
+
                     <div className="text-left">
                       <h3>
                         <span className="notranslate fst-italic">
                           <p style={{ fontSize: "20px" }}>{t("BuyandDeposit.1")}</p>
                         </span>
                       </h3>
-                      {/* <div className="col-6 text-right fst-italic "> */}{" "}
+
                       <p
                         className="d-flex justify-content-end fst-italic"
                         style={{ lineHeight: "10%" }}
@@ -472,7 +474,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                           {userBnbBalance}
                         </label>
                       </p>
-                      {/* </div> */}
+
                     </div>
 
                     <form>
@@ -493,7 +495,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                                 ≈
                                 {bnbDripPrice}
                               </p>
-                              
+
                           </div>
                         </div>
                         <div role="group" className="input-group">
@@ -519,7 +521,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                         </div>
                       </div>
                     </form>
-                    {/* </div> */}
+
                     <p />
                   </div>
                 </div>
@@ -549,7 +551,7 @@ if(buyInput.current.value != "" && buyInput.current.value != undefined){
                                 <p className="user-balance text-white fst-italic">
                                   {userDropBalance}
                                 </p>
-                              
+
                             </div>
                           </div>
                           <div role="group" className="input-group">

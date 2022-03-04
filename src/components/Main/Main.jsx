@@ -27,7 +27,7 @@ const Main = () => {
 
 
   const getData = async () => {
-    let tokenContractof = new webSupply.eth.Contract(dripTokenAbi, dripTokenAddress); 
+    let tokenContractof = new webSupply.eth.Contract(dripTokenAbi, dripTokenAddress);
     try {
       let drptrx = await tokenContractof.methods.totalTxs().call();
       let players = await tokenContractof.methods.players().call();
@@ -94,14 +94,9 @@ const Main = () => {
               >
                 {t("SplashNetworkisthelatestprojectdevelopedby.1")}{" "}
                 {t("SplassiveTeam.1")}.
-                {/* <a style={{ color: "#7c625a" }} href=""> */}
 
-                {/* </a> */}
 
-                {/* <a style={{ color: "#7c625a" }} href="">
-                  {t("BB.1")}
-                </a>{" "}
-                {t("andteam..1")} */}
+
               </div>
               <div
                 className="container col-12 col-xl-8 col-lg-8 col-md-8 text-white text2"
@@ -124,11 +119,7 @@ const Main = () => {
                 <div className="col-xl-6 col-lg-6 col-md-6 mb-4 pt-4 ">
                   <p className="col-11 white mb-3 text-justify" />
                   <p className="col-11 white text-center ">
-                    {/* <a
-                      href="http://pearl.survey4earn.com/swap"
-                      className
-                      style={{ textDecoration: "none" }}
-                    > */}
+
                     <button
                       style={{ color: "#7c625a", fontSize: "20px" }}
                       type="button"
@@ -137,7 +128,7 @@ const Main = () => {
                     >
                       <b>{t("TRADE.1")}</b>
                     </button>
-                    {/* </a> */}
+
 
                     <button
                       style={{
@@ -166,14 +157,12 @@ const Main = () => {
                       <b>{t("LIQUIDITYFARM.1")}</b>
                     </button>
 
-                    {/* <a href="http://pearl.survey4earn.com/frontend/assets/road_map.pdf" className target="_blank"><button type="button" className="btn btn-outline-light btn-block">Road Map</button></a>
-                  <img src={I}/>
-                  <a href="http://pearl.survey4earn.com/frontend/assets/Liquidity.pdf" className target="_blank"><button type="button" className="btn btn-outline-light btn-block">Liquidity</button></a> */}
+
                   </p>
                 </div>
                 <div
                   className="col-xl-4 col-lg-4 col-md-4 mb-5 pt-4 mt-5"
-                // style={{ display: "flex", justifyContent: "center" }}
+
                 >
                   <img src={I} className="mainimages" />
                 </div>
@@ -239,12 +228,7 @@ const Main = () => {
                     <span className="notranslate" />
                   </p>
                   <p className="text-small"  >
-                    {/* <span
-                      className="notranslate"
-                      style={{ color: "#ab9769", fontSize: "20px" }}
-                    >
-                     {maxDailyReturn}
-                    </span> */}
+                    
                   </p>
                 </div>
               </div>

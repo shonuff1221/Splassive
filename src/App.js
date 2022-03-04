@@ -17,6 +17,7 @@ import Reservoir from "./components/Reservoir/Reservoir";
 import WaterWave from "react-water-wave";
 import bg1 from "./images/bg1.jpg";
 import Home from "./Home";
+import BuySplash from "./components/BuySplash/BuySplash"
 import { useTranslation } from "react-i18next";
 function App() {
   const { t, i18n } = useTranslation();
@@ -38,13 +39,14 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Main />} />
-          <Route exact path="/swap" element={<Swap 
+          <Route exact path="/swap" element={<Swap
           setOneTokenPrice={setOneTokenPrice}
           />} />
           <Route exact path="/facuet" element={<Facuet
           oneTokenPrice={oneTokenPrice}
           />} />
           <Route exact path="/reservoir" element={<Reservoir />} />
+          <Route exact path="/buySplash" element={<BuySplash/>}/>
           <Route exact path="/whitepaper" element={<WhitePaper/>}  />
           <Route exact path="/tutorial" element={<Tutorial/>} />
         </Routes>

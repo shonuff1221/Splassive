@@ -1,8 +1,8 @@
 .images{
-  /* background-image: url("../../images/bg.jpg"); 
+  /* background-image: url("../../images/bg.jpg");
 background-color: #86ad74;
-  background-position: center; 
-  background-repeat: no-repeat; 
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;  */
   background-color: #86ad74;
   top: 0;
@@ -32,11 +32,11 @@ background-color: #86ad74;
 .mainrow {
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
+
 }
 #mainh1 {
   font-size: 80px;
-  /* font-weight: 500px; */
+
   font-weight: bold;
 }
 #mainpp {
@@ -45,12 +45,12 @@ background-color: #86ad74;
 }
 .mainimages{
   width: 400px;
-} 
+}
 @media (max-width: 770px) {
   .mainrow {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    
   }
   .mainimages{
     width: 330px;

@@ -452,22 +452,36 @@ a.nav-link {
 
 .luck-title {
   font-family: Aquino, cursive;
-  font-size: 7rem;
+  font-size: 5rem;
   color: #f5f5f5;
   color: hsla(0, 0%, 100%, 0.96);
   text-shadow: 0 0 80px rgba(192, 219, 255, 0.48),
     0 0 32px rgba(65, 120, 255, 0.24);
   margin: 80px 0;
 }
-
+.luck-title1 {
+  font-family: Aquino, cursive;
+  font-size: 4rem;
+  color: #f5f5f5;
+  color: hsla(0, 0%, 100%, 0.96);
+  text-shadow: 0 0 80px rgba(192, 219, 255, 0.48),
+    0 0 32px rgba(65, 120, 255, 0.24);
+  margin: 80px 0;
+}
 @media (max-width: 768px) {
   .luck-title {
     font-size: 7rem;
+  }
+  .luck-title1 {
+    font-size: 4rem;
   }
 }
 
 @media (max-width: 767px) {
   .luck-title {
+    font-size: 3rem;
+  }
+  .luck-title1 {
     font-size: 3rem;
   }
 }
@@ -2422,12 +2436,12 @@ pre code {
         margin-left:auto;
      justify-content: space-evenly;
     }
-    
+
     .popoverhere2{
         margin-left: auto;
-    
+
     }
-    
+
 }
 
 .row {

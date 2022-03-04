@@ -48,7 +48,7 @@
         "1": "使用 WalletConnect 扫描连接"
     },
 
-    
+
 
 
 
@@ -172,12 +172,12 @@
     "SplashBalance":{
         "1": "溅水平衡"
     }
-    
+
     ,
     "BuySplash":{
         "1": "购买溅溅"
     }
-    
+
     ,
     "Slippagetolerance":{
         "1": "滑点公差"
@@ -198,7 +198,7 @@
     "SELLSplash":{
         "1": "卖溅"
     }
-    
+
     ,
     "Max":{
         "1": "最大限度"
@@ -247,7 +247,7 @@
     "Tranactions":{
         "1": "交易"
     }
-    
+
     ,
     "Txs":{
         "1": "发送"
@@ -623,6 +623,76 @@
     },
     "JoinusTwiter":{
         "1": "加入我们"
+    },
+
+
+
+
+
+
+
+    "BuySplash":{
+        "1": "购买飞溅"
+    }
+    ,
+    "SplassivePresaleDetails":{
+        "1": "Splassive 预售详情"
+    }
+    ,
+    "WalletMustbewhitelist":{
+        "1": "钱包必须是白名单"
+    }
+    ,
+    "PresalePrice0.00605AVAX":{
+        "1": "预售价 0.00605 AVAX"
+    }
+    ,
+    "ListingPrice0.03025AVAX":{
+        "1": "上市价格 0.03025 AVAX"
+    }
+    ,
+    "Max5AVAXperWallet":{
+        "1": "每个钱包最多 5 个 AVAX"
+    }
+    ,
+    "PresaleContractBalance":{
+        "1": "预售合同余额"
+    }
+    ,
+    "ContractBalance":{
+        "1": "合约余额"
+    }
+    ,
+    "HARDCAP650AVAX":{
+        "1": "硬帽 650 AVAX"
+    }
+    ,
+    "SOFTCAP360AVAX":{
+        "1": "软帽 360 AVAX"
+    }
+    ,
+    "PreSale":{
+        "1": "预售"
+    }
+    ,
+    "EstimatereceivedSplash":{
+        "1": "估计收到 Splash"
+    }
+    ,
+    "BUYAVAX":{
+        "1": "购买 AVAX"
+    }
+    ,
+    "ADMINPANEL":{
+        "1": "管理面板"
+    }
+    ,
+    "AddAddressToWhiteList":{
+        "1": "将地址添加到白名单"
+    }
+    ,
+    "RemoveAddressFromWhitelist":{
+        "1": "从白名单中删除地址"
     }
 
 }

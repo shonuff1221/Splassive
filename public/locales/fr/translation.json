@@ -48,7 +48,7 @@
         "1": "Scannez avec WalletConnect pour vous connecter"
     },
 
-    
+
 
 
 
@@ -172,12 +172,12 @@
     "SplashBalance":{
         "1": "Solde Éclaboussure à Éclaboussure"
     }
-    
+
     ,
     "BuySplash":{
         "1": "Acheter Éclaboussure"
     }
-    
+
     ,
     "Slippagetolerance":{
         "1": "Tolérance au glissement"
@@ -198,7 +198,7 @@
     "SELLSplash":{
         "1": "VENDRE Éclaboussure"
     }
-    
+
     ,
     "Max":{
         "1": "Max"
@@ -247,7 +247,7 @@
     "Tranactions":{
         "1": "Transactions"
     }
-    
+
     ,
     "Txs":{
         "1": "Txs"
@@ -623,6 +623,76 @@
     },
     "JoinusTwiter":{
         "1": "Rejoignez-nous Twitter"
+    },
+
+
+
+
+
+
+
+    "BuySplash":{
+        "1": "AcheterSplash"
+    }
+    ,
+    "SplassivePresaleDetails":{
+        "1": "Détails de la prévente Splastive"
+    }
+    ,
+    "WalletMustbewhitelist":{
+        "1": "Le portefeuille doit figurer sur la liste blanche"
+    }
+    ,
+    "PresalePrice0.00605AVAX":{
+        "1": "Prix ​​de prévente 0.00605 AVAX"
+    }
+    ,
+    "ListingPrice0.03025AVAX":{
+        "1": "Prix ​​d'inscription 0,03025 AVAX"
+    }
+    ,
+    "Max5AVAXperWallet":{
+        "1": "Max 5 AVAX par portefeuille"
+    }
+    ,
+    "PresaleContractBalance":{
+        "1": "Solde du contrat de prévente"
+    }
+    ,
+    "ContractBalance":{
+        "1": "Solde du contrat"
+    }
+    ,
+    "HARDCAP650AVAX":{
+        "1": "CAPUCHON RIGIDE 650 AVAX"
+    }
+    ,
+    "SOFTCAP360AVAX":{
+        "1": "CASQUETTE SOUPLE 360 AVAX"
+    }
+    ,
+    "PreSale":{
+        "1": "Prévente"
+    }
+    ,
+    "EstimatereceivedSplash":{
+        "1": "Devis reçu Splash"
+    }
+    ,
+    "BUYAVAX":{
+        "1": "ACHETER AVAX"
+    }
+    ,
+    "ADMINPANEL":{
+        "1": "PANNEAU D'ADMINISTRATION"
+    }
+    ,
+    "AddAddressToWhiteList":{
+        "1": "Ajouter une adresse à la liste blanche"
+    }
+    ,
+    "RemoveAddressFromWhitelist":{
+        "1": "Supprimer l'adresse de la liste blanche"
     }
 
 }
