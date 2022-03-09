@@ -1,6 +1,176 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { useTranslation } from "react-i18next";
+import { PreSallAddress, PresallAbi } from '../utils/preSall';
+import { faucetContractAddress, faucetContractAbi, faucetTokenAddress, faucetTokenAbi } from "../utils/Faucet";
+import { loadWeb3 } from "../api";
+import Web3 from "web3";
+
+
+
 function BuySplash() {
+
+    let [calsplash, setcalSplash] = useState(0)
+    let [balanceOf, setbalanceOf] = useState(0)
+        
+
+    let getdata = useRef()
+    let withDrawValue=useRef()
+
+    let AddAdress_Value = useRef()
+
+
+
+
+
+
+    const Buy = async () => {
+        try {
+
+            let inputvalue = getdata.current.value;
+
+            console.log("inpu data", inputvalue)
+            let acc = await loadWeb3()
+            const web3 = window.web3;
+
+            console.log("acc", acc)
+
+
+
+
+            let preSall = new web3.eth.Contract(PresallAbi, PreSallAddress);
+            let CalSp = await preSall.methods.calculateSplash(inputvalue).call();
+            let calsplash_fromwei = web3.utils.fromWei(CalSp)
+            setcalSplash(calsplash_fromwei)
+
+            await preSall.methods.Buy(web3.utils.toWei(inputvalue)).send({
+                from: acc,
+                value: CalSp
+
+            })
+
+        }
+        catch (e) {
+
+            console.log("error while claim", e);
+        }
+
+    }
+
+    const Onchange_here =async()=>{
+  
+        let acc = await loadWeb3()
+        const web3 = window.web3;
+
+        console.log("acc", acc)
+
+
+
+
+        // let preSall = new web3.eth.Contract(PresallAbi, PreSallAddress);
+        // let CalSp = await preSall.methods.calculateSplash(inputvalue).call();
+        // let calsplash_fromwei = web3.utils.fromWei(CalSp)
+
+    }
+
+
+
+
+    const contractBalance = async () => {
+
+        try {
+
+            let acc = await loadWeb3()
+            const web3 = window.web3;
+            let preSall = new web3.eth.Contract(PresallAbi, PreSallAddress);
+            let balace_here = await preSall.methods.checkContractBalance().call();
+            setbalanceOf(web3.utils.fromWei(balace_here))
+
+        }
+        catch (e) {
+
+            console.log("error while claim", e);
+        }
+
+
+
+
+    }
+
+
+    const WithdrawAVAX = async()=>{
+
+        try {
+
+            let withDraw_valu_here = withDrawValue.current.value;
+
+        
+            let acc = await loadWeb3()
+            const web3 = window.web3;
+
+            console.log("acc", acc)
+
+
+
+
+            let preSall = new web3.eth.Contract(PresallAbi, PreSallAddress);
+
+            await preSall.methods.WithdrawAVAX(web3.utils.toWei(withDraw_valu_here)).send({
+                from: acc
+
+            })
+
+        }
+        catch (e) {
+
+            console.log("error while claim", e);
+        }
+
+
+    }
+
+
+    const addAdress_here=async()=>{
+
+        try {
+            let acc = await loadWeb3()
+            const web3 = window.web3;
+
+            let AddAdressValu_add =  web3.utils.toWei(AddAdress_Value.current.value)  
+
+        
+         
+
+            console.log("acc", acc)
+            let Token_value = new web3.eth.Contract(faucetTokenAbi, faucetTokenAddress);
+
+            await Token_value.methods.addAddressToWhitelist(AddAdressValu_add).send({
+                from: acc
+
+            })
+
+        }
+        catch (e) {
+
+            console.log("error while claim", e);
+        }
+
+    }
+
+
+
+
+
+    useEffect(() => {
+
+        setInterval(() => {
+            contractBalance()
+
+
+        }, 1000);
+    }, []);
+
+
+
     const { t, i18n } = useTranslation();
     return (
         <div className="images">
@@ -78,7 +248,7 @@ function BuySplash() {
                                                             className="fst-italic"
                                                             style={{ fontSize: "16px" }}
                                                         >
-                                                            0
+                                                            {balanceOf}
                                                         </span>
                                                     </div>
                                                 </div>
@@ -148,6 +318,9 @@ function BuySplash() {
                                                             <div>
                                                                 <input
 
+                                                                    ref={getdata}
+
+
                                                                     type="Number"
                                                                     placeholder="0"
                                                                     className="form-control"
@@ -178,9 +351,11 @@ function BuySplash() {
                                                                 <input
 
                                                                     type="Number"
-                                                                    placeholder="0"
+                                                                    value={calsplash}
+
                                                                     className="form-control"
                                                                     id="__BVID__217"
+
                                                                 />
                                                             </div>
                                                         </fieldset>
@@ -189,7 +364,7 @@ function BuySplash() {
                                                 <div className='row d-flex justify-content-center mt-5'>
                                                     <div className='col-md-6 col-11' >
                                                         <div className="d-grid gap-2">
-                                                            <button className='btn fst-italic  mt-2 fw-bold p-2' size="lg" style={{ backgroundColor: "#86ad74", color: "white", fontSize: "25px" }}>
+                                                            <button className='btn fst-italic  mt-2 fw-bold p-2' size="lg" style={{ backgroundColor: "#86ad74", color: "white", fontSize: "25px" }} onClick={() => Buy()} >
                                                                 {t("BUYAVAX.1")}
                                                             </button>
 
@@ -248,6 +423,8 @@ function BuySplash() {
                                                     <div>
                                                         <input
 
+                                                        ref={withDrawValue}
+
                                                             type="text"
                                                             placeholder="0"
                                                             className="form-control"
@@ -259,6 +436,8 @@ function BuySplash() {
                                                     <button
                                                         type="button"
                                                         className="btn btn-outline-light fst-italic"
+
+                                                        onClick={()=>WithdrawAVAX()}
                                                     >
                                                         {t("Withdraw.1")}
                                                     </button>
@@ -287,6 +466,7 @@ function BuySplash() {
                                                         <input
 
                                                             type="text"
+                                                            ref={AddAdress_Value}
                                                             placeholder="Address"
                                                             className="form-control"
                                                             id="__BVID__217"
@@ -296,7 +476,7 @@ function BuySplash() {
                                                 <div>
                                                     <button
                                                         type="button"
-                                                        className="btn btn-outline-light fst-italic"
+                                                        className="btn btn-outline-light fst-italic" onClick={()=>addAdress_here()}
                                                     >
                                                         {t("AddAddressToWhiteList.1")}
                                                     </button>
